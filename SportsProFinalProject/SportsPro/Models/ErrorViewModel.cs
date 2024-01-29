@@ -1,4 +1,4 @@
-namespace SportsPro.Models
+namespace RecordShop.Models
 {
     public class ErrorViewModel
     {

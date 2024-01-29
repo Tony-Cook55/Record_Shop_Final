@@ -1,32 +1,43 @@
 using Microsoft.AspNetCore.Mvc;
-using SportsPro.Models;
+using RecordShop.Models;
 using System.Diagnostics;
 
-namespace SportsPro.Controllers
+
+using Microsoft.EntityFrameworkCore;  // Lets Us Use .Includes
+
+
+
+namespace RecordShop.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        // Connects to the database
+        private ProductsContextModel Context { get; set; }
+
+
+        // This Constructor accepts the DB Context objects thats enabled by DI
+        // Accepts a movie context that holds a list of movies
+        public HomeController(ProductsContextModel ctx)
         {
-            _logger = logger;
+            Context = ctx;
         }
+
+
 
         public IActionResult Index()
         {
-            return View();
+            // Sending a list of Products to our view. 
+            /*var movies = Context.Movies.OrderBy(m => m.Name).ToList();*/
+
+            // Sending list of both movies and genres
+            var products = Context.Products.Include(p => p.Genre).OrderBy(m => m.ArtistName).ToList();
+
+            return View(products);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+
+
     }
 }
