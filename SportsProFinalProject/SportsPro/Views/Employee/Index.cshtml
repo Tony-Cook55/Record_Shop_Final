@@ -1,0 +1,55 @@
+﻿@*
+    Employee Page  
+*@
+
+@model List<EmployeeModel>
+
+<h1>Employee</h1>
+
+
+
+
+
+
+<table class="table  table-responsive   table-striped  border  border-secondary   ">
+
+
+    <thead class="">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var employee in Model)
+    {
+
+        <tr>
+            <td>@employee.FirstName</td>
+            <td>@employee.LastName</td>
+            <td>@employee.Email</td>
+            <td>@employee.PhoneNumber</td>
+
+            <td>
+                <a asp-controller="Employee" asp-action="EditEmployee" asp-route-id="@employee.EmployeeModelId" asp-route-slug="@employee.Slug" class="btn btn-outline-primary">Edit</a>
+            </td>
+            <td>
+                <a asp-controller="Employee" asp-action="DeleteEmployee" asp-route-id="@employee.EmployeeModelId" asp-route-slug="@employee.Slug" class="btn btn-outline-danger">Delete</a>
+            </td>
+        </tr>
+    }
+
+    <div>
+        <a asp-controller="Employee" asp-action="Add" class="btn btn-outline-primary">Add New Employee</a>
+    </div>
+
+
+
+
+
+</table>

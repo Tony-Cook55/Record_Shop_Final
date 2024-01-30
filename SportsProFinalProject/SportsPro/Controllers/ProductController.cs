@@ -1,22 +1,37 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RecordShop.Models;
 
 namespace RecordShop.Controllers
 {
+
+
     public class ProductController : Controller
     {
-
-
         // Connects to the database
-        private ProductsContextModel Context { get; set; }
-
+        private RecordShopContextModel Context { get; set; }
 
         // This Constructor accepts the DB Context objects thats enabled by DI
         // Accepts a Product context that holds a list of Products Info
-        public ProductController(ProductsContextModel ctx)
+        public ProductController(RecordShopContextModel ctx)
         {
             Context = ctx;
         }
+
+
+        public IActionResult Index()
+        {
+
+            // Sending list of both Products and genres
+            var products = Context.Products.Include(p => p.Genre).OrderBy(m => m.ArtistName).ToList();
+
+            return View(products);
+        }
+
+
+
+
+        
 
 
 
@@ -31,7 +46,7 @@ namespace RecordShop.Controllers
             // Puts the Genres of the Records in a list to be able to be edited
             ViewBag.Genres = Context.Genres.OrderBy(g => g.GenreName).ToList();
 
-            return View("Edit", new ProductModel());
+            return View("EditProduct", new ProductModel());
         }
         // ++++++ ADDING A CONTACT ++++++ \\
 
@@ -40,8 +55,10 @@ namespace RecordShop.Controllers
 
         // ------ EDITING A PRODUCT ------ \\
         [HttpGet]
-        public IActionResult Edit(int id)
+        public IActionResult EditProduct(int id)
         {
+            /*ViewBag.CurrentDate = DateTime.Now;*/
+
             ViewBag.Action = "Edit Record";
 
             // Puts the genres back in after the load to be added and show Validation Errors
@@ -59,9 +76,9 @@ namespace RecordShop.Controllers
 
         // xxxxxx DELETE A PRODUCT xxxxxx \\
         [HttpGet]
-        public IActionResult Delete(int id) // id parameter is sent from the url
+        public IActionResult DeleteProduct(int id) // id parameter is sent from the url
         {
-            ViewBag.Action = "Delete Movie";
+            ViewBag.Action = "Delete Record";
 
             var products = Context.Products.Find(id);
             return View(products); // sends the Product to the edit page to auto fill the info
@@ -80,11 +97,11 @@ namespace RecordShop.Controllers
 
         // ++++++ ADDING A PRODUCT ++++++ \\
         [HttpPost]
-        public IActionResult Edit(ProductModel products)
+        public IActionResult EditProduct(ProductModel products)
         {
             if (ModelState.IsValid)
             {
-                // Either add a new movie or edit a movie
+                // Either add a new Product or edit a Product
                 if (products.ProductModelId == 0)
                 {
                     Context.Products.Add(products);
@@ -96,7 +113,7 @@ namespace RecordShop.Controllers
 
                 Context.SaveChanges();
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Product");
             }
             else
             {
@@ -118,14 +135,14 @@ namespace RecordShop.Controllers
 
         // xxxxxx DELETE A PRODUCT xxxxxx \\
         [HttpPost]
-        public IActionResult Delete(ProductModel products)
+        public IActionResult DeleteProduct(ProductModel products)
         {
-            ViewBag.Action = "Delete Movie";
+            ViewBag.Action = "Delete Product";
 
             Context.Products.Remove(products);
             Context.SaveChanges();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Product");
         }
         // xxxxxx DELETE A PRODUCT xxxxxx \\
 

@@ -11,9 +11,9 @@ using RecordShop.Models;
 
 namespace RecordShop.Migrations
 {
-    [DbContext(typeof(ProductsContextModel))]
-    [Migration("20240129170754_Initial")]
-    partial class Initial
+    [DbContext(typeof(RecordShopContextModel))]
+    [Migration("20240130173031_OneContext")]
+    partial class OneContext
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,80 @@ namespace RecordShop.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("RecordShop.Models.EmployeeModel", b =>
+                {
+                    b.Property<int>("EmployeeModelId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmployeeModelId"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("EmployeeModelId");
+
+                    b.ToTable("Employees");
+
+                    b.HasData(
+                        new
+                        {
+                            EmployeeModelId = 1,
+                            Email = "alison@gmail.com",
+                            FirstName = "Alison",
+                            LastName = "Diaz",
+                            PhoneNumber = "800-555-0443"
+                        },
+                        new
+                        {
+                            EmployeeModelId = 2,
+                            Email = "awilson@gmail.com",
+                            FirstName = "Andrew",
+                            LastName = "Wilson",
+                            PhoneNumber = "800-555-0449"
+                        },
+                        new
+                        {
+                            EmployeeModelId = 3,
+                            Email = "gflori@gmail.com",
+                            FirstName = "Gina",
+                            LastName = "Flori",
+                            PhoneNumber = "800-555-0459"
+                        },
+                        new
+                        {
+                            EmployeeModelId = 4,
+                            Email = "gunter@gmail.com",
+                            FirstName = "Gunter",
+                            LastName = "Wendt",
+                            PhoneNumber = "800-555-0400"
+                        },
+                        new
+                        {
+                            EmployeeModelId = 5,
+                            Email = "jason@gmail.com",
+                            FirstName = "Jason",
+                            LastName = "Lee",
+                            PhoneNumber = "800-555-0444"
+                        });
+                });
 
             modelBuilder.Entity("RecordShop.Models.GenreModel", b =>
                 {
@@ -152,8 +226,9 @@ namespace RecordShop.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<DateOnly>("ReleaseDate")
-                        .HasColumnType("date");
+                    b.Property<int?>("ReleaseDate")
+                        .IsRequired()
+                        .HasColumnType("int");
 
                     b.HasKey("ProductModelId");
 
@@ -170,7 +245,7 @@ namespace RecordShop.Migrations
                             GenreModelId = "JAZZ",
                             Price = 12.99,
                             RecordName = "Sinatra's Sinatra",
-                            ReleaseDate = new DateOnly(1963, 8, 1)
+                            ReleaseDate = 1963
                         },
                         new
                         {
@@ -180,7 +255,7 @@ namespace RecordShop.Migrations
                             GenreModelId = "JAZZ",
                             Price = 10.99,
                             RecordName = "Gentle on My Mind",
-                            ReleaseDate = new DateOnly(1968, 10, 15)
+                            ReleaseDate = 1968
                         },
                         new
                         {
@@ -190,7 +265,7 @@ namespace RecordShop.Migrations
                             GenreModelId = "JAZZ",
                             Price = 5.6200000000000001,
                             RecordName = "Times of Your Life",
-                            ReleaseDate = new DateOnly(1975, 11, 20)
+                            ReleaseDate = 1975
                         },
                         new
                         {
@@ -200,7 +275,7 @@ namespace RecordShop.Migrations
                             GenreModelId = "ROCK",
                             Price = 5.0,
                             RecordName = "Mr. Natural",
-                            ReleaseDate = new DateOnly(1974, 3, 2)
+                            ReleaseDate = 1974
                         });
                 });
 

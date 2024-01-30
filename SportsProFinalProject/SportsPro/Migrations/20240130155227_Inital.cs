@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -8,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace RecordShop.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class Inital : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -34,8 +33,8 @@ namespace RecordShop.Migrations
                     Code = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     RecordName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     ArtistName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    ReleaseDate = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
-                    ReleaseDate = table.Column<DateOnly>(type: "date", nullable: false),
                     GenreModelId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
@@ -77,10 +76,10 @@ namespace RecordShop.Migrations
                 columns: new[] { "ProductModelId", "ArtistName", "Code", "GenreModelId", "Price", "RecordName", "ReleaseDate" },
                 values: new object[,]
                 {
-                    { 1, "Frank Sinatra", "FSJAZZ", "JAZZ", 12.99, "Sinatra's Sinatra", new DateOnly(1963, 8, 1) },
-                    { 2, "Dean Martin", "DMJAZZ", "JAZZ", 10.99, "Gentle on My Mind", new DateOnly(1968, 10, 15) },
-                    { 3, "Paul Anka", "PAJAZZ", "JAZZ", 5.6200000000000001, "Times of Your Life", new DateOnly(1975, 11, 20) },
-                    { 4, "Bee Gees", "BGROCK", "ROCK", 5.0, "Mr. Natural", new DateOnly(1974, 3, 2) }
+                    { 1, "Frank Sinatra", "FSJAZZ", "JAZZ", 12.99, "Sinatra's Sinatra", 1963 },
+                    { 2, "Dean Martin", "DMJAZZ", "JAZZ", 10.99, "Gentle on My Mind", 1968 },
+                    { 3, "Paul Anka", "PAJAZZ", "JAZZ", 5.6200000000000001, "Times of Your Life", 1975 },
+                    { 4, "Bee Gees", "BGROCK", "ROCK", 5.0, "Mr. Natural", 1974 }
                 });
 
             migrationBuilder.CreateIndex(

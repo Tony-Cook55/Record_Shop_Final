@@ -12,7 +12,7 @@ namespace RecordShop.Models
 
 
         // Read-Only Property for the /slug in the Program.cs file   This Shows the FirstName and the PhoneNumber
-        public string Slug => ArtistName?.Replace(" ", "-").ToLower() + RecordName?.Replace(" ", "-").ToLower() + "-" + Price?.ToString();
+        public string Slug => ArtistName?.Replace(" ", "-").ToLower() +  "-"  + RecordName?.Replace(" ", "-").ToLower() + "-" /*+ Price?.ToString()*/;
 
 
 
@@ -38,17 +38,23 @@ namespace RecordShop.Models
         public string? ArtistName { get; set; } = string.Empty;
 
 
-        [Required(ErrorMessage = "Please Enter a Price")]
-        [Range(0.01,100000, ErrorMessage = "Price Must be Above 1￠ to $1,000,000 ")]
-        public double? Price { get; set; }
 
 
+        [Required(ErrorMessage = "Please Enter a Release Date")]
+        [RegularExpression(@"^\d{4}$", ErrorMessage = "Please enter a valid 4-digit year.")]
+        [Range(1930, 2024, ErrorMessage = "Please enter a valid Release Date.")]
+        public int? ReleaseDate { get; set; }
 
         // This will be called into the Product Controller when Adding so the current time can be set into this to be called into Details
-        public DateOnly ReleaseDate { get; set; }
+/*        [DataType(DataType.Date)]
+        public DateOnly ReleaseDate { get; set; }*/
 
 
 
+
+        [Required(ErrorMessage = "Please Enter a Price")]
+        [Range(1, 100000, ErrorMessage = "Price Must be Above $1 to $1,000,000 ")]
+        public double? Price { get; set; }
 
 
 

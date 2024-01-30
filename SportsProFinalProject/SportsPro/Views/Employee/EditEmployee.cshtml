@@ -1,0 +1,81 @@
+﻿@*
+    EDIT
+*@
+
+
+@model EmployeeModel
+@{
+    ViewBag.Title = $"{ViewBag.Action}";
+}
+
+
+<h1>@ViewBag.Action</h1>
+
+
+
+
+
+<form asp-action="EditEmployee" method="post">
+
+    @* All Error Messages *@
+    @*     <div asp-validation-summary="All" class="text-danger"></div> *@
+
+
+
+    @* FIRST NAME *@
+    <div class="mb-3">
+        <label asp-for="FirstName" class="form-label">First Name</label>
+        <input asp-for="FirstName" class="form-control" />
+
+        <span class="text-danger" asp-validation-for="FirstName"></span> @* Error Message *@
+
+    </div>
+    @* FIRST NAME *@
+
+
+    @* LAST NAME *@
+    <div class="mb-3">
+        <label asp-for="LastName" class="form-label">Last Name</label>
+        <input asp-for="LastName" class="form-control" />
+
+        <span class="text-danger" asp-validation-for="LastName"></span> @* Error Message *@
+    </div>
+    @* LAST NAME *@
+
+
+
+    @* EMAIL *@
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label">Email</label>
+        <input asp-for="Email" class="form-control" />
+
+        <span class="text-danger" asp-validation-for="Email"></span> @* Error Message *@
+    </div>
+    @* EMAIL *@
+
+
+
+    @* PHONE *@
+    <div class="mb-3">
+        <label asp-for="PhoneNumber" class="form-label">Phone Number</label>
+        <input asp-for="PhoneNumber" class="form-control" type="text" />
+
+        <span class="text-danger" asp-validation-for="PhoneNumber"></span> @* Error Message *@
+    </div>
+    @* PHONE *@
+
+
+
+
+
+
+    <input type="hidden" asp-for="EmployeeModelId" />
+    <button type="submit" class="btn btn-primary">Save</button>
+
+    <a asp-controller="Employee" asp-action="Index" class="btn btn-secondary">Cancel</a>
+
+
+
+
+
+</form>

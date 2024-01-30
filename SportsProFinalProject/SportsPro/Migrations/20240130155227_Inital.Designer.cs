@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RecordShop.Models;
 
@@ -11,9 +12,11 @@ using RecordShop.Models;
 namespace RecordShop.Migrations
 {
     [DbContext(typeof(RecordShopContextModel))]
-    partial class ProductsContextModelModelSnapshot : ModelSnapshot
+    [Migration("20240130155227_Inital")]
+    partial class Inital
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,80 +24,6 @@ namespace RecordShop.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("RecordShop.Models.EmployeeModel", b =>
-                {
-                    b.Property<int>("EmployeeModelId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmployeeModelId"));
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("EmployeeModelId");
-
-                    b.ToTable("Employees");
-
-                    b.HasData(
-                        new
-                        {
-                            EmployeeModelId = 1,
-                            Email = "alison@gmail.com",
-                            FirstName = "Alison",
-                            LastName = "Diaz",
-                            PhoneNumber = "800-555-0443"
-                        },
-                        new
-                        {
-                            EmployeeModelId = 2,
-                            Email = "awilson@gmail.com",
-                            FirstName = "Andrew",
-                            LastName = "Wilson",
-                            PhoneNumber = "800-555-0449"
-                        },
-                        new
-                        {
-                            EmployeeModelId = 3,
-                            Email = "gflori@gmail.com",
-                            FirstName = "Gina",
-                            LastName = "Flori",
-                            PhoneNumber = "800-555-0459"
-                        },
-                        new
-                        {
-                            EmployeeModelId = 4,
-                            Email = "gunter@gmail.com",
-                            FirstName = "Gunter",
-                            LastName = "Wendt",
-                            PhoneNumber = "800-555-0400"
-                        },
-                        new
-                        {
-                            EmployeeModelId = 5,
-                            Email = "jason@gmail.com",
-                            FirstName = "Jason",
-                            LastName = "Lee",
-                            PhoneNumber = "800-555-0444"
-                        });
-                });
 
             modelBuilder.Entity("RecordShop.Models.GenreModel", b =>
                 {

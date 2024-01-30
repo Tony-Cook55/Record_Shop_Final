@@ -1,0 +1,109 @@
+﻿@*
+    EDIT
+*@
+
+
+@model ProductModel
+@{
+    ViewBag.Title = $"{ViewBag.Action}";
+}
+
+
+<h1>@ViewBag.Action</h1>
+
+
+
+
+
+<form asp-action="EditProduct" method="post">
+
+    @* All Error Messages *@
+    @*     <div asp-validation-summary="All" class="text-danger"></div> *@
+
+
+
+    @* CODE *@
+    <div class="mb-3">
+        <label asp-for="Code" class="form-label">Code</label>
+        <input asp-for="Code" class="form-control" />
+
+        <span class="text-danger" asp-validation-for="Code"></span> @* Error Message *@
+
+    </div>
+    @* CODE *@
+
+
+    @* RECORD NAME *@
+    <div class="mb-3">
+        <label asp-for="RecordName" class="form-label">Record Name</label>
+        <input asp-for="RecordName" class="form-control" />
+
+        <span class="text-danger" asp-validation-for="RecordName"></span> @* Error Message *@
+    </div>
+    @* RECORD NAME *@
+
+
+
+    @* ARTIST NAME *@
+    <div class="mb-3">
+        <label asp-for="ArtistName" class="form-label">Artist Name</label>
+        <input asp-for="ArtistName" class="form-control" />
+
+        <span class="text-danger" asp-validation-for="ArtistName"></span> @* Error Message *@
+    </div>
+    @* ARTISTS NAME *@
+
+
+
+    @* CATEGORY *@
+    <div class="mb-3">
+        <label asp-for="GenreModelId" class="form-label">Genre</label>
+
+        <select asp-for="GenreModelId" class="form-control">
+            <option value="">Select Music Genre</option>
+            @foreach (var genre in ViewBag.Genres)
+            {
+                <option value="@genre.GenreModelId">@genre.GenreName</option>
+            }
+        </select>
+
+        <span class="text-danger" asp-validation-for="GenreModelId"></span> @* Error Message *@
+
+    </div>
+    @* CATEGORY *@
+
+
+
+    @* RELEASE DATE *@
+    <div class="mb-3">
+        <label asp-for="ReleaseDate" class="form-label">Release Date</label>
+        <input asp-for="ReleaseDate" class="form-control" type="text" /> @* type="date" *@
+
+        <span class="text-danger" asp-validation-for="ReleaseDate"></span> @* Error Message *@
+    </div>
+    @* RELEASE DATE *@
+
+
+
+    @* PRICE *@
+    <div class="mb-3">
+        <label asp-for="Price" class="form-label">Price</label>
+        <input asp-for="Price" class="form-control" />
+
+        <span class="text-danger" asp-validation-for="Price"></span> @* Error Message *@
+    </div>
+    @* PRICE *@
+
+
+
+
+    <input type="hidden" asp-for="ProductModelId" />
+    <button type="submit" class="btn btn-primary">Save</button>
+
+    <a asp-controller="Product" asp-action="Index" class="btn btn-secondary">Cancel</a>
+
+
+
+
+
+</form>

@@ -2,7 +2,7 @@
 
 namespace RecordShop.Models
 {
-    public class ProductsContextModel     : DbContext  // ADD : DbContext to allow certain call ins below to work
+    public class RecordShopContextModel     : DbContext  // ADD : DbContext to allow certain call ins below to work
     {
 
         /*< This is our Model Class Product Model>*/
@@ -19,14 +19,23 @@ namespace RecordShop.Models
 
 
 
+
+        public DbSet<EmployeeModel> Employees { get; set; } = null!;
+
+
+
+
+
+
         // Constructor that sends some options to the parent in this case : DbContext
-        public ProductsContextModel(DbContextOptions<ProductsContextModel> options) : base(options) { }
+        public RecordShopContextModel(DbContextOptions<RecordShopContextModel> options) : base(options) { }
 
 
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
 
             // RECORD GENERES 
             modelBuilder.Entity<GenreModel>().HasData(
@@ -62,7 +71,8 @@ namespace RecordShop.Models
                     RecordName = "Sinatra's Sinatra",
                     ArtistName = "Frank Sinatra",
                     Price = 12.99,
-                    ReleaseDate = new DateOnly(1963, 8, 1), // Year, Month, Day
+                    ReleaseDate = 1963,
+                    /*ReleaseDate = new DateOnly(1963, 8, 1), // Year, Month, Day*/
                     GenreModelId = "JAZZ"
                 },
                 new ProductModel()
@@ -72,7 +82,8 @@ namespace RecordShop.Models
                     RecordName = "Gentle on My Mind",
                     ArtistName = "Dean Martin",
                     Price = 10.99,
-                    ReleaseDate = new DateOnly(1968, 10, 15), // Year, Month, Day
+                    ReleaseDate = 1968,
+                    /*ReleaseDate = new DateOnly(1968, 2, 13), // Year, Month, Day*/
                     GenreModelId = "JAZZ"
                 },
                 new ProductModel()
@@ -82,7 +93,8 @@ namespace RecordShop.Models
                     RecordName = "Times of Your Life",
                     ArtistName = "Paul Anka",
                     Price = 5.62,
-                    ReleaseDate = new DateOnly(1975, 11, 20), // Year, Month, Day
+                    ReleaseDate = 1975,
+                    /*ReleaseDate = new DateOnly(1975, 1, 6), // Year, Month, Day*/
                     GenreModelId = "JAZZ"
                 },
                 new ProductModel()
@@ -92,8 +104,57 @@ namespace RecordShop.Models
                     RecordName = "Mr. Natural",
                     ArtistName = "Bee Gees",
                     Price = 5.00,
-                    ReleaseDate = new DateOnly(1974, 3, 2), // Year, Month, Day
+                    ReleaseDate = 1974,
+                    /*ReleaseDate = new DateOnly(1974, 2, 30), // Year, Month, Day*/
                     GenreModelId = "ROCK"
+                }
+
+            );
+
+
+
+
+            modelBuilder.Entity<EmployeeModel>().HasData(
+
+                new EmployeeModel()
+                {
+                    EmployeeModelId = 1,
+                    FirstName = "Alison",
+                    LastName = "Diaz",
+                    Email = "alison@gmail.com",
+                    PhoneNumber = "800-555-0443"
+                },
+                new EmployeeModel()
+                {
+                    EmployeeModelId = 2,
+                    FirstName = "Andrew",
+                    LastName = "Wilson",
+                    Email = "awilson@gmail.com",
+                    PhoneNumber = "800-555-0449"
+                },
+                new EmployeeModel()
+                {
+                    EmployeeModelId = 3,
+                    FirstName = "Gina",
+                    LastName = "Flori",
+                    Email = "gflori@gmail.com",
+                    PhoneNumber = "800-555-0459"
+                },
+                new EmployeeModel()
+                {
+                    EmployeeModelId = 4,
+                    FirstName = "Gunter",
+                    LastName = "Wendt",
+                    Email = "gunter@gmail.com",
+                    PhoneNumber = "800-555-0400"
+                },
+                new EmployeeModel()
+                {
+                    EmployeeModelId = 5,
+                    FirstName = "Jason",
+                    LastName = "Lee",
+                    Email = "jason@gmail.com",
+                    PhoneNumber = "800-555-0444"
                 }
 
 
