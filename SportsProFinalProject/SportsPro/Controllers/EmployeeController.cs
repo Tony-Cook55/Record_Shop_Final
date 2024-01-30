@@ -127,7 +127,7 @@ namespace RecordShop.Controllers
 
         // xxxxxx DELETE A EMPLOYEE xxxxxx \\
         [HttpPost]
-        public IActionResult DeleteProduct(EmployeeModel employee)
+        public IActionResult DeleteEmployee(EmployeeModel employee)
         {
             ViewBag.Action = "Delete Employee";
 
