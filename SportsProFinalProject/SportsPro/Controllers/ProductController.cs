@@ -31,7 +31,6 @@ namespace RecordShop.Controllers
 
 
 
-        
 
 
 
@@ -81,7 +80,7 @@ namespace RecordShop.Controllers
             ViewBag.Action = "Delete Record";
 
             var products = Context.Products.Find(id);
-            return View(products); // sends the Product to the edit page to auto fill the info
+            return View(products); // sends the Product to the Delete page to auto fill the info
         }
         // xxxxxx DELETE A PRODUCT xxxxxx \\
 

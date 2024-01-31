@@ -6,8 +6,8 @@ namespace RecordShop.Models
     {
 
 
-        // Read-Only Property for the /slug in the Program.cs file   This Shows the FirstName and the PhoneNumber
-        public string Slug => FirstName?.Replace(" ", "-").ToLower() + "-" + LastName?.Replace(" ", "-").ToLower() + "-" /*+ Price?.ToString()*/;
+        // Read-Only Property for the /slug in the Program.cs file   This Shows the FirstName and the Last Name
+        public string Slug => FirstName?.Replace(" ", "-").ToLower() + "-" + LastName?.Replace(" ", "-").ToLower()/* + "-" + Price?.ToString()*/;
 
 
 
