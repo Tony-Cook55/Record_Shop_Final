@@ -1,0 +1,92 @@
+﻿@*
+    EDIT
+*@
+
+
+@model IncidentModel
+@{
+    ViewBag.Title = $"{ViewBag.Action}";
+}
+
+
+<h1>@ViewBag.Action</h1>
+
+
+
+
+
+<form asp-action="EditIncident" method="post">
+
+    @* All Error Messages *@
+    @*     <div asp-validation-summary="All" class="text-danger"></div> *@
+
+
+
+    @* CUSTOMER FIRST NAME *@
+    <div class="mb-3">
+        <label asp-for="Customer.CustomerFirstName" class="form-label">First Name</label>
+        <input asp-for="Customer.CustomerFirstName" class="form-control" />
+
+        <span class="text-danger" asp-validation-for="Customer.CustomerFirstName"></span> @* Error Message *@
+
+    </div>
+    @* CUSTOMER FIRST NAME *@
+
+
+    @* CUSTOMER LAST NAME *@
+    <div class="mb-3">
+        <label asp-for="Customer.CustomerLastName" class="form-label">Last Name</label>
+        <input asp-for="Customer.CustomerLastName" class="form-control" />
+
+        <span class="text-danger" asp-validation-for="Customer.CustomerLastName"></span> @* Error Message *@
+
+    </div>
+    @* CUSTOMER LAST NAME *@
+
+
+
+    @* PRODUCT *@
+    <div class="mb-3">
+        <label asp-for="Product.RecordName" class="form-label">Product</label>
+        <input asp-for="Product.RecordName" class="form-control" />
+
+        <span class="text-danger" asp-validation-for="Product.RecordName"></span> @* Error Message *@
+    </div>
+    @* PRODUCT *@
+
+
+
+    @* PRODUCT *@
+    <div class="mb-3">
+        <label asp-for="ProductModelId" class="form-label">Genre</label>
+
+        <select asp-for="ProductModelId" class="form-control">
+            <option value="">Select Record</option>
+            @foreach (var record in ViewBag.Records)
+            {
+                <option value="@record.ProductModelId">@record.RecordName</option>
+            }
+        </select>
+
+        <span class="text-danger" asp-validation-for="ProductModelId"></span> @* Error Message *@
+
+    </div>
+    @* PRODUCT *@
+
+
+
+
+
+
+
+    <input type="hidden" asp-for="IncidentModelId" />
+
+    <button type="submit" class="btn btn-primary">Save</button>
+
+    <a asp-controller="Incident" asp-action="Index" class="btn btn-secondary">Cancel</a>
+
+
+
+
+
+</form>

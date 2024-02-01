@@ -12,8 +12,8 @@ using RecordShop.Models;
 namespace RecordShop.Migrations
 {
     [DbContext(typeof(RecordShopContextModel))]
-    [Migration("20240131163333_CustomerInital")]
-    partial class CustomerInital
+    [Migration("20240201174748_Inital")]
+    partial class Inital
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -150,8 +150,10 @@ namespace RecordShop.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PostalCode")
-                        .HasColumnType("int");
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasMaxLength(9)
+                        .HasColumnType("nvarchar(9)");
 
                     b.Property<string>("State")
                         .IsRequired()
@@ -175,7 +177,7 @@ namespace RecordShop.Migrations
                             CustomerLastName = "Anthoni",
                             Email = "kanthoni@pge.com",
                             PhoneNumber = "812-907-0449",
-                            PostalCode = 94127,
+                            PostalCode = "94127",
                             State = "California"
                         },
                         new
@@ -188,7 +190,7 @@ namespace RecordShop.Migrations
                             CustomerLastName = "Irvin",
                             Email = "ani@mma.nidc.com",
                             PhoneNumber = "",
-                            PostalCode = 98136,
+                            PostalCode = "98136",
                             State = "Washington"
                         },
                         new
@@ -201,7 +203,7 @@ namespace RecordShop.Migrations
                             CustomerLastName = "Keeton",
                             Email = "",
                             PhoneNumber = "123-456-7890",
-                            PostalCode = 92692,
+                            PostalCode = "92692",
                             State = "California"
                         },
                         new
@@ -214,7 +216,7 @@ namespace RecordShop.Migrations
                             CustomerLastName = "Mauro",
                             Email = "amauro@yahoo.org",
                             PhoneNumber = "542-890-7890",
-                            PostalCode = 95820,
+                            PostalCode = "95820",
                             State = "California"
                         },
                         new
@@ -227,7 +229,7 @@ namespace RecordShop.Migrations
                             CustomerLastName = "Mayte",
                             Email = "kmayte@fresno.ca.gov",
                             PhoneNumber = "612-109-1247",
-                            PostalCode = 93726,
+                            PostalCode = "93726",
                             State = "California"
                         },
                         new
@@ -240,7 +242,7 @@ namespace RecordShop.Migrations
                             CustomerLastName = "Quinn",
                             Email = "kenzie@mma.jobtrak.com",
                             PhoneNumber = "912-189-6631",
-                            PostalCode = 91326,
+                            PostalCode = "91326",
                             State = "California"
                         },
                         new
@@ -253,7 +255,7 @@ namespace RecordShop.Migrations
                             CustomerLastName = "Quintin",
                             Email = "marvin@expedata.com",
                             PhoneNumber = "612-109-1247",
-                            PostalCode = 93727,
+                            PostalCode = "93727",
                             State = "California"
                         });
                 });
@@ -428,6 +430,65 @@ namespace RecordShop.Migrations
                         });
                 });
 
+            modelBuilder.Entity("RecordShop.Models.IncidentModel", b =>
+                {
+                    b.Property<int>("IncidentModelId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IncidentModelId"));
+
+                    b.Property<int?>("CustomerModelId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DateClosed")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateOpened")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("EmployeeModelId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProductModelId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("IncidentModelId");
+
+                    b.HasIndex("CustomerModelId");
+
+                    b.HasIndex("EmployeeModelId");
+
+                    b.HasIndex("ProductModelId");
+
+                    b.ToTable("Incidents");
+
+                    b.HasData(
+                        new
+                        {
+                            IncidentModelId = 1,
+                            CustomerModelId = 1,
+                            DateClosed = new DateTime(2024, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOpened = new DateTime(2024, 2, 1, 11, 47, 48, 515, DateTimeKind.Local).AddTicks(302),
+                            Description = "Record Came out of the package scratched.",
+                            EmployeeModelId = 1,
+                            ProductModelId = 1,
+                            Title = "Scratched The Record"
+                        });
+                });
+
             modelBuilder.Entity("RecordShop.Models.ProductModel", b =>
                 {
                     b.Property<int>("ProductModelId")
@@ -521,6 +582,33 @@ namespace RecordShop.Migrations
                         .IsRequired();
 
                     b.Navigation("Country");
+                });
+
+            modelBuilder.Entity("RecordShop.Models.IncidentModel", b =>
+                {
+                    b.HasOne("RecordShop.Models.CustomerModel", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RecordShop.Models.EmployeeModel", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RecordShop.Models.ProductModel", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("RecordShop.Models.ProductModel", b =>

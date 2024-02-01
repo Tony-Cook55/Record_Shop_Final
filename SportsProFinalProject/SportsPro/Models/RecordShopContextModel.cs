@@ -26,6 +26,8 @@ namespace RecordShop.Models
 
 
 
+        public DbSet<IncidentModel> Incidents { get; set; } = null!;
+
 
 
 
@@ -194,7 +196,7 @@ namespace RecordShop.Models
                     Address = "30 Borica St",
                     City = "San Francisco",
                     State = "California",
-                    PostalCode = 94127,
+                    PostalCode = "94127",
 
                     CountryModelId = "USA",
 
@@ -209,7 +211,7 @@ namespace RecordShop.Models
                     Address = "7124 44th Avenue SW",
                     City = "Seattle",
                     State = "Washington",
-                    PostalCode = 98136,
+                    PostalCode = "98136",
 
                     CountryModelId = "USA",
 
@@ -224,7 +226,7 @@ namespace RecordShop.Models
                     Address = "27691 Pasatiempo",
                     City = "Mission Viejo",
                     State = "California",
-                    PostalCode = 92692,
+                    PostalCode = "92692",
 
                     CountryModelId = "USA",
 
@@ -239,7 +241,7 @@ namespace RecordShop.Models
                     Address = "4731 Baker Ave",
                     City = "Sacramento",
                     State = "California",
-                    PostalCode = 95820,
+                    PostalCode = "95820",
 
                     CountryModelId = "USA",
 
@@ -254,7 +256,7 @@ namespace RecordShop.Models
                     Address = "4248 N Cedar Ave",
                     City = "Fresno",
                     State = "California",
-                    PostalCode = 93726,
+                    PostalCode = "93726",
 
                     CountryModelId = "USA",
 
@@ -269,7 +271,7 @@ namespace RecordShop.Models
                     Address = "11344 Porter Valley Dr",
                     City = "Los Angeles",
                     State = "California",
-                    PostalCode = 91326,
+                    PostalCode = "91326",
 
                     CountryModelId = "USA",
 
@@ -284,7 +286,7 @@ namespace RecordShop.Models
                     Address = "1143 S Minnewawa Ave",
                     City = "Fresno",
                     State = "California",
-                    PostalCode = 93727,
+                    PostalCode = "93727",
 
                     CountryModelId = "USA",
 
@@ -294,6 +296,92 @@ namespace RecordShop.Models
 
             );
             // ccccccccccccccccc CUSTOMERS ccccccccccccccccc \\
+
+
+
+
+
+
+
+            // iiiiiiiiiiiiiiiii INCIDENTS iiiiiiiiiiiiiiiii \\
+
+            modelBuilder.Entity<IncidentModel>().HasData(
+                new IncidentModel()
+                {
+                    IncidentModelId = 1,
+
+                    // This will call in the first Model Up Above So This is the Id of the Item
+                    CustomerModelId = 1,
+
+                    ProductModelId = 1,
+
+                    EmployeeModelId = 1,
+
+
+                    Title = "Scratched The Record",
+                    Description = "Record Came out of the package scratched.",
+                    DateOpened = DateTime.Now,
+                    DateClosed = new DateTime(2024, 1, 31),  // Year / Month / Day
+                }
+/*                new IncidentModel()
+                {
+                    IncidentModelId = 2,
+
+                    CustomerModelId = 3,
+
+                    ProductModelId = 2,
+
+                    EmployeeModelId = 2,
+
+
+                    Title = "Record Snapped",
+                    Description = "Snapped In two",
+                    DateOpened = DateTime.Now,
+                    DateClosed = new DateTime(2024, 5, 9),  // Year / Month / Day
+                },
+                new IncidentModel()
+                {
+                    IncidentModelId = 3,
+
+                    CustomerModelId = 4,
+
+                    ProductModelId = 3,
+
+                    EmployeeModelId = 2,
+
+
+                    Title = "Wrong Size",
+                    Description = "Picked the wrong size record for my Record Player",
+                    DateOpened = DateTime.Now,
+                    DateClosed = null, // Optional
+                },
+                new IncidentModel()
+                {
+                    IncidentModelId = 4,
+
+                    CustomerModelId = 6,
+
+                    ProductModelId = 3,
+
+                    EmployeeModelId = 2,
+
+
+                    Title = "Didn't like the record",
+                    Description = "Wanted a new artist",
+                    DateOpened = DateTime.Now,
+                    DateClosed = new DateTime(2024, 12, 5),  // Year / Month / Day
+                }*/
+
+            );
+
+
+
+
+
+
+            // iiiiiiiiiiiiiiiii INCIDENTS iiiiiiiiiiiiiiiii \\
+
+
 
 
 

@@ -53,15 +53,17 @@ namespace RecordShop.Models
 
 
         [Required(ErrorMessage = "Please Enter a Postal Code")]
-        [Range(10000, 99999, ErrorMessage = "Postal Codes Must be 5 Digits")]
-        public int PostalCode { get; set; }
+        [StringLength(9, MinimumLength = 5, ErrorMessage = "Postal Codes Must Have At Least 5 to 9 Digits")]
+        /*[Range(10000, 99999, ErrorMessage = "Postal Codes Must be 5 Digits")]*/ // IF STRING
+        public string? PostalCode { get; set; } = string.Empty;
 
 
 
 
 
-/*        [Required(ErrorMessage = "Please Enter An Email")]
-*/        [StringLength(50, MinimumLength = 1, ErrorMessage = "Email Must Have At Least 1 to 50 Characters")]
+        /*        [Required(ErrorMessage = "Please Enter An Email")]
+        */
+        [StringLength(50, MinimumLength = 1, ErrorMessage = "Email Must Have At Least 1 to 50 Characters")]
         public string? Email { get; set; } = string.Empty;
 
 

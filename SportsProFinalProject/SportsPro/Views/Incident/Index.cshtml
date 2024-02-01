@@ -1,0 +1,56 @@
+﻿@*
+    INCIDENTS Page
+*@
+
+@model List<IncidentModel>
+
+<h1>Incidents</h1>
+
+
+
+
+
+
+<table class="table  table-responsive   table-striped  border  border-secondary   ">
+
+
+    <thead class="">
+        <tr>
+            <th>Title</th>
+            <th>Customer First Name</th>
+            <th>Customer Last Name</th>
+            <th>Product</th>
+            <th>Date Opened</th>
+
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var incident in Model)
+    {
+
+        <tr>
+            <td>@incident.Title</td>
+            <td>@incident.Customer.CustomerFirstName</td>
+            <td>@incident.Customer.CustomerLastName</td>
+            <td>@incident.Product.RecordName</td>
+            <td>@incident.DateOpened</td>
+
+            <td>
+                <a asp-controller="Incident" asp-action="EditIncident" asp-route-id="@incident.IncidentModelId" asp-route-slug="@incident.Slug" class="btn btn-outline-primary">Edit</a>
+            </td>
+            <td>
+                <a asp-controller="Incident" asp-action="DeleteIncident" asp-route-id="@incident.IncidentModelId" asp-route-slug="@incident.Slug" class="btn btn-outline-danger">Delete</a>
+            </td>
+        </tr>
+    }
+
+
+</table>
+
+
+
+<div>
+    <a asp-controller="Employee" asp-action="Add" class="btn btn-outline-primary">Add New Employee</a>
+</div>
