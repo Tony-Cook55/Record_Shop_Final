@@ -12,8 +12,8 @@ using RecordShop.Models;
 namespace RecordShop.Migrations
 {
     [DbContext(typeof(RecordShopContextModel))]
-    [Migration("20240201174748_Inital")]
-    partial class Inital
+    [Migration("20240202025731_inital")]
+    partial class inital
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -481,11 +481,43 @@ namespace RecordShop.Migrations
                             IncidentModelId = 1,
                             CustomerModelId = 1,
                             DateClosed = new DateTime(2024, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOpened = new DateTime(2024, 2, 1, 11, 47, 48, 515, DateTimeKind.Local).AddTicks(302),
+                            DateOpened = new DateTime(2024, 2, 1, 20, 57, 30, 775, DateTimeKind.Local).AddTicks(6056),
                             Description = "Record Came out of the package scratched.",
                             EmployeeModelId = 1,
                             ProductModelId = 1,
                             Title = "Scratched The Record"
+                        },
+                        new
+                        {
+                            IncidentModelId = 2,
+                            CustomerModelId = 3,
+                            DateClosed = new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOpened = new DateTime(2024, 2, 1, 20, 57, 30, 775, DateTimeKind.Local).AddTicks(6115),
+                            Description = "Snapped In two",
+                            EmployeeModelId = 2,
+                            ProductModelId = 2,
+                            Title = "Record Snapped"
+                        },
+                        new
+                        {
+                            IncidentModelId = 3,
+                            CustomerModelId = 4,
+                            DateOpened = new DateTime(2024, 2, 1, 20, 57, 30, 775, DateTimeKind.Local).AddTicks(6118),
+                            Description = "Picked the wrong size record for my Record Player",
+                            EmployeeModelId = 2,
+                            ProductModelId = 3,
+                            Title = "Wrong Size"
+                        },
+                        new
+                        {
+                            IncidentModelId = 4,
+                            CustomerModelId = 6,
+                            DateClosed = new DateTime(2024, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOpened = new DateTime(2024, 2, 1, 20, 57, 30, 775, DateTimeKind.Local).AddTicks(6121),
+                            Description = "Wanted a new artist",
+                            EmployeeModelId = 2,
+                            ProductModelId = 3,
+                            Title = "Didn't like the record"
                         });
                 });
 

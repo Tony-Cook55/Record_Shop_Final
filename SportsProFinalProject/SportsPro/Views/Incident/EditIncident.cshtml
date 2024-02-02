@@ -14,7 +14,6 @@
 
 
 
-
 <form asp-action="EditIncident" method="post">
 
     @* All Error Messages *@
@@ -22,47 +21,33 @@
 
 
 
-    @* CUSTOMER FIRST NAME *@
+    @* CUSTOMER *@
     <div class="mb-3">
-        <label asp-for="Customer.CustomerFirstName" class="form-label">First Name</label>
-        <input asp-for="Customer.CustomerFirstName" class="form-control" />
+        <label asp-for="CustomerModelId" class="form-label">Customer</label>
 
-        <span class="text-danger" asp-validation-for="Customer.CustomerFirstName"></span> @* Error Message *@
+        <select asp-for="CustomerModelId" class="form-control">
+            <option value="">Select Customer</option>
+            @foreach (var customer in ViewBag.Customers) // These ViewBags are in the Controllers [HttpGet] Where we plug all the items into different ViewBags to call into here
+            {
+                <option value="@customer.CustomerModelId">@customer.CustomerFirstName  @customer.CustomerLastName</option>
+            }
+        </select>
+
+        <span class="text-danger" asp-validation-for="CustomerModelId"></span> @* Error Message *@
 
     </div>
-    @* CUSTOMER FIRST NAME *@
+    @* CUSTOMER *@
 
-
-    @* CUSTOMER LAST NAME *@
-    <div class="mb-3">
-        <label asp-for="Customer.CustomerLastName" class="form-label">Last Name</label>
-        <input asp-for="Customer.CustomerLastName" class="form-control" />
-
-        <span class="text-danger" asp-validation-for="Customer.CustomerLastName"></span> @* Error Message *@
-
-    </div>
-    @* CUSTOMER LAST NAME *@
 
 
 
     @* PRODUCT *@
     <div class="mb-3">
-        <label asp-for="Product.RecordName" class="form-label">Product</label>
-        <input asp-for="Product.RecordName" class="form-control" />
-
-        <span class="text-danger" asp-validation-for="Product.RecordName"></span> @* Error Message *@
-    </div>
-    @* PRODUCT *@
-
-
-
-    @* PRODUCT *@
-    <div class="mb-3">
-        <label asp-for="ProductModelId" class="form-label">Genre</label>
+        <label asp-for="ProductModelId" class="form-label">Product</label>
 
         <select asp-for="ProductModelId" class="form-control">
             <option value="">Select Record</option>
-            @foreach (var record in ViewBag.Records)
+            @foreach (var record in ViewBag.Products)
             {
                 <option value="@record.ProductModelId">@record.RecordName</option>
             }
@@ -75,8 +60,75 @@
 
 
 
+    @* TITLE *@
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label">Title</label>
+        <input asp-for="Title" class="form-control" />
+
+        <span class="text-danger" asp-validation-for="Title"></span> @* Error Message *@
+    </div>
+    @* TITLE *@
 
 
+    @* DESCRIPTION *@
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label">Description</label>
+        <input asp-for="Description" class="form-control" />
+
+        <span class="text-danger" asp-validation-for="Description"></span> @* Error Message *@
+    </div>
+    @* DESCRIPTION *@
+
+
+
+
+    @* EMPLOYEE *@
+    <div class="mb-3">
+        <label asp-for="EmployeeModelId" class="form-label">Employee</label>
+
+        <select asp-for="EmployeeModelId" class="form-control">
+            <option value="">Select Employee</option>
+            @foreach (var employee in ViewBag.Employees)
+            {
+                <option value="@employee.EmployeeModelId">@employee.FirstName  @employee.LastName</option>
+            }
+        </select>
+
+        <span class="text-danger" asp-validation-for="EmployeeModelId"></span> @* Error Message *@
+
+    </div>
+    @* EMPLOYEE *@
+
+
+
+
+    @* DATE OPENED *@
+    <div class="mb-3">
+        <label asp-for="DateOpened" class="form-label">Date Opened</label>
+
+        <input asp-for="DateOpened" class="form-control" type="text"
+            value="@((Model.DateOpened.HasValue ? Model.DateOpened.Value.ToString("MM/dd/yyyy h:mm tt") : DateTime.Now.ToString("MM/dd/yyyy h:mm tt")))" />
+
+        <span class="text-danger" asp-validation-for="DateOpened"></span> @* Error Message *@
+    </div>
+    @* DATE OPENED *@
+
+
+
+
+    @* DATE CLOSED *@
+    <div class="mb-3">
+        <label asp-for="DateClosed" class="form-label">Date Closed</label>
+
+        <input asp-for="DateClosed" class="form-control" type="datetime-local"
+            value="@((Model.DateClosed.HasValue ? Model.DateClosed.Value.ToString("yyyy-MM-ddTHH:mm") : string.Empty))" />
+
+
+        <span class="text-danger" asp-validation-for="DateClosed"></span> @* Error Message *@
+    </div>
+    @* DATE CLOSED *@
+
+    <h1>@ViewBag.CurrentDate</h1>
 
 
     <input type="hidden" asp-for="IncidentModelId" />

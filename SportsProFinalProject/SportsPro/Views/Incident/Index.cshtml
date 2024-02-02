@@ -17,8 +17,7 @@
     <thead class="">
         <tr>
             <th>Title</th>
-            <th>Customer First Name</th>
-            <th>Customer Last Name</th>
+            <th>Customer </th>
             <th>Product</th>
             <th>Date Opened</th>
 
@@ -32,8 +31,7 @@
 
         <tr>
             <td>@incident.Title</td>
-            <td>@incident.Customer.CustomerFirstName</td>
-            <td>@incident.Customer.CustomerLastName</td>
+            <td>@incident.Customer.CustomerFirstName   @incident.Customer.CustomerLastName</td>
             <td>@incident.Product.RecordName</td>
             <td>@incident.DateOpened</td>
 
@@ -52,5 +50,5 @@
 
 
 <div>
-    <a asp-controller="Employee" asp-action="Add" class="btn btn-outline-primary">Add New Employee</a>
+    <a asp-controller="Incident" asp-action="Add" class="btn btn-outline-primary">Add New Incident</a>
 </div>

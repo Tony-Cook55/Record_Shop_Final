@@ -120,6 +120,14 @@ namespace RecordShop.Models
             modelBuilder.Entity<EmployeeModel>().HasData(
                 new EmployeeModel()
                 {
+                    EmployeeModelId = -1,
+                    FirstName = "No Employee",
+                    LastName = "",
+                    Email = "",
+                    PhoneNumber = ""
+                },
+                new EmployeeModel()
+                {
                     EmployeeModelId = 1,
                     FirstName = "Alison",
                     LastName = "Diaz",
@@ -322,8 +330,8 @@ namespace RecordShop.Models
                     Description = "Record Came out of the package scratched.",
                     DateOpened = DateTime.Now,
                     DateClosed = new DateTime(2024, 1, 31),  // Year / Month / Day
-                }
-/*                new IncidentModel()
+                },
+                new IncidentModel()
                 {
                     IncidentModelId = 2,
 
@@ -370,7 +378,7 @@ namespace RecordShop.Models
                     Description = "Wanted a new artist",
                     DateOpened = DateTime.Now,
                     DateClosed = new DateTime(2024, 12, 5),  // Year / Month / Day
-                }*/
+                }
 
             );
 

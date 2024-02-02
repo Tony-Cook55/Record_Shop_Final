@@ -8,7 +8,7 @@ namespace RecordShop.Models
     {
 
         // Read-Only Property for the /slug in the Program.cs file   This Shows the FirstName and the Last Name
-        public string Slug => Title?.Replace(" ", "-").ToLower() + "-" + Customer.CustomerFirstName?.Replace(" ", "-").ToLower();
+        public string Slug => Product?.RecordName?.Replace(" ", "-").ToLower() + "-" + Title?.Replace(" ", "-").ToLower();
 
 
 
@@ -30,10 +30,18 @@ namespace RecordShop.Models
         public string? Description { get; set; } = string.Empty;
 
 
+
+
         [Required(ErrorMessage = "Please Enter The Date Opened")]
-        public DateTime DateOpened { get; set; }
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy h:mm tt}", ApplyFormatInEditMode = true)]
+        [CustomDateRange(ErrorMessage = "Date must be between 1/1/2000 and the current date")]
+        public DateTime? DateOpened { get; set; }
 
 
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy h:mm tt}", ApplyFormatInEditMode = true)]
+        [CustomDateRange(ErrorMessage = "Date must be between 1/1/2000 and the current date")]
         public DateTime? DateClosed { get; set; }
 
 
@@ -51,7 +59,6 @@ namespace RecordShop.Models
 
 
 
-
         // Foreign Key Property
         [Required(ErrorMessage = "Please Enter a Product")]
         public int? ProductModelId { get; set; }
@@ -65,7 +72,7 @@ namespace RecordShop.Models
 
         // Foreign Key Property
         [Required(ErrorMessage = "Please Enter a Employee")]
-        public int EmployeeModelId { get; set; }
+        public int? EmployeeModelId { get; set; }
 
         // NAVIGATION PROPERTY
         [ValidateNever]
@@ -76,4 +83,31 @@ namespace RecordShop.Models
 
 
     }
+
+
+
+    // VALIDATION FOR THE DateOpened and DateClosed
+    public class CustomDateRangeAttribute : ValidationAttribute
+    {
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            // Allow null values
+            if (value is null)
+            {
+                return ValidationResult.Success;
+            }
+
+            // Checking if the time value Entered is above the year 2000 and less than the current date if not throw message we made above
+            if (value is DateTime date && (date < new DateTime(2000, 1, 1) || date > DateTime.Now))
+            {
+                return new ValidationResult(ErrorMessage);
+            }
+
+            return ValidationResult.Success;
+        }
+    }
+
+
+
+
 }

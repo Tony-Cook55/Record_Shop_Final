@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace RecordShop.Migrations
 {
     /// <inheritdoc />
-    public partial class Inital : Migration
+    public partial class inital : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -225,7 +225,13 @@ namespace RecordShop.Migrations
             migrationBuilder.InsertData(
                 table: "Incidents",
                 columns: new[] { "IncidentModelId", "CustomerModelId", "DateClosed", "DateOpened", "Description", "EmployeeModelId", "ProductModelId", "Title" },
-                values: new object[] { 1, 1, new DateTime(2024, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 2, 1, 11, 47, 48, 515, DateTimeKind.Local).AddTicks(302), "Record Came out of the package scratched.", 1, 1, "Scratched The Record" });
+                values: new object[,]
+                {
+                    { 1, 1, new DateTime(2024, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 2, 1, 20, 57, 30, 775, DateTimeKind.Local).AddTicks(6056), "Record Came out of the package scratched.", 1, 1, "Scratched The Record" },
+                    { 2, 3, new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 2, 1, 20, 57, 30, 775, DateTimeKind.Local).AddTicks(6115), "Snapped In two", 2, 2, "Record Snapped" },
+                    { 3, 4, null, new DateTime(2024, 2, 1, 20, 57, 30, 775, DateTimeKind.Local).AddTicks(6118), "Picked the wrong size record for my Record Player", 2, 3, "Wrong Size" },
+                    { 4, 6, new DateTime(2024, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 2, 1, 20, 57, 30, 775, DateTimeKind.Local).AddTicks(6121), "Wanted a new artist", 2, 3, "Didn't like the record" }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Customers_CountryModelId",
