@@ -12,8 +12,8 @@ using RecordShop.Models;
 namespace RecordShop.Migrations
 {
     [DbContext(typeof(RecordShopContextModel))]
-    [Migration("20240202025731_inital")]
-    partial class inital
+    [Migration("20240206172352_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -294,6 +294,14 @@ namespace RecordShop.Migrations
                     b.HasData(
                         new
                         {
+                            EmployeeModelId = -1,
+                            Email = "",
+                            FirstName = "No Employee",
+                            LastName = "",
+                            PhoneNumber = ""
+                        },
+                        new
+                        {
                             EmployeeModelId = 1,
                             Email = "alison@gmail.com",
                             FirstName = "Alison",
@@ -445,7 +453,8 @@ namespace RecordShop.Migrations
                     b.Property<DateTime?>("DateClosed")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateOpened")
+                    b.Property<DateTime?>("DateOpened")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
@@ -453,7 +462,8 @@ namespace RecordShop.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("EmployeeModelId")
+                    b.Property<int?>("EmployeeModelId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int?>("ProductModelId")
@@ -481,7 +491,7 @@ namespace RecordShop.Migrations
                             IncidentModelId = 1,
                             CustomerModelId = 1,
                             DateClosed = new DateTime(2024, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOpened = new DateTime(2024, 2, 1, 20, 57, 30, 775, DateTimeKind.Local).AddTicks(6056),
+                            DateOpened = new DateTime(2024, 2, 6, 11, 23, 52, 342, DateTimeKind.Local).AddTicks(3786),
                             Description = "Record Came out of the package scratched.",
                             EmployeeModelId = 1,
                             ProductModelId = 1,
@@ -492,7 +502,7 @@ namespace RecordShop.Migrations
                             IncidentModelId = 2,
                             CustomerModelId = 3,
                             DateClosed = new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOpened = new DateTime(2024, 2, 1, 20, 57, 30, 775, DateTimeKind.Local).AddTicks(6115),
+                            DateOpened = new DateTime(2024, 2, 6, 11, 23, 52, 342, DateTimeKind.Local).AddTicks(3842),
                             Description = "Snapped In two",
                             EmployeeModelId = 2,
                             ProductModelId = 2,
@@ -502,7 +512,7 @@ namespace RecordShop.Migrations
                         {
                             IncidentModelId = 3,
                             CustomerModelId = 4,
-                            DateOpened = new DateTime(2024, 2, 1, 20, 57, 30, 775, DateTimeKind.Local).AddTicks(6118),
+                            DateOpened = new DateTime(2024, 2, 6, 11, 23, 52, 342, DateTimeKind.Local).AddTicks(3845),
                             Description = "Picked the wrong size record for my Record Player",
                             EmployeeModelId = 2,
                             ProductModelId = 3,
@@ -513,7 +523,7 @@ namespace RecordShop.Migrations
                             IncidentModelId = 4,
                             CustomerModelId = 6,
                             DateClosed = new DateTime(2024, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOpened = new DateTime(2024, 2, 1, 20, 57, 30, 775, DateTimeKind.Local).AddTicks(6121),
+                            DateOpened = new DateTime(2024, 2, 6, 11, 23, 52, 342, DateTimeKind.Local).AddTicks(3847),
                             Description = "Wanted a new artist",
                             EmployeeModelId = 2,
                             ProductModelId = 3,

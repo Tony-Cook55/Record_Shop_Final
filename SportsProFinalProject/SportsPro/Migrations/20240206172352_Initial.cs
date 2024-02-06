@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace RecordShop.Migrations
 {
     /// <inheritdoc />
-    public partial class inital : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -167,6 +167,7 @@ namespace RecordShop.Migrations
                 columns: new[] { "EmployeeModelId", "Email", "FirstName", "LastName", "PhoneNumber" },
                 values: new object[,]
                 {
+                    { -1, "", "No Employee", "", "" },
                     { 1, "alison@gmail.com", "Alison", "Diaz", "800-555-0443" },
                     { 2, "awilson@gmail.com", "Andrew", "Wilson", "800-555-0449" },
                     { 3, "gflori@gmail.com", "Gina", "Flori", "800-555-0459" },
@@ -227,10 +228,10 @@ namespace RecordShop.Migrations
                 columns: new[] { "IncidentModelId", "CustomerModelId", "DateClosed", "DateOpened", "Description", "EmployeeModelId", "ProductModelId", "Title" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2024, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 2, 1, 20, 57, 30, 775, DateTimeKind.Local).AddTicks(6056), "Record Came out of the package scratched.", 1, 1, "Scratched The Record" },
-                    { 2, 3, new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 2, 1, 20, 57, 30, 775, DateTimeKind.Local).AddTicks(6115), "Snapped In two", 2, 2, "Record Snapped" },
-                    { 3, 4, null, new DateTime(2024, 2, 1, 20, 57, 30, 775, DateTimeKind.Local).AddTicks(6118), "Picked the wrong size record for my Record Player", 2, 3, "Wrong Size" },
-                    { 4, 6, new DateTime(2024, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 2, 1, 20, 57, 30, 775, DateTimeKind.Local).AddTicks(6121), "Wanted a new artist", 2, 3, "Didn't like the record" }
+                    { 1, 1, new DateTime(2024, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 2, 6, 11, 23, 52, 342, DateTimeKind.Local).AddTicks(3786), "Record Came out of the package scratched.", 1, 1, "Scratched The Record" },
+                    { 2, 3, new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 2, 6, 11, 23, 52, 342, DateTimeKind.Local).AddTicks(3842), "Snapped In two", 2, 2, "Record Snapped" },
+                    { 3, 4, null, new DateTime(2024, 2, 6, 11, 23, 52, 342, DateTimeKind.Local).AddTicks(3845), "Picked the wrong size record for my Record Player", 2, 3, "Wrong Size" },
+                    { 4, 6, new DateTime(2024, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 2, 6, 11, 23, 52, 342, DateTimeKind.Local).AddTicks(3847), "Wanted a new artist", 2, 3, "Didn't like the record" }
                 });
 
             migrationBuilder.CreateIndex(
