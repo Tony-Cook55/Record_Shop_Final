@@ -3,6 +3,15 @@ using RecordShop.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+builder.Services.AddRouting(options =>
+{
+    options.LowercaseUrls = true;
+    options.AppendTrailingSlash = true;
+});
+
+
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -52,6 +61,19 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+
+
+
+
+
+
+// ADDING ROUTES BELOW
+
+
+
+
+
 
 app.MapControllerRoute(
     name: "default",
