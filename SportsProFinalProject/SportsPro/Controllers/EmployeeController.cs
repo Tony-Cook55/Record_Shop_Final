@@ -20,6 +20,8 @@ namespace RecordShop.Controllers
         }
 
 
+
+        [Route("employees")]
         public IActionResult Index()
         {
 

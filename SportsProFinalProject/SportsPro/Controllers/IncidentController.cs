@@ -18,7 +18,7 @@ namespace RecordShop.Controllers
         }
 
 
-
+        [Route("incidents/")]
         public IActionResult Index()
         {
             // Sending list of both Incidents  The Customers The Products And the Employees

@@ -19,6 +19,8 @@ namespace RecordShop.Controllers
         }
 
 
+
+        [Route("customers/")]
         public IActionResult Index()
         {
             // Sending list of both Customers and Country's

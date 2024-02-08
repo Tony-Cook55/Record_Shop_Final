@@ -70,11 +70,6 @@ app.UseAuthorization();
 
 // ADDING ROUTES BELOW
 
-
-
-
-
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

@@ -64,13 +64,22 @@ namespace RecordShop.Models
             );
 
 
+
+
+
+/*            string imagePath1 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "assets", "Frank_Sinatra", "sinatra_sinatra.jpg");
+            byte[] imageData1 = File.ReadAllBytes(imagePath1);*/
+
+
             modelBuilder.Entity<ProductModel>().HasData(
+
 
                 new ProductModel()
                 {
                     ProductModelId = 1,
                     Code = "FSJAZZ",
                     RecordName = "Sinatra's Sinatra",
+                    /*ImageData = imageData1,*/
                     ArtistName = "Frank Sinatra",
                     Price = 12.99,
                     ReleaseDate = 1963,
@@ -85,7 +94,6 @@ namespace RecordShop.Models
                     ArtistName = "Dean Martin",
                     Price = 10.99,
                     ReleaseDate = 1968,
-                    /*ReleaseDate = new DateOnly(1968, 2, 13), // Year, Month, Day*/
                     GenreModelId = "JAZZ"
                 },
                 new ProductModel()
@@ -96,7 +104,6 @@ namespace RecordShop.Models
                     ArtistName = "Paul Anka",
                     Price = 5.62,
                     ReleaseDate = 1975,
-                    /*ReleaseDate = new DateOnly(1975, 1, 6), // Year, Month, Day*/
                     GenreModelId = "JAZZ"
                 },
                 new ProductModel()
@@ -107,7 +114,6 @@ namespace RecordShop.Models
                     ArtistName = "Bee Gees",
                     Price = 5.00,
                     ReleaseDate = 1974,
-                    /*ReleaseDate = new DateOnly(1974, 2, 30), // Year, Month, Day*/
                     GenreModelId = "ROCK"
                 }
             );

@@ -26,9 +26,9 @@
         </tr>
     </thead>
 
-    @foreach (var employee in Model)
+    @foreach (var employee in Model.Where(emp => emp.EmployeeModelId != -1)) // Exclude the default "No Employee" item with an Id of -1
+@*  @foreach (var employee in Model)*@
     {
-
         <tr>
             <td>@employee.FirstName</td>
             <td>@employee.LastName</td>

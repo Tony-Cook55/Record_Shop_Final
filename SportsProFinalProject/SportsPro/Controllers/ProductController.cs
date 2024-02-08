@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RecordShop.Models;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace RecordShop.Controllers
 {
@@ -18,6 +19,10 @@ namespace RecordShop.Controllers
             Context = ctx;
         }
 
+
+
+
+        [Route("products")]
 
         public IActionResult Index()
         {
@@ -100,6 +105,8 @@ namespace RecordShop.Controllers
         {
             if (ModelState.IsValid)
             {
+
+
                 // Either add a new Product or edit a Product
                 if (products.ProductModelId == 0)
                 {

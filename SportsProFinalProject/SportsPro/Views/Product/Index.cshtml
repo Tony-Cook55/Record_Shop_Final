@@ -14,7 +14,7 @@
 
 
 
-<table class="table  table-responsive   table-striped  border  border-secondary   ">
+<table class="table  table-responsive   table-striped  border  border-secondary ">
 
 
     <thead class="">
@@ -36,6 +36,18 @@
         <tr>
             <td>@product.Code</td>
             <td>@product.RecordName</td>
+
+
+@*             @if (product.ImageData != null && product.ImageData.Length > 0)
+            {
+                <img src="data:image/jpeg;base64,@Convert.ToBase64String(product.ImageData)" alt="Product Image" />
+            }
+            else
+            {
+                <p>No image available</p>
+            } *@
+
+
             <td>@product.ArtistName</td>
             <td>@product.Genre.GenreName</td>
             <td>@product.ReleaseDate</td>

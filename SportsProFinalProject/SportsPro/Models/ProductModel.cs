@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 /* Allows for the [Required] and the [Range]*/
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RecordShop.Models
 {
@@ -30,6 +31,13 @@ namespace RecordShop.Models
         [Required(ErrorMessage = "Please Enter a The Records Name")]
         [StringLength(100, MinimumLength = 1, ErrorMessage = "Record Names Must Have At Least 1 to 100 Characters")]
         public string? RecordName { get; set; } = string.Empty;
+
+
+
+
+
+
+
 
 
 

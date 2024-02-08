@@ -13,8 +13,7 @@ namespace RecordShop.Controllers
     {
 
 
-
-
+        [Route("/")]
 
         public IActionResult Index()
         {
@@ -23,6 +22,11 @@ namespace RecordShop.Controllers
 
 
 
+        [Route("about/")]
+        public IActionResult About()
+        {
+            return View();
+        }
 
     }
 }

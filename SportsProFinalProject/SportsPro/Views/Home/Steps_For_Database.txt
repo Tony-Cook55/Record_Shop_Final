@@ -1,5 +1,7 @@
-﻿@* HOW TO INSTALL THE SERVER PACKAGES
-    
+﻿
+
+@* HOW TO INSTALL THE SERVER PACKAGES
+
     1. Go to Tools Above
     2. Hover Over NuGet Package Manager
     3. Click Manage NuGet Packages For Solution
@@ -13,13 +15,22 @@
     7. Make another Class Model With the Context for the DB
     8. in appsetting.json add this
         "ConnectionStrings": {
-            "MoiveContextModel": "Server=(localdb)\\mssqllocaldb;Database=Movies;Trusted_Connections=True;MultipleActiveResultSets=true"
+            "*Connection_String_Name_Here*": "Server=(localdb)\\mssqllocaldb;Database=DATABASE_NAME_HERE;Trusted_Connections=True;MultipleActiveResultSets=True"
         }
 
-    9. Then in Program.cs add this middleware towards the top
+    9. Then in Program.cs add this middleware below This
+
+		using Microsoft.EntityFrameworkCore;
+		using SOLUTION_NAME.Models;
+		var builder = WebApplication.CreateBuilder(args);
+		// Add services to the container.
+		builder.Services.AddControllersWithViews();
+		// ADD WHATS BELOW THIS \\
+
+
        // Allows us to work with or movie context files to query the data
-        builder.Services.AddDbContext<MovieContextModel>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("MovieContext")));
+        builder.Services.AddDbContext<CONTEXT_MODEL_NAME>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("Connection_String_Name_Here")));
 
 
     10. Go to Tools Above
@@ -27,7 +38,7 @@
     12. Click Package Manager Console
     13. In the console add this
         ~ add-migration Initial    - Then a Migrations File will be made
-    
+
     14. Then in Package Manager Console Add this again
         ~ update-database
 
