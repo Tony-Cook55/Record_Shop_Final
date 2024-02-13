@@ -1,12 +1,22 @@
-﻿@*
-    EDIT
-*@
-
-
+﻿
 @model ProductModel
 @{
     ViewBag.Title = $"{ViewBag.Action}";
 }
+
+
+@* Real Time Validation *@
+@{
+    // Specify the layout file to use (if necessary)
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts {
+    <!-- Include jQuery validation libraries -->
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+@* Real Time Validation *@
+
 
 
 <h1>@ViewBag.Action</h1>
@@ -43,13 +53,6 @@
     @* RECORD NAME *@
 
 
-
-
-
-
-
-
-
     @* ARTIST NAME *@
     <div class="mb-3">
         <label asp-for="ArtistName" class="form-label">Artist Name</label>
@@ -60,10 +63,10 @@
     @* ARTISTS NAME *@
 
 
-
-    @* CATEGORY *@
+    @* GENRE *@
     <div class="mb-3">
-        <label asp-for="GenreModelId" class="form-label">Genre</label>
+        @*
+            <label asp-for="GenreModelId" class="form-label">Genre</label>
 
         <select asp-for="GenreModelId" class="form-control">
             <option value="">Select Music Genre</option>
@@ -72,12 +75,21 @@
                 <option value="@genre.GenreModelId">@genre.GenreName</option>
             }
         </select>
+        <span class="text-danger" asp-validation-for="GenreModelId"></span>
+        *@
+
+
+        <label asp-for="GenreModelId" class="form-label">Genre</label>
+
+        <!-- Using the asp-items tag helper to dynamically populate the drop down list with genres -->
+        <select asp-for="GenreModelId" class="form-control" asp-items="@(new SelectList(ViewBag.Genres, "GenreModelId", "GenreName"))">
+            <option value="">Select Music Genre</option>
+        </select>
 
         <span class="text-danger" asp-validation-for="GenreModelId"></span> @* Error Message *@
 
     </div>
-    @* CATEGORY *@
-
+    @* GENRE *@
 
 
     @* RELEASE DATE *@
@@ -109,8 +121,7 @@
 
     <a asp-controller="Product" asp-action="Index" class="btn btn-secondary">Cancel</a>
 
-
-
-
-
 </form>
+
+
+

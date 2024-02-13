@@ -1,12 +1,23 @@
-﻿@*
-    EDIT
-*@
-
-
+﻿
 @model EmployeeModel
 @{
     ViewBag.Title = $"{ViewBag.Action}";
 }
+
+
+@* Real Time Validation *@
+@{
+    // Specify the layout file to use (if necessary)
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts {
+    <!-- Include jQuery validation libraries -->
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+@* Real Time Validation *@
+
+
 
 
 <h1>@ViewBag.Action</h1>
