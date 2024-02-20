@@ -27,27 +27,30 @@
 
                         @* Stores the name of the current Controller the user is on and puts it in controllerName*@
                         @{
+                            var areaName = ViewContext.RouteData.Values["Area"]?.ToString() ?? "";
+
                             var controllerName = ViewContext.RouteData.Values["Controller"]?.ToString() ?? "";
+                            var actionName = ViewContext.RouteData.Values["Action"]?.ToString() ?? "";
                         }
 
                         <li class="nav-item">
                             @* controllerName is then called to check if its the Controller currently on ~ If so then make its class active if not do nothing*@
-                            <a class="nav-link @(controllerName == "Home" ? "active" : "")" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link @(areaName == "" && controllerName == "Home" && actionName == "Index" ? "active" : "")" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(controllerName == "Product" ? "active" : "")" asp-controller="Product" asp-action="Index">Products</a>
+                            <a class="nav-link @(areaName == "" && controllerName == "Product" && actionName == "Index" ? "active" : "")" asp-controller="Product" asp-action="Index">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(controllerName == "Employee" ? "active" : "")" asp-controller="Employee" asp-action="Index">Employees</a>
+                            <a class="nav-link @(areaName == "" && controllerName == "Employee" && actionName == "Index" ? "active" : "")" asp-controller="Employee" asp-action="Index">Employees</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(controllerName == "Customer" ? "active" : "")" asp-controller="Customer" asp-action="Index">Customers</a>
+                            <a class="nav-link @(areaName == "" && controllerName == "Customer" && actionName == "Index" ? "active" : "")" asp-controller="Customer" asp-action="Index">Customers</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(controllerName == "Incident" ? "active" : "")" asp-controller="Incident" asp-action="Index">Incidents</a>
+                            <a class="nav-link @(areaName == "" && controllerName == "Incident" && actionName == "Index" ? "active" : "")" asp-controller="Incident" asp-action="Index">Incidents</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(controllerName == "Registration" ? "active" : "")" asp-controller="Registration" asp-action="Index">Registrations</a>
+                            <a class="nav-link @(areaName == "" && controllerName == "Registration" && actionName == "Index" ? "active" : "")" asp-controller="Registration" asp-action="Index">Registrations</a>
                         </li>
 
 
@@ -64,7 +67,7 @@
 
                     <ul class="navbar-nav ">
                         <li class="nav-item">
-                            <a class="nav-link @(controllerName == "About" ? "active" : "")" asp-controller="About" asp-action="Index">About</a>
+                            <a class="nav-link @(areaName == "" && controllerName == "Home" && actionName == "About"  ? "active" : "")" asp-controller="About" asp-action="Index">About</a>
                         </li>
                     </ul>
 
