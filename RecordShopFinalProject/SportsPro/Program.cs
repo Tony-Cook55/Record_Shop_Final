@@ -4,6 +4,8 @@ using RecordShop.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 
+
+
 builder.Services.AddRouting(options =>
 {
     options.LowercaseUrls = true;
@@ -11,13 +13,8 @@ builder.Services.AddRouting(options =>
 });
 
 
-
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
-
-
-
 
 
 
