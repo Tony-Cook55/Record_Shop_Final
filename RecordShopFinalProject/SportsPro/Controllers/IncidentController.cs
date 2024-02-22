@@ -22,9 +22,21 @@ namespace RecordShop.Controllers
         public IActionResult Index()
         {
             // Sending list of both Incidents  The Customers The Products And the Employees
-            var incidnets = Context.Incidents.Include(c => c.Customer).Include(p => p.Product).Include(e => e.Employee).OrderBy(t => t.Title).ToList();
+            var incidents = Context.Incidents.Include(c => c.Customer).Include(p => p.Product).Include(e => e.Employee).OrderBy(t => t.Title).ToList();
 
-            return View(incidnets);
+
+            // Create an instance of the view model and populate its properties
+            var viewModel = new IncidentListViewModel
+            {
+                IncidentItems = incidents,
+                IncidentDisplayMode = "All" // You can set the default display mode here
+            };
+
+
+            // Pass the view model to the view
+            return View(viewModel);
+
+            //return View(incidents);
         }
 
 
@@ -78,12 +90,15 @@ namespace RecordShop.Controllers
             ViewBag.Action = "Edit Incident";
 
 
-            // Puts the Customers of the Incidents in a list to be able to be edited
+            // Puts the Customers of the Incidents in a list to be able to be edited in a selected drop down
             ViewBag.Customers = Context.Customers.OrderBy(c => c.CustomerFirstName).ToList();
-
             ViewBag.Products = Context.Products.OrderBy(r => r.RecordName).ToList();
-
             ViewBag.Employees = Context.Employees.OrderBy(f => f.FirstName).ToList();
+
+
+
+
+
 
 
 
@@ -100,7 +115,10 @@ namespace RecordShop.Controllers
 
             //LINQ Query to find the Incident with the given id - PK Search
             var incidents = Context.Incidents.Find(id);
-            return View(incidents); // sends the incident to the edit page to auto fill the info
+
+
+            // sends the incident to the edit page to auto fill the info
+            return View(incidents);
         }
         // ------ EDITING A INCIDENT ------ \\
 

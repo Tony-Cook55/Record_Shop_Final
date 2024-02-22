@@ -23,12 +23,16 @@ namespace RecordShop.Controllers
 
 
         [Route("products")]
-
-        public IActionResult Index()
+        public ViewResult Index() // ghjfdzfxjkjiutpiugigpiugpiugpiug piugpiugpiugpiu   ASK MR. G IF THIS IS WHAT HE WANTS ON CH8 CASE STUDY??
         {
 
             // Sending list of both Products and genres
             var products = Context.Products.Include(p => p.Genre).OrderBy(m => m.ArtistName).ToList();
+
+
+            // Calling in the TempData message on After Successful Add on product then we will call ViewBag on the Product Index
+            ViewBag.ProductAddedMessage = TempData["CRUDMessage"]; // Reading TempData
+
 
             return View(products);
         }
@@ -111,10 +115,16 @@ namespace RecordShop.Controllers
                 if (products.ProductModelId == 0)
                 {
                     Context.Products.Add(products);
+
+                    // This will be retrieved in The Product Views Index
+                    TempData["CRUDMessage"] = $"{products.RecordName} Has Been Added";
                 }
                 else
                 {
                     Context.Products.Update(products);
+
+                    // This will be retrieved in The Product Views Index
+                    TempData["CRUDMessage"] = $"{products.RecordName} Has Been Edited";
                 }
 
                 Context.SaveChanges();
@@ -128,6 +138,7 @@ namespace RecordShop.Controllers
 
                 // Puts the genres back in after the load to be added and show Validation Errors
                 ViewBag.Genres = Context.Genres.OrderBy(g => g.GenreName).ToList();
+
 
                 return View(products);
             }
@@ -145,8 +156,24 @@ namespace RecordShop.Controllers
         {
             ViewBag.Action = "Delete Product";
 
-            Context.Products.Remove(products);
-            Context.SaveChanges();
+            // Retrieve the name of the product before deleting it to place it in TempData
+            var productToDelete = Context.Products.FirstOrDefault(p => p.ProductModelId == products.ProductModelId);
+
+            // Check if the product exists
+            if (productToDelete != null)
+            {
+                // Delete the product from the database
+                Context.Products.Remove(productToDelete);
+                Context.SaveChanges();
+
+                // Set the message to be displayed on the Index page
+                TempData["CRUDMessage"] = $"{productToDelete.RecordName} has been deleted";
+            }
+            else
+            {
+                // If the product doesn't exist, display an error message
+                TempData["CRUDMessage"] = "Product not found";
+            }
 
             return RedirectToAction("Index", "Product");
         }

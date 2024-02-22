@@ -8,6 +8,16 @@
 
 
 
+@* Checks if there is a string in our Temp Data Message. If So Show the Message If not Nothing. This is so We don't see its padding and color *@
+@if (!string.IsNullOrEmpty(TempData["CRUDMessage"] as string))
+{
+    <div class="text-center bg-info py-3 mt-3">
+        <h1 class="">@(TempData["CRUDMessage"])</h1>
+    </div>
+}
+
+
+
 <h1> Product Manager </h1>
 
 

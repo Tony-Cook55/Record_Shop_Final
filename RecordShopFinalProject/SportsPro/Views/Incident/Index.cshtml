@@ -5,7 +5,10 @@
     ViewData["Title"] = "Incidents";
 }
 
-@model List<IncidentModel>
+@* @model List<IncidentModel> *@
+
+@model IncidentListViewModel
+
 
 <h1>Incidents</h1>
 
@@ -29,7 +32,8 @@
         </tr>
     </thead>
 
-    @foreach (var incident in Model)
+    @foreach (var incident in Model.IncidentItems)
+    @* @foreach (var incident in Model) *@
     {
 
         <tr>
