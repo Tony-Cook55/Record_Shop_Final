@@ -54,15 +54,13 @@ namespace RecordShop.Controllers
 
             // Puts the Customers of the Incidents in a list to be able to be edited
             ViewBag.Customers = Context.Customers.OrderBy(c => c.CustomerFirstName).ToList();
-
             ViewBag.Products = Context.Products.OrderBy(r => r.RecordName).ToList();
-
             ViewBag.Employees = Context.Employees.OrderBy(f => f.FirstName).ToList();
 
 
 
             // Set DateOpened to the current date only if it's not provided
-            var newIncident = new IncidentModel
+            var newIncident = new IncidentAddEditViewModel
             {
                 DateOpened = DateTime.Now
             };
@@ -70,11 +68,7 @@ namespace RecordShop.Controllers
             // Format the current date and pass it to the view
             ViewBag.CurrentDate = newIncident.DateOpened?.ToString("MM/dd/yyyy h:mm tt");
 
-
-
-
-
-            return View("EditIncident", new IncidentModel());
+            return View("EditIncident", new IncidentAddEditViewModel());
         }
         // ++++++ ADDING A INCIDENT ++++++ \\
 
@@ -85,10 +79,7 @@ namespace RecordShop.Controllers
         [HttpGet]
         public IActionResult EditIncident(int id)
         {
-            /*ViewBag.CurrentDate = DateTime.Now;*/
-
             ViewBag.Action = "Edit Incident";
-
 
             // Puts the Customers of the Incidents in a list to be able to be edited in a selected drop down
             ViewBag.Customers = Context.Customers.OrderBy(c => c.CustomerFirstName).ToList();
@@ -96,29 +87,27 @@ namespace RecordShop.Controllers
             ViewBag.Employees = Context.Employees.OrderBy(f => f.FirstName).ToList();
 
 
+            // Retrieve the incident from the database
+            var existingIncident = Context.Incidents.Find(id);
 
-
-
-
-
-
-            // Set DateOpened to the current date only if it's not provided
-            var newIncident = new IncidentModel
+            // Create an instance of IncidentAddEditViewModel and populate it with data from the existing incident
+            var incidentViewModel = new IncidentAddEditViewModel
             {
-                DateOpened = DateTime.Now
+                IncidentModelId = existingIncident.IncidentModelId,
+                CustomerModelId = existingIncident.CustomerModelId,
+                ProductModelId = existingIncident.ProductModelId,
+                EmployeeModelId = existingIncident.EmployeeModelId,
+                Title = existingIncident.Title,
+                Description = existingIncident.Description,
+                DateOpened = existingIncident.DateOpened,
+                DateClosed = existingIncident.DateClosed,
+                // Set AddOrEdit to "Edit" to indicate that this is an edit operation
+                AddOrEdit = "Edit"
             };
 
-            // Format the current date and pass it to the view
-            ViewBag.CurrentDate = newIncident.DateOpened?.ToString("MM/dd/yyyy h:mm tt");
+            // sends the incident view model to the edit page to auto-fill the info
+            return View(incidentViewModel);
 
-
-
-            //LINQ Query to find the Incident with the given id - PK Search
-            var incidents = Context.Incidents.Find(id);
-
-
-            // sends the incident to the edit page to auto fill the info
-            return View(incidents);
         }
         // ------ EDITING A INCIDENT ------ \\
 
@@ -147,9 +136,9 @@ namespace RecordShop.Controllers
 
 
 
-        // ++++++ ADDING A INCIDENT ++++++ \\
+        // ++++++ ADDING/EDIT A INCIDENT ++++++ \\
         [HttpPost]
-        public IActionResult EditIncident(IncidentModel incidents)
+        public IActionResult EditIncident(IncidentAddEditViewModel incidents)
         {
             if (ModelState.IsValid)
             {
@@ -174,16 +163,14 @@ namespace RecordShop.Controllers
 
                 // Puts the Customers back in after the load to be added and show Validation Errors
                 ViewBag.Customers = Context.Customers.OrderBy(c => c.CustomerFirstName).ToList();
-
                 ViewBag.Products = Context.Products.OrderBy(r => r.RecordName).ToList();
-
                 ViewBag.Employees = Context.Employees.OrderBy(f => f.FirstName).ToList();
 
 
                 return View(incidents);
             }
         }
-        // ++++++ ADDING A INCIDENT ++++++ \\
+        // ++++++ ADDING/EDIT A INCIDENT ++++++ \\
 
 
 

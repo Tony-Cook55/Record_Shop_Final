@@ -1,6 +1,7 @@
 ﻿namespace RecordShop.Models
 {
-    public class IncidentAddEditViewModel
+        // We Inherit the IncidentModel to allow all of its items to be passed into the EditIncident
+    public class IncidentAddEditViewModel : IncidentModel
     {
         public List<CustomerModel>? Customers { get; set; }
         public List<ProductModel>? Products { get; set; }

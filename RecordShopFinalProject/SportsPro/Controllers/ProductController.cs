@@ -23,7 +23,7 @@ namespace RecordShop.Controllers
 
 
         [Route("products")]
-        public ViewResult Index() // ghjfdzfxjkjiutpiugigpiugpiugpiug piugpiugpiugpiu   ASK MR. G IF THIS IS WHAT HE WANTS ON CH8 CASE STUDY??
+        public ViewResult Index()
         {
 
             // Sending list of both Products and genres
@@ -47,7 +47,7 @@ namespace RecordShop.Controllers
 
         // ++++++ ADDING A PRODUCT ++++++ \\
         [HttpGet]
-        public IActionResult Add()
+        public ViewResult Add()
         {
             ViewBag.Action = "Add New Record";
 
@@ -63,7 +63,7 @@ namespace RecordShop.Controllers
 
         // ------ EDITING A PRODUCT ------ \\
         [HttpGet]
-        public IActionResult EditProduct(int id)
+        public ViewResult EditProduct(int id)
         {
             /*ViewBag.CurrentDate = DateTime.Now;*/
 
@@ -84,7 +84,7 @@ namespace RecordShop.Controllers
 
         // xxxxxx DELETE A PRODUCT xxxxxx \\
         [HttpGet]
-        public IActionResult DeleteProduct(int id) // id parameter is sent from the url
+        public ViewResult DeleteProduct(int id) // id parameter is sent from the url
         {
             ViewBag.Action = "Delete Record";
 
@@ -109,8 +109,6 @@ namespace RecordShop.Controllers
         {
             if (ModelState.IsValid)
             {
-
-
                 // Either add a new Product or edit a Product
                 if (products.ProductModelId == 0)
                 {
@@ -126,9 +124,7 @@ namespace RecordShop.Controllers
                     // This will be retrieved in The Product Views Index
                     TempData["CRUDMessage"] = $"{products.RecordName} Has Been Edited";
                 }
-
                 Context.SaveChanges();
-
                 return RedirectToAction("Index", "Product");
             }
             else
@@ -138,7 +134,6 @@ namespace RecordShop.Controllers
 
                 // Puts the genres back in after the load to be added and show Validation Errors
                 ViewBag.Genres = Context.Genres.OrderBy(g => g.GenreName).ToList();
-
 
                 return View(products);
             }

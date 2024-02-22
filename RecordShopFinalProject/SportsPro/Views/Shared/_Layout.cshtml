@@ -7,14 +7,16 @@
     <!-- Bootstrap CSS and other stylesheets -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/SportsPro.styles.css" asp-append-version="true" />
+
+    <link href="~/css/homepage.css" rel="stylesheet" />
+    <link href="~/css/navbar.css" rel="stylesheet" />
     <!-- Bootstrap CSS and other stylesheets -->
 
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3     bg-primary  ">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  pt-5   bg-primary  ">
             <div class="container-fluid">
                 <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">Record Shop</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -79,8 +81,8 @@
 
 
 
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div >@* class="container-fluid" *@
+        <main role="main" class="">
             @RenderBody()
         </main>
     </div>
