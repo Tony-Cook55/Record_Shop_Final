@@ -23,11 +23,28 @@ namespace RecordShop.Controllers
 
 
         [Route("products")]
-        public ViewResult Index()
+        public ViewResult Index(string artist = "all")
         {
+            // Fetching unique artist names from the database
+            var artistNames = Context.Products.Select(p => p.ArtistName).Distinct().ToList();
+
+            // Sending the list of artist names to the view
+            ViewBag.ArtistNames = artistNames;
+
+
 
             // Sending list of both Products and genres
             var products = Context.Products.Include(p => p.Genre).OrderBy(m => m.ArtistName).ToList();
+
+
+            if (artist.Equals("all")) // artist == all  by default thus the items will show
+            {
+                products = Context.Products.ToList();
+            }
+            else // Show the list of items where the Artist name equals the  asp-route-artist="*HERE*" Name to the one in the database
+            {
+                products = Context.Products.Where(b => b.ArtistName == artist).ToList();
+            }
 
 
             // Calling in the TempData message on After Successful Add on product then we will call ViewBag on the Product Index

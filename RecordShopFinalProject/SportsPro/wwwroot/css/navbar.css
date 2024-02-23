@@ -1,4 +1,8 @@
 ﻿
+
+/* COLORS */
+/*   #7A3E26  #CF6856  #F7E7CE   #FFFFFF    https://www.canva.com/colors/color-palettes/vanilla-amandine/ */
+
 /* nnnnnnnnnnnnnnnnnnnn NAVBAR nnnnnnnnnnnnnnnnnnnn */
 
 .main-navigation-toggle {
@@ -36,12 +40,12 @@
 
 /* The hamburger menu ☰*/
 .icon--menu {
-    stroke: #002626;
+    stroke: #CF6856;
 }
 
 /* The Close ❌ menu */
 .icon--close {
-    stroke: #F0F7EE;
+    stroke: #F7E7CE;
     transform: translateX(-100%);
 }
 
@@ -59,6 +63,7 @@
     z-index: 998;
 }
 
+/* The Whole Page Screen after being opened */
     .main-navigation:after {
         content: '';
         position: absolute;
@@ -66,50 +71,77 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: #002626;
+        background-color: #CF6856;
         transform-origin: 0 50%;
         z-index: -999;
-
     }
 
 
+
+
+
+/* The Text When opened */
 .navbar_ul {
-    font-size: 10vmin;
-    font-family: 'Merriweather', serif;
     width: 100%;
 }
 
+
+/* This is the Dots of the List But this controls the position of the Lines that move Left to the Right on Open*/
 .navbar_li {
+/*  list-style-type: none;*/
     display: flex;
     align-items: center;
     position: relative;
-    overflow: hidden;
-}
 
+    overflow: hidden; /* Hides the lines before the text comes */
+}
+/* Once the nav bar opens the Lines will span from the Left to The Right*/
     .navbar_li:after {
         content: '';
+        /* These 3 Ensure that The lines are centered and stay under the text */
         position: absolute;
         bottom: 0;
         left: 0;
-        width: 100%;
+
+        width: 100%; /* Length of the Line */
         height: 1vmin; /* Assuming 1rem = 16px */
-        background-color: #F0F7EE;
+
+        background-color: #F7E7CE;
+
+
         transform-origin: 0 50%;
         transform: translateX(-100%) skew(15deg);
     }
 
+
+
+/* The actual Link Element itself */
 .navbar_links {
+    font-size: 7vmin;
+    font-family: "Lexend", sans-serif;
+
+
     display: inline-block;
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
-    color: #F0F7EE;
+    color: #F7E7CE;
     line-height: 1;
     text-decoration: none;
     user-select: none;
     padding: 1rem 2rem; /* Assuming 1rem = 16px */
-    transform: translateY(100%);
+    /*    transform: translateY(100%);*/
+
+    transition: all 0.3s ease-in-out;
 }
+    .navbar_links:hover {
+        color: #FFFF;
+        font-size: 8vmin;
+    }
+
+
+
+
 
 .main-content {
     margin: 6rem auto;

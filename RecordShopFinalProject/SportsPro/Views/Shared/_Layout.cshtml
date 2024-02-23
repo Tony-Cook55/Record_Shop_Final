@@ -12,71 +12,88 @@
     <link href="~/css/navbar.css" rel="stylesheet" />
     <!-- Bootstrap CSS and other stylesheets -->
 
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Cabin&family=Lexend:wght@100..900&display=swap" rel="stylesheet">    @* font-family: "Lexend", sans-serif; *@
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet"> @*   font-family: "Archivo Black", sans-serif;    *@
+    <link href="https://fonts.googleapis.com/css2?family=Cabin&family=Passion+One:wght@400;700;900&display=swap" rel="stylesheet"> @*   font-family: "Passion One", sans-serif;   *@
+    <!-- FONTS -->
+
+
+
+
+
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  pt-5   bg-primary  ">
-            <div class="container-fluid">
-                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">Record Shop</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-
-                        @* Stores the name of the current Controller the user is on and puts it in controllerName*@
-                        @{
-                            var areaName = ViewContext.RouteData.Values["Area"]?.ToString() ?? "";
-
-                            var controllerName = ViewContext.RouteData.Values["Controller"]?.ToString() ?? "";
-                            var actionName = ViewContext.RouteData.Values["Action"]?.ToString() ?? "";
-                        }
-
-                        <li class="nav-item">
-                            @* controllerName is then called to check if its the Controller currently on ~ If so then make its class active if not do nothing*@
-                            <a class="nav-link @(areaName == "" && controllerName == "Home" && actionName == "Index" ? "active" : "")" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(areaName == "" && controllerName == "Product" && actionName == "Index" ? "active" : "")" asp-controller="Product" asp-action="Index">Products</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(areaName == "" && controllerName == "Employee" && actionName == "Index" ? "active" : "")" asp-controller="Employee" asp-action="Index">Employees</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(areaName == "" && controllerName == "Customer" && actionName == "Index" ? "active" : "")" asp-controller="Customer" asp-action="Index">Customers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(areaName == "" && controllerName == "Incident" && actionName == "Index" ? "active" : "")" asp-controller="Incident" asp-action="Index">Incidents</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(areaName == "" && controllerName == "Registration" && actionName == "Index" ? "active" : "")" asp-controller="Registration" asp-action="Index">Registrations</a>
-                        </li>
 
 
-                        @* retrieves the name of the current controller being accessed. Then we check the current Controller and the View being accessed if its the corresponding one we set the class to active if it isnt do nothing*@
-                        @* Original Version That causes Null Warnings
-                        <li class="nav-item">
-                            <a class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Product" ? "active" : "")"
-                                asp-controller="Product" asp-action="Index">
-                                Products
-                            </a>
-                        </li>
-                        *@
-                    </ul>
 
-                    <ul class="navbar-nav ">
-                        <li class="nav-item">
-                            <a class="nav-link @(areaName == "" && controllerName == "Home" && actionName == "About"  ? "active" : "")" asp-controller="About" asp-action="Index">About</a>
-                        </li>
-                    </ul>
+        <input id="page-nav-toggle" class="main-navigation-toggle" type="checkbox" />
+        <label for="page-nav-toggle">
+            <svg class="icon--menu-toggle" viewBox="0 0 60 30">
+                <g class="icon-group">
+                    <g class="icon--menu">
+                        <path d="M 6 0 L 54 0" />
+                        <path d="M 6 15 L 54 15" />
+                        <path d="M 6 30 L 54 30" />
+                    </g>
+                    <g class="icon--close">
+                        <path d="M 15 0 L 45 30" />
+                        <path d="M 15 30 L 45 0" />
+                    </g>
+                </g>
+            </svg>
+        </label>
 
-                </div>
 
-            </div>
+        @* Stores the name of the current Controller the user is on and puts it in controllerName*@
+        @{
+            var areaName = ViewContext.RouteData.Values["Area"]?.ToString() ?? "";
+
+            var controllerName = ViewContext.RouteData.Values["Controller"]?.ToString() ?? "";
+            var actionName = ViewContext.RouteData.Values["Action"]?.ToString() ?? "";
+        }
+        <nav class="main-navigation">
+            <ul class="navbar_ul   text-center">
+                <li class="navbar_li">
+                    <a class="navbar_links @(areaName == "" && controllerName == "Home" && actionName == "Index" ? "active" : "")" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li class="navbar_li">
+                    <a class="navbar_links @(areaName == "" && controllerName == "Product" && actionName == "Index" ? "active" : "")" asp-controller="Product" asp-action="Index">Products</a>
+                </li>
+                <li class="navbar_li">
+                    <a class="navbar_links @(areaName == "" && controllerName == "Employee" && actionName == "Index" ? "active" : "")" asp-controller="Employee" asp-action="Index">Employees</a>
+                </li>
+                <li class="navbar_li">
+                    <a class="navbar_links @(areaName == "" && controllerName == "Customer" && actionName == "Index" ? "active" : "")" asp-controller="Customer" asp-action="Index">Customers</a>
+                </li>
+                <li class="navbar_li">
+                    <a class="navbar_links @(areaName == "" && controllerName == "Incident" && actionName == "Index" ? "active" : "")" asp-controller="Incident" asp-action="Index">Incidents</a>
+                </li>
+                <li class="navbar_li">
+                    <a class="navbar_links @(areaName == "" && controllerName == "Registration" && actionName == "Index" ? "active" : "")" asp-controller="Registration" asp-action="Index">Registrations</a>
+                </li>
+                <li class="navbar_li">
+                    <a class="navbar_links @(areaName == "" && controllerName == "Home" && actionName == "About"  ? "active" : "")" asp-controller="About" asp-action="Index">About</a>
+                </li>
+            </ul>
         </nav>
+
+
+
+
+
+
+
+
+
+
+
     </header>
 
 
@@ -89,11 +106,11 @@
 
 
     <!-- Footer section -->
-    <footer class="mt-auto border footer text-muted fixed-bottom  p-2">
+@*     <footer class="mt-auto border footer text-muted fixed-bottom  p-2">
         <div class="container">
-            &copy; 2024 - Record Shop - @**@
+            &copy; 2024 - Record Shop
         </div>
-    </footer>
+    </footer> *@
     <!-- Footer section -->
 
 

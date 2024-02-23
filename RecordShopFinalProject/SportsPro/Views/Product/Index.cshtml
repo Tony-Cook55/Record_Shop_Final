@@ -22,6 +22,23 @@
 
 
 
+@* FILTERING BY ARTIST NAME*@
+<div class="col-md-2">
+    <ul class="list-group text-center">
+        <li class="list-group-item">
+            <a asp-controller="Product" asp-action="Index" asp-route-artist="all" class="nav-link">All</a>
+        </li>
+        @foreach (var artistName in ViewBag.ArtistNames)
+        {
+            <li class="list-group-item">
+                <a asp-controller="Product" asp-action="Index" asp-route-artist="@artistName" class="nav-link">@artistName</a>
+            </li>
+        }
+    </ul>
+</div>
+@* FILTERING BY ARTIST NAME*@
+
+
 
 
 <table class="table  table-responsive   table-striped  border  border-secondary ">
