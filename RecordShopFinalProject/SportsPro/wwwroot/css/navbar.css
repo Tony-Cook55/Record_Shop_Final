@@ -27,8 +27,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2.5rem; /* Assuming 1rem = 16px */
-    height: 2.5rem; /* Assuming 1rem = 16px */
+    width: 3.5rem; /* Assuming 1rem = 16px */
+    height: 3.5rem; /* Assuming 1rem = 16px */
     stroke-width: 6;
 }
 
@@ -115,6 +115,7 @@
 
 
 
+
 /* The actual Link Element itself */
 .navbar_links {
     font-size: 7vmin;
@@ -137,9 +138,17 @@
     .navbar_links:hover {
         color: #FFFF;
         font-size: 8vmin;
+        margin-top: 5px;
+        margin-bottom: 5px;
     }
 
-
+    /* When the link is active from layout */
+    .navbar_links.active {
+        color: black;
+    }
+    .navbar_links.active:hover {
+        color: #F7E7CE;
+    }
 
 
 
@@ -219,3 +228,59 @@
     }
 }
 /* nnnnnnnnnnnnnnnnnnnn NAVBAR nnnnnnnnnnnnnnnnnnnn */
+
+
+
+
+
+
+
+/* Position the record icon */
+.navbar_links {
+    position: relative; /* Ensure the parent element is positioned */
+
+}
+
+.record_icon {
+    position: absolute;
+    top: 50%;
+    right: 64%; /* Adjust the position as needed */
+
+    transform: translateY(-50%) translateX(100%) scale(0.5); /* Vertically center the icon */
+    display: none; /* Initially hide the icon */
+    /* Set the width and height as needed */
+    /*    width: 70px;
+    height: 70px;*/
+    width: 7vmin; /* Set width relative to viewport size */
+    height: 7vmin; /* Set height relative to viewport size */
+    /* Apply animation */
+    animation: rotate 4s linear infinite; /* Adjust duration (4s) as needed */
+
+    transition: all 0.3s ease-in-out;
+}
+/* Define the keyframes for the rotation animation */
+@keyframes rotate {
+    from {
+        transform: translateY(-50%) scale(0.5) rotate(0deg); /* Start spinning from 0 degrees */
+    }
+
+    to {
+        transform: translateY(-50%) scale(0.5) rotate(360deg); /* Spin to 360 degrees */
+    }
+}
+
+
+
+/* Show the record icon only on the active item */
+.navbar_links.active .record_icon {
+    display: inline-block; /* Show the icon */
+}
+
+/* Show the record icon when navbar item is hovered */
+.navbar_links:hover .record_icon {
+    display: inline-block;
+    width: 8vmin; /* Set width relative to viewport size */
+    height: 8vmin; /* Set height relative to viewport size */
+
+    filter: brightness(0) invert(0.7); /* Invert colors to turn black to white */
+}
