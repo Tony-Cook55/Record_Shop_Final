@@ -41,11 +41,14 @@
 
         <select asp-for="CustomerModelId" class="form-control">
             <option value="">Select Customer</option>
-            @foreach (var customer in ViewBag.Customers) // These ViewBags are in the Controllers [HttpGet] Where we plug all the items into different ViewBags to call into here
+            @foreach (var customer in ViewBag.Customers)
             {
                 <option value="@customer.CustomerModelId">@customer.CustomerFirstName  @customer.CustomerLastName</option>
             }
         </select>
+@*         <select asp-for="CustomerModelId" asp-items="@(new SelectList(ViewBag.Customers, "CustomerModelId", "CustomerFirstName"))" class="form-control">
+            <option value="">Select Customer</option>
+        </select> *@
 
         <span class="text-danger" asp-validation-for="CustomerModelId"></span> @* Error Message *@
 
