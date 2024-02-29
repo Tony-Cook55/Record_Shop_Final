@@ -1,0 +1,29 @@
+﻿@model IncidentModel
+
+
+@{
+    ViewBag.Title = "Get Employee";
+}
+
+
+
+@* SELECT EMPLOYEE *@
+<form asp-action="EmployeeAssignedIncidentDetails" method="post">
+    <div class="mb-3">
+        <label asp-for="EmployeeModelId" class="form-label">Employee</label>
+
+        <select class="form-control" name="employeeId">
+            <option value="">Select Employee</option>
+            @foreach (var employee in ViewBag.Employees)
+            {
+                <option value="@employee.EmployeeModelId">@employee.FirstName  @employee.LastName</option>
+            }
+        </select>
+
+    @*     <span class="text-danger" asp-validation-for="EmployeeModelId"></span> *@
+
+    </div>
+
+    <button class="btn btn-primary" type="submit">Select Employee</button>
+</form>
+@* SELECT EMPLOYEE *@

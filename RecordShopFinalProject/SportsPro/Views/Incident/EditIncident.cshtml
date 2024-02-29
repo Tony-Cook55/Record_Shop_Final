@@ -90,7 +90,7 @@
     @* DESCRIPTION *@
     <div class="mb-3">
         <label asp-for="Description" class="form-label">Description</label>
-        <input asp-for="Description" class="form-control" />
+        <textarea asp-for="Description" class="form-control" rows="4" cols="50"></textarea>
 
         <span class="text-danger" asp-validation-for="Description"></span> @* Error Message *@
     </div>

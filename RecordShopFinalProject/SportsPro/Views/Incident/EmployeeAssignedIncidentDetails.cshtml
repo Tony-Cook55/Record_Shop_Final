@@ -1,0 +1,50 @@
+﻿@model List<IncidentModel>
+
+
+
+
+
+@if (Model.Count > 0)
+{
+
+    <h1>Employee: @ViewBag.EmployeeName</h1>
+    <h1>Assigned/Open Incidents</h1>
+
+    <table class="table table-responsive table-striped border border-secondary">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Customer</th>
+                <th>Product</th>
+                <th>Date Opened</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var incident in Model)
+            {
+                <tr>
+                    <td>@incident.Title</td>
+                    <td>@(incident.Customer?.CustomerFirstName + " " + incident.Customer?.CustomerLastName ?? "No Customer")</td>
+                    <td>@incident.Product?.RecordName</td>
+                    <td>@incident.DateOpened</td>
+                    <td>
+                        <a asp-controller="Incident" asp-action="EditIncident" asp-route-id="@incident.IncidentModelId" asp-route-slug="@incident.Slug" class="btn btn-outline-primary">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="">
+        <a asp-controller="Incident" asp-controller="Incident" asp-action="EmployeeAssignedPicker" class="btn btn-outline-primary mt-2">Switch Employee</a>
+    </div>
+}
+else
+{
+    <div class="text-center">
+        <h1 class="text-center mt-5">No incidents assigned to this employee.</h1>
+
+        <a asp-controller="Incident" asp-controller="Incident" asp-action="EmployeeAssignedPicker" class="btn btn-outline-primary mt-5">Switch Employee</a>
+    </div>
+}

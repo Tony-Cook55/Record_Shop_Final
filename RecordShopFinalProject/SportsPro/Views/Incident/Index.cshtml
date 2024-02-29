@@ -25,6 +25,7 @@
             <th>Title</th>
             <th>Customer </th>
             <th>Product</th>
+            <th>Assigned To Employee</th>
             <th>Date Opened</th>
 
             <th></th>
@@ -40,6 +41,7 @@
             <td>@incident.Title</td>
             <td>@incident.Customer.CustomerFirstName   @incident.Customer.CustomerLastName</td>
             <td>@incident.Product.RecordName</td>
+            <td>@incident.Employee.FirstName @incident.Employee.LastName </td>
             <td>@incident.DateOpened</td>
 
             <td>
