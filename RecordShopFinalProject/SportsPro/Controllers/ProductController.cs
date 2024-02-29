@@ -23,7 +23,7 @@ namespace RecordShop.Controllers
 
 
         [Route("products")]
-        public ViewResult Index(string artist = "all")
+        public async Task<IActionResult> Index(int? pageNumber, string searchString, string artist = "all")
         {
             // Fetching unique artist names from the database
             var artistNames = Context.Products.Select(p => p.ArtistName).Distinct().ToList();
@@ -32,27 +32,29 @@ namespace RecordShop.Controllers
             ViewBag.ArtistNames = artistNames;
 
 
+            // Query for fetching products including genre, ordered by artist name and making it Queryable to be able to Search
+            var products = Context.Products.Include(p => p.Genre).OrderBy(m => m.ArtistName).AsQueryable();
 
-            // Sending list of both Products and genres
-            var products = Context.Products.Include(p => p.Genre).OrderBy(m => m.ArtistName).ToList();
 
-
-            if (artist.Equals("all")) // artist == all  by default thus the items will show
+            // Check if there's a search string provided
+            if (!string.IsNullOrEmpty(searchString))
             {
-                products = Context.Products.ToList();
+                // If there's a search string, filter products based on record name or artist name containing the search string
+                products = products.Where(p => p.RecordName.Contains(searchString) || p.ArtistName.Contains(searchString));
             }
-            else // Show the list of items where the Artist name equals the  asp-route-artist="*HERE*" Name to the one in the database
+            // If there's no search string and artist is not "all"
+            else if (!artist.Equals("all"))
             {
-                products = Context.Products.Where(b => b.ArtistName == artist).ToList();
+                // Filter products based on the selected artist
+                products = products.Where(p => p.ArtistName == artist);
             }
 
+            int pageSize = 10;
 
-            // Calling in the TempData message on After Successful Add on product then we will call ViewBag on the Product Index
-            ViewBag.ProductAddedMessage = TempData["CRUDMessage"]; // Reading TempData
-
-
-            return View(products);
+            // Return the view with paginated list of products based on the applied filters
+            return View(await PaginatedList<ProductModel>.CreateAsync(products, pageNumber ?? 1, pageSize));
         }
+
 
 
 

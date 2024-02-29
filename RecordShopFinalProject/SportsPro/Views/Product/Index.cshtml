@@ -1,5 +1,5 @@
 ﻿
-@model List<ProductModel>
+@model PaginatedList<ProductModel>
 
 
 @{
@@ -40,49 +40,84 @@
 
 
 
-
-<table class="table  table-responsive   table-striped  border  border-secondary ">
-
-
-    <thead class="">
-        <tr>
-            <th>Code</th>
-            <th>Record Name</th>
-            <th>Artist</th>
-            <th>Genre</th>
-            <th>Release Date</th>
-            <th>Price</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-
-    @foreach (var product in Model)
-    {
-
-        <tr>
-            <td>@product.Code</td>
-            <td>@product.RecordName</td>
-            <td>@product.ArtistName</td>
-            <td>@product.Genre.GenreName</td>
-            <td>@product.ReleaseDate</td>
-            <td>@product.Price?.ToString("C")</td>
-
-            <td>
-                <a asp-controller="Product" asp-action="EditProduct" asp-route-id="@product.ProductModelId" asp-route-slug="@product.Slug" class="btn btn-outline-primary">Edit</a>
-            </td>
-            <td>
-                <a asp-controller="Product" asp-action="DeleteProduct" asp-route-id="@product.ProductModelId" asp-route-slug="@product.Slug" class="btn btn-outline-danger">Delete</a>
-            </td>
-        </tr>
-    }
-
-
-</table>
-
-
-<div>
-    <a asp-controller="Product" asp-action="Add" class="btn btn-outline-primary">Add New Record</a>
+@* SEARCHBAR SEARCHING USING RECORD NAME & ARTISTS NAME *@
+<div class="col-md-4 ms-5">
+    <form asp-controller="Product" asp-action="Index" method="get" class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search By Artist or Record Name" aria-label="Search" name="searchString">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
 </div>
+@* SEARCHBAR SEARCHING USING RECORD NAME & ARTISTS NAME *@
 
 
+
+
+@* IF THE SEARCH STRING INPUTTED BY USER IS INVALID SHOW NO RECORDS*@
+@if (Model.Count == 0)
+{
+    <div class="text-center mt-3">
+        <h3>No Records Found</h3>
+    </div>
+}
+else
+    {
+    <table class="table  table-responsive   table-striped  border  border-secondary ">
+
+
+        <thead class="">
+            <tr>
+                <th>Code</th>
+                <th>Record Name</th>
+                <th>Artist</th>
+                <th>Genre</th>
+                <th>Release Date</th>
+                <th>Price</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+
+        @foreach (var product in Model)
+        {
+
+            <tr>
+                <td>@product.Code</td>
+                <td>@product.RecordName</td>
+                <td>@product.ArtistName</td>
+                <td>@product.Genre.GenreName</td>
+                <td>@product.ReleaseDate</td>
+                <td>@product.Price?.ToString("C")</td>
+
+                <td>
+                    <a asp-controller="Product" asp-action="EditProduct" asp-route-id="@product.ProductModelId" asp-route-slug="@product.Slug" class="btn btn-outline-primary">Edit</a>
+                </td>
+                <td>
+                    <a asp-controller="Product" asp-action="DeleteProduct" asp-route-id="@product.ProductModelId" asp-route-slug="@product.Slug" class="btn btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+        }
+
+
+    </table>
+
+
+    <div>
+        <a asp-controller="Product" asp-action="Add" class="btn btn-outline-primary">Add New Record</a>
+    </div>
+
+
+
+
+    @* PAGEINATION *@
+@*     @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    } *@
+
+    <div class="d-flex justify-content-center">
+        <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)" class="btn btn-secondary @(Model.HasPreviousPage ? "" : "disabled")">Previous</a>
+        <div class="btn" style="cursor: default">Page @Model.PageIndex of @Model.TotalPages</div>
+        <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)" class="btn btn-secondary @(Model.HasNextPage ? "" : "disabled")">Next</a>
+    </div>
+    @* PAGEINATION *@
+}
