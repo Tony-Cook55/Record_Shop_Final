@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RecordShop.Models;
+using System.Text.Json;
 
 namespace RecordShop.Controllers
 {
@@ -198,9 +200,21 @@ namespace RecordShop.Controllers
 
 
         [HttpPost]
-        [Route("selected-employee-incidents/")]
+        [Route("selected-employee-incidents/{employeeId?}/")]
         public IActionResult EmployeeAssignedIncidentDetails(int employeeId)
         {
+
+            // ccccccc ADD ID TO COOKIE ccccccc \\
+            // We need to add the SessionsExtensions to allow SetObject to be Called here
+            HttpContext.Session.SetObject("currentEmployeeId", employeeId);
+            // Sets the Time it will Expire and That it can be on several different domains using Lax
+            var cookieOptions = new CookieOptions { Expires = System.DateTime.Now.AddDays(2), SameSite = SameSiteMode.Lax };
+            // Passes the Whole object
+            Response.Cookies.Append("currentEmployeeId", JsonSerializer.Serialize(employeeId), cookieOptions);
+            // ccccccc ADD ID TO COOKIE ccccccc \\
+
+
+
             // Gets the Incidents where the EmployeeModelId Is the Id we submitted in the HttpGet
             // Then we include all the other items like Employees, Customers, and the Products
             var incidents = Context.Incidents.Where(i => i.EmployeeModelId == employeeId)
@@ -225,9 +239,81 @@ namespace RecordShop.Controllers
 
 
 
+        // ++++++ EDIT A EMPLOYEE INCIDENT ++++++ \\
+        [HttpGet]
+        public IActionResult EditEmployeeIncident(int id) // Gets the current incidents Id
+        {
+
+            // Retrieve the incident from the database using the Id being passed in
+            var existingIncident = Context.Incidents.Find(id);
+
+
+            // Using the Current Incident from the id above it finds the Corresponding Id of the if we need
+            ViewBag.CurrentIncidentEmployee = Context.Employees.Find(existingIncident.EmployeeModelId);
+            ViewBag.CurrentIncidentCustomer = Context.Customers.Find(existingIncident.CustomerModelId);
+            ViewBag.CurrentIncidentProduct = Context.Products.Find(existingIncident.ProductModelId);
+
+
+
+
+            // Create an instance of IncidentAddEditViewModel and populate it with data from the existing incident
+            var incidentViewModel = new IncidentAddEditViewModel
+            {
+                IncidentModelId = existingIncident.IncidentModelId,
+                CustomerModelId = existingIncident.CustomerModelId,
+                ProductModelId = existingIncident.ProductModelId,
+                EmployeeModelId = existingIncident.EmployeeModelId,
+                Title = existingIncident.Title,
+                Description = existingIncident.Description,
+                DateOpened = existingIncident.DateOpened,
+                DateClosed = existingIncident.DateClosed,
+                // Set AddOrEdit to "Edit" to indicate that this is an edit operation
+                AddOrEdit = "Edit"
+            };
+
+            // sends the incident view model to the edit page to auto-fill the info
+            return View(incidentViewModel);
+        }
+
+
+
+        [HttpPost]
+        public IActionResult EditEmployeeIncident(IncidentAddEditViewModel incidents)
+        {
+            // This will get the current Incidents Employees, Customers, and Products from the hidden inputs we had in edit
+            ViewBag.CurrentIncidentEmployee = Context.Employees.Find(incidents.EmployeeModelId);
+            ViewBag.CurrentIncidentCustomer = Context.Customers.Find(incidents.CustomerModelId);
+            ViewBag.CurrentIncidentProduct = Context.Products.Find(incidents.ProductModelId);
+
+            if (ModelState.IsValid)
+            {
+                Context.Incidents.Update(incidents);
+
+                Context.SaveChanges();
+
+                return RedirectToAction("EmployeeAssignedPicker", "Incident");
+            }
+            else
+            {
+                // Show our Validation errors
+                ViewBag.Action = (incidents.IncidentModelId == 0) ? "Add" : "Edit";
+
+                return View(incidents);
+            }
+        }
+        // ++++++ EDIT A EMPLOYEE INCIDENT ++++++ \\
+
+
+
+
 
 
         // eeeeeee EMPLOYEE ASSIGNED INCIDENTS eeeeeee \\
+
+
+
+
+
 
 
 

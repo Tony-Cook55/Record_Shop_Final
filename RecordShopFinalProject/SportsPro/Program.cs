@@ -4,6 +4,17 @@ using RecordShop.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 
+//  ccccccc COOKIES/SESSIONS ccccccc  \\
+// Enables this to allow sessions to store session id to server and ram
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromSeconds(10);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+//  ccccccc COOKIES/SESSIONS ccccccc  \\
+
 
 
 builder.Services.AddRouting(options =>
@@ -35,13 +46,6 @@ builder.Services.AddRouting(options =>
 
 
 
-
-
-
-
-
-
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -60,8 +64,9 @@ app.UseRouting();
 app.UseAuthorization();
 
 
-
-
+//  ccccccc COOKIES/SESSIONS ccccccc  \\
+app.UseSession();
+//  ccccccc COOKIES/SESSIONS ccccccc  \\
 
 
 

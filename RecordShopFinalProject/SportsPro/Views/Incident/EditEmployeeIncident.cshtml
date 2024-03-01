@@ -1,0 +1,143 @@
+﻿@model IncidentAddEditViewModel
+
+
+@{
+    ViewBag.Title = "Edit Customer Assigned Incident";
+}
+
+
+<h1>Edit Incident</h1>
+
+
+
+
+
+
+@* EMPLOYEE *@
+<div class="mb-3">
+    <div class="row">
+        <div class="col-2">
+            <p class="form-label">Employee: </p>
+        </div>
+
+        <div class="col-2">
+            @* Calls in the ViewBag with the current incidents existingIncident.EmployeeModelId *@
+            <p>@ViewBag.CurrentIncidentEmployee.FirstName @ViewBag.CurrentIncidentEmployee.LastName </p>
+        </div>
+    </div>
+</div>
+@* EMPLOYEE *@
+
+
+@* CUSTOMER *@
+<div class="mb-3">
+    <div class="row">
+        <div class="col-2">
+            <p class="form-label">Customer: </p>
+        </div>
+
+        <div class="col-2">
+            @* Calls in the ViewBag with the current incidents existingIncident.CurrentIncidentCustomer *@
+            <p>@ViewBag.CurrentIncidentCustomer.CustomerFirstName @ViewBag.CurrentIncidentCustomer.CustomerLastName </p>
+        </div>
+    </div>
+</div>
+@* CUSTOMER *@
+
+
+@* RECORD PRODUCT *@
+<div class="mb-3">
+    <div class="row">
+        <div class="col-2">
+            <p class="form-label">Record: </p>
+        </div>
+
+        <div class="col-2">
+            @* Calls in the ViewBag with the current incidents existingIncident.CurrentIncidentProduct *@
+            <p>@ViewBag.CurrentIncidentProduct.RecordName</p>
+        </div>
+    </div>
+</div>
+@* RECORD PRODUCT *@
+
+
+
+@* TITLE *@
+<div class="mb-3">
+    <div class="row">
+        <div class="col-2">
+            <p class="form-label">Title: </p>
+        </div>
+
+        <div class="col-2">
+            <p>@Model.Title</p>
+        </div>
+    </div>
+</div>
+@* TITLE *@
+
+
+@* DATE OPENED *@
+<div class="mb-3">
+    <div class="row">
+        <div class="col-2">
+            <p class="form-label">Date Opened: </p>
+        </div>
+
+        <div class="col-2">
+            <p>@Model.DateOpened</p>
+        </div>
+    </div>
+</div>
+@* DATE OPENED *@
+
+
+
+
+<form asp-action="EditEmployeeIncident" method="post">
+
+    @* DESCRIPTION *@
+    <div class="mb-3">
+        <div class="row">
+            <div class="col-2">
+                <label asp-for="Description" class="form-label">Description</label>
+            </div>
+
+            <div class="col-2">
+                <textarea asp-for="Description" class="form-control" rows="4" cols="50"></textarea>
+                <span class="text-danger" asp-validation-for="Description"></span> @* Error Message *@
+            </div>
+        </div>
+    </div>
+    @* DESCRIPTION *@
+
+
+    @* DATE CLOSED *@
+    <div class="mb-3">
+        <label asp-for="DateClosed" class="form-label">Date Closed</label>
+
+        <input asp-for="DateClosed" class="form-control" type="datetime-local"
+            value="@((Model.DateClosed.HasValue ? Model.DateClosed.Value.ToString("yyyy-MM-ddTHH:mm") : string.Empty))" />
+
+        <span class="text-danger" asp-validation-for="DateClosed"></span> @* Error Message *@
+    </div>
+    @* DATE CLOSED *@
+
+
+
+    <input type="hidden" asp-for="IncidentModelId" />
+
+    @* This Will pass the Id's to the ViewBag.CurrentIncidentEmployee = Context.Employees.Find(incidents.EmployeeModelId);*@
+    <input type="hidden" asp-for="EmployeeModelId" />
+    <input type="hidden" asp-for="CustomerModelId" />
+    <input type="hidden" asp-for="ProductModelId" />
+
+    @* Passes the Title and DateOpened so they can stay when edited *@
+    <input type="hidden" asp-for="Title" />
+    <input type="hidden" asp-for="DateOpened" />
+
+
+    <button type="submit" class="btn btn-primary">Save</button>
+
+    <a asp-controller="Incident" asp-action="EmployeeAssignedPicker" class="btn btn-secondary">Cancel</a>
+</form>

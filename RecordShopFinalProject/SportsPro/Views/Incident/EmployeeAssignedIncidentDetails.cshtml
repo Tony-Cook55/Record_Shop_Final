@@ -1,6 +1,9 @@
 ﻿@model List<IncidentModel>
 
 
+@{
+    ViewBag.Title = "Employee Incident Details";
+}
 
 
 
@@ -29,15 +32,17 @@
                     <td>@incident.Product?.RecordName</td>
                     <td>@incident.DateOpened</td>
                     <td>
-                        <a asp-controller="Incident" asp-action="EditIncident" asp-route-id="@incident.IncidentModelId" asp-route-slug="@incident.Slug" class="btn btn-outline-primary">Edit</a>
+                        <a asp-controller="Incident" asp-action="EditEmployeeIncident" asp-route-id="@incident.IncidentModelId"  class="btn btn-outline-primary">Edit</a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
 
+
+
     <div class="">
-        <a asp-controller="Incident" asp-controller="Incident" asp-action="EmployeeAssignedPicker" class="btn btn-outline-primary mt-2">Switch Employee</a>
+        <a asp-controller="Incident" asp-action="EmployeeAssignedPicker" class="btn btn-outline-primary mt-2">Switch Employee</a>
     </div>
 }
 else
