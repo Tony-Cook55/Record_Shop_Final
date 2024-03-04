@@ -30,7 +30,7 @@
 
 
 <body>
-    <header>
+    <header class="">
 
         <input id="page-nav-toggle" class="main-navigation-toggle" type="checkbox" />
         <label for="page-nav-toggle">
@@ -53,48 +53,52 @@
         @* Stores the name of the current Controller the user is on and puts it in controllerName*@
         @{
             var areaName = ViewContext.RouteData.Values["Area"]?.ToString() ?? "";
-
             var controllerName = ViewContext.RouteData.Values["Controller"]?.ToString() ?? "";
             var actionName = ViewContext.RouteData.Values["Action"]?.ToString() ?? "";
         }
-        <nav class="main-navigation">
-            <ul class="navbar_ul   text-center">
-                <li class="navbar_li">
+
+
+        <nav class="main-navigation   ">
+            <ul class="navbar_ul">
+                <li class="navbar_li ">
                     <a class="navbar_links @(areaName == "" && controllerName == "Home" && actionName == "Index" ? "active" : "")" asp-controller="Home" asp-action="Index">
-                        <img src="~/images/icons/black_record_icon.png" class="record_icon" />
-                        Home
+@*                         <img src="~/images/icons/black_record_icon.png" class="record_icon" />*@
+                            Home
                     </a>
                 </li>
                 <li class="navbar_li">
-                    <a class="navbar_links @(areaName == "" && controllerName == "Product" && actionName == "Index" ? "active" : "")" asp-controller="Product" asp-action="Index">Products</a>
+                    <a class="navbar_links @(areaName == "" && controllerName == "Product" && actionName == "Index" ? "active" : "")" asp-controller="Product" asp-action="Index">
+                        Products
+                    </a>
                 </li>
                 <li class="navbar_li">
-                    <a class="navbar_links @(areaName == "" && controllerName == "Employee" && actionName == "Index" ? "active" : "")" asp-controller="Employee" asp-action="Index">Employees</a>
+                    <a class="navbar_links @(areaName == "" && controllerName == "Employee" && actionName == "Index" ? "active" : "")" asp-controller="Employee" asp-action="Index">
+                        Employees
+                    </a>
                 </li>
                 <li class="navbar_li">
-                    <a class="navbar_links @(areaName == "" && controllerName == "Customer" && actionName == "Index" ? "active" : "")" asp-controller="Customer" asp-action="Index">Customers</a>
+                    <a class="navbar_links @(areaName == "" && controllerName == "Customer" && actionName == "Index" ? "active" : "")" asp-controller="Customer" asp-action="Index">
+                        Customers
+                    </a>
                 </li>
                 <li class="navbar_li">
-                    <a class="navbar_links @(areaName == "" && controllerName == "Incident" && actionName == "Index" ? "active" : "")" asp-controller="Incident" asp-action="Index">Incidents</a>
+                    <a class="navbar_links @(areaName == "" && controllerName == "Incident" && actionName == "Index" ? "active" : "")" asp-controller="Incident" asp-action="Index">
+                        Incidents
+                    </a>
                 </li>
                 <li class="navbar_li">
-                    <a class="navbar_links @(areaName == "" && controllerName == "Registration" && actionName == "Index" ? "active" : "")" asp-controller="Registration" asp-action="Index">Registrations</a>
+                    <a class="navbar_links @(areaName == "" && controllerName == "Registration" && actionName == "Index" ? "active" : "")" asp-controller="Registration" asp-action="Index">
+                        Registrations
+                    </a>
                 </li>
                 <li class="navbar_li">
-                    <a class="navbar_links @(areaName == "" && controllerName == "Home" && actionName == "About"  ? "active" : "")" asp-controller="About" asp-action="Index">About</a>
+                    <a class="navbar_links @(areaName == "" && controllerName == "Home" && actionName == "About"  ? "active" : "")" asp-controller="About" asp-action="Index">
+                        About
+                    </a>
                 </li>
             </ul>
 
         </nav>
-
-
-
-
-
-
-
-
-
 
 
     </header>

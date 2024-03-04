@@ -72,7 +72,7 @@
         width: 100%;
         height: 100%;
         background-color: #CF6856;
-        transform-origin: 0 50%;
+
         z-index: -999;
     }
 
@@ -83,17 +83,23 @@
 /* The Text When opened */
 .navbar_ul {
     width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    /* Gets rid of the Li Bullets*/
+    list-style: none;
 }
 
 
 /* This is the Dots of the List But this controls the position of the Lines that move Left to the Right on Open*/
 .navbar_li {
-/*  list-style-type: none;*/
     display: flex;
     align-items: center;
     position: relative;
 
-    overflow: hidden; /* Hides the lines before the text comes */
+    /* Hides the lines before the text comes */
+    overflow: hidden;
 }
 /* Once the nav bar opens the Lines will span from the Left to The Right*/
     .navbar_li:after {
@@ -108,8 +114,7 @@
 
         background-color: #F7E7CE;
 
-
-        transform-origin: 0 50%;
+        transform-origin: 0 100%;
         transform: translateX(-100%) skew(15deg);
     }
 
@@ -118,28 +123,36 @@
 
 /* The actual Link Element itself */
 .navbar_links {
-    font-size: 7vmin;
+    font-size: calc(1.5vw + 2.5rem); /* Adjust font size based on viewport width */
+
     font-family: "Lexend", sans-serif;
 
+/*    max-width: 800px;*/
+    margin-left: auto;
+    margin-right: auto;
 
-    display: inline-block;
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
+
+    /* CENTERED THE TEXT */
+    padding-left: 5px;
+
+
     color: #F7E7CE;
     line-height: 1;
     text-decoration: none;
     user-select: none;
-    padding: 1rem 2rem; /* Assuming 1rem = 16px */
+    /*padding: 1rem 2rem;*/ /* Assuming 1rem = 16px */
+    padding-bottom: 2rem;
+
+
     /*    transform: translateY(100%);*/
 
     transition: all 0.3s ease-in-out;
 }
     .navbar_links:hover {
-        color: #FFFF;
-        font-size: 8vmin;
+        font-size: calc(2vw + 2.5rem); /* Adjust font size based on viewport width */
         margin-top: 5px;
         margin-bottom: 5px;
+        color: #ffff;
     }
 
     /* When the link is active from layout */
@@ -147,18 +160,22 @@
         color: black;
     }
     .navbar_links.active:hover {
-        color: #F7E7CE;
+        font-size: calc(2vw + 2.5rem); /* Adjust font size based on viewport width */
+        margin-top: 5px;
+        margin-bottom: 5px;
+        color: #ffff;
     }
 
 
 
-.main-content {
+
+/*.main-content {
     margin: 6rem auto;
     max-width: 70ch;
-    padding: 0 2rem; /* Assuming 1rem = 16px */
+    padding: 0 2rem;
     transform: translateX(0);
     transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
-}
+}*/
 
 .main-navigation-toggle:checked ~ label .icon--menu-toggle .icon-group {
     transform: translateX(100%);
@@ -236,28 +253,14 @@
 
 
 /* Position the record icon */
-.navbar_links {
-    position: relative; /* Ensure the parent element is positioned */
-
-}
 
 .record_icon {
-    position: absolute;
-    top: 50%;
-    right: 64%; /* Adjust the position as needed */
-
-    transform: translateY(-50%) translateX(100%) scale(0.5); /* Vertically center the icon */
-    display: none; /* Initially hide the icon */
-    /* Set the width and height as needed */
-    /*    width: 70px;
-    height: 70px;*/
-    width: 7vmin; /* Set width relative to viewport size */
-    height: 7vmin; /* Set height relative to viewport size */
-    /* Apply animation */
     animation: rotate 4s linear infinite; /* Adjust duration (4s) as needed */
 
     transition: all 0.3s ease-in-out;
 }
+
+
 /* Define the keyframes for the rotation animation */
 @keyframes rotate {
     from {
@@ -267,20 +270,4 @@
     to {
         transform: translateY(-50%) scale(0.5) rotate(360deg); /* Spin to 360 degrees */
     }
-}
-
-
-
-/* Show the record icon only on the active item */
-.navbar_links.active .record_icon {
-    display: inline-block; /* Show the icon */
-}
-
-/* Show the record icon when navbar item is hovered */
-.navbar_links:hover .record_icon {
-    display: inline-block;
-    width: 8vmin; /* Set width relative to viewport size */
-    height: 8vmin; /* Set height relative to viewport size */
-
-    filter: brightness(0) invert(0.7); /* Invert colors to turn black to white */
 }
