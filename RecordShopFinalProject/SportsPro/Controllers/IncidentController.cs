@@ -186,6 +186,8 @@ namespace RecordShop.Controllers
 
 
 
+
+
         // eeeeeee EMPLOYEE ASSIGNED INCIDENTS eeeeeee \\
         [HttpGet]
         [Route("employee-incidents/")]
@@ -193,6 +195,17 @@ namespace RecordShop.Controllers
         {
             // Passes in the Employees in a Viewbag to be called into the foreach loop select dropdown
             ViewBag.Employees = Context.Employees.OrderBy(f => f.FirstName).ToList();
+
+
+            // ccccccc CALL IN THE COOKIE ccccccc \\
+            // Check if the cookie exists from after its selected below
+            if (Request.Cookies.TryGetValue("currentEmployeeId", out string employeeId))
+            {
+                // Set the current employee ID in the ViewBag
+                ViewBag.CurrentEmployeeIdCookie = employeeId;
+            }
+            // ccccccc CALL IN THE COOKIE ccccccc \\
+
 
             return View(incident);
         }
@@ -204,14 +217,14 @@ namespace RecordShop.Controllers
         public IActionResult EmployeeAssignedIncidentDetails(int employeeId)
         {
 
-            // ccccccc ADD ID TO COOKIE ccccccc \\
+            // ccccccc ADD EMPLOYEE ID TO COOKIE ccccccc \\
             // We need to add the SessionsExtensions to allow SetObject to be Called here
             HttpContext.Session.SetObject("currentEmployeeId", employeeId);
             // Sets the Time it will Expire and That it can be on several different domains using Lax
-            var cookieOptions = new CookieOptions { Expires = System.DateTime.Now.AddDays(2), SameSite = SameSiteMode.Lax };
+            var cookieOptions = new CookieOptions { Expires = System.DateTime.Now.AddHours(1), SameSite = SameSiteMode.Lax };
             // Passes the Whole object
             Response.Cookies.Append("currentEmployeeId", JsonSerializer.Serialize(employeeId), cookieOptions);
-            // ccccccc ADD ID TO COOKIE ccccccc \\
+            // ccccccc ADD EMPLOYEE ID TO COOKIE ccccccc \\
 
 
 
@@ -302,11 +315,6 @@ namespace RecordShop.Controllers
             }
         }
         // ++++++ EDIT A EMPLOYEE INCIDENT ++++++ \\
-
-
-
-
-
 
         // eeeeeee EMPLOYEE ASSIGNED INCIDENTS eeeeeee \\
 

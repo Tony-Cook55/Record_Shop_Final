@@ -5,6 +5,9 @@
     ViewBag.Title = "Get Employee";
 }
 
+@* Calls in the Viewbag Made in the Incident Model -> public IActionResult EmployeeAssignedPicker(IncidentModel incident) *@
+@* <h1>Current Employee ID Cookie: @ViewBag.CurrentEmployeeIdCookie</h1> *@
+
 
 
 @* SELECT EMPLOYEE *@
@@ -13,10 +16,34 @@
         <label asp-for="EmployeeModelId" class="form-label">Employee</label>
 
         <select class="form-control" name="employeeId">
-            <option value="">Select Employee</option>
-            @foreach (var employee in ViewBag.Employees)
+
+            @* If the Viewbag with the current Id is empty loop through the employees for users to choose from *@
+            @if (string.IsNullOrEmpty(ViewBag.CurrentEmployeeIdCookie))
             {
-                <option value="@employee.EmployeeModelId">@employee.FirstName  @employee.LastName</option>
+                <option value="" selected>Select Employee</option>
+                @foreach (var employee in ViewBag.Employees)
+                {
+                    <option value="@employee.EmployeeModelId">@employee.FirstName @employee.LastName</option>
+                }
+            }
+            else
+            {
+                <!-- If there is a current employee ID stored in the ViewBag -->
+                var currentEmployeeId = ViewBag.CurrentEmployeeIdCookie.ToString();
+
+                foreach (var employee in ViewBag.Employees)
+                {
+                    <!-- Check if the current employee ID matches the ID of the current employee being iterated -->
+                    if (employee.EmployeeModelId.ToString() == currentEmployeeId)
+                    {
+                        <option value="@employee.EmployeeModelId" selected>@employee.FirstName @employee.LastName</option>
+                    }
+                    /* This shows all of the other Employee Options */
+                    else
+                    {
+                        <option value="@employee.EmployeeModelId">@employee.FirstName @employee.LastName</option>
+                    }
+                }
             }
         </select>
 
