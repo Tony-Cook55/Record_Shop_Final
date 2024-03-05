@@ -5,6 +5,12 @@
 
 /* nnnnnnnnnnnnnnnnnnnn NAVBAR nnnnnnnnnnnnnnnnnnnn */
 
+
+/*.nav_header {
+    cursor: url('image-path.png');
+}
+*/
+
 .main-navigation-toggle {
     position: fixed;
     height: 1px;
@@ -123,7 +129,7 @@
 
 /* The actual Link Element itself */
 .navbar_links {
-    font-size: calc(1.5vw + 2.5rem); /* Adjust font size based on viewport width */
+    font-size: calc(1.5vw + 2rem); /* Adjust font size based on viewport width */
 
     font-family: "Lexend", sans-serif;
 
@@ -133,7 +139,9 @@
 
 
     /* CENTERED THE TEXT */
-    padding-left: 5px;
+    padding-left: 4px;
+
+
 
 
     color: #F7E7CE;
@@ -252,22 +260,21 @@
 
 
 
-/* Position the record icon */
-
-.record_icon {
-    animation: rotate 4s linear infinite; /* Adjust duration (4s) as needed */
+/* <img src="~/images/icons/black_record_icon.png" class="record_icon" / > */
+/*.record_icon {
+    animation: rotate 4s linear infinite;
 
     transition: all 0.3s ease-in-out;
-}
+}*/
 
 
 /* Define the keyframes for the rotation animation */
-@keyframes rotate {
+/*@keyframes rotate {
     from {
-        transform: translateY(-50%) scale(0.5) rotate(0deg); /* Start spinning from 0 degrees */
+        transform: translateY(-50%) scale(0.5) rotate(0deg);
     }
 
     to {
-        transform: translateY(-50%) scale(0.5) rotate(360deg); /* Spin to 360 degrees */
+        transform: translateY(-50%) scale(0.5) rotate(360deg);
     }
-}
+}*/

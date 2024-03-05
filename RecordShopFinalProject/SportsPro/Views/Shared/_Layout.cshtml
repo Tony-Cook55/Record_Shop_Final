@@ -30,7 +30,7 @@
 
 
 <body>
-    <header class="">
+    <header class="nav_header">
 
         <input id="page-nav-toggle" class="main-navigation-toggle" type="checkbox" />
         <label for="page-nav-toggle">
@@ -62,8 +62,7 @@
             <ul class="navbar_ul">
                 <li class="navbar_li ">
                     <a class="navbar_links @(areaName == "" && controllerName == "Home" && actionName == "Index" ? "active" : "")" asp-controller="Home" asp-action="Index">
-@*                         <img src="~/images/icons/black_record_icon.png" class="record_icon" />*@
-                            Home
+                        Home
                     </a>
                 </li>
                 <li class="navbar_li">

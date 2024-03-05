@@ -1,17 +1,20 @@
-﻿
-/*🌞*/
+﻿/*🌞*/
 
 
 
-.content {
+
+/* hhhhhhhhhhh HERO SECTION hhhhhhhhhhh */
+.hero_content {
     max-width: 600px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-.hero {
+.hero_section {
     position: relative;
-    background: #333333;
+/*    background-image: url('../images/icons/record_tile_background.png');
+*/    background-image: url('../images/icons/record_tile.png');
+      background-repeat: repeat;
     color: white;
     height: 100vh;
     display: flex;
@@ -19,23 +22,193 @@
     overflow: hidden;
 }
 
-    .hero h2 {
-        position: relative;
-        z-index: 1;
-        font-size: 4.5rem;
-        margin: 0 0 10px;
-        line-height: 1;
-        color: rgba(255, 255, 255, 0.9);
+.hero_header_text {
+    position: relative;
+    z-index: 1;
+    font-size: 4.5rem;
+    margin: 0 0 10px;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.hero_sub_text {
+    position: relative;
+    z-index: 1;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.4;
+}
+/* hhhhhhhhhhh HERO SECTION hhhhhhhhhhh */
+
+
+
+
+
+
+
+
+
+
+
+/* RAIN DROP EFFECT */
+/*<div class="wrap" >
+    <div class="drop rain1" > <img src="~/images/icons/black_record_icon.png" class="record_rain_pic" / > </div >
+    <div class="drop rain2" > <img src="~/images/icons/black_record_icon.png" class="record_rain_pic" / > </div >
+    <div class="drop rain3" > <img src="~/images/icons/black_record_icon.png" class="record_rain_pic" / > </div >
+    <div class="drop rain4" > <img src="~/images/icons/black_record_icon.png" class="record_rain_pic" / > </div >
+    <div class="drop rain5" > <img src="~/images/icons/black_record_icon.png" class="record_rain_pic" / > </div >
+    <div class="drop rain6" > <img src="~/images/icons/black_record_icon.png" class="record_rain_pic" / > </div >
+    <div class="drop rain7" > <img src="~/images/icons/black_record_icon.png" class="record_rain_pic" / > </div >
+    <div class="drop rain8" > <img src="~/images/icons/black_record_icon.png" class="record_rain_pic" / > </div >
+    <div class="drop rain9" > <img src="~/images/icons/black_record_icon.png" class="record_rain_pic" / > </div >
+    <div class="drop rain10" > <img src="~/images/icons/black_record_icon.png" class="record_rain_pic" / > </div >
+</div >
+
+
+.wrap {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.record_rain_pic{
+    width: 70px;
+    height: auto;
+}
+
+.drop {
+    width: 0;
+    height: 0;*/
+    /*    border: 30px solid #0590DD;*/
+    /*border-top-width: 0px;
+    border-top-color: white;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-right-width: 4px;
+    border-left-width: 4px;
+    margin-top: -120px;
+    -webkit-transition: -webkit-transform 1.2s;
+    transition: -webkit-transform 1.2s;
+    -o-transition: -o-transform 1.2s;
+    -moz-transition: transform 1.2s, -moz-transform 1.2s;
+    transition: transform 1.2s;
+    transition: transform 1.2s, -webkit-transform 1.2s, -moz-transform 1.2s, -o-transform 1.2s;
+    -webkit-transform-origin: 50% 100%;
+    -moz-transform-origin: 50% 100%;
+    -ms-transform-origin: 50% 100%;
+    -o-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-bottom-right-radius: 5px;
+    position: absolute;
+    z-index: 1;
+}
+
+.rain1 {
+    left: 120px;
+    top: -50px;
+    -webkit-animation: rain 1.1s linear 2.7s infinite;
+    -moz-animation: rain 1.1s linear 2.7s infinite;
+    -o-animation: rain 1.1s linear 2.7s infinite;
+    animation: rain 1.1s linear 2.7s infinite;
+}
+
+.rain2 {
+    left: 350px;
+    top: -50px;
+    -webkit-animation: rain .9s linear 1s infinite;
+    -moz-animation: rain .9s linear 1s infinite;
+    -o-animation: rain .9s linear 1s infinite;
+    animation: rain .9s linear 1s infinite;
+}
+
+.rain3 {
+    -webkit-animation: rain .9s linear 6.2s infinite;
+    -moz-animation: rain .9s linear 6.2s infinite;
+    -o-animation: rain .9s linear 6.2s infinite;
+    animation: rain .9s linear 6.2s infinite;
+    left: 150px;
+    top: -50px;
+}
+
+.rain4 {
+    -webkit-animation: rain .8s linear 4.3s infinite;
+    -moz-animation: rain .8s linear 4.3s infinite;
+    -o-animation: rain .8s linear 4.3s infinite;
+    animation: rain .8s linear 4.3s infinite;
+    left: 220px;
+    top: -50px;
+}
+
+.rain5 {
+    -webkit-animation: rain 1s linear 5.5s infinite;
+    -moz-animation: rain 1s linear 5.5s infinite;
+    -o-animation: rain 1s linear 5.5s infinite;
+    animation: rain 1s linear 5.5s infinite;
+    left: 330px;
+    top: -50px;
+}
+
+.rain6 {
+    -webkit-animation: rain .9s linear 5.9s infinite;
+    -moz-animation: rain .9s linear 5.9s infinite;
+    -o-animation: rain .9s linear 5.9s infinite;
+    animation: rain .9s linear 5.9s infinite;
+    left: 50px;
+    top: -50px;
+}
+
+
+.rain7 {
+    -webkit-animation: rain 1.3s linear 6.5s infinite;
+    -moz-animation: rain 1.3s linear 6.5s infinite;
+    -o-animation: rain 1.3s linear 6.5s infinite;
+    animation: rain 1.3s linear 6.5s infinite;
+    left: 180px;
+    top: -50px;
+}
+
+.rain8 {
+    -webkit-animation: rain .9s linear 0.3s infinite;
+    -moz-animation: rain .9s linear 0.3s infinite;
+    -o-animation: rain .9s linear 0.3s infinite;
+    animation: rain .9s linear 0.3s infinite;
+    left: 200px;
+    top: -50px;
+}
+
+
+.rain9 {
+    -webkit-animation: rain .8s linear 1.5s infinite;
+    -moz-animation: rain .8s linear 1.5s infinite;
+    -o-animation: rain .8s linear 1.5s infinite;
+    animation: rain .8s linear 1.5s infinite;
+    left: 400px;
+    top: -50px;
+}
+
+.rain10 {
+    -webkit-animation: rain 1.2s linear 1.3s infinite;
+    -moz-animation: rain 1.2s linear 1.3s infinite;
+    -o-animation: rain 1.2s linear 1.3s infinite;
+    animation: rain 1.2s linear 1.3s infinite;
+    left: 360px;
+    top: -50px;
+}
+
+
+
+
+@keyframes rain {
+    from {
+        top: -50px;
     }
 
-    .hero p {
-        position: relative;
-        z-index: 1;
-        font-size: 1.1rem;
-        color: rgba(255, 255, 255, 0.5);
-        line-height: 1.4;
+    to {
+        top: 500px;
     }
-
-/* ========================= */
-
-
+}*/
