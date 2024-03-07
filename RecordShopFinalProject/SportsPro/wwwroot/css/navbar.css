@@ -1,7 +1,10 @@
 ﻿
 
 /* COLORS */
+/*   f3f1e0   f1d7cb   ecb2b0    776163    878f7d    b5c8b2      https://i.pinimg.com/originals/33/db/6d/33db6db11053224ce6f2671fa5849276.png */
 /*   #7A3E26  #CF6856  #F7E7CE   #FFFFFF    https://www.canva.com/colors/color-palettes/vanilla-amandine/ */
+/* COLORS */
+
 
 /* nnnnnnnnnnnnnnnnnnnn NAVBAR nnnnnnnnnnnnnnnnnnnn */
 
@@ -46,7 +49,7 @@
 
 /* The hamburger menu ☰*/
 .icon--menu {
-    stroke: #CF6856;
+    stroke: #b5c8b2;
 }
 
 /* The Close ❌ menu */
@@ -77,8 +80,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: #CF6856;
-
+        background-color: #b5c8b2;
         z-index: -999;
     }
 
@@ -114,12 +116,10 @@
         position: absolute;
         bottom: 0;
         left: 0;
-
         width: 100%; /* Length of the Line */
         height: 1vmin; /* Assuming 1rem = 16px */
 
-        background-color: #F7E7CE;
-
+        background-color: #f3f1e0;
         transform-origin: 0 100%;
         transform: translateX(-100%) skew(15deg);
     }
@@ -144,7 +144,7 @@
 
 
 
-    color: #F7E7CE;
+    color: #f3f1e0;
     line-height: 1;
     text-decoration: none;
     user-select: none;
@@ -160,19 +160,19 @@
         font-size: calc(2vw + 2.5rem); /* Adjust font size based on viewport width */
         margin-top: 5px;
         margin-bottom: 5px;
-        color: #ffff;
+        color: #f1d7cb;
     }
 
     /* When the link is active from layout */
     .navbar_links.active {
-        color: black;
+        color: #634a4c;
     }
-    .navbar_links.active:hover {
-        font-size: calc(2vw + 2.5rem); /* Adjust font size based on viewport width */
-        margin-top: 5px;
-        margin-bottom: 5px;
-        color: #ffff;
-    }
+        .navbar_links.active:hover {
+            font-size: calc(2vw + 2.5rem); /* Adjust font size based on viewport width */
+            margin-top: 5px;
+            margin-bottom: 5px;
+            color: #f1d7cb;
+        }
 
 
 
