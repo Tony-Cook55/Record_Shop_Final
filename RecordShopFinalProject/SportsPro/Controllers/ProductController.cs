@@ -75,7 +75,7 @@ namespace RecordShop.Controllers
 
             return View("EditProduct", new ProductModel());
         }
-        // ++++++ ADDING A CONTACT ++++++ \\
+        // ++++++ ADDING A PRODUCT ++++++ \\
 
 
 
@@ -101,16 +101,6 @@ namespace RecordShop.Controllers
 
 
 
-        // xxxxxx DELETE A PRODUCT xxxxxx \\
-        [HttpGet]
-        public ViewResult DeleteProduct(int id) // id parameter is sent from the url
-        {
-            ViewBag.Action = "Delete Record";
-
-            var products = Context.Products.Find(id);
-            return View(products); // sends the Product to the Delete page to auto fill the info
-        }
-        // xxxxxx DELETE A PRODUCT xxxxxx \\
 
 
 
@@ -165,6 +155,16 @@ namespace RecordShop.Controllers
 
 
         // xxxxxx DELETE A PRODUCT xxxxxx \\
+        [HttpGet]
+        public ViewResult DeleteProduct(int id) // id parameter is sent from the url
+        {
+            ViewBag.Action = "Delete Record";
+
+            var products = Context.Products.Find(id);
+            return View(products); // sends the Product to the Delete page to auto fill the info
+        }
+
+
         [HttpPost]
         public IActionResult DeleteProduct(ProductModel products)
         {

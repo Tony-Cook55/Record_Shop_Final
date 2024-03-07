@@ -23,10 +23,29 @@ namespace RecordShop.Controllers
 
         // iiiiiiiiiiii INDEX PAGE iiiiiiiiiiii \\
         [Route("incidents/")]
-        public IActionResult Index()
+        public IActionResult Index(string incidentSelector = "all")
         {
-            // Sending list of both Incidents  The Customers The Products And the Employees
+            // Sending list of both Incidents The Customers The Products And the Employees
             var incidents = Context.Incidents.Include(c => c.Customer).Include(p => p.Product).Include(e => e.Employee).OrderBy(t => t.Title).ToList();
+
+
+
+            if (incidentSelector.Equals("all")) // incident == all  by default thus the items will show
+            {
+                incidents = Context.Incidents.ToList();
+            }
+            // If the -1 selector button is pressed all indictments with employee ids of -1 show
+            else if (incidentSelector.Equals("-1"))
+            {
+                /*TempData["CRUDMessage"] = $"-1";*/
+                incidents = incidents.Where(p => p.EmployeeModelId == -1).ToList();
+            }
+            // If the  selector button is pressed all indictments with employee ids of -1 show
+            else if (incidentSelector.Equals("open"))
+            {
+                /*TempData["CRUDMessage"] = "Open Incidents";*/
+                incidents = incidents.Where(p => p.DateClosed == null).ToList();
+            }
 
 
             // Create an instance of the view model and populate its properties
@@ -93,6 +112,7 @@ namespace RecordShop.Controllers
             ViewBag.Employees = Context.Employees.OrderBy(f => f.FirstName).ToList();
 
 
+
             // Retrieve the incident from the database
             var existingIncident = Context.Incidents.Find(id);
 
@@ -127,10 +147,16 @@ namespace RecordShop.Controllers
                 if (incidents.ProductModelId == 0)
                 {
                     Context.Incidents.Add(incidents);
+
+                    // This will be retrieved in The incidents Views Index
+                    TempData["CRUDMessage"] = $"{incidents.Title} Has Been Added";
                 }
                 else
                 {
                     Context.Incidents.Update(incidents);
+
+                    // This will be retrieved in The incidents Views Index
+                    TempData["CRUDMessage"] = $"{incidents.Title} Has Been edited";
                 }
 
                 Context.SaveChanges();
@@ -173,8 +199,25 @@ namespace RecordShop.Controllers
         {
             ViewBag.Action = "Delete Incident";
 
-            Context.Incidents.Remove(incidents);
-            Context.SaveChanges();
+
+            // Retrieve the name of the Incident before deleting it to place it in TempData
+            var incidentToDelete = Context.Incidents.FirstOrDefault(p => p.IncidentModelId == incidents.IncidentModelId);
+
+            // Check if the product exists
+            if (incidentToDelete != null)
+            {
+                // Delete the incident from the database
+                Context.Incidents.Remove(incidentToDelete);
+                Context.SaveChanges();
+
+                // Set the message to be displayed on the Index page
+                TempData["CRUDMessage"] = $"{incidentToDelete.Title} has been deleted";
+            }
+            else
+            {
+                // If the product doesn't exist, display an error message
+                TempData["CRUDMessage"] = "Incident not found";
+            }
 
             return RedirectToAction("Index", "Incident");
         }
