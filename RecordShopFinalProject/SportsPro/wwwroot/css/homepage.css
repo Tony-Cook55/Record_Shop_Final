@@ -22,15 +22,15 @@
 .hero_content {
     max-width: 600px;
     margin: 0 auto;
-    padding: 0 20px;
+
+    padding-top: 10px;
+    padding-bottom: 20px;
 }
 
 .hero_section {
     position: relative;
-    /*    background-image: url('../images/icons/record_tile_background.png'); */
-    /*    background-image: url('../images/icons/record_tile.png');*/
-
-    background: linear-gradient(-45deg, #ecb2b0, #e73c7e, #b5c8b2, #23d5ab);
+    background-color: #b5c8b2;
+    /*    background: linear-gradient(-45deg, #ecb2b0, #e73c7e, #b5c8b2, #23d5ab);*/
     background-size: 400% 400%;
     animation: gradient 25s ease infinite;
     height: 100vh;
@@ -57,20 +57,30 @@
     }
 }
 
+
+.hero_content_record_stopper_box {
+    position: relative; /* Add position relative */
+    border: 10px solid #f3f1e0;
+    border-radius: 30px;
+    padding: 10%;
+    background-color: #776163
+}
+
+
 .hero_header_text {
     position: relative;
     z-index: 1;
     font-size: 4.5rem;
     margin: 0 0 10px;
     line-height: 1;
-    color: rgba(255, 255, 255, 0.9);
+    color: #b5c8b2;
 }
 
 .hero_sub_text {
     position: relative;
     z-index: 1;
     font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: #878f7d;
     line-height: 1.4;
 }
 /* hhhhhhhhhhh HERO SECTION hhhhhhhhhhh */
@@ -266,15 +276,6 @@
 
 
 
-
-
-#container3d canvas {
-    width: 100vw !important;
-    height: 100vw !important;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
 
 
 

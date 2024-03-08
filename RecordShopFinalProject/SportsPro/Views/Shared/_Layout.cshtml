@@ -110,18 +110,29 @@
 
     <div >@* class="container-fluid" *@
         <main role="main" class="">
+
+            <div id="loading-overlay">
+                <div class="loading-spinner"></div>
+            </div>
+
             @RenderBody()
         </main>
     </div>
 
 
-    <!-- Footer section -->
-@*     <footer class="mt-auto border footer text-muted fixed-bottom  p-2">
-        <div class="container">
-            &copy; 2024 - Record Shop
-        </div>
-    </footer> *@
-    <!-- Footer section -->
+
+
+    @* LOADING SCREEN *@
+    <script>
+        // JavaScript code for hiding loading screen after DOM content has loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            var loadingOverlay = document.getElementById('loading-overlay');
+            loadingOverlay.style.display = 'none'; // Hide loading overlay
+        });
+    </script>
+
+    @* LOADING SCREEN *@
+
 
 
     <!-- jQuery and Bootstrap JavaScript -->
