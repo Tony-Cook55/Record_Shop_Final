@@ -57,7 +57,12 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+
+// Serve static files from the wwwroot directory
 app.UseStaticFiles();
+
+
 
 app.UseRouting();
 

@@ -5,6 +5,19 @@
 
 
 
+.spline_iframe_container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.spline_iframe {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
 /* hhhhhhhhhhh HERO SECTION hhhhhhhhhhh */
 .hero_content {
     max-width: 600px;
