@@ -13,35 +13,36 @@ html, body {
 
 
 
-#loading-overlay {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.5); /* semi-transparent white */
-    top: 0;
-    left: 0;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
 
-.loading-spinner {
-    background-image: url('../images/icons/smile_record.png');
-    width: 100px; /* Set the width and height of the image */
-    height: 100px;
-    background-size: contain; /* Make sure the image fits within the container */
-    background-repeat: no-repeat; /* Prevent repeating the image */
-    animation: spin 3s linear infinite; /* Apply spinning animation */
-}
 
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
+.scale-in-center {
+    -webkit-animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+    @-webkit-keyframes scale-in-center {
+        0% {
+            -webkit-transform: scale(0);
+            transform: scale(0);
+            opacity: 1;
+        }
+
+        100% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            opacity: 1;
+        }
     }
+    @keyframes scale-in-center {
+        0% {
+            -webkit-transform: scale(0);
+            transform: scale(0);
+            opacity: 1;
+        }
 
-    100% {
-        transform: rotate(360deg);
+        100% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            opacity: 1;
+        }
     }
-}
 

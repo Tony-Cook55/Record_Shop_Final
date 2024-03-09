@@ -8,6 +8,7 @@
 .spline_iframe_container {
     width: 100vw;
     height: 100vh;
+    background-color: #f1d7cb;
 }
 
 .spline_iframe {
@@ -23,9 +24,20 @@
     max-width: 600px;
     margin: 0 auto;
 
-    padding-top: 10px;
-    padding-bottom: 20px;
+/*    padding-top: 10px;
+    padding-bottom: 20px;*/
 }
+
+
+
+
+
+
+
+
+
+
+
 
 .hero_section {
     position: relative;
@@ -96,7 +108,7 @@
 /* sssssssssss SNOW FLAKE ANIMATION sssssssssss*/
 
 .snowflakeIMG {
-    width: 3.5vmax;
+    width: 3vmax;
     opacity: 0.8;
     -webkit-animation: spin 5s infinite linear;
 }
