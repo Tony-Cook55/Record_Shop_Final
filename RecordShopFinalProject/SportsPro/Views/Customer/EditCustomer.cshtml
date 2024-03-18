@@ -6,17 +6,12 @@
 }
 
 
-@* Real Time Validation *@
-@{
-    // Specify the layout file to use (if necessary)
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+@* Calls in the scripts from the file _ValidationScriptsPartial and uses     @await RenderSectionAsync("Scripts", required: false)    from the _Layout *@
 @section Scripts {
-    <!-- Include jQuery validation libraries -->
-    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
-@* Real Time Validation *@
 
 
 
@@ -119,7 +114,7 @@
     @* EMAIL *@
     <div class="mb-3">
         <label asp-for="Email" class="form-label">Email</label>
-        <input asp-for="Email" class="form-control" type="text" placeholder="testemail@gmail.com"/> @* type="date" *@
+        <input asp-for="Email" class="form-control" type="text" placeholder="testemail@gmail.com"  type="email"/> @* type="date" *@
 
         <span class="text-danger" asp-validation-for="Email"></span> @* Error Message *@
     </div>

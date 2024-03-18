@@ -36,16 +36,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 3.5rem; /* Assuming 1rem = 16px */
-    height: 3.5rem; /* Assuming 1rem = 16px */
+    width: 4.5rem; /* Assuming 1rem = 16px */
+    height: 4.5rem; /* Assuming 1rem = 16px */
     stroke-width: 6;
+    transition: all ease-in-out .2s;
+/*    background-color: #776163; */
 }
+    .icon--menu-toggle:hover {
 
-/* The Sliding Animation from ☰ to ❌ */
-.icon-group {
-    transform: translateX(0);
-    transition: transform 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
-}
+        transform: scale(1.2);
+    }
+
+
+    /* The Sliding Animation from ☰ to ❌ */
+    .icon-group {
+        transform: translateX(0);
+        transition: transform 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
 
 /* The hamburger menu ☰*/
 .icon--menu {
@@ -123,6 +130,8 @@
         transform-origin: 0 100%;
         transform: translateX(-100%) skew(15deg);
     }
+
+
 
 
 

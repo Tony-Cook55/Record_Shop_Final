@@ -1,4 +1,23 @@
 
+
+/* The text box the inputs in*/
+.input-validation-error {
+    border: 3px solid red;
+    background-color: #ffd2d2ff;
+}
+
+/* The Error Text Below Input */
+.field-validation-error {
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
 html {
   position: relative;
   min-height: 100%;
@@ -7,6 +26,7 @@ html {
 html, body {
     max-width: 100%;
     overflow-x: hidden;
+    background-color: #f2e8da;
 }
 
 

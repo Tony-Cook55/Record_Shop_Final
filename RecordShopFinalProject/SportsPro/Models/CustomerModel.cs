@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
 
 namespace RecordShop.Models
@@ -53,7 +54,7 @@ namespace RecordShop.Models
 
 
         [Required(ErrorMessage = "Please Enter a Postal Code")]
-        [StringLength(9, MinimumLength = 5, ErrorMessage = "Postal Codes Must Have At Least 5 to 9 Digits")]
+        [StringLength(20, MinimumLength = 1, ErrorMessage = "Postal Codes Must Have At Least 1 to 20 Digits")]
         /*[Range(10000, 99999, ErrorMessage = "Postal Codes Must be 5 Digits")]*/ // IF STRING
         public string? PostalCode { get; set; } = string.Empty;
 
@@ -61,15 +62,19 @@ namespace RecordShop.Models
 
 
 
-        /*        [Required(ErrorMessage = "Please Enter An Email")]
-        */
-        [StringLength(50, MinimumLength = 1, ErrorMessage = "Email Must Have At Least 1 to 50 Characters")]
+        /*        [Required(ErrorMessage = "Please Enter An Email")] */
+        [DataType(DataType.EmailAddress, ErrorMessage = "Please enter a valid email address")]
+        [StringLength(50, MinimumLength = 1, ErrorMessage = "Email must have between 1 and 50 characters")]
+        [Remote(action: "CheckEmailExists", controller: "CustomerValidation")]
         public string? Email { get; set; } = string.Empty;
 
 
-/*        [Required(ErrorMessage = "Please Enter a Phone Number")]*/
-        [RegularExpression(@"^\d{3}-\d{3}-\d{4}$", ErrorMessage = "Please enter a valid phone number in the format xxx-xxx-xxxx")]
-        /*[StringLength(15, MinimumLength = 4, ErrorMessage = "Phone Numbers Must Be Between 8 and 15 Digits Long")]*/
+
+
+        /*        [Required(ErrorMessage = "Please Enter a Phone Number")]*/
+        /*[RegularExpression(@"^\d{3}-\d{3}-\d{4}$", ErrorMessage = "Please enter a valid phone number in the format xxx-xxx-xxxx")]*/
+        [RegularExpression(@"^\(\d{3}\)\s*\d{3}-\d{4}$", ErrorMessage = "Please enter a valid phone number in the format (999) 999-9999")]
+        [StringLength(20, MinimumLength = 1, ErrorMessage = "Phone number must have at least 1 and less than 21 characters")]
         public string? PhoneNumber { get; set; } = string.Empty;
 
 
