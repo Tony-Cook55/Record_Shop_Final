@@ -56,12 +56,13 @@
 
 /* The hamburger menu ☰*/
 .icon--menu {
-    stroke: #F7E7CE;
+/*    stroke: #F7E7CE;
+*/    stroke: #634a4c;
 }
 
 /* The Close ❌ menu */
 .icon--close {
-    stroke: #F7E7CE;
+    stroke: #634a4c;
     transform: translateX(-100%);
 }
 

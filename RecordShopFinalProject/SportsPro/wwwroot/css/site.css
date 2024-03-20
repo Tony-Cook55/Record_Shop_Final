@@ -15,18 +15,23 @@
 
 
 
-
+* {
+    font-family: "Lexend", sans-serif;
+}
 
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 html, body {
     max-width: 100%;
+    margin: 0;
+    min-height: 100vh;
     overflow-x: hidden;
-    background-color: #f2e8da;
+    background-color: #f3f1e0;
+    background-image: url('../images/icons/tile_background3.png');
 }
 
 
@@ -66,3 +71,63 @@ html, body {
         }
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.error {
+    width: auto; /* Adjust to fit content */
+    max-width: 320px; /* Limit width on larger screens */
+    padding: 12px;
+    position: fixed;
+    bottom: 20px; /* Adjust distance from bottom */
+    right: 20px; /* Adjust distance from right */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    background: #EF665B;
+    border-radius: 8px;
+    box-shadow: 0px 0px 5px -3px #111;
+
+    z-index: 10;
+}
+
+.error__icon {
+    width: 50px;
+    height: 30px;
+    transform: translateY(-2px);
+    margin-right: 8px;
+}
+
+    .error__icon path {
+        fill: #fff;
+    }
+
+.error__title {
+    font-weight: 500;
+    font-size: 20px;
+    color: #fff;
+}
+
+.error__close {
+    width: 20px;
+    height: 30px;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+    .error__close path {
+        fill: #fff;
+    }
