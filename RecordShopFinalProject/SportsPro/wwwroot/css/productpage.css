@@ -1,12 +1,18 @@
 ﻿
+
+
+
+
+
+
+
+
 .card_expand_container {
     margin-top: 40px;
     margin-bottom: 40px;
-
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-
 }
 
 .card {
@@ -18,15 +24,24 @@
     width: 300px;
     height: 200px;
     transition: .5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    overflow: hidden; /* Prevents content overflow */
+    word-wrap: break-word; /* Allow long words to wrap */
+    overflow-wrap: break-word; /* Allow text to break between characters */
+
+    /*    position: relative;
+    background: #b5c8b2;
+    z-index: 1;
+    transform: translateY(100px);*/
 }
 /* This is the front of the card that you see first */
 .card_face_top {
     position: relative;
     background: #b5c8b2;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
     z-index: 1;
     transform: translateY(100px);
     text-shadow: 2px 3px 5px rgba(0,0,0,.8);
@@ -62,11 +77,13 @@
     font-size: 1.5em;
     color: white;
     text-align: center;
+    word-wrap: break-word; /* Allow long words to wrap */
 }
 .face_text {
     font-size: 1em;
     color: white;
     text-align: center;
+    word-wrap: break-word; /* Allow long words to wrap */
 }
 
 
@@ -80,6 +97,7 @@
         position: relative;
         background: whitesmoke;
         display: flex;
+        flex-direction: column; /* Ensures content stacks vertically */
         align-items: center;
         justify-content: center;
         padding: 20px;
@@ -123,10 +141,10 @@
 
 
 .card_edit_button {
-    color: #009d27;
+    color: #f8c931;
 }
     .card_edit_button:hover {
-        background: #009d27;
+        background: #f8c931;
         color: #ffff;
     }
 
@@ -148,63 +166,8 @@
 
 
 
-.delete_button {
-    width: 150px;
-    height: 50px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    background: red;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
-    background: #e62222;
-}
 
-.delete_button, button span {
-    transition: 200ms;
-}
 
-.button_text {
-    transform: translateX(35px);
-    color: white;
-    font-weight: bold;
-}
 
-.delete_button .icon {
-    position: absolute;
-    border-left: 1px solid #c41b1b;
-    transform: translateX(110px);
-    height: 40px;
-    width: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-.delete_button svg {
-    width: 15px;
-    fill: #eee;
-}
 
-.delete_button:hover {
-    background: #ff3636;
-}
-
-.delete_button:hover .text {
-    color: transparent;
-}
-
-.delete_button:hover .icon {
-    width: 136px;
-    border-left: none;
-    transform: translateX(0);
-}
-
-.delete_button:focus {
-    outline: none;
-}
-
-.delete_button:active .icon svg {
-    transform: scale(0.8);
-}

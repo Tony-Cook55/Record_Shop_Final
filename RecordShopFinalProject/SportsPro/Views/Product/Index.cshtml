@@ -10,14 +10,13 @@
 
 
 
-
 <div class="container">
 
-
+    @* mmmmmmmmmmmmmmm TEMP DATA CRUD MESSAGE mmmmmmmmmmmmmmm *@
     @* Checks if there is a string in our Temp Data Message. If So Show the Message If not Nothing. This is so We don't see its padding and color *@
     @if (!string.IsNullOrEmpty(TempData["CRUDMessage"] as string))
     {
-        <div class="error text-center" id="errorMessage">
+        <div class="error text-center         crud_message_slide_in" id="errorMessage">
             <div class="error__icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none"><path fill="#393a37" d="m13 13h-2v-6h2zm0 4h-2v-2h2zm-1-15c-1.3132 0-2.61358.25866-3.82683.7612-1.21326.50255-2.31565 1.23915-3.24424 2.16773-1.87536 1.87537-2.92893 4.41891-2.92893 7.07107 0 2.6522 1.05357 5.1957 2.92893 7.0711.92859.9286 2.03098 1.6651 3.24424 2.1677 1.21325.5025 2.51363.7612 3.82683.7612 2.6522 0 5.1957-1.0536 7.0711-2.9289 1.8753-1.8754 2.9289-4.4189 2.9289-7.0711 0-1.3132-.2587-2.61358-.7612-3.82683-.5026-1.21326-1.2391-2.31565-2.1677-3.24424-.9286-.92858-2.031-1.66518-3.2443-2.16773-1.2132-.50254-2.5136-.7612-3.8268-.7612z"></path></svg>
             </div>
@@ -34,19 +33,72 @@
     <script>
         // Closes the temp data message
         function closeErrorMessage() {
-            document.getElementById("errorMessage").style.display = "none";
+            var errorMessage = document.getElementById("errorMessage");
+            errorMessage.classList.add("crud_message_slide_out"); // Add exit animation class
+
+            setTimeout(function () {
+                errorMessage.style.display = "none"; // Hide the error message after the animation completes
+            }, 500); // Adjust timeout to match your animation duration
         }
 
 
-        // Automatically close the error message after 5 seconds
+        // Automatically close the error message after 8 seconds
         setTimeout(function () {
             closeErrorMessage();
-        }, 5000); // 5000 milliseconds = 5 seconds
+        }, 8000); // 1000 milliseconds = 1 second
     </script>
+    @* mmmmmmmmmmmmmmm TEMP DATA CRUD MESSAGE mmmmmmmmmmmmmmm *@
+
+
+
 
 
 
     <h1> Product Manager </h1>
+
+
+    <header class="nav_header">
+        <input id="side-menu-toggle" class="side-menu-toggle" type="checkbox" />
+        <label for="side-menu-toggle">
+            <svg class="icon--menu-toggle" viewBox="0 0 60 30">
+                <g class="icon-group">
+                    <g class="icon--menu">
+                        <path d="M 6 0 L 54 0" />
+                        <path d="M 6 15 L 54 15" />
+                        <path d="M 6 30 L 54 30" />
+                    </g>
+                    <g class="icon--close">
+                        <path d="M 15 0 L 45 30" />
+                        <path d="M 15 30 L 45 0" />
+                    </g>
+                </g>
+            </svg>
+        </label>
+
+
+
+        <nav class="side-menu container-fluid">
+
+
+            @* SEARCHBAR SEARCHING USING RECORD NAME & ARTISTS NAME *@
+            <div class="search_container">
+                <form asp-controller="Product" asp-action="Index" method="get" class="search_form">
+                    <input type="search" class="search_bar_input" placeholder="Search Artists or Records" name="searchString">
+                    <button class="" type="submit">
+                        <i class="fa fa-search search_icon"></i>
+                    </button>
+                    @* <i class="fa fa-search search_icon"></i> *@
+                    <a class="clear_button" href="javascript:void(0)" id="clear-btn">Clear</a>
+                </form>
+            </div>
+
+            @* SEARCHBAR SEARCHING USING RECORD NAME & ARTISTS NAME *@
+        </nav>
+
+
+
+    </header>
+
 
 
 
@@ -68,14 +120,7 @@
 
 
 
-    @* SEARCHBAR SEARCHING USING RECORD NAME & ARTISTS NAME *@
-    <div class="col-md-4 ms-5">
-        <form asp-controller="Product" asp-action="Index" method="get" class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search By Artist or Record Name" aria-label="Search" name="searchString">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
-    @* SEARCHBAR SEARCHING USING RECORD NAME & ARTISTS NAME *@
+
 
 
 
@@ -89,11 +134,11 @@
     }
     else
     {
-        <div class="main_container   text-center   ">
+        <div class="   text-center   ">
             <div class="container  card_expand_container">
                 @foreach (var product in Model)
                 {
-                    <div class="card">
+                    <div class="card      scale_in_center_entrance_animation">
                         <div class="card_expand_face card_face_top">
                             <div class="content">
                                 <h1 class="face_header_text">@product.RecordName</h1>
@@ -119,11 +164,20 @@
 
 
 
-
         <div class="text-center mb-5">
-    @*         <button class="">
-                <span class="text">Edit</span>
-                <span class="icon">
+
+            <button class="crud_button     crud_button_add">
+                <span class="crud_button_text">Add</span>
+                <span class="crud_button_icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg>
+                </span>
+            </button>
+
+
+
+            <button class="crud_button     crud_button_edit">
+                <span class="crud_button_text">Edit</span>
+                <span class="crud_button_icon">
                     <svg fill="#000000" height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                          viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
                     <path d="M70.2,337.4l104.4,104.4L441.5,175L337,70.5L70.2,337.4z M0.6,499.8c-2.3,9.3,2.3,13.9,11.6,11.6L151.4,465L47,360.6
@@ -131,11 +185,11 @@
 	                    C499.5,116.9,534.3,70.6,487.9,24.1z" />
                         </svg>
                 </span>
-            </button> *@
+            </button>
 
-            <button class="delete_button">
-                <span class="button_text text">Delete</span>
-                <span class="icon">
+            <button class="crud_button     crud_button_delete">
+                <span class="crud_button_text">Delete</span>
+                <span class="crud_button_icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path>
                     </svg>
@@ -144,7 +198,6 @@
 
             <a asp-controller="Product" asp-action="Add" class="btn btn-outline-primary">Add New Record</a>
         </div>
-
 
 
 

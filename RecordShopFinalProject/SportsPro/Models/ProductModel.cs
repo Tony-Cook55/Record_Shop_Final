@@ -29,20 +29,12 @@ namespace RecordShop.Models
 
 
         [Required(ErrorMessage = "Please Enter a The Records Name")]
-        [StringLength(100, MinimumLength = 1, ErrorMessage = "Record Names Must Have At Least 1 to 100 Characters")]
+        [StringLength(50, MinimumLength = 1, ErrorMessage = "Record Names Must Have At Least 1 to 50 Characters")]
         public string? RecordName { get; set; } = string.Empty;
 
 
-
-
-
-
-
-
-
-
         [Required(ErrorMessage = "Please Enter The Artists Name")]
-        [StringLength(100, MinimumLength = 1, ErrorMessage = "Artist's Names Must Have At Least 1 to 100 Characters")]
+        [StringLength(50, MinimumLength = 1, ErrorMessage = "Artist's Names Must Have At Least 1 to 50 Characters")]
         public string? ArtistName { get; set; } = string.Empty;
 
 

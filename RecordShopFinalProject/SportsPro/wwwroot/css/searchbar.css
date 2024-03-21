@@ -1,0 +1,122 @@
+﻿.search_container {
+    position: relative;
+    top: 0%;
+    left: 90%;
+    transform: translate(-50%,-50%);
+    transition: all 1s;
+    width: 50px;
+    height: 50px;
+    background: white;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 4px solid white;
+    padding: 5px;
+    /*    position: relative;
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 25px;
+    border: 4px solid white;
+    padding: 5px;
+    transition: all 1s;*/
+}
+
+.search_bar_input {
+    width: 0;
+    height: 42.5px;
+    line-height: 30px;
+    outline: 0;
+    border: 0;
+    font-size: 1em;
+    border-radius: 20px;
+    padding: 0 20px;
+    transition: all 1s;
+    position: absolute;
+    right: 0px; /* Adjusted to expand towards the left */
+
+    top: 0;
+}
+    /* Gets rid of the basic html x clear button at the end of the input */
+    .search_bar_input::-webkit-search-cancel-button {
+        display: none;
+    }
+    /* Hide clear button for all browsers */
+    .search_bar_input[type="search"]::-ms-clear {
+        display: none;
+    }
+
+    .search_bar_input[type="search"]::-ms-reveal {
+        display: none;
+    }
+
+    .search_bar_input::-webkit-search-decoration,
+    .search_bar_input::-webkit-search-cancel-button,
+    .search_bar_input::-webkit-search-results-button,
+    .search_bar_input::-webkit-search-results-decoration {
+        display: none;
+    }
+
+
+.search_icon {
+    /*    box-sizing: border-box;
+    padding: 10px;
+    width: 42.5px;
+    height: 42.5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    color: #07051a;
+    text-align: center;
+    font-size: 1.2em;
+    transition: all 1s;*/
+
+    padding: 10px;
+    width: 42.5px;
+    height: 42.5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    color: #07051a;
+    text-align: center;
+    font-size: 1.2em;
+    transition: all 0.5s;
+}
+
+.search_form:hover .search_bar_input {
+    padding-left: 20px;
+    width: 300px;
+    display: block;
+    background-color: red;
+}
+
+form:hover .search_bar_input:hover,
+form:valid .search_bar_input:hover {
+    display: block;
+}
+
+
+form:hover .search_icon:hover,
+form:valid .search_icon:hover {
+    background: #07051a;
+    color: white;
+}
+
+
+.clear_button {
+    display: none;
+    position: absolute;
+    top: 70px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+
+form:valid .clear_button {
+    display: block;
+}

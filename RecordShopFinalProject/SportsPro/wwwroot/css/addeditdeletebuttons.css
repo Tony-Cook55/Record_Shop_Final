@@ -1,0 +1,127 @@
+﻿
+/*
+
+                <button class="crud_button     crud_button_add">
+                <span class="crud_button_text">Add</span>
+                <span class="crud_button_icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg>
+                </span>
+            </button>
+
+
+
+            <button class="crud_button     crud_button_edit">
+                <span class="crud_button_text">Edit</span>
+                <span class="crud_button_icon">
+                    <svg fill="#000000" height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                         viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+                    <path d="M70.2,337.4l104.4,104.4L441.5,175L337,70.5L70.2,337.4z M0.6,499.8c-2.3,9.3,2.3,13.9,11.6,11.6L151.4,465L47,360.6
+	                    L0.6,499.8z M487.9,24.1c-46.3-46.4-92.8-11.6-92.8-11.6c-7.6,5.8-34.8,34.8-34.8,34.8l104.4,104.4c0,0,28.9-27.2,34.8-34.8
+	                    C499.5,116.9,534.3,70.6,487.9,24.1z" />
+                        </svg>
+                </span>
+            </button>
+
+            <button class="crud_button     crud_button_delete">
+                <span class="crud_button_text">Delete</span>
+                <span class="crud_button_icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path>
+                    </svg>
+                </span>
+            </button>
+
+
+*/
+
+
+
+
+
+
+.crud_button_add {
+    background-color: #009d27;
+}
+
+    .crud_button_add:hover {
+        background: #21ac44;
+    }
+
+
+.crud_button_edit {
+    background-color: #f8c931;
+}
+    .crud_button_edit:hover {
+        background: #fbd559;
+    }
+
+
+.crud_button_delete {
+    background: #ff2d2d;
+}
+
+    .crud_button_delete:hover {
+        background: #ff3636;
+    }
+
+
+
+
+
+
+
+.crud_button {
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+
+}
+
+.crud_button, button span {
+    transition: 200ms;
+}
+
+.crud_button_text {
+    transform: translateX(35px);
+    color: white;
+    font-weight: bold;
+}
+
+.crud_button .crud_button_icon {
+    position: absolute;
+    border-left: 1px solid #0000009e;
+    transform: translateX(110px);
+    height: 40px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.crud_button svg {
+    width: 15px;
+    fill: #eee;
+}
+
+    .crud_button:hover .crud_button_text {
+        color: transparent;
+    }
+
+    .crud_button:hover .crud_button_icon {
+        width: 136px;
+        border-left: none;
+        transform: translateX(0);
+    }
+
+.crud_button:focus {
+    outline: none;
+}
+
+.crud_button:active .crud_button_icon svg {
+    transform: scale(0.8);
+}

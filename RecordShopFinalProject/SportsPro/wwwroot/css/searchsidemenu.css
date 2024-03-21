@@ -1,0 +1,85 @@
+﻿
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 40vw; /* Adjust width as needed */
+    height: 100%;
+    background-color: #b5c8b2; /* Background color of the side menu */
+    transform: translateX(-100%);
+    transition: transform 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+    z-index: 998;
+    padding-top: 60px; /* Adjust according to your header height */
+}
+
+    .side-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .side-menu li {
+        padding: 10px 20px;
+    }
+
+    .side-menu a {
+        color: #634a4c; /* Link color */
+        text-decoration: none;
+        font-size: 18px; /* Adjust font size as needed */
+        display: block;
+        transition: color 0.3s ease-in-out;
+    }
+
+        .side-menu a:hover {
+            color: #f1d7cb; /* Hover color */
+        }
+
+.side-menu-toggle + label {
+    position: fixed;
+    top: 1.5rem; /* Assuming 1rem = 16px */
+    left: 1rem; /* Adjust left position as needed */
+    cursor: pointer;
+    z-index: 999;
+}
+
+/* Adjust the position of the menu toggle icon */
+.icon--menu-toggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.5rem; /* Assuming 1rem = 16px */
+    height: 4.5rem; /* Assuming 1rem = 16px */
+    stroke-width: 6;
+    transition: all ease-in-out .2s;
+}
+
+.icon-group {
+    transition: transform 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.side-menu-toggle:checked ~ .side-menu {
+    transform: translateX(0);
+}
+
+.side-menu-toggle:checked ~ .icon--menu-toggle .icon-group {
+    transform: translateX(100%);
+}
+
+
+
+
+
+
+.side-menu-toggle + label {
+    position: fixed;
+    top: 1.5rem; /* Assuming 1rem = 16px */
+    left: 2rem; /* Move the side menu toggle to the left side */
+    cursor: pointer;
+    z-index: 999;
+}
+
+.side-menu-toggle {
+    display: none; /* Hide the default checkbox */
+}
