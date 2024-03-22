@@ -17,6 +17,8 @@
 
 * {
     font-family: "Lexend", sans-serif;
+
+
 }
 
 
@@ -32,6 +34,10 @@ html, body {
     overflow-x: hidden;
     background-color: #f3f1e0;
     background-image: url('../images/icons/tile_background3.png');
+
+
+/*        outline-offset: 4px;
+    outline-color: deeppink;*/
 }
 
 
@@ -75,3 +81,35 @@ html, body {
 
 
 
+
+
+
+
+
+::-webkit-scrollbar {
+    width: 15px;
+    /*border: 5px solid #634a4c;*/
+    /*border-radius: 25px;*/
+    background-color: #f3f1e0;
+}
+
+/*::-webkit-scrollbar-track {
+    background: #634a4c;
+}*/
+
+::-webkit-scrollbar-thumb {
+    border: 3px solid #634a4c; /* Add a border to the scrollbar */
+    background: #ff8f73;
+    width: 10px; /* Adjust the width of the scrollbar thumb */
+    border-radius: 50px;
+    transition: background 0.3s ease; /* Smooth transition for background color */
+}
+
+/*    ::-webkit-scrollbar-thumb:hover {
+        background: #ff8f73;
+        background: #b5c8b2;
+    }*/
+
+::-webkit-scrollbar-button {
+    display: none;
+}

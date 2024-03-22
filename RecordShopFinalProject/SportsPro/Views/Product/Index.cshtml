@@ -54,69 +54,62 @@
 
 
 
-    <h1> Product Manager </h1>
 
 
+    @* SIDE MENU *@
     <header class="nav_header">
         <input id="side-menu-toggle" class="side-menu-toggle" type="checkbox" />
         <label for="side-menu-toggle">
-            <svg class="icon--menu-toggle" viewBox="0 0 60 30">
-                <g class="icon-group">
-                    <g class="icon--menu">
-                        <path d="M 6 0 L 54 0" />
-                        <path d="M 6 15 L 54 15" />
-                        <path d="M 6 30 L 54 30" />
-                    </g>
-                    <g class="icon--close">
-                        <path d="M 15 0 L 45 30" />
-                        <path d="M 15 30 L 45 0" />
-                    </g>
-                </g>
+            <svg class="icon--menu-toggle"  xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20">
+                <path fill="currentColor" d="m17.545 15.467l-3.779-3.779a6.15 6.15 0 0 0 .898-3.21c0-3.417-2.961-6.377-6.378-6.377A6.185 6.185 0 0 0 2.1 8.287c0 3.416 2.961 6.377 6.377 6.377a6.15 6.15 0 0 0 3.115-.844l3.799 3.801a.953.953 0 0 0 1.346 0l.943-.943c.371-.371.236-.84-.135-1.211M4.004 8.287a4.282 4.282 0 0 1 4.282-4.283c2.366 0 4.474 2.107 4.474 4.474a4.284 4.284 0 0 1-4.283 4.283c-2.366-.001-4.473-2.109-4.473-4.474">
+                </path>
             </svg>
         </label>
-
-
-
         <nav class="side-menu container-fluid">
 
+            <h1 class="text-center    search_side_menu_title">Search Products</h1>
 
             @* SEARCHBAR SEARCHING USING RECORD NAME & ARTISTS NAME *@
-            <div class="search_container">
-                <form asp-controller="Product" asp-action="Index" method="get" class="search_form">
-                    <input type="search" class="search_bar_input" placeholder="Search Artists or Records" name="searchString">
-                    <button class="" type="submit">
-                        <i class="fa fa-search search_icon"></i>
+                <div class="search">
+                    <form asp-controller="Product" asp-action="Index" method="get" class="search-form">
+
+                        <input type="text" class="search_bar_text_input" placeholder="Search Artists or Records" name="searchString">
+                        <input type="submit" class="search_bar_submit_input" value="Submit">
+                    </form>
+                </div>
+            @* SEARCHBAR SEARCHING USING RECORD NAME & ARTISTS NAME *@
+
+
+            @* FILTERING BY ARTIST NAME*@
+            <div class="scrollable_search_buttons   text-center">
+                <a asp-controller="Product" asp-action="Index" asp-route-artist="all"   class="pushable text-center  m-3">
+                    <span class="shadow"></span>
+                    <span class="edge"></span>
+                    <span class="front">
+                        <span class="">All</span>
+                    </span>
+                </a>
+                @foreach (var artistName in ViewBag.ArtistNames)
+                {
+                    <button class="pushable">
+                        <a asp-controller="Product" asp-action="Index" asp-route-artist="@artistName" class="pushable text-center  m-3">
+                                <span class="shadow"></span>
+                                <span class="edge"></span>
+                                <span class="front">
+                                    <span>@artistName</span>
+                                </span>
+                        </a>
                     </button>
-                    @* <i class="fa fa-search search_icon"></i> *@
-                    <a class="clear_button" href="javascript:void(0)" id="clear-btn">Clear</a>
-                </form>
+                }
             </div>
+            @* FILTERING BY ARTIST NAME*@
 
-            @* SEARCHBAR SEARCHING USING RECORD NAME & ARTISTS NAME *@
         </nav>
 
-
-
     </header>
+    @* SIDE MENU *@
 
 
-
-
-    @* FILTERING BY ARTIST NAME*@
-    <div class="col-md-2">
-        <ul class="list-group text-center">
-            <li class="list-group-item">
-                <a asp-controller="Product" asp-action="Index" asp-route-artist="all" class="nav-link">All</a>
-            </li>
-            @foreach (var artistName in ViewBag.ArtistNames)
-            {
-                <li class="list-group-item">
-                    <a asp-controller="Product" asp-action="Index" asp-route-artist="@artistName" class="nav-link">@artistName</a>
-                </li>
-            }
-        </ul>
-    </div>
-    @* FILTERING BY ARTIST NAME*@
 
 
 
@@ -128,13 +121,27 @@
     @* IF THE SEARCH STRING INPUTTED BY USER IS INVALID SHOW NO RECORDS*@
     @if (Model.Count == 0)
     {
-        <div class="text-center mt-3">
-            <h3>No Records Found</h3>
-        </div>
+        <section class="hero_section   text-center    scale_in_center_entrance_animation">
+            <div class="hero_content   text-center ">
+                <div class="">
+                    @* hero_content_record_stopper_box *@
+                    <h1 class="hero_header__no_items_text">No Records Found</h1>
+
+                    <a asp-controller="Product" asp-action="Index" asp-route-artist="all"   class="no_items_image ">
+                        <img src="~/images/icons/no_results_sad.png" class="no_results_img" draggable="false" >
+                    </a>
+                </div>
+            </div>
+        </section>
     }
     else
     {
         <div class="   text-center   ">
+
+            <h1 class="page_header_text text-center">
+                Records
+            </h1>
+
             <div class="container  card_expand_container">
                 @foreach (var product in Model)
                 {

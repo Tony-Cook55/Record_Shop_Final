@@ -39,16 +39,13 @@
     height: 100vh;
     height: 100vh;
 
-    background-color: #b5c8b2;
-
-
-    color: white;
     display: flex;
     align-items: center;
     overflow: hidden;
-
 }
-
+.hero_section_bg_color {
+    background-color: #b5c8b2;
+}
 
 
 .hero_background {
@@ -58,7 +55,7 @@
     width: 200%; /* Set width greater than the viewport width */
     height: 100%;
     background-repeat: repeat-x;
-    background-image: url('../images/icons/tile_background.png') ;
+    background-image: url('../images/icons/tile_background.png');
     animation: slide 45s linear infinite; /* Adjust animation duration as needed */
 }
 
@@ -113,6 +110,10 @@
     color: #f2e8da;
     line-height: 1.4;
 }
+
+
+
+
 /* hhhhhhhhhhh HERO SECTION hhhhhhhhhhh */
 
 
@@ -127,16 +128,7 @@
 
 
 
-
-
-
-
-
-
-
-
 /* sssssssssss SNOW FLAKE ANIMATION sssssssssss*/
-
 .snowflakeIMG {
     width: 3vmax;
     opacity: 0.8;
@@ -331,8 +323,6 @@
     padding: 0px;
     border: none;
     cursor: pointer;
-    outline-offset: 4px;
-    outline-color: deeppink;
     transition: filter 250ms;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -343,9 +333,9 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background: hsl(226, 25%, 69%);
+    background: #ff8f73;
     border-radius: 8px;
-    filter: blur(2px);
+    filter: blur(4px);
     will-change: transform;
     transform: translateY(2px);
     transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
@@ -358,16 +348,17 @@
     height: 100%;
     width: 100%;
     border-radius: 8px;
-    background: linear-gradient( to right, hsl(248, 39%, 39%) 0%, hsl(248, 39%, 49%) 8%, hsl(248, 39%, 39%) 92%, hsl(248, 39%, 29%) 100% );
+    /*    background: linear-gradient( to right, hsl(248, 39%, 39%) 0%, hsl(248, 39%, 49%) 8%, hsl(248, 39%, 39%) 92%, hsl(248, 39%, 29%) 100% );*/
+    background: #634a4c;
 }
 
 .front {
     display: block;
     position: relative;
     border-radius: 8px;
-    background: hsl(248, 53%, 58%);
+    background: #f3f1e0;
     padding: 16px 32px;
-    color: white;
+    color: #634a4c;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     font-weight: 600;
     text-transform: uppercase;

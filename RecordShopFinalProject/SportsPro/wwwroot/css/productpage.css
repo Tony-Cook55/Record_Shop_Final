@@ -1,161 +1,55 @@
 ﻿
 
 
+.page_header_text {
+    font-size: 80px; /* Minimum font size */
+    font-size: min(15vw, 90px); /* Responsive font size based on viewport width, with a minimum of 24px */
 
 
+    line-height: 1.2; /* Set line height */
+    text-align: center; /* Center align text */
 
-
-
-
-.card_expand_container {
-    margin-top: 40px;
-    margin-bottom: 40px;
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+    margin-top: 50px;
+    color: #ff8f73;
+    text-shadow: -2px -2px 2px rgba(255, 255, 255, 0.5), 2px 2px 2px #634a4c, -4px -4px 4px rgba(255, 255, 255, 0.3), 4px 4px 4px #634a4c;
 }
 
-.card {
-    border: none;
-    background: none;
-}
-
-.card_expand_face {
-    width: 300px;
-    height: 200px;
-    transition: .5s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
 
-    overflow: hidden; /* Prevents content overflow */
-    word-wrap: break-word; /* Allow long words to wrap */
-    overflow-wrap: break-word; /* Allow text to break between characters */
 
-    /*    position: relative;
-    background: #b5c8b2;
-    z-index: 1;
-    transform: translateY(100px);*/
-}
-/* This is the front of the card that you see first */
-.card_face_top {
+
+
+
+
+.hero_header__no_items_text {
+    user-select: none;
     position: relative;
-    background: #b5c8b2;
     z-index: 1;
-    transform: translateY(100px);
-    text-shadow: 2px 3px 5px rgba(0,0,0,.8);
+    font-size: 4rem;
+    margin: 0 0 10px;
+    line-height: 1;
+    /*    color: #b5c8b2;*/
+    color: #ff8f73;
+    text-shadow: -4px -4px 0 rgba(255, 255, 255, 0.2), 2px 2px 0 #422800;
 }
-        .card:hover .card_expand_face.card_face_top {
-            transform: translateY(0);
-            /*box-shadow: inset 0 0 1px whitesmoke, inset 20px 0 80px #f0f, inset -20px 0 80px #0ff, inset 20px 0 300px #f0f, inset -20px 0 300px #0ff, 0 0 50px #fff, -10px 0 80px #f0f, 10px 0 80px #0ff;*/
-            transform: scale(1.05);
-        }
+
+.no_results_img {
+    max-width: 100%;
+    height: auto;
+    user-select: none;
 
 
-    /* Dims the text until you hover thus making it full opacity */
-    /*.card .card_expand_face.card_face_top .content {
-        opacity: .44;
-        transition: 0.5s;
-        text-align: center;
-    }*/
-    /* Shows Text */
-    /*.card:hover .card_expand_face.card_face_top .content {
-        opacity: 1;
-    }
-
-    .card .card_expand_face.card_face_top .content i {
-        font-size: 3em;
-        color: white;
-        display: inline-block;
-    }*/
-
-
-
-/* The text on the Face of the Card */
-.face_header_text {
-    font-size: 1.5em;
-    color: white;
-    text-align: center;
-    word-wrap: break-word; /* Allow long words to wrap */
+    transition: all 0.2s ease-in-out; /* Transition the top position */
 }
-.face_text {
-    font-size: 1em;
-    color: white;
-    text-align: center;
-    word-wrap: break-word; /* Allow long words to wrap */
+
+.no_results_img:hover {
+    transform: scale(1.05);
 }
 
 
 
-.card .card_expand_face.card_face_top .content a {
-    transition: .5s;
-}
-
-    /* This is the bottom information part after the hover */
-    .card_face_bottom_info {
-        position: relative;
-        background: whitesmoke;
-        display: flex;
-        flex-direction: column; /* Ensures content stacks vertically */
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-        box-sizing: border-box;
-        box-shadow: 0 10px 20px rgba(0,0,0,.8);
-        transform: translateY(-100px);
-    }
-
-    .card:hover .card_face_bottom_info {
-        transform: translateY(0);
-    }
 
 
-/* The text in the bottom container */
-.card .card_expand_face.card_face_bottom_info .content p {
-    font-size: 1.3em;
-    margin: 0px;
-    padding: 0px;
-}
-
-
-
-/* CARD LINKS     EDIT - DELETE */
-.card_expand_link {
-    text-decoration: none;
-    box-sizing: border-box;
-    padding: 10px;
-    margin: 15px 0 0;
-    display: inline-block;
-
-
-    font-size: 1.2em;
-    padding: 15px;
-/*    color: #e62222;*/
-}
-
-.card_expand_link:hover {
-    box-shadow: inset 0px 0px 10px rgba(0,0,0,0.5);
-    transform: scale(1.1);
-}
-
-
-.card_edit_button {
-    color: #f8c931;
-}
-    .card_edit_button:hover {
-        background: #f8c931;
-        color: #ffff;
-    }
-
-.card_delete_button {
-    color: #e62222;
-}
-    .card_delete_button:hover {
-        background-color: #e62222;
-        color: #ffff;
-    }
-/* CARD LINKS     EDIT - DELETE */
 
 
 

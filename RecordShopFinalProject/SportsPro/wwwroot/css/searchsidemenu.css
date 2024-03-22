@@ -1,16 +1,31 @@
 ﻿
+/* The Title in the search side menu */
+.search_side_menu_title {
+    font-size: calc(1vw + 2rem); /* Adjust font size based on viewport width */
+    color: #f3f1e0;
+    user-select: none;
+    transition: all 0.3s ease-in-out;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+
+
+
 
 .side-menu {
     position: fixed;
-    top: 0;
+    top: -100%; /* Initially hide the menu above the viewport */
     left: 0;
-    width: 40vw; /* Adjust width as needed */
-    height: 100%;
-    background-color: #b5c8b2; /* Background color of the side menu */
-    transform: translateX(-100%);
-    transition: transform 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+    width: 100%;
+    height: 55vh; /* Adjust height as needed */
+    background-color: #b5c8b2;
+
+    transition: top 0.5s ease-in-out; /* Transition the top position */
+
     z-index: 998;
-    padding-top: 60px; /* Adjust according to your header height */
+    padding-top: 60px;
 }
 
     .side-menu ul {
@@ -43,43 +58,48 @@
     z-index: 999;
 }
 
-/* Adjust the position of the menu toggle icon */
-.icon--menu-toggle {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 4.5rem; /* Assuming 1rem = 16px */
-    height: 4.5rem; /* Assuming 1rem = 16px */
-    stroke-width: 6;
-    transition: all ease-in-out .2s;
+
+/* TOP TO BOTTOM */
+.side-menu-toggle:checked ~ .side-menu {
+    top: 0; /* Slide the menu down when checkbox is checked */
+}
+/* TOP TO BOTTOM */
+
+
+
+.side-menu-toggle {
+    display: none; /* Hide the default checkbox */
 }
 
-.icon-group {
+
+
+
+
+
+
+
+
+/* LEFT to RIGHT */
+/*.side-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 35vw;
+    height: 100%;
+    background-color: #b5c8b2;
+    transform: translateX(-100%);
     transition: transform 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+    z-index: 998;
+    padding-top: 60px;
+    transition: all 0.5s;
 }
-
 .side-menu-toggle:checked ~ .side-menu {
     transform: translateX(0);
 }
 
 .side-menu-toggle:checked ~ .icon--menu-toggle .icon-group {
     transform: translateX(100%);
-}
+}*/
+/* LEFT to RIGHT */
 
 
-
-
-
-
-.side-menu-toggle + label {
-    position: fixed;
-    top: 1.5rem; /* Assuming 1rem = 16px */
-    left: 2rem; /* Move the side menu toggle to the left side */
-    cursor: pointer;
-    z-index: 999;
-}
-
-.side-menu-toggle {
-    display: none; /* Hide the default checkbox */
-}

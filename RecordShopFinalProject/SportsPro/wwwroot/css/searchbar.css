@@ -1,122 +1,111 @@
-﻿.search_container {
-    position: relative;
-    top: 0%;
-    left: 90%;
-    transform: translate(-50%,-50%);
-    transition: all 1s;
-    width: 50px;
-    height: 50px;
-    background: white;
-    box-sizing: border-box;
-    border-radius: 25px;
-    border: 4px solid white;
-    padding: 5px;
-    /*    position: relative;
-    width: 50px;
-    height: 50px;
-    background: white;
-    border-radius: 25px;
-    border: 4px solid white;
-    padding: 5px;
-    transition: all 1s;*/
+﻿/* COLORS */
+/*   #f3f1e0   #f1d7cb   #ecb2b0    #776163  #634a4c  #ff8f73  #878f7d    #b5c8b2      https://i.pinimg.com/originals/33/db/6d/33db6db11053224ce6f2671fa5849276.png */
+/*   #7A3E26  #CF6856  #F7E7CE   #FFFFFF    https://www.canva.com/colors/color-palettes/vanilla-amandine/ */
+/* COLORS */
+
+
+
+
+
+
+
+.search {
+    border: 4px solid #634a4c;
+    overflow: auto;
+    border-radius: 50px;
+    display: flex;
 }
 
-.search_bar_input {
-    width: 0;
-    height: 42.5px;
-    line-height: 30px;
-    outline: 0;
-    border: 0;
-    font-size: 1em;
-    border-radius: 20px;
-    padding: 0 20px;
-    transition: all 1s;
-    position: absolute;
-    right: 0px; /* Adjusted to expand towards the left */
-
-    top: 0;
-}
-    /* Gets rid of the basic html x clear button at the end of the input */
-    .search_bar_input::-webkit-search-cancel-button {
-        display: none;
-    }
-    /* Hide clear button for all browsers */
-    .search_bar_input[type="search"]::-ms-clear {
-        display: none;
-    }
-
-    .search_bar_input[type="search"]::-ms-reveal {
-        display: none;
-    }
-
-    .search_bar_input::-webkit-search-decoration,
-    .search_bar_input::-webkit-search-cancel-button,
-    .search_bar_input::-webkit-search-results-button,
-    .search_bar_input::-webkit-search-results-decoration {
-        display: none;
-    }
-
-
-.search_icon {
-    /*    box-sizing: border-box;
-    padding: 10px;
-    width: 42.5px;
-    height: 42.5px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    border-radius: 50%;
-    color: #07051a;
-    text-align: center;
-    font-size: 1.2em;
-    transition: all 1s;*/
-
-    padding: 10px;
-    width: 42.5px;
-    height: 42.5px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    border-radius: 50%;
-    color: #07051a;
-    text-align: center;
-    font-size: 1.2em;
-    transition: all 0.5s;
-}
-
-.search_form:hover .search_bar_input {
-    padding-left: 20px;
-    width: 300px;
-    display: block;
-    background-color: red;
-}
-
-form:hover .search_bar_input:hover,
-form:valid .search_bar_input:hover {
-    display: block;
-}
-
-
-form:hover .search_icon:hover,
-form:valid .search_icon:hover {
-    background: #07051a;
-    color: white;
-}
-
-
-.clear_button {
-    display: none;
-    position: absolute;
-    top: 70px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    font-size: 20px;
-    color: white;
-    text-align: center;
+.search-form {
     width: 100%;
+    display: flex;
+    align-items: center; /* Align items vertically */
 }
 
-form:valid .clear_button {
-    display: block;
+
+
+.search_bar_text_input {
+    border: 0px;
+    flex: 1 1 80%; /* Let the input take up 80% of the space */
+    padding: 10px;
+    background-color: #f3f1e0;
+    color: #634a4c;
+    /* The Cursor Color*/
+    caret-color: #ff8f73;
+    transition: all 0.2s ease-in-out;
 }
+    .search_bar_text_input:hover, .search_bar_text_input:active {
+        background-color: #ff8f73;
+        color: #f3f1e0;
+        caret-color: #634a4c;
+    }
+    .search_bar_text_input:focus {
+        outline: 0;
+    }
+    .search_bar_text_input::placeholder {
+        color: #634a4c;
+    }
+
+
+
+.search_bar_submit_input {
+    border: 0px;
+    background: none;
+    background-color: #ff8f73;
+    color: #f3f1e0;
+    padding: 10px 20px;
+    cursor: pointer;
+
+
+    transition: all 0.2s ease-in-out;
+}
+
+    .search_bar_submit_input:hover, .search_bar_submit_input:active {
+        background-color: #634a4c;
+        color: #f3f1e0;
+    }
+
+
+
+
+
+
+
+
+
+/* These is the div that holds the buttons to search by artist name */
+.scrollable_search_buttons {
+    box-shadow: inset 0px 0px 10px rgba(0,0,0,0.5);
+    margin-top: 30px;
+    max-height: 20vh; /* Set a maximum height relative to the viewport height */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+
+/* This is the scroll bar for the div */
+    .scrollable_search_buttons::-webkit-scrollbar {
+        width: 15px;
+        border: 3px solid #634a4c; /* Add a border to the scrollbar */
+        border-radius: 50px; /* Add border radius */
+
+
+        transition: all 1s ease-in-out;
+    }
+
+    .scrollable_search_buttons::-webkit-scrollbar-track {
+        background: #634a4c;
+    }
+
+    .scrollable_search_buttons::-webkit-scrollbar-thumb {
+        background: #f3f1e0;
+        width: 10px; /* Adjust the width of the scrollbar thumb */
+        border-radius: 50px;
+    }
+
+/*        .scrollable_search_buttons::-webkit-scrollbar-thumb:hover {
+            background: #00d8ff;
+        }*/
+
+    .scrollable_search_buttons::-webkit-scrollbar-button {
+        display: none;
+    }
