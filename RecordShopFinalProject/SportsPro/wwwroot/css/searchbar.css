@@ -76,7 +76,10 @@
 /* These is the div that holds the buttons to search by artist name */
 .scrollable_search_buttons {
     box-shadow: inset 0px 0px 10px rgba(0,0,0,0.5);
-    margin-top: 30px;
+    margin-top: 45px;
+
+    padding: 20px;
+
     max-height: 20vh; /* Set a maximum height relative to the viewport height */
     overflow-y: auto; /* Enable vertical scrolling */
 }

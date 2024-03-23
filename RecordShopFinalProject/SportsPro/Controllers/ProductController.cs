@@ -49,7 +49,7 @@ namespace RecordShop.Controllers
                 products = products.Where(p => p.ArtistName == artist);
             }
 
-            int pageSize = 10;
+            int pageSize = 6;
 
             // Return the view with paginated list of products based on the applied filters
             return View(await PaginatedList<ProductModel>.CreateAsync(products, pageNumber ?? 1, pageSize));

@@ -40,11 +40,12 @@
 
 
 .crud_button_add {
-    background-color: #009d27;
+    background-color: #ff8f73;
+
 }
 
     .crud_button_add:hover {
-        background: #21ac44;
+        background: #ffaf9b;
     }
 
 
@@ -68,6 +69,119 @@
 
 
 
+/* bbbbbb BIG BUTTON bbbbbb */
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+    /*    height: 100vh;*/
+}
+
+
+.crud_button {
+    width: 300px; /* One time larger than the original width */
+    height: 100px; /* One time larger than the original height */
+    font-size: 18px; /* One time larger than the original font size */
+
+
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+    text-decoration: none;
+}
+
+.crud_button, a span {
+    transition: 200ms;
+}
+/*.crud_button, button span {
+    transition: 200ms;
+}*/
+
+.crud_button_text {
+    transform: translateX(90px); /* Adjusted for the new width */
+
+    font-size: 30px; /* One time larger than the original font size */
+
+    color: #f3f1e0;
+    font-weight: bold;
+    text-shadow: 2px 2px 2px #634a4c, 4px 4px 4px #634a4c;
+}
+
+.crud_button .crud_button_icon {
+    transform: translateX(230px); /* Adjusted for the new width */
+
+    position: absolute;
+    border-left: 1px solid #0000009e;
+    height: 100px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.crud_button svg {
+    width: 30px; /* Adjusted for the new width */
+    height: 30px; /* Adjusted for the new height */
+    transform: translateX(20px); /* Adjusted for the new width */
+
+
+    fill: #f3f1e0;
+}
+
+.crud_button:hover .crud_button_text {
+    color: transparent;
+
+    text-shadow: none;
+}
+
+.crud_button:hover .crud_button_icon {
+    width: 136px;
+    border-left: none;
+    transform: translateX(60px);
+}
+
+.crud_button:focus {
+    outline: none;
+}
+
+/*.crud_button:active .crud_button_icon svg {
+    transform: scale(0.8);
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* SMALL BUTTON */
+
+
+/*.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 80px;*/
+/*    height: 100vh;*/
+/*}
 
 
 .crud_button {
@@ -79,16 +193,19 @@
     border: none;
     border-radius: 5px;
     box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
-
+    text-decoration: none;
 }
 
-.crud_button, button span {
+.crud_button, a span {
     transition: 200ms;
-}
+}*/
+/*.crud_button, button span {
+    transition: 200ms;
+}*/
 
-.crud_button_text {
-    transform: translateX(35px);
-    color: white;
+/*.crud_button_text {
+    transform: translateX(45px);*/ /* Adjusted for the new width */
+    /*color: white;
     font-weight: bold;
 }
 
@@ -124,4 +241,14 @@
 
 .crud_button:active .crud_button_icon svg {
     transform: scale(0.8);
-}
+}*/
+
+
+
+
+
+
+
+
+
+

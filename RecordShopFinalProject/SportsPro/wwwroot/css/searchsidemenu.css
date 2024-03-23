@@ -1,9 +1,18 @@
-﻿
+﻿/* COLORS */
+/*   #f3f1e0   #f1d7cb   #ecb2b0    #776163  #634a4c  #ff8f73  #878f7d    #b5c8b2      https://i.pinimg.com/originals/33/db/6d/33db6db11053224ce6f2671fa5849276.png */
+/*   #7A3E26  #CF6856  #F7E7CE   #FFFFFF    https://www.canva.com/colors/color-palettes/vanilla-amandine/ */
+/* COLORS */
+
+
+
+
 /* The Title in the search side menu */
 .search_side_menu_title {
     font-size: calc(1vw + 2rem); /* Adjust font size based on viewport width */
     color: #f3f1e0;
+
     user-select: none;
+
     transition: all 0.3s ease-in-out;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -13,7 +22,7 @@
 
 
 
-
+/* The Part that comes down onto the page */
 .side-menu {
     position: fixed;
     top: -100%; /* Initially hide the menu above the viewport */
@@ -21,11 +30,13 @@
     width: 100%;
     height: 55vh; /* Adjust height as needed */
     background-color: #b5c8b2;
+    overflow: hidden; /* Prevents content overflow */
 
     transition: top 0.5s ease-in-out; /* Transition the top position */
 
     z-index: 998;
     padding-top: 60px;
+    border: 5px solid #634a4c;
 }
 
     .side-menu ul {
@@ -53,7 +64,9 @@
 .side-menu-toggle + label {
     position: fixed;
     top: 1.5rem; /* Assuming 1rem = 16px */
-    left: 1rem; /* Adjust left position as needed */
+
+    left: 2rem; /* Adjust left position as needed */
+
     cursor: pointer;
     z-index: 999;
 }
@@ -66,9 +79,9 @@
 /* TOP TO BOTTOM */
 
 
-
+/* Hide the default checkbox */
 .side-menu-toggle {
-    display: none; /* Hide the default checkbox */
+    display: none;
 }
 
 

@@ -1,0 +1,94 @@
+﻿
+
+
+
+.pagination-outer {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+
+/* Outside */
+.pagination {
+    display: inline-flex;
+    background: #ebe8e3;
+    border: 4px solid #9d7f57;
+    border-radius: 40px;
+    overflow: hidden;
+    position: relative;
+}
+
+
+/* The actual link itself */
+    .pagination a.page-link {
+        padding: 10px 20px;
+        background: transparent;
+        border: none;
+        user-select: none;
+        border-right: 2px solid #c4b29b;
+/*        border-left: 2px solid #c4b29b;*/
+        border-radius: 0;
+        font-size: 25px;
+        color: #9d7f57;
+        transition: all 0.3s ease 0s;
+    }
+
+        /* Gets rid of the border on the right for the last button NEXT*/
+        .pagination a.page-link:last-child {
+            border-right: none;
+        }
+
+        /* Hover Over the Link */
+        .pagination a.page-link:hover {
+            background: #9d7f57;
+            font-weight: bold;
+            color: #ebe8e3;
+        }
+
+
+        /* When the active link is hovered over */
+        .pagination a.page-link.active:hover {
+            background: #fb7b00;
+            font-weight: bold;
+            color: #ebe8e3;
+        }
+
+
+            /* LINK WHEN ACTIVE */
+            .pagination a.page-link.active:after {
+                content: "";
+                width: 100%;
+                height: 7px;
+                background: #fb7b00;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+
+                transition: all 0.5s ease-in-out;
+            }
+
+
+/*        .pagination a.page-link:first-child:hover:after,
+        .pagination a.page-link:last-child:hover:after {
+            display: none;
+        }*/
+
+@media only screen and (max-width: 500px) {
+    .pagination {
+        display: block;
+        overflow: auto;
+    }
+
+        .pagination a.page-link {
+            display: inline-block;
+        }
+}
+
+
+
+
+/* Add this style for the disabled state */
+.pagination a.page-link.disabled {
+    pointer-events: none;
+    color: #ccc; /* Change color to visually indicate disabled state */
+}

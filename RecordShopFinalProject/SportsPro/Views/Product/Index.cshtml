@@ -6,10 +6,6 @@
     ViewData["Title"] = "Product Manager";
 }
 
-
-
-
-
 <div class="container">
 
     @* mmmmmmmmmmmmmmm TEMP DATA CRUD MESSAGE mmmmmmmmmmmmmmm *@
@@ -52,10 +48,6 @@
 
 
 
-
-
-
-
     @* SIDE MENU *@
     <header class="nav_header">
         <input id="side-menu-toggle" class="side-menu-toggle" type="checkbox" />
@@ -65,14 +57,13 @@
                 </path>
             </svg>
         </label>
-        <nav class="side-menu container-fluid">
+        <nav class="side-menu     container-fluid">
 
             <h1 class="text-center    search_side_menu_title">Search Products</h1>
 
             @* SEARCHBAR SEARCHING USING RECORD NAME & ARTISTS NAME *@
                 <div class="search">
                     <form asp-controller="Product" asp-action="Index" method="get" class="search-form">
-
                         <input type="text" class="search_bar_text_input" placeholder="Search Artists or Records" name="searchString">
                         <input type="submit" class="search_bar_submit_input" value="Submit">
                     </form>
@@ -115,9 +106,6 @@
 
 
 
-
-
-
     @* IF THE SEARCH STRING INPUTTED BY USER IS INVALID SHOW NO RECORDS*@
     @if (Model.Count == 0)
     {
@@ -142,10 +130,27 @@
                 Records
             </h1>
 
+
+
+
+            @* ADD BUTTON *@
+            <div class="center-container">
+                <a asp-controller="Product" asp-action="Add" class="crud_button   text-center  crud_button_add">
+                    <div class="crud_button     crud_button_add">
+                        <span class="crud_button_text">Add</span>
+                        <span class="crud_button_icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg>
+                        </span>
+                    </div>
+                </a>
+            </div>
+            @* ADD BUTTON *@
+
+
             <div class="container  card_expand_container">
                 @foreach (var product in Model)
                 {
-                    <div class="card      scale_in_center_entrance_animation">
+                    <div class="card    scale_in_center_entrance_animation">
                         <div class="card_expand_face card_face_top">
                             <div class="content">
                                 <h1 class="face_header_text">@product.RecordName</h1>
@@ -167,60 +172,34 @@
                     </div>
                 }
             </div>
+
         </div>
-
-
-
-        <div class="text-center mb-5">
-
-            <button class="crud_button     crud_button_add">
-                <span class="crud_button_text">Add</span>
-                <span class="crud_button_icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg>
-                </span>
-            </button>
-
-
-
-            <button class="crud_button     crud_button_edit">
-                <span class="crud_button_text">Edit</span>
-                <span class="crud_button_icon">
-                    <svg fill="#000000" height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                         viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
-                    <path d="M70.2,337.4l104.4,104.4L441.5,175L337,70.5L70.2,337.4z M0.6,499.8c-2.3,9.3,2.3,13.9,11.6,11.6L151.4,465L47,360.6
-	                    L0.6,499.8z M487.9,24.1c-46.3-46.4-92.8-11.6-92.8-11.6c-7.6,5.8-34.8,34.8-34.8,34.8l104.4,104.4c0,0,28.9-27.2,34.8-34.8
-	                    C499.5,116.9,534.3,70.6,487.9,24.1z" />
-                        </svg>
-                </span>
-            </button>
-
-            <button class="crud_button     crud_button_delete">
-                <span class="crud_button_text">Delete</span>
-                <span class="crud_button_icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                        <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path>
-                    </svg>
-                </span>
-            </button>
-
-            <a asp-controller="Product" asp-action="Add" class="btn btn-outline-primary">Add New Record</a>
-        </div>
-
-
 
 
 
 
         @* PAGEINATION *@
-    @*     @{
-            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-        } *@
+        <div class="text-center">
+                <div class="btn" >Page @Model.PageIndex of @Model.TotalPages</div>
+            <nav class="pagination-outer" aria-label="Page navigation">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)" class="page-link  @(Model.HasPreviousPage ? "" : "disabled")">Prev</a>
+                    </li>
 
-        <div class="d-flex justify-content-center">
-            <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)" class="btn btn-secondary @(Model.HasPreviousPage ? "" : "disabled")">Previous</a>
-            <div class="btn" style="cursor: default">Page @Model.PageIndex of @Model.TotalPages</div>
-            <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)" class="btn btn-secondary @(Model.HasNextPage ? "" : "disabled")">Next</a>
+                    @* This will make it to where it will show the btns within a 3 range to show  EX: 2  3  4  or   10  11  12 *@
+                    @for (int i = Math.Max(1, Model.PageIndex - 1); i <= Math.Min(Model.TotalPages, Model.PageIndex + 1); i++)
+                    {
+                        <li class="page-item">
+                            <a asp-action="Index" asp-route-pageNumber="@i" class="page-link @(i == Model.PageIndex ? "active" : "")">@i</a>
+                        </li>
+                    }
+
+                    <li class="page-item">
+                        <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)" class="page-link  @(Model.HasNextPage ? "" : "disabled")">Next</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
         @* PAGEINATION *@
 
