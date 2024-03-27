@@ -14,6 +14,7 @@
 }
 */
 
+
 .main-navigation-toggle {
     position: fixed;
     height: 1px;
@@ -78,6 +79,27 @@
 /*.menu_text_under_icon:hover {
     transform: scale(1.2);
 }*/
+
+
+
+
+
+
+/* This is the text that is under the icons */
+.nav_label_names {
+    font-size: 15px;
+    opacity: 0; /* Initially hide the nav_label_names div */
+    transition: opacity 0.3s ease; /* Apply transition only to opacity property */
+
+}
+
+/* They will only appear on hover of the SVG label */
+.nav_label_container:hover .nav_label_names {
+    opacity: 1; /* Show the nav_label_names div on hover of the label container */
+    transition: opacity 0.3s ease; /* Apply transition only to opacity property */
+}
+
+
 
 
 

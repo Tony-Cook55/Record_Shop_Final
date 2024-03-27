@@ -1,5 +1,7 @@
 
 
+
+/* vvvvvvvvvvvv VALIDATION vvvvvvvvvvvv */
 /* The text box the inputs in*/
 .input-validation-error {
     border: 3px solid red;
@@ -10,6 +12,7 @@
 .field-validation-error {
     font-weight: bold;
 }
+/* vvvvvvvvvvvv VALIDATION vvvvvvvvvvvv */
 
 
 
@@ -36,6 +39,7 @@ html, body {
     background-image: url('../images/icons/tile_background3.png');
 
 
+
 /*        outline-offset: 4px;
     outline-color: deeppink;*/
 }
@@ -45,7 +49,7 @@ html, body {
 
 
 
-
+/* aaaaaaaaaaaaaaaa ANIMATIONS aaaaaaaaaaaaaaaa */
 .scale_in_center_entrance_animation {
     -webkit-animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -80,12 +84,95 @@ html, body {
 
 
 
+.text_shadow_pop_top {
+    -webkit-animation: text-shadow-pop-bottom 0.8s both;
+    animation: text-shadow-pop-bottom 0.8s both;
+}
+@-webkit-keyframes text-shadow-pop-bottom {
+    0% {
+        text-shadow: 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+
+    100% {
+        text-shadow: 0 1px #555555, 0 2px #555555, 0 3px #555555, 0 4px #555555, 0 5px #555555, 0 6px #555555, 0 7px #555555, 0 8px #555555;
+        -webkit-transform: translateY(-8px);
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes text-shadow-pop-bottom {
+    0% {
+        text-shadow: 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+
+    100% {
+        text-shadow: 0 1px #555555, 0 2px #555555, 0 3px #555555, 0 4px #555555, 0 5px #555555, 0 6px #555555, 0 7px #555555, 0 8px #555555;
+        -webkit-transform: translateY(-8px);
+        transform: translateY(-8px);
+    }
+}
 
 
 
 
 
 
+
+
+.text_pop_up_top {
+    -webkit-animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@-webkit-keyframes text-pop-up-top {
+    0% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        text-shadow: none;
+    }
+
+    100% {
+        -webkit-transform: translateY(-50px);
+        transform: translateY(-50px);
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+    }
+}
+
+@keyframes text-pop-up-top {
+    0% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        text-shadow: none;
+    }
+
+    100% {
+        -webkit-transform: translateY(-50px);
+        transform: translateY(-50px);
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* aaaaaaaaaaaaaaaa ANIMATIONS aaaaaaaaaaaaaaaa */
+
+
+
+
+
+
+
+
+/* ssssssssssssssss SCROLL BAR ssssssssssssssss */
 ::-webkit-scrollbar {
     width: 20px;
 /*    border: 5px solid #634a4c;
@@ -113,3 +200,18 @@ html, body {
 ::-webkit-scrollbar-button {
     display: none;
 }
+/* ssssssssssssssss SCROLL BAR ssssssssssssssss */
+
+
+
+
+
+
+
+
+
+
+
+
+
+

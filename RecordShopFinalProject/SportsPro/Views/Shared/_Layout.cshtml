@@ -21,6 +21,7 @@
     <link href="~/css/searchbar.css" rel="stylesheet" />
     <link href="~/css/addeditdeletebuttons.css" rel="stylesheet" />
     <link href="~/css/searchsidemenu.css" rel="stylesheet" />
+    <link href="~/css/footer.css" rel="stylesheet" />
     <!-- MY CSS -->
 
 
@@ -47,10 +48,26 @@
 
 
 <body>
+
+
+
+
+    @* Stores the name of the current Controller the user is on and puts it in controllerName*@
+    @{
+        var areaName = ViewContext.RouteData.Values["Area"]?.ToString() ?? "";
+        var controllerName = ViewContext.RouteData.Values["Controller"]?.ToString() ?? "";
+        var actionName = ViewContext.RouteData.Values["Action"]?.ToString() ?? "";
+    }
+
+
+
+
+
+
     <header class="nav_header">
 
         <input id="page-nav-toggle" class="main-navigation-toggle" type="checkbox" />
-        <label for="page-nav-toggle">
+        <label for="page-nav-toggle" class="nav_label_container">
             <svg class="icon--menu-toggle" viewBox="0 0 60 30">
                 <g class="icon-group">
                     <g class="icon--menu">
@@ -64,16 +81,11 @@
                     </g>
                 </g>
             </svg>
-            @* <div class="text-center">Menu</div> *@
+            <div class="text-center   nav_label_names">Menu</div>
         </label>
 
 
-        @* Stores the name of the current Controller the user is on and puts it in controllerName*@
-        @{
-            var areaName = ViewContext.RouteData.Values["Area"]?.ToString() ?? "";
-            var controllerName = ViewContext.RouteData.Values["Controller"]?.ToString() ?? "";
-            var actionName = ViewContext.RouteData.Values["Action"]?.ToString() ?? "";
-        }
+
 
 
         <nav class="main-navigation   ">
@@ -104,17 +116,16 @@
                     </a>
                 </li>
                 <li class="navbar_li">
-                    <a class="navbar_links @(areaName == "" && controllerName == "Registration" && actionName == "Index" ? "active" : "")" asp-controller="Registration" asp-action="Index">
-                        Registrations
-                    </a>
-                </li>
-                <li class="navbar_li">
                     <a class="navbar_links @(areaName == "" && controllerName == "Home" && actionName == "About"  ? "active" : "")" asp-controller="About" asp-action="Index">
                         About
                     </a>
                 </li>
+                <li class="navbar_li">
+                    <a class="navbar_links @(areaName == "" && controllerName == "Registration" && actionName == "Index" ? "active" : "")" asp-controller="Registration" asp-action="Index">
+                        Registrations
+                    </a>
+                </li>
             </ul>
-
         </nav>
 
 
@@ -132,6 +143,109 @@
 
 
 
+
+
+<!-- Footer -->
+<footer class="text-center" >
+    <div class="">
+        <section class="mt-5">
+            <div class="row text-center d-flex justify-content-center pt-5">
+                <!-- HOME -->
+                <div class="col-md-4">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <a class="footer_navbar_links @(areaName == "" && controllerName == "Home" && actionName == "Index" ? "active" : "")" asp-controller="Home" asp-action="Index">
+                            Home
+                        </a>
+                    </h6>
+                </div>
+                <!-- HOME -->
+
+                <!-- PRODUCTS -->
+                <div class="col-md-4">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <a class="footer_navbar_links @(areaName == "" && controllerName == "Product" && actionName == "Index" ? "active" : "")" asp-controller="Product" asp-action="Index">
+                            Products
+                        </a>
+                    </h6>
+                </div>
+                <!-- PRODUCTS -->
+
+                <!-- EMPLOYEES -->
+                <div class="col-md-4">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <a class="footer_navbar_links @(areaName == "" && controllerName == "Employee" && actionName == "Index" ? "active" : "")" asp-controller="Employee" asp-action="Index">
+                            Employees
+                        </a>
+                    </h6>
+                </div>
+                <!-- EMPLOYEES -->
+
+                <!-- CUSTOMERS -->
+                <div class="col-md-4">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <a class="footer_navbar_links @(areaName == "" && controllerName == "Customer" && actionName == "Index" ? "active" : "")" asp-controller="Customer" asp-action="Index">
+                            Customers
+                        </a>
+                    </h6>
+                </div>
+                <!-- CUSTOMERS -->
+
+                <!-- INCIDENTS -->
+                <div class="col-md-4">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <a class="footer_navbar_links @(areaName == "" && controllerName == "Incident" && actionName == "Index" ? "active" : "")" asp-controller="Incident" asp-action="Index">
+                            Incidents
+                        </a>
+                    </h6>
+                </div>
+                <!-- INCIDENTS -->
+
+                <!-- ABOUT -->
+                <div class="col-md-4">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <a class="footer_navbar_links @(areaName == "" && controllerName == "Home" && actionName == "About"  ? "active" : "")" asp-controller="About" asp-action="Index">
+                            About
+                        </a>
+                    </h6>
+                </div>
+                <!-- ABOUT -->
+
+                <!-- REGISTRATIONS -->
+                <div class="col-md-4">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <a class="footer_navbar_links @(areaName == "" && controllerName == "Registration" && actionName == "Index" ? "active" : "")" asp-controller="Registration" asp-action="Index">
+                            Registrations
+                        </a>
+                    </h6>
+                </div>
+                <!-- REGISTRATIONS -->
+
+            </div>
+        </section>
+    </div>
+
+    @* BACK TO TOP *@
+    <div class="text-center  d-flex justify-content-center">
+        <a href="#" class="back_to_top_button">
+            <svg class="back_to_top_svgIcon" viewBox="0 0 384 512">
+                <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path>
+            </svg>
+        </a>
+    </div>
+    @* BACK TO TOP *@
+
+
+    <!-- Copyright -->
+    <div class="text-center p-3 footer_copyright">
+        ©
+        <span id="copyright">
+            <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
+        </span>
+        Copyright: Tony Cook
+    </div>
+    <!-- Copyright -->
+</footer>
+<!-- Footer -->
 
 
 
