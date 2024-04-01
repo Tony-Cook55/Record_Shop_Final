@@ -1,10 +1,12 @@
 ﻿
 // Used for [ValidateNever]
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 /* Allows for the [Required] and the [Range]*/
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics;
 
 namespace RecordShop.Models
 {
@@ -68,6 +70,19 @@ namespace RecordShop.Models
         // Calls in our Genre Modal Class To be set to each Record   LINKS BOTH CLASSES TOGETHER
         [ValidateNever]
         public GenreModel Genre { get; set; } = null!;
+
+
+
+
+
+
+
+        // MANY TO MANY WITH CustomerModel    - Registrations Page
+        public ICollection<CustomerModel> Customers { get; set; } = new List<CustomerModel>();
+
+
+
+
 
 
 

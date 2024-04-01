@@ -400,6 +400,40 @@ namespace RecordShop.Models
 
 
 
+            // mtm mtm mtm mtm MANY TO MANY FOR REGISTRAIONS mtm mtm mtm mtm \\
+            // MANY TO MANY WITH PRODUCTS TO CUSTOMERS FOR Registrations Page
+            modelBuilder.Entity<CustomerModel>().HasMany(c => c.Products)
+            .WithMany(p => p.Customers)
+            .UsingEntity<CustomerProducts>(
+                j => j
+                    .HasOne(cp => cp.Products)
+                    .WithMany()
+                    .HasForeignKey(cp => cp.ProductModelId),
+                j => j
+                    .HasOne(cp => cp.Customers)
+                    .WithMany()
+                    .HasForeignKey(cp => cp.CustomerModelId),
+                j =>
+                {
+                    j.ToTable("CustomerProducts"); // Optional: If you want to specify the name of the join table
+                    j.HasKey(cp => new { cp.CustomerModelId, cp.ProductModelId });
+                    j.HasData(
+                        new CustomerProducts { CustomerModelId = 1, ProductModelId = 1 },
+                        new CustomerProducts { CustomerModelId = 2, ProductModelId = 2 },
+                        new CustomerProducts { CustomerModelId = 2, ProductModelId = 3 },
+                        new CustomerProducts { CustomerModelId = 3, ProductModelId = 3 },
+                        new CustomerProducts { CustomerModelId = 3, ProductModelId = 4 }
+                    );
+                });
+            // mtm mtm mtm mtm MANY TO MANY FOR REGISTRAIONS mtm mtm mtm mtm \\
+
+
+
+
+
+
+
+
 
 
 

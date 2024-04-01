@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RecordShop.Models;
 
@@ -11,9 +12,11 @@ using RecordShop.Models;
 namespace RecordShop.Migrations
 {
     [DbContext(typeof(RecordShopContextModel))]
-    partial class RecordShopContextModelModelSnapshot : ModelSnapshot
+    [Migration("20240401140503_Many-To-Many_Product-To-Customer")]
+    partial class ManyToMany_ProductToCustomer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +24,21 @@ namespace RecordShop.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("CustomerModelProductModel", b =>
+                {
+                    b.Property<int>("CustomersCustomerModelId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductsProductModelId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CustomersCustomerModelId", "ProductsProductModelId");
+
+                    b.HasIndex("ProductsProductModelId");
+
+                    b.ToTable("CustomerModelProductModel");
+                });
 
             modelBuilder.Entity("RecordShop.Models.CountryModel", b =>
                 {
@@ -258,48 +276,6 @@ namespace RecordShop.Migrations
                         });
                 });
 
-            modelBuilder.Entity("RecordShop.Models.CustomerProducts", b =>
-                {
-                    b.Property<int>("CustomerModelId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductModelId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CustomerModelId", "ProductModelId");
-
-                    b.HasIndex("ProductModelId");
-
-                    b.ToTable("CustomerProducts", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            CustomerModelId = 1,
-                            ProductModelId = 1
-                        },
-                        new
-                        {
-                            CustomerModelId = 2,
-                            ProductModelId = 2
-                        },
-                        new
-                        {
-                            CustomerModelId = 2,
-                            ProductModelId = 3
-                        },
-                        new
-                        {
-                            CustomerModelId = 3,
-                            ProductModelId = 3
-                        },
-                        new
-                        {
-                            CustomerModelId = 3,
-                            ProductModelId = 4
-                        });
-                });
-
             modelBuilder.Entity("RecordShop.Models.EmployeeModel", b =>
                 {
                     b.Property<int>("EmployeeModelId")
@@ -531,7 +507,7 @@ namespace RecordShop.Migrations
                             IncidentModelId = 1,
                             CustomerModelId = 1,
                             DateClosed = new DateTime(2024, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOpened = new DateTime(2024, 4, 1, 10, 27, 20, 603, DateTimeKind.Local).AddTicks(6417),
+                            DateOpened = new DateTime(2024, 4, 1, 9, 5, 3, 32, DateTimeKind.Local).AddTicks(5333),
                             Description = "Record Came out of the package scratched.",
                             EmployeeModelId = 1,
                             ProductModelId = 1,
@@ -542,7 +518,7 @@ namespace RecordShop.Migrations
                             IncidentModelId = 2,
                             CustomerModelId = 3,
                             DateClosed = new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOpened = new DateTime(2024, 4, 1, 10, 27, 20, 603, DateTimeKind.Local).AddTicks(6475),
+                            DateOpened = new DateTime(2024, 4, 1, 9, 5, 3, 32, DateTimeKind.Local).AddTicks(5382),
                             Description = "Snapped In two",
                             EmployeeModelId = 2,
                             ProductModelId = 2,
@@ -552,7 +528,7 @@ namespace RecordShop.Migrations
                         {
                             IncidentModelId = 3,
                             CustomerModelId = 4,
-                            DateOpened = new DateTime(2024, 4, 1, 10, 27, 20, 603, DateTimeKind.Local).AddTicks(6479),
+                            DateOpened = new DateTime(2024, 4, 1, 9, 5, 3, 32, DateTimeKind.Local).AddTicks(5386),
                             Description = "Picked the wrong size record for my Record Player",
                             EmployeeModelId = 2,
                             ProductModelId = 3,
@@ -563,7 +539,7 @@ namespace RecordShop.Migrations
                             IncidentModelId = 4,
                             CustomerModelId = 6,
                             DateClosed = new DateTime(2024, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOpened = new DateTime(2024, 4, 1, 10, 27, 20, 603, DateTimeKind.Local).AddTicks(6483),
+                            DateOpened = new DateTime(2024, 4, 1, 9, 5, 3, 32, DateTimeKind.Local).AddTicks(5389),
                             Description = "Wanted a new artist",
                             EmployeeModelId = 2,
                             ProductModelId = 3,
@@ -655,6 +631,21 @@ namespace RecordShop.Migrations
                         });
                 });
 
+            modelBuilder.Entity("CustomerModelProductModel", b =>
+                {
+                    b.HasOne("RecordShop.Models.CustomerModel", null)
+                        .WithMany()
+                        .HasForeignKey("CustomersCustomerModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RecordShop.Models.ProductModel", null)
+                        .WithMany()
+                        .HasForeignKey("ProductsProductModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("RecordShop.Models.CustomerModel", b =>
                 {
                     b.HasOne("RecordShop.Models.CountryModel", "Country")
@@ -664,25 +655,6 @@ namespace RecordShop.Migrations
                         .IsRequired();
 
                     b.Navigation("Country");
-                });
-
-            modelBuilder.Entity("RecordShop.Models.CustomerProducts", b =>
-                {
-                    b.HasOne("RecordShop.Models.CustomerModel", "Customers")
-                        .WithMany()
-                        .HasForeignKey("CustomerModelId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RecordShop.Models.ProductModel", "Products")
-                        .WithMany()
-                        .HasForeignKey("ProductModelId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Customers");
-
-                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("RecordShop.Models.IncidentModel", b =>

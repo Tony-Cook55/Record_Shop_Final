@@ -98,6 +98,15 @@ namespace RecordShop.Models
 
 
 
+        // MANY TO MANY WITH ProductModel    - Registrations Page
+        public ICollection<ProductModel> Products { get; set; } = new List<ProductModel>();
+        public CustomerModel()
+        {
+            Products = new HashSet<ProductModel>();
+        }
+
+
+
 
 
     }

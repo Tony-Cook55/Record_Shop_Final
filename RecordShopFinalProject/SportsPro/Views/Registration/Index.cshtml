@@ -1,12 +1,49 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
+@model ProductModel
+
 @{
+    ViewData["Title"] = "Customer Registrations";
+}
+
+<h1>Registration</h1>
+
+
+
+
+
+<form asp-controller="Registration" asp-action="CustomerProductSelected" method="post">
+    <div class="mb-3">
+@*         <label asp-for="CustomerModelId" class="form-label">Customer</label>
+ *@
+        <select class="form-control" name="customerModelId">
+            <option value="" selected>Select Customer</option>
+            @foreach (var customer in ViewBag.Customers)
+            {
+                <option value="@customer.CustomerModelId">@customer.CustomerFirstName  @customer.CustomerLastName</option>
+            }
+        </select>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Filter</button>
+</form>
+
+
+
+
+
+
+
+@* Checks if there is a string in our Temp Data Message. If So Show the Message If not Nothing. This is so We don't see its padding and color *@
+@if (!string.IsNullOrEmpty(TempData["NoRegistrations"] as string))
+{
+    <div class="text-center bg-danger py-3 mt-3">
+        <h1 class="">@(TempData["NoRegistrations"])</h1>
+    </div>
 }
 
 
-<h1>Registrations</h1>
-
-
-
+@if (ViewBag.CustomerFirstName == null)
+{
+    <h1 class="text-center pt-3">Please Select a Customer to View Registrations.</h1>
+}
 
