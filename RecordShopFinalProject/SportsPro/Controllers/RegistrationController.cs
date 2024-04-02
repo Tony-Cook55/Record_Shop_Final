@@ -17,7 +17,7 @@ namespace RecordShop.Controllers
 
 
 
-
+        // Selecting Customer Page \\
         public IActionResult Index(ProductModel products)
         {
             // This will be Used to Plug Into the Index for Us adding the Employees for the Dropdown
@@ -29,33 +29,85 @@ namespace RecordShop.Controllers
 
 
 
-
+        // sssssssssssssss SHOW CUSTOMERS PRODUCTS sssssssssssssss \\
         [HttpPost]
         public IActionResult CustomerProductSelected(int customerModelId)
         {
-            // This will be Used to Plug Into the Index for Us adding the Employees for the Dropdown
-            ViewBag.Customers = _context.Customers.OrderBy(f => f.CustomerFirstName).ToList();
-
-
+            // Gets our customer with passed in Id
             var customer = _context.Customers.Include(c => c.Products).FirstOrDefault(c => c.CustomerModelId == customerModelId);
 
-            if (customer == null || customer.Products.Count == 0)
+            if (customer == null)
             {
-                TempData["NoRegistrations"] = $"{customer.CustomerFirstName} has no Products Registered";
-                return View("Index"); // Return to the Index view
+                TempData["NoRegistrations"] = $"Please Select a Customer";
+                return RedirectToAction("Index"); // Return to the Index view
+            }
+            else if (customer.Products.Count == 0 || customerModelId == 0)
+            {
+                TempData["NoRegistrations"] = $"{customer.CustomerFirstName} {customer.CustomerLastName} has no Products Registered";
+                return RedirectToAction("Index"); // Return to the Index view
             }
             else
             {
-                ViewBag.CustomerFirstName = customer.CustomerFirstName;
-                ViewBag.CustomerLastName = customer.CustomerLastName;
-
-
-                ViewBag.Products = customer.Products;
-
-                return View("RegistrationList", "Registration"); // Return to the Index view
+                return RedirectToAction("RegistrationList", new { customerModelId });
             }
         }
 
+
+
+        public IActionResult RegistrationList(int customerModelId)
+        {
+            // Gets our customer with passed in Id
+            var customer = _context.Customers
+                .Include(c => c.Products)
+                .FirstOrDefault(c => c.CustomerModelId == customerModelId);
+
+
+            ViewBag.AllProducts = _context.Products.ToList();
+
+            return View(customer);
+        }
+        // sssssssssssssss SHOW CUSTOMERS PRODUCTS sssssssssssssss \\
+
+
+
+
+
+        // +++++++++++++++++ ADD PRODUCT TO CUSTOMER +++++++++++++++++ \\
+        [HttpPost]
+        public IActionResult RegisterToCustomer(int productModelId, int customerModelId)
+        {
+            // Find the customer by ID
+            var customer = _context.Customers
+                    .Include(c => c.Products)
+                    .FirstOrDefault(c => c.CustomerModelId == customerModelId);
+
+
+            // Find the product by ID
+            var product = _context.Products.Find(productModelId);
+
+
+
+            // Check if the product is already associated with the customer if so Throw Error
+            if (customer.Products.Contains(product))
+            {
+                TempData["CustomerAlreadyRegistered"] = $"Product '{product.RecordName}' is already registered with {customer.CustomerFirstName} {customer.CustomerLastName}.";
+                return RedirectToAction("RegistrationList", customer);
+            }
+            else
+            {
+                TempData["CRUDMessage"] = $"Product '{product.RecordName}' Has Been Added To Customer {customer.CustomerFirstName} {customer.CustomerLastName}.";
+
+                // Add the product to the customer's products
+                customer.Products.Add(product);
+
+                // Save changes to the database
+                _context.SaveChanges();
+
+                // Redirect back to the registration list with updated data
+                return RedirectToAction("RegistrationList", customer); // Return to the Index view
+            }
+        }
+        // +++++++++++++++++ ADD PRODUCT TO CUSTOMER +++++++++++++++++ \\
 
 
 
