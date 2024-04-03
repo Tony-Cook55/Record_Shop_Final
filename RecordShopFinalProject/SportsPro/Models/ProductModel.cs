@@ -3,6 +3,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
+
+
 /* Allows for the [Required] and the [Range]*/
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -15,7 +17,7 @@ namespace RecordShop.Models
 
 
         // Read-Only Property for the /slug in the Program.cs file   This Shows the FirstName and the PhoneNumber
-        public string Slug => ArtistName?.Replace(" ", "-").ToLower() +  "-"  + RecordName?.Replace(" ", "-").ToLower() + "-" /*+ Price?.ToString()*/;
+        public string Slug => ArtistName?.Replace(" ", "-").ToLower() + "-" + RecordName?.Replace(" ", "-").ToLower() + "-" /*+ Price?.ToString()*/;
 
 
 
@@ -48,8 +50,8 @@ namespace RecordShop.Models
         public int? ReleaseDate { get; set; }
 
         // This will be called into the Product Controller when Adding so the current time can be set into this to be called into Details
-/*        [DataType(DataType.Date)]
-        public DateOnly ReleaseDate { get; set; }*/
+        /*        [DataType(DataType.Date)]
+                public DateOnly ReleaseDate { get; set; }*/
 
 
 

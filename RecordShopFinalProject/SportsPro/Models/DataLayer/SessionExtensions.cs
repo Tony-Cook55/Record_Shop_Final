@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace RecordShop.Models
+namespace RecordShop.Models.DataLayer
 {
     public static class SessionExtensions
     {
@@ -15,7 +15,7 @@ namespace RecordShop.Models
         public static T GetObject<T>(this ISession session, string key)
         {
             var value = session.GetString(key);
-            return value == null ? default(T) : JsonSerializer.Deserialize<T>(value);
+            return value == null ? default : JsonSerializer.Deserialize<T>(value);
         }
 
 

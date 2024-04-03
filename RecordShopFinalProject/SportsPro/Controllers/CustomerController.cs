@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RecordShop.Models;
+using RecordShop.Models.DataLayer;
+using System.Security.Claims;
 
 namespace RecordShop.Controllers
 {
@@ -10,13 +12,22 @@ namespace RecordShop.Controllers
 
         // Connects to the database
         private RecordShopContextModel Context { get; set; }
+        private Repository<CustomerModel> CustomerRepo { get; set; }
+
 
         // This Constructor accepts the DB Context objects thats enabled by DI
         // Accepts a Customer context that holds a list of Customer Info
         public CustomerController(RecordShopContextModel ctx)
         {
             Context = ctx;
+
+            CustomerRepo = new Repository<CustomerModel>(ctx);
+
         }
+
+
+
+
 
 
 
@@ -24,7 +35,7 @@ namespace RecordShop.Controllers
         public IActionResult Index()
         {
             // Sending list of both Customers and Country's
-            var customer = Context.Customers.Include(c => c.Country).OrderBy(f => f.CustomerFirstName).ToList();
+            var customer = CustomerRepo.List(new QueryOptions<CustomerModel>());
 
             return View(customer);
         }

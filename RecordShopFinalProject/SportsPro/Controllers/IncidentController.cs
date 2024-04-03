@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RecordShop.Models;
+using RecordShop.Models.DataLayer;
 using System.Text.Json;
 
 namespace RecordShop.Controllers
