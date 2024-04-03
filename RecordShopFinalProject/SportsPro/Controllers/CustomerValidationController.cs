@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RecordShop.Models;
+using RecordShop.Models.DataLayer;
 
 namespace RecordShop.Controllers
 {
@@ -7,10 +8,15 @@ namespace RecordShop.Controllers
     {
 
 
-        private RecordShopContextModel _context;
-        public CustomerValidationController(RecordShopContextModel context)
+        private RecordShopContextModel Context;
+
+        private Repository<CustomerModel> CustomerRepo { get; set; }
+
+        public CustomerValidationController(RecordShopContextModel ctx)
         {
-            _context = context;
+            Context = ctx;
+
+            CustomerRepo = new Repository<CustomerModel>(ctx);
         }
 
 
@@ -18,7 +24,7 @@ namespace RecordShop.Controllers
 
         public JsonResult CheckEmailExists(string Email)
         {
-            if (_context.Customers.Any(c => c.Email == Email))
+            if (Context.Customers.Any(c => c.Email == Email))
             {
                 return Json($"Email is already registered.");
             }

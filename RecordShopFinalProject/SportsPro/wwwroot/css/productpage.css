@@ -21,32 +21,6 @@
 
 
 
-.hero_header__no_items_text {
-    user-select: none;
-    position: relative;
-    z-index: 1;
-    font-size: 4rem;
-    margin: 0 0 10px;
-    line-height: 1;
-    /*    color: #b5c8b2;*/
-    color: #ff8f73;
-    text-shadow: -4px -4px 0 rgba(255, 255, 255, 0.2), 2px 2px 0 #422800;
-}
-
-.no_results_img {
-    max-width: 100%;
-    height: auto;
-    user-select: none;
-
-
-    transition: all 0.2s ease-in-out; /* Transition the top position */
-}
-
-.no_results_img:hover {
-    transform: scale(1.05);
-}
-
-
 
 
 

@@ -10,7 +10,7 @@
 
 
 .search {
-    border: 4px solid #634a4c;
+    border: 5px solid #634a4c;
     overflow: auto;
     border-radius: 50px;
     display: flex;
@@ -30,13 +30,15 @@
     padding: 10px;
     background-color: #f3f1e0;
     color: #634a4c;
-    /* The Cursor Color*/
+    /* The Typing Cursor Color*/
     caret-color: #ff8f73;
+
     transition: all 0.2s ease-in-out;
 }
     .search_bar_text_input:hover, .search_bar_text_input:active {
         background-color: #ff8f73;
         color: #f3f1e0;
+        /* The Typing Cursor Color*/
         caret-color: #634a4c;
     }
     .search_bar_text_input:focus {

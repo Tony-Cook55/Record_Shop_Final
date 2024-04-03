@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RecordShop.Models;
+using RecordShop.Models.DataLayer;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace RecordShop.Controllers
@@ -12,11 +13,15 @@ namespace RecordShop.Controllers
         // Connects to the database
         private RecordShopContextModel Context { get; set; }
 
+        private Repository<ProductModel> ProductRepo { get; set; }
+
         // This Constructor accepts the DB Context objects thats enabled by DI
         // Accepts a Product context that holds a list of Products Info
         public ProductController(RecordShopContextModel ctx)
         {
             Context = ctx;
+
+            ProductRepo = new Repository<ProductModel>(ctx);
         }
 
 

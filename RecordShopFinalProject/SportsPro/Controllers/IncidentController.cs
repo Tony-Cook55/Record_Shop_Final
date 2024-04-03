@@ -13,11 +13,15 @@ namespace RecordShop.Controllers
         // Connects to the database
         private RecordShopContextModel Context { get; set; }
 
+        private Repository<IncidentModel> IncidentRepo { get; set; }
+
         // This Constructor accepts the DB Context objects thats enabled by DI
         // Accepts a Employee context that holds a list of Employee Info
         public IncidentController(RecordShopContextModel ctx)
         {
             Context = ctx;
+
+            IncidentRepo = new Repository<IncidentModel>(ctx);
         }
 
 

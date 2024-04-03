@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RecordShop.Models;
+using RecordShop.Models.DataLayer;
 
 namespace RecordShop.Controllers
 {
@@ -12,11 +13,16 @@ namespace RecordShop.Controllers
         // Connects to the database
         private RecordShopContextModel Context { get; set; }
 
+        private Repository<EmployeeModel> EmployeeRepo { get; set; }
+
+
         // This Constructor accepts the DB Context objects thats enabled by DI
         // Accepts a Employee context that holds a list of Employee Info
         public EmployeeController(RecordShopContextModel ctx)
         {
             Context = ctx;
+
+            EmployeeRepo = new Repository<EmployeeModel>(ctx);
         }
 
 

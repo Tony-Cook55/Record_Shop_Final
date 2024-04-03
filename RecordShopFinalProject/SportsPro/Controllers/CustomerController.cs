@@ -22,7 +22,6 @@ namespace RecordShop.Controllers
             Context = ctx;
 
             CustomerRepo = new Repository<CustomerModel>(ctx);
-
         }
 
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RecordShop.Models;
+using RecordShop.Models.DataLayer;
 
 namespace RecordShop.Controllers
 {
@@ -8,11 +9,19 @@ namespace RecordShop.Controllers
     {
 
 
-        private RecordShopContextModel _context;
-        public RegistrationController(RecordShopContextModel context)
+        private RecordShopContextModel Context;
+        private Repository<CustomerModel> RegistrationRepo { get; set; }
+
+        public RegistrationController(RecordShopContextModel ctx)
         {
-            _context = context;
+            Context = ctx;
+
+            RegistrationRepo = new Repository<CustomerModel>(ctx);
         }
+        // Connects to the database
+
+
+
 
 
 
@@ -21,7 +30,7 @@ namespace RecordShop.Controllers
         public IActionResult Index(ProductModel products)
         {
             // This will be Used to Plug Into the Index for Us adding the Employees for the Dropdown
-            ViewBag.Customers = _context.Customers.OrderBy(f => f.CustomerFirstName).ToList();
+            ViewBag.Customers = Context.Customers.OrderBy(f => f.CustomerFirstName).ToList();
 
             return View(products);
         }
@@ -34,7 +43,7 @@ namespace RecordShop.Controllers
         public IActionResult CustomerProductSelected(int customerModelId)
         {
             // Gets our customer with passed in Id
-            var customer = _context.Customers.Include(c => c.Products).FirstOrDefault(c => c.CustomerModelId == customerModelId);
+            var customer = Context.Customers.Include(c => c.Products).FirstOrDefault(c => c.CustomerModelId == customerModelId);
 
             if (customer == null)
             {
@@ -57,12 +66,12 @@ namespace RecordShop.Controllers
         public IActionResult RegistrationList(int customerModelId)
         {
             // Gets our customer with passed in Id
-            var customer = _context.Customers
+            var customer = Context.Customers
                 .Include(c => c.Products)
                 .FirstOrDefault(c => c.CustomerModelId == customerModelId);
 
 
-            ViewBag.AllProducts = _context.Products.ToList();
+            ViewBag.AllProducts = Context.Products.ToList();
 
             return View(customer);
         }
@@ -77,13 +86,13 @@ namespace RecordShop.Controllers
         public IActionResult RegisterToCustomer(int productModelId, int customerModelId)
         {
             // Find the customer by ID
-            var customer = _context.Customers
+            var customer = Context.Customers
                     .Include(c => c.Products)
                     .FirstOrDefault(c => c.CustomerModelId == customerModelId);
 
 
             // Find the product by ID
-            var product = _context.Products.Find(productModelId);
+            var product = Context.Products.Find(productModelId);
 
 
 
@@ -101,7 +110,7 @@ namespace RecordShop.Controllers
                 customer.Products.Add(product);
 
                 // Save changes to the database
-                _context.SaveChanges();
+                Context.SaveChanges();
 
                 // Redirect back to the registration list with updated data
                 return RedirectToAction("RegistrationList", customer); // Return to the Index view
