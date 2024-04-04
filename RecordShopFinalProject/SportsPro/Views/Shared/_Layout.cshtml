@@ -14,6 +14,7 @@
     <link href="~/css/site.css" rel="stylesheet" />
     <link href="~/css/carditem.css" rel="stylesheet" />
     <link href="~/css/editpage.css" rel="stylesheet" />
+    <link href="~/css/deletepage.css" rel="stylesheet" />
     <link href="~/css/tempdatapopup.css" rel="stylesheet" />
     <link href="~/css/homepage.css" rel="stylesheet" />
     <link href="~/css/pagination.css" rel="stylesheet" />
@@ -60,8 +61,6 @@
         var controllerName = ViewContext.RouteData.Values["Controller"]?.ToString() ?? "";
         var actionName = ViewContext.RouteData.Values["Action"]?.ToString() ?? "";
     }
-
-
 
 
 
@@ -135,7 +134,7 @@
 
 
 
-    <div >@* class="container-fluid" *@
+    <div class="whole_site_wrapper">@* class="container-fluid" *@
         <main role="main" class="">
             @RenderBody()
         </main>
@@ -148,7 +147,7 @@
 
 
 <!-- Footer -->
-<footer class=" text-center">
+    <footer class=" text-center">
     <div class="footer_container">
         <section class="mt-5">
             <div class="row text-center d-flex justify-content-center pt-5">
