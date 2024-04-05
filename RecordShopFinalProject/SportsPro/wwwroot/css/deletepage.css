@@ -7,7 +7,7 @@
 
     margin-top: 50px;
     margin-bottom: 30px;
-    color: #ff8f73;
+    color: #b5c8b2;
     text-shadow: 0 1px #555555, 0 2px #555555, 0 3px #555555;
 }
 
@@ -21,6 +21,51 @@
 
     font-weight: bold;
     text-transform: uppercase;
+    text-decoration: underline;
 
-    color: #ff8f73;
+    text-decoration-color: #ff8f73;
+    text-underline-position: under;
+
+    text-shadow: 0 1px #555555, 0 2px #555555, 0 3px #555555;
+    color: #b5c8b2;
+}
+
+
+
+
+
+
+.delete_record_img {
+    max-width: 50%;
+    height: auto;
+    width: auto;
+}
+
+
+
+
+
+
+
+.floating_animation {
+    animation-name: floating_animation;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+@keyframes floating_animation {
+    0% {
+        transform: translate(0, 0px);
+    }
+
+    50% {
+        transform: translate(0, 15px);
+    }
+
+    100% {
+        transform: translate(0, -0px);
+    }
 }

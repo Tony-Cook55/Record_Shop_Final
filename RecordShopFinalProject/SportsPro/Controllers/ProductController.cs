@@ -171,7 +171,7 @@ namespace RecordShop.Controllers
 
 
         [HttpPost]
-        public IActionResult DeleteProduct(ProductModel products)
+        public async Task<IActionResult> DeleteProduct(ProductModel products)
         {
             ViewBag.Action = "Delete Product";
 
@@ -193,6 +193,9 @@ namespace RecordShop.Controllers
                 // If the product doesn't exist, display an error message
                 TempData["CRUDMessage"] = "Product not found";
             }
+
+            // A delay to allow the GIF of record breaking to play before redirecting to Index
+            await Task.Delay(3000); // Delay for 1000 == 1 second
 
             return RedirectToAction("Index", "Product");
         }

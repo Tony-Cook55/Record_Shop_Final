@@ -15,18 +15,47 @@
 <div class="container  text-center">
     <h1 class="page_header_text  text_shadow_pop_top">Delete Record</h1>
 
-
     <h1 class="delete_selected_item_header">Do You Really Want To Delete</h1>
-    <h1 class="delete_selected_item_name">@Model.RecordName ?</h1>
+    <h1 class="delete_selected_item_name">@Model.RecordName</h1>
 
 
-    <img src="~/images/icons/animation/sad_record_breaking.gif" />
+    <img id="smile_record" src="~/images/icons/smile_record_600px.png" class="delete_record_img floating_animation"/>
 
-    <form asp-action="DeleteProduct" method="post">
+    <img id="hoveredImage" src="~/images/icons/sad_record_600px.png" class="delete_record_img floating_animation" style="display: none;" />
+
+    <img id="gifImage" src="~/images/icons/animation/sad_record_breaking.gif" class="delete_record_img"    style="display: none;" />
+
+
+    <form asp-action="DeleteProduct" method="post" onsubmit="showGIF()">
         @* This Product id is being sent back to the controller *@
         <input type="hidden" asp-for="ProductModelId" />
 
-        <button type="submit" class="btn btn-dark">Yes</button>
+
+        <button type="submit" class="btn btn-dark" onmouseover="showSadRecord()" onmouseout="hideSadRecord()" onclick="showGIF()">Yes</button>
         <a asp-controller="Product" asp-action="Index" class="btn btn-dark">No</a>
     </form>
 </div>
+
+<script>
+    // Function to show the sad_record image when the "Yes" button is hovered
+    function showSadRecord() {
+        document.getElementById("smile_record").style.display = "none";
+        document.getElementById("gifImage").style.display = "none";
+        document.getElementById("hoveredImage").style.display = "inline-block";
+    }
+
+    // Function to show the smiley_record image when the "Yes" button is unhovered
+    function hideSadRecord() {
+        document.getElementById("hoveredImage").style.display = "none";
+        document.getElementById("smile_record").style.display = "inline-block";
+    }
+
+    // Function to show the GIF and hide other images when the submit button is clicked
+    function showGIF() {
+        document.getElementById("smile_record").style.display = "none";
+        document.getElementById("hoveredImage").style.display = "none";
+        document.getElementById("gifImage").style.display = "inline-block";
+    }
+</script>
+
+
