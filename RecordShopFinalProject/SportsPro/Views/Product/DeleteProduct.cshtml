@@ -12,16 +12,21 @@
 
 
 
-
-<h1 class="page_header_text  text_shadow_pop_top">Delete Record</h1>
-
-<p class="my-4">Do You Really Want To Delete <span class="fw-bold">@Model.RecordName ?</span></p>
+<div class="container  text-center">
+    <h1 class="page_header_text  text_shadow_pop_top">Delete Record</h1>
 
 
-<form asp-action="DeleteProduct" method="post">
-    @* This Product id is being sent back to the controller *@
-    <input type="hidden" asp-for="ProductModelId" />
+    <h1 class="delete_selected_item_header">Do You Really Want To Delete</h1>
+    <h1 class="delete_selected_item_name">@Model.RecordName ?</h1>
 
-    <button type="submit" class="btn btn-dark">Yes</button>
-    <a asp-controller="Product" asp-action="Index" class="btn btn-dark">No</a>
-</form>
+
+    <img src="~/images/icons/animation/sad_record_breaking.gif" />
+
+    <form asp-action="DeleteProduct" method="post">
+        @* This Product id is being sent back to the controller *@
+        <input type="hidden" asp-for="ProductModelId" />
+
+        <button type="submit" class="btn btn-dark">Yes</button>
+        <a asp-controller="Product" asp-action="Index" class="btn btn-dark">No</a>
+    </form>
+</div>

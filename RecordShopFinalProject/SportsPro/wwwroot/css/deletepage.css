@@ -1,1 +1,26 @@
 ﻿
+/* This is the Header Saying "Do You Really Want To Delete" */
+.delete_selected_item_header {
+    font-size: min(15vw, 40px); /* Responsive font size based on viewport width, with a minimum of 24px */
+
+    text-align: center; /* Center align text */
+
+    margin-top: 50px;
+    margin-bottom: 30px;
+    color: #ff8f73;
+    text-shadow: 0 1px #555555, 0 2px #555555, 0 3px #555555;
+}
+
+
+
+/* This is the item that is actually being deleted should be a call in for the currently selected item name */
+.delete_selected_item_name {
+    font-size: min(15vw, 35px); /* Responsive font size based on viewport width, with a minimum of 24px */
+
+    text-align: center; /* Center align text */
+
+    font-weight: bold;
+    text-transform: uppercase;
+
+    color: #ff8f73;
+}

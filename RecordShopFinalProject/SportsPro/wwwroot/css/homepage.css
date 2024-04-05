@@ -55,7 +55,9 @@
     width: 200%; /* Set width greater than the viewport width */
     height: 100%;
     background-repeat: repeat-x;
-    background-image: url('../images/icons/tile_background.png');
+
+    background-image: url('../images/backgrounds/tile_background.png');
+
     animation: slide 45s linear infinite; /* Adjust animation duration as needed */
 }
 

@@ -1,27 +1,6 @@
 ﻿
 
 
-.page_header_text {
-    font-size: 80px; /* Minimum font size */
-    font-size: min(15vw, 90px); /* Responsive font size based on viewport width, with a minimum of 24px */
-
-
-    line-height: 1.2; /* Set line height */
-    text-align: center; /* Center align text */
-
-    margin-top: 50px;
-    color: #ff8f73;
-/*    text-shadow: -2px -2px 2px rgba(255, 255, 255, 0.5), 2px 2px 2px #634a4c, -4px -4px 4px rgba(255, 255, 255, 0.3), 4px 4px 4px #634a4c;
-*/
-}
-
-
-
-
-
-
-
-
 
 
 

@@ -76,6 +76,7 @@
 /* This is the bottom information part after the hover */
 .card_face_bottom_info {
     position: relative;
+    color: #212529;
     background: whitesmoke;
     display: flex;
     flex-direction: column; /* Ensures content stacks vertically */
@@ -110,7 +111,6 @@
     display: inline-block;
     font-size: 1.2em;
     padding: 15px;
-    /*    color: #e62222;*/
 }
 
     .card_expand_link:hover {

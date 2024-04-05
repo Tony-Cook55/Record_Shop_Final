@@ -1,4 +1,32 @@
 
+.colors_im_using {
+    /*    color: #;   */
+
+    color: #b5c8b2;
+    color: #634a4c;
+    color: #f3f1e0;
+    color: #ff8f73;
+    color: #fb7b00;
+    color: #212529;
+
+
+
+
+    /* https://i.pinimg.com/originals/33/db/6d/33db6db11053224ce6f2671fa5849276.png */
+    color: #f3f1e0;
+    color: #f1d7cb;
+    color: #ecb2b0;
+    color: #776163;
+    color: #878f7d;
+    color: #b5c8b2;
+    /* https://www.canva.com/colors/color-palettes/vanilla-amandine/ */
+    color: #7A3E26;
+    color: #CF6856;
+    color: #F7E7CE;
+    color: #FFFFFF;
+}
+
+
 
 
 /* vvvvvvvvvvvv VALIDATION vvvvvvvvvvvv */
@@ -31,14 +59,13 @@ html {
 
 html, body {
     max-width: 100%;
-
     margin: 0;
     min-height: 100vh;
     overflow-x: hidden;
     background-color: #f3f1e0;
-    background-image: url('../images/icons/tile_background3.png');
 
-/*        outline-offset: 4px;
+    background-image: url('../images/backgrounds/tile_background3.png');
+    /*        outline-offset: 4px;
     outline-color: deeppink;*/
 }
 
@@ -50,6 +77,28 @@ body {
     flex-direction: column;
 }
 /* USED FOR FOOTER BEING AT THE BOTTOM OF THE PAGE */
+
+
+
+
+
+
+/* HEADER AT THE TOP OF EACH PAGE */
+.page_header_text {
+    font-size: 80px; /* Minimum font size */
+    font-size: min(15vw, 90px); /* Responsive font size based on viewport width, with a minimum of 24px */
+
+
+    line-height: 1.2; /* Set line height */
+    text-align: center; /* Center align text */
+
+    margin-top: 50px;
+    color: #ff8f73;
+    /*    text-shadow: -2px -2px 2px rgba(255, 255, 255, 0.5), 2px 2px 2px #634a4c, -4px -4px 4px rgba(255, 255, 255, 0.3), 4px 4px 4px #634a4c; */
+}
+/* HEADER AT THE TOP OF EACH PAGE */
+
+
 
 
 
@@ -82,6 +131,15 @@ body {
         transform: scale(1.05);
     }
 /* NO RESULT FOUND */
+
+
+
+
+
+
+
+
+
 
 
 
