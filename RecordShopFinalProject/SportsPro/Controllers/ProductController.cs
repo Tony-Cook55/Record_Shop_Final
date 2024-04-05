@@ -195,7 +195,7 @@ namespace RecordShop.Controllers
             }
 
             // A delay to allow the GIF of record breaking to play before redirecting to Index
-            await Task.Delay(3000); // Delay for 1000 == 1 second
+            await Task.Delay(2500); // Delay for 1000 == 1 second
 
             return RedirectToAction("Index", "Product");
         }

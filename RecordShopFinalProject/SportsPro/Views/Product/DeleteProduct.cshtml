@@ -13,49 +13,64 @@
 
 
 <div class="container  text-center">
-    <h1 class="page_header_text  text_shadow_pop_top">Delete Record</h1>
-
+@*     <h1 class="page_header_text  text_shadow_pop_top">Delete Record</h1>*@
     <h1 class="delete_selected_item_header">Do You Really Want To Delete</h1>
     <h1 class="delete_selected_item_name">@Model.RecordName</h1>
+    <span class="click_record_text">
+        Click The Record To Delete It!
+        <br />
+        <a asp-controller="Product" asp-action="Index" class="click_record_text cancel_delete_product_btn">Cancel Deletion</a>
+    </span>
 
 
-    <img id="smile_record" src="~/images/icons/smile_record_600px.png" class="delete_record_img floating_animation"/>
-
-    <img id="hoveredImage" src="~/images/icons/sad_record_600px.png" class="delete_record_img floating_animation" style="display: none;" />
-
-    <img id="gifImage" src="~/images/icons/animation/sad_record_breaking.gif" class="delete_record_img"    style="display: none;" />
 
 
-    <form asp-action="DeleteProduct" method="post" onsubmit="showGIF()">
+
+
+    <form  asp-action="DeleteProduct"  method="post"   class="delete_product_form">
         @* This Product id is being sent back to the controller *@
         <input type="hidden" asp-for="ProductModelId" />
 
+        @* SAD FACE RECORD *@
+        @* alt="Submit" -->  will submit to the form   like   type="submit"*@
+        <input
+            id="sad_record_img"
+            type="image"
+            draggable="false"
+            class="delete_record_img   floating_animation"
+            alt="Submit"
+            onclick="toggleImageAndGIF()"
+            src="~/images/icons/sad_record_600px.png"
+        />
+        @* <img id="sad_record_img" class="delete_record_img floating_animation" src="~/images/icons/sad_record_600px.png" />*@
+        @* SAD FACE RECORD *@
 
-        <button type="submit" class="btn btn-dark" onmouseover="showSadRecord()" onmouseout="hideSadRecord()" onclick="showGIF()">Yes</button>
-        <a asp-controller="Product" asp-action="Index" class="btn btn-dark">No</a>
+
+        @* RECORD BREAKING GIF *@
+        <img
+            id="sad_record_gif"
+            class="delete_record_img  floating_animation"
+            style="display: none;"
+            src="~/images/icons/animation/sad_record_breaking.gif"
+        />
+        @* RECORD BREAKING GIF *@
+
     </form>
 </div>
 
+
+
 <script>
-    // Function to show the sad_record image when the "Yes" button is hovered
-    function showSadRecord() {
-        document.getElementById("smile_record").style.display = "none";
-        document.getElementById("gifImage").style.display = "none";
-        document.getElementById("hoveredImage").style.display = "inline-block";
-    }
+    // Function to show the GIF and hide the other image when the Record Image is clicked to submit form
+    function toggleImageAndGIF() {
+        var sadRecord = document.getElementById("sad_record_img");
+        var sadGIF = document.getElementById("sad_record_gif");
 
-    // Function to show the smiley_record image when the "Yes" button is unhovered
-    function hideSadRecord() {
-        document.getElementById("hoveredImage").style.display = "none";
-        document.getElementById("smile_record").style.display = "inline-block";
-    }
+        sadRecord.style.display = "none";
+        sadGIF.style.display = "inline-block";
 
-    // Function to show the GIF and hide other images when the submit button is clicked
-    function showGIF() {
-        document.getElementById("smile_record").style.display = "none";
-        document.getElementById("hoveredImage").style.display = "none";
-        document.getElementById("gifImage").style.display = "inline-block";
+        // document.getElementById("sad_record").style.display = "none";
+        // document.getElementById("sad_record_gif").style.display = "inline-block";
     }
 </script>
-
 
