@@ -73,7 +73,7 @@ namespace RecordShop.Controllers
         [HttpGet]
         public ViewResult Add()
         {
-            ViewBag.Action = "Add New Record";
+            ViewBag.Adding = "Add New Record";
 
             // Puts the Genres of the Records in a list to be able to be edited
             ViewBag.Genres = Context.Genres.OrderBy(g => g.GenreName).ToList();
@@ -91,7 +91,7 @@ namespace RecordShop.Controllers
         {
             /*ViewBag.CurrentDate = DateTime.Now;*/
 
-            ViewBag.Action = "Edit Record";
+            ViewBag.Editing = "Currently Editing";
 
             // Puts the genres back in after the load to be added and show Validation Errors
             ViewBag.Genres = Context.Genres.OrderBy(g => g.GenreName).ToList();

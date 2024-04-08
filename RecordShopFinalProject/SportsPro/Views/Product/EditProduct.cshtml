@@ -1,9 +1,9 @@
 ﻿
 @model ProductModel
-@{
-    ViewBag.Title = $"{ViewBag.Action}";
+@* @{
+    ViewBag.Title = $"{ViewBag.Editing} {ViewBag.Adding}";
 }
-
+ *@
 
 @* Real Time Validation *@
 @{
@@ -19,8 +19,30 @@
 
 
 
-    <div class="container background_container">
-    <h1>@ViewBag.Action</h1>
+
+
+
+
+<div class="container    text-center">
+
+
+    @if (ViewBag.Editing != null) {
+        {
+            ViewBag.Title = $"{ViewBag.Editing} {@Model.RecordName}";
+        }
+
+        <h1 class="add-edit_selected_item_header     editing_item_header_color     text_shadow_pop_top">@ViewBag.Editing</h1>
+        <h1 class="edit_selected_item_name   text_shadow_pop_top">@Model.RecordName</h1>
+    }
+    @if (ViewBag.Adding != null)
+    {
+        {
+            ViewBag.Title = $"{ViewBag.Adding}";
+        }
+
+        <h1 class="add-edit_selected_item_header      adding_item_header_color     text_shadow_pop_top">@ViewBag.Adding</h1>
+    }
+
 
 
 
@@ -31,12 +53,12 @@
 
 
         @* CODE *@
-        <div class="mb-3">
-            <label asp-for="Code" class="form-label">Code</label>
-            <input asp-for="Code" class="form-control" />
+        <div class="add-edit_input_div">
+            <input asp-for="Code" class="add-edit_input   form-control" placeholder="Code" />
+            <label asp-for="Code" class="add-edit_input_label">Code</label>
 
+            <div class="fw-bold text-info">FIX THE ERROR MESSAGE give it its own class and stuff</div>
             <span class="text-danger" asp-validation-for="Code"></span> @* Error Message *@
-
         </div>
         @* CODE *@
 

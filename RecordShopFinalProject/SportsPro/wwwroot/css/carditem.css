@@ -129,11 +129,11 @@
     }
 
 .card_delete_button {
-    color: #ff3e3e;
+    color: #ff4646;
 }
 
     .card_delete_button:hover {
-        background-color: #fe6565;
+        background-color: #ff6363;
         color: #ffff;
     }
 /* CARD LINKS     EDIT - DELETE */

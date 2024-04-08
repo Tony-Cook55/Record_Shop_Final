@@ -30,18 +30,7 @@
 
 
 
-/* vvvvvvvvvvvv VALIDATION vvvvvvvvvvvv */
-/* The text box the inputs in*/
-.input-validation-error {
-    border: 3px solid red;
-    background-color: #ffd2d2ff;
-}
 
-/* The Error Text Below Input */
-.field-validation-error {
-    font-weight: bold;
-}
-/* vvvvvvvvvvvv VALIDATION vvvvvvvvvvvv */
 
 
 

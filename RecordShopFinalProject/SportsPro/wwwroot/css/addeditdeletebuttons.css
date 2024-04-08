@@ -58,11 +58,11 @@
 
 
 .crud_button_delete {
-    background: #ff2d2d;
+    background: #ff4646;
 }
 
     .crud_button_delete:hover {
-        background: #ff3636;
+        background: #ff6363;
     }
 
 

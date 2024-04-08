@@ -14,14 +14,27 @@
 
 <div class="container  text-center">
 @*     <h1 class="page_header_text  text_shadow_pop_top">Delete Record</h1>*@
-    <h1 class="delete_selected_item_header">Do You Really Want To Delete</h1>
-    <h1 class="delete_selected_item_name">@Model.RecordName</h1>
+    <h1 class="delete_selected_item_header    text_shadow_pop_top">Do You Really Want To Delete</h1>
+    <h1 class="delete_selected_item_name      text_shadow_pop_top">@Model.RecordName</h1>
+
     <span class="click_record_text">
         Click The Record To Delete It!
-        <br />
-        <a asp-controller="Product" asp-action="Index" class="click_record_text cancel_delete_product_btn">Cancel Deletion</a>
     </span>
 
+
+
+
+    <div class="cancel_deletion_btn">
+        <a asp-controller="Product" asp-action="Index" class="pushable text-center  m-3">
+            <span class="btn    pushable">
+                <span class="shadow"></span>
+                <span class="edge"></span>
+                <span class="front">
+                    Cancel Deletion
+                </span>
+            </span>
+        </a>
+    </div>
 
 
 
