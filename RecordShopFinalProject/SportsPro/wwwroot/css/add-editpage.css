@@ -36,25 +36,27 @@
 
 
 
-
+/* Div That Each Input is in*/
 .add-edit_input_div {
-    margin-top: 80px;
+    margin-top: 90px;
 }
 
 
 
 /* The Label that appears after input is being typed in */
 .add-edit_input_label {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
     font-weight: bold;
     text-shadow: 0 1px #555555, 0 2px #555555, 0 3px #555555;
     color: #b5c8b2;
 
     /* Matches the position of the text from the left of input if not centered */
     /*margin-left: 2rem; */
+
     display: block; /* Allows Label To Be Under */
 
     transition: all 0.3s ease-in-out;
+
     /* Changes the Direction of the text */
     transform: translateY(-9rem);
 }
@@ -74,16 +76,15 @@
     border: 7px solid #634a4c;
 
     caret-color: #f3f1e0;
-
-
     text-align: center;
 }
+    /* The Placeholder text inside the input */
     .add-edit_input::placeholder {
         text-align: center;
         color: #f3f1e0;
     }
 
-
+    /* What happens when a user enters and activates the input */
     .add-edit_input:active, .add-edit_input:focus {
         color: #634a4c;
         font-size: 1.5rem;
@@ -98,33 +99,96 @@
     }
 
 
-/* PLAYS LABEL ANIMATION OF MOVING */
-.add-edit_input:placeholder-shown + .add-edit_input_label {
-    opacity: 0;
-    visibility: hidden;
-    -webkit-transform: translateY(-4rem);
-    transform: translateY(-4rem);
+    /* PLAYS LABEL ANIMATION OF MOVING */
+    .add-edit_input:placeholder-shown + .add-edit_input_label {
+        opacity: 0;
+        visibility: hidden;
+/*        -webkit-transform: translateY(4rem);
+*/        transform: translateY(-4rem);
+    }
+
+
+
+
+
+
+
+
+    /* SELECT INPUT FOR GENRE's AND OTHERS */
+.add-edit_select_input {
+    color: #f3f1e0;
+    font-size: 1.2rem;
+    padding: 1.5rem 2rem;
+    border-radius: 50px;
+    background-color: #b5c8b2;
+    border: none;
+    /*    width: 90%;
+    display: block;*/
+    transition: all 0.1s;
+    border: 7px solid #634a4c;
+    caret-color: #f3f1e0;
+    text-align: center;
+}
+    .add-edit_select_input:hover{
+        cursor: pointer;
+    }
+    /* What happens when a user enters and activates the select input */
+    .add-edit_select_input:active, .add-edit_select_input:focus {
+        color: #634a4c;
+        background-color: #b5c8b2;
+
+
+        font-weight: bold;
+        /* Gets Rid of html outline when active/ focused */
+        outline: none;
+        outline-color: transparent;
+        box-shadow: none; /* mobiles outline */
+    }
+
+
+
+/* The options in the dropdown */
+.add-edit_selction_options {
+    border-radius: 50px;
+    border: 7px solid #634a4c;
+}
+    .add-edit_selction_options:hover{
+        background-color: greenyellow;
+    }
+
+
+
+
+
+
+
+
+
+
+    /* vvvvvvvvvvvv VALIDATION vvvvvvvvvvvv */
+    .add-edit_error_div {
+        margin-top: 0px;
+    }
+
+.add-edit_error_message {
+    font-size: 1.4rem;
+    color: #ff4646;
+
+    font-weight: bold;
 }
 
 
-
-
-
-
-
-
-
-/* vvvvvvvvvvvv VALIDATION vvvvvvvvvvvv */
 /* ERROR VALIDATIONS */
-.input-validation-error {
+.input-validation-error, .input-validation-error:active, .input-validation-error:focus {
     border: 10px solid #ff4646;
     background-color: #ff8b8b;
+    color: #f3f1e0;
     /* The Typing Cursor Color*/
     caret-color: #f3f1e0;
 }
 
 /* The Error Text Below Input */
-.field-validation-error {
+.field-validation-error, .field-validation-error:active, .field-validation-error:focus {
     font-weight: bold !important;
 }
 /* ERROR VALIDATIONS */

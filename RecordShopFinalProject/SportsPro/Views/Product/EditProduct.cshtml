@@ -53,68 +53,70 @@
 
 
         @* CODE *@
-        <div class="add-edit_input_div">
+        <div class="add-edit_input_div ">
             <input asp-for="Code" class="add-edit_input   form-control" placeholder="Code" />
             <label asp-for="Code" class="add-edit_input_label">Code</label>
-
-            <div class="fw-bold text-info">FIX THE ERROR MESSAGE give it its own class and stuff</div>
-            <span class="text-danger" asp-validation-for="Code"></span> @* Error Message *@
+        </div>
+        <div class="add-edit_error_div   ">
+            <span class="add-edit_error_message" asp-validation-for="Code"></span> @* Error Message *@
         </div>
         @* CODE *@
 
 
         @* RECORD NAME *@
-        <div class="mb-3">
-            <label asp-for="RecordName" class="form-label">Record Name</label>
-            <input asp-for="RecordName" class="form-control" />
-
-            <span class="text-danger" asp-validation-for="RecordName"></span> @* Error Message *@
+        <div class="add-edit_input_div">
+            <input asp-for="RecordName" class="add-edit_input   form-control" placeholder="Record Name" />
+            <label asp-for="RecordName" class="add-edit_input_label">Record Name</label>
+        </div>
+        <div class="add-edit_error_div">
+            <span class="add-edit_error_message   error_message_jello-horizontal" asp-validation-for="RecordName"></span> @* Error Message *@
         </div>
         @* RECORD NAME *@
 
 
         @* ARTIST NAME *@
-        <div class="mb-3">
-            <label asp-for="ArtistName" class="form-label">Artist Name</label>
-            <input asp-for="ArtistName" class="form-control" />
-
-            <span class="text-danger" asp-validation-for="ArtistName"></span> @* Error Message *@
+        <div class="add-edit_input_div">
+            <input asp-for="ArtistName" class="add-edit_input   form-control" placeholder="Artist Name" />
+            <label asp-for="ArtistName" class="add-edit_input_label">Artist Name</label>
+        </div>
+        <div class="add-edit_error_div">
+            <span class="add-edit_error_message   error_message_jello-horizontal" asp-validation-for="ArtistName"></span> @* Error Message *@
         </div>
         @* ARTISTS NAME *@
 
 
         @* GENRE *@
-        <div class="mb-3">
-            <label asp-for="GenreModelId" class="form-label">Genre</label>
-
-            <!-- Using the asp-items tag helper to dynamically populate the drop down list with genres -->
-            <select asp-for="GenreModelId" class="form-control" asp-items="@(new SelectList(ViewBag.Genres, "GenreModelId", "GenreName"))">
-                <option value="">Select Music Genre</option>
+        <div class="add-edit_input_div">
+            <select asp-for="GenreModelId" class="add-edit_select_input  form-control" asp-items="@(new SelectList(ViewBag.Genres, "GenreModelId", "GenreName"))">
+                <option class="add-edit_selction_options" value="">Select Music Genre</option>
             </select>
-
-            <span class="text-danger" asp-validation-for="GenreModelId"></span> @* Error Message *@
-
+            <label asp-for="Price" class="add-edit_input_label">Genre</label>
+        </div>
+        <div class="add-edit_error_div">
+            <span class="add-edit_error_message" asp-validation-for="GenreModelId"></span> @* Error Message *@
         </div>
         @* GENRE *@
 
 
         @* RELEASE YEAR *@
-        <div class="mb-3">
-            <label asp-for="ReleaseDate" class="form-label">Release Year</label>
-            <input asp-for="ReleaseDate" class="form-control" type="text" /> @* type="date" *@
-
-            <span class="text-danger" asp-validation-for="ReleaseDate"></span> @* Error Message *@
+        <div class="add-edit_input_div">
+            <input asp-for="ReleaseDate" class="add-edit_input   form-control" placeholder="Release Year" />
+            <label asp-for="ReleaseDate" class="add-edit_input_label">Release Year</label>
+        </div>
+        <div class="add-edit_error_div">
+            <span class="add-edit_error_message   error_message_jello-horizontal" asp-validation-for="ReleaseDate"></span> @* Error Message *@
         </div>
         @* RELEASE YEAR *@
 
 
 
         @* PRICE *@
-        <div class="mb-3">
-            <label asp-for="Price" class="form-label">Price</label>
-            <input asp-for="Price" class="form-control" />
-
-            <span class="text-danger" asp-validation-for="Price"></span> @* Error Message *@
+        <div class="add-edit_input_div">
+            <input asp-for="Price" class="add-edit_input   form-control" placeholder="Price" />
+            <label asp-for="Price" class="add-edit_input_label">Price</label>
+        </div>
+        <div class="add-edit_error_div">
+            <span class="add-edit_error_message   error_message_jello-horizontal" asp-validation-for="Price"></span> @* Error Message *@
         </div>
         @* PRICE *@
 
