@@ -112,8 +112,6 @@
 
 
 
-
-
     /* SELECT INPUT FOR GENRE's AND OTHERS */
 .add-edit_select_input {
     color: #f3f1e0;
@@ -133,28 +131,28 @@
         cursor: pointer;
     }
     /* What happens when a user enters and activates the select input */
-    .add-edit_select_input:active, .add-edit_select_input:focus {
+    .add-edit_select_input:active, .add-edit_select_input:focus{
         color: #634a4c;
         background-color: #b5c8b2;
+        border: 10px solid #ff8f73;
 
+        font-size: 1.5rem;
 
         font-weight: bold;
+
         /* Gets Rid of html outline when active/ focused */
-        outline: none;
-        outline-color: transparent;
+        outline: none !important;
+        outline-color: transparent !important;
         box-shadow: none; /* mobiles outline */
     }
 
 
 
-/* The options in the dropdown */
-.add-edit_selction_options {
-    border-radius: 50px;
-    border: 7px solid #634a4c;
-}
-    .add-edit_selction_options:hover{
-        background-color: greenyellow;
+    /* Change background color of options when hovered over */
+    .add-edit_select_input add-edit_selction_options:hover {
+        background-color: green;
     }
+
 
 
 
