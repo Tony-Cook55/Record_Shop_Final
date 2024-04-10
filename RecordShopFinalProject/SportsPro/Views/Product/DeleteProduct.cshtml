@@ -7,7 +7,7 @@
 
 @model ProductModel
 @{
-    ViewBag.Title = $"{ViewBag.Action}";
+    ViewBag.Title = $"Delete {@Model.RecordName}";
 }
 
 
@@ -25,7 +25,7 @@
 
 
     <div class="cancel_deletion_btn">
-        <a asp-controller="Product" asp-action="Index" class="pushable text-center  m-3">
+        <a asp-controller="Product" asp-action="Index" class="pushable text-center">
             <span class="btn    pushable">
                 <span class="shadow"></span>
                 <span class="edge"></span>

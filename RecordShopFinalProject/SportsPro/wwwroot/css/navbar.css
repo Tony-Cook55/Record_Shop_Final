@@ -9,10 +9,6 @@
 /* nnnnnnnnnnnnnnnnnnnn NAVBAR nnnnnnnnnnnnnnnnnnnn */
 
 
-/*.nav_header {
-    cursor: url('image-path.png');
-}
-*/
 
 
 .main-navigation-toggle {
@@ -65,12 +61,12 @@
 /* The hamburger menu ☰*/
 .icon--menu {
 /*    stroke: #F7E7CE;
-*/    stroke: #634a4c;
+*/    stroke: #ff8f73;
 }
 
 /* The Close ❌ menu */
 .icon--close {
-    stroke: #634a4c;
+    stroke: #ff8f73;
     transform: translateX(-100%);
 }
 

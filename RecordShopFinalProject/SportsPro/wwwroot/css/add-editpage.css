@@ -1,4 +1,22 @@
 ﻿
+
+/* USED FOR CANCEL BUTTONS */
+.fixed_buttons {
+    position: fixed;
+    top: 1.5rem; /* Assuming 1rem = 16px */
+
+    left: 2rem; /* Adjust left position as needed */
+
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
 /* This is the Header Saying "Currently Editing" */
 .add-edit_selected_item_header {
     font-size: min(15vw, 50px); /* Responsive font size based on viewport width, with a minimum of 24px */
@@ -34,14 +52,10 @@
 
 
 
-
-
 /* Div That Each Input is in*/
 .add-edit_input_div {
     margin-top: 90px;
 }
-
-
 
 /* The Label that appears after input is being typed in */
 .add-edit_input_label {
@@ -49,20 +63,30 @@
     font-weight: bold;
     text-shadow: 0 1px #555555, 0 2px #555555, 0 3px #555555;
     color: #b5c8b2;
-
     /* Matches the position of the text from the left of input if not centered */
     /*margin-left: 2rem; */
-
     display: block; /* Allows Label To Be Under */
-
     transition: all 0.3s ease-in-out;
 
     /* Changes the Direction of the text */
     transform: translateY(-9rem);
 }
 
+/* PLAYS LABEL ANIMATION OF MOVING */
+.add-edit_input:placeholder-shown + .add-edit_input_label {
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: translateY(4rem);
+    transform: translateY(-4rem);
+}
 
-/* Input for the edit page */
+
+
+
+
+
+
+/* Inputs for the edit page */
 .add-edit_input {
     color: #f3f1e0;
     font-size: 1.2rem;
@@ -88,7 +112,6 @@
     .add-edit_input:active, .add-edit_input:focus {
         color: #634a4c;
         font-size: 1.5rem;
-
         background-color: #b5c8b2;
         border: 10px solid #ff8f73;
         font-weight: bold;
@@ -96,18 +119,32 @@
         outline: none;
         outline-color: transparent;
         box-shadow: none; /* mobiles outline */
+
+        /*box-shadow: 0 0 0 0.25rem rgb(25 135 84 / 25%);*/
+    }
+    /* Hovering Over the inputs */
+    .add-edit_input:hover {
+        animation: 0.5s ease-in-out 0s 1 normal both running pulse-animation;
+    }
+@keyframes pulse-animation {
+    0% {
+        transform: scaleX(1);
     }
 
-
-    /* PLAYS LABEL ANIMATION OF MOVING */
-    .add-edit_input:placeholder-shown + .add-edit_input_label {
-        opacity: 0;
-        visibility: hidden;
-/*        -webkit-transform: translateY(4rem);
-*/        transform: translateY(-4rem);
+    50% {
+        transform: scale3d(1.05, 1.05, 1.05);
     }
 
+    100% {
+        transform: scaleX(1);
+    }
+}
 
+
+/* IF THE INPUTS ARE VALID DATA */
+/*.add-edit_input:valid {
+    background-color: #00FF7F;
+}*/
 
 
 
@@ -127,30 +164,39 @@
     caret-color: #f3f1e0;
     text-align: center;
 }
-    .add-edit_select_input:hover{
-        cursor: pointer;
-    }
-    /* What happens when a user enters and activates the select input */
-    .add-edit_select_input:active, .add-edit_select_input:focus{
+    /* What happens when a user enters and activates the select input to click an option*/
+    .add-edit_select_input:active, .add-edit_select_input:focus {
         color: #634a4c;
         background-color: #b5c8b2;
         border: 10px solid #ff8f73;
-
-        font-size: 1.5rem;
-
+        /*font-size: 1.5rem;*/
         font-weight: bold;
-
         /* Gets Rid of html outline when active/ focused */
         outline: none !important;
         outline-color: transparent !important;
-        box-shadow: none; /* mobiles outline */
+        box-shadow: none !important; /* mobiles outline */
+
+
+        /*box-shadow: 0 0 0 0.25rem rgb(25 135 84 / 25%);*/
+    }
+    .add-edit_select_input:hover {
+        cursor: pointer;
+        animation: 0.5s ease-in-out 0s 1 normal both running pulse-animation;
     }
 
 
 
-    /* Change background color of options when hovered over */
-    .add-edit_select_input add-edit_selction_options:hover {
-        background-color: green;
+
+
+/* OPTIONS IN SELECT */
+    .add-edit_selction_option {
+                color: #634a4c;
+        background-color: #b5c8b2;
+    }
+    /* THE ACTIVE SELECTED OPTION */
+    .add-edit_selction_option:checked {
+        background-color: #ff8f73 !important;
+        font-weight: bold;
     }
 
 
@@ -158,15 +204,10 @@
 
 
 
-
-
-
-
-
-    /* vvvvvvvvvvvv VALIDATION vvvvvvvvvvvv */
-    .add-edit_error_div {
-        margin-top: 0px;
-    }
+/* vvvvvvvvvvvv VALIDATION vvvvvvvvvvvv */
+.add-edit_error_div {
+    margin-top: 0px;
+}
 
 .add-edit_error_message {
     font-size: 1.4rem;
@@ -191,3 +232,10 @@
 }
 /* ERROR VALIDATIONS */
 /* vvvvvvvvvvvv VALIDATION vvvvvvvvvvvv */
+
+
+
+
+
+
+

@@ -10,14 +10,26 @@
 
     @* mmmmmmmmmmmmmmm TEMP DATA CRUD MESSAGE mmmmmmmmmmmmmmm *@
     @* Checks if there is a string in our Temp Data Message. If So Show the Message If not Nothing. This is so We don't see its padding and color *@
-    @if (!string.IsNullOrEmpty(TempData["CRUDMessage"] as string))
+    @* @if (!string.IsNullOrEmpty(TempData["CRUDMessage"] as string)) *@
+    @if (TempData.ContainsKey("CRUDMessage"))
     {
-        <div class="error text-center         crud_message_slide_in" id="errorMessage">
-            <div class="error__icon">
+
+@*         string operationClass = "";
+        if (TempData.ContainsKey("CRUD_ADD"))
+        {
+            operationClass = "crud_added_color";
+        }
+        if (TempData.ContainsKey("CRUD_EDIT"))
+        {
+            operationClass = "crud_edited_color";
+        } *@
+
+        <div class="CRUD_Message text-center         crud_message_slide_in" id="CRUDMessage"> @* @operationClass *@
+            <div class="CRUD_icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none"><path fill="#393a37" d="m13 13h-2v-6h2zm0 4h-2v-2h2zm-1-15c-1.3132 0-2.61358.25866-3.82683.7612-1.21326.50255-2.31565 1.23915-3.24424 2.16773-1.87536 1.87537-2.92893 4.41891-2.92893 7.07107 0 2.6522 1.05357 5.1957 2.92893 7.0711.92859.9286 2.03098 1.6651 3.24424 2.1677 1.21325.5025 2.51363.7612 3.82683.7612 2.6522 0 5.1957-1.0536 7.0711-2.9289 1.8753-1.8754 2.9289-4.4189 2.9289-7.0711 0-1.3132-.2587-2.61358-.7612-3.82683-.5026-1.21326-1.2391-2.31565-2.1677-3.24424-.9286-.92858-2.031-1.66518-3.2443-2.16773-1.2132-.50254-2.5136-.7612-3.8268-.7612z"></path></svg>
             </div>
-            <div class="error__title">@(TempData["CRUDMessage"])</div>
-            <div class="error__close" onclick="closeErrorMessage()">
+            <div class="CRUD_title">@(TempData["CRUDMessage"])</div>
+            <div class="CRUD_close" onclick="closeCRUDMessage()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 20 20" height="20">
                     <path fill="#393a37" d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"></path>
                 </svg>
@@ -34,10 +46,10 @@
         <input id="side-menu-toggle" class="side-menu-toggle" type="checkbox" />
         <label for="side-menu-toggle" class="nav_label_container">
             <svg class="icon--menu-toggle"  xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20">
-                <path fill="currentColor" d="m17.545 15.467l-3.779-3.779a6.15 6.15 0 0 0 .898-3.21c0-3.417-2.961-6.377-6.378-6.377A6.185 6.185 0 0 0 2.1 8.287c0 3.416 2.961 6.377 6.377 6.377a6.15 6.15 0 0 0 3.115-.844l3.799 3.801a.953.953 0 0 0 1.346 0l.943-.943c.371-.371.236-.84-.135-1.211M4.004 8.287a4.282 4.282 0 0 1 4.282-4.283c2.366 0 4.474 2.107 4.474 4.474a4.284 4.284 0 0 1-4.283 4.283c-2.366-.001-4.473-2.109-4.473-4.474">
+                <path fill="#ff8f73" d="m17.545 15.467l-3.779-3.779a6.15 6.15 0 0 0 .898-3.21c0-3.417-2.961-6.377-6.378-6.377A6.185 6.185 0 0 0 2.1 8.287c0 3.416 2.961 6.377 6.377 6.377a6.15 6.15 0 0 0 3.115-.844l3.799 3.801a.953.953 0 0 0 1.346 0l.943-.943c.371-.371.236-.84-.135-1.211M4.004 8.287a4.282 4.282 0 0 1 4.282-4.283c2.366 0 4.474 2.107 4.474 4.474a4.284 4.284 0 0 1-4.283 4.283c-2.366-.001-4.473-2.109-4.473-4.474">
                 </path>
             </svg>
-            <div class="text-center  nav_label_names">Search</div>
+            @* <div class="text-center  nav_label_names">Search</div> *@
         </label>
         <nav class="side-menu     container-fluid">
 
@@ -55,7 +67,7 @@
 
             @* FILTERING BY ARTIST NAME*@
             <div class="scrollable_search_buttons   text-center">
-                <a asp-controller="Product" asp-action="Index" asp-route-artist="all"   class="pushable text-center  m-3">
+                <a asp-controller="Product" asp-action="Index" asp-route-artist="all"   class="pushable text-center">
                     <span class="shadow"></span>
                     <span class="edge"></span>
                     <span class="front">

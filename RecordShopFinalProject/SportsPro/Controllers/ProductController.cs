@@ -91,7 +91,7 @@ namespace RecordShop.Controllers
         {
             /*ViewBag.CurrentDate = DateTime.Now;*/
 
-            ViewBag.Editing = "Currently Editing";
+            ViewBag.Editing = "Editing";
 
             // Puts the genres back in after the load to be added and show Validation Errors
             ViewBag.Genres = Context.Genres.OrderBy(g => g.GenreName).ToList();
@@ -130,6 +130,7 @@ namespace RecordShop.Controllers
 
                     // This will be retrieved in The Product Views Index
                     TempData["CRUDMessage"] = $"{products.RecordName} Has Been Added";
+                    TempData["CRUD_ADD"] = $"CRUD_ADDED";
                 }
                 else
                 {
@@ -137,6 +138,8 @@ namespace RecordShop.Controllers
 
                     // This will be retrieved in The Product Views Index
                     TempData["CRUDMessage"] = $"{products.RecordName} Has Been Edited";
+                    TempData["CRUD_EDIT"] = $"CRUD_EDITIED";
+
                 }
                 Context.SaveChanges();
                 return RedirectToAction("Index", "Product");
