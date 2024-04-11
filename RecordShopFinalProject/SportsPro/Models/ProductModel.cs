@@ -57,7 +57,7 @@ namespace RecordShop.Models
 
 
         [Required(ErrorMessage = "Please Enter a Price")]
-        [Range(1, 100000, ErrorMessage = "Price Must be Above $1 to $1,000,000 ")]
+        [Range(1, 1000000, ErrorMessage = "Price Must be Above $1 to $1,000,000 ")]
         public double? Price { get; set; }
 
 

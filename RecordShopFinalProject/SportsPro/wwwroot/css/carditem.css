@@ -14,6 +14,9 @@
 }
 
 .card_expand_face {
+    border: 5px solid #634a4c;
+    border-radius: 10px;
+
     width: 500px;
     height: 200px;
     transition: .5s;
@@ -40,7 +43,7 @@
     background: #b5c8b2;
     z-index: 1;
     transform: translateY(100px);
-    text-shadow: 2px 3px 5px rgba(0,0,0,.8);
+    text-shadow: 0 1px #555555, 0 2px #555555, 0 3px #555555;
 }
 
 .card:hover .card_expand_face.card_face_top {
@@ -55,14 +58,14 @@
 /* The text on the Face of the Card */
 .face_header_text {
     font-size: 2em;
-    color: white;
+    color: #f3f1e0;
     text-align: center;
     word-wrap: break-word; /* Allow long words to wrap */
 }
 
 .face_text {
     font-size: 1em;
-    color: white;
+    color: #f3f1e0;
     text-align: center;
     word-wrap: break-word; /* Allow long words to wrap */
 }
@@ -76,8 +79,8 @@
 /* This is the bottom information part after the hover */
 .card_face_bottom_info {
     position: relative;
-    color: #212529;
-    background: whitesmoke;
+    color: #634a4c;
+    background: #f3f1e0;
     display: flex;
     flex-direction: column; /* Ensures content stacks vertically */
     align-items: center;
@@ -102,15 +105,18 @@
 
 
 
+
+
 /* CARD LINKS     EDIT - DELETE */
 .card_expand_link {
     text-decoration: none;
     box-sizing: border-box;
-    padding: 10px;
-    margin: 15px 0 0;
+    padding: 15px;
+
+    margin-top: 10px;
+
     display: inline-block;
     font-size: 1.2em;
-    padding: 15px;
 }
 
     .card_expand_link:hover {

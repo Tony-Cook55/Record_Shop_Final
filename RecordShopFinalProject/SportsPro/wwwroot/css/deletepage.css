@@ -64,6 +64,10 @@
     transition: all 0.3s ease-in-out;
     cursor: url('../images/icons/cursor/smile_hammer_cursor_64.png'), auto !important;
     user-select: none;
+
+
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 

@@ -130,7 +130,7 @@ namespace RecordShop.Controllers
 
                     // This will be retrieved in The Product Views Index
                     TempData["CRUDMessage"] = $"{products.RecordName} Has Been Added";
-                    TempData["CRUD_ADD"] = $"CRUD_ADDED";
+                    TempData["CRUDOperation"] = $"CRUD_ADDED"; // USED FOR ADDING CORRESPOSING BG COLOR FOR OPERATION
                 }
                 else
                 {
@@ -138,7 +138,7 @@ namespace RecordShop.Controllers
 
                     // This will be retrieved in The Product Views Index
                     TempData["CRUDMessage"] = $"{products.RecordName} Has Been Edited";
-                    TempData["CRUD_EDIT"] = $"CRUD_EDITIED";
+                    TempData["CRUDOperation"] = $"CRUD_EDITIED"; // USED FOR ADDING CORRESPOSING BG COLOR FOR OPERATION
 
                 }
                 Context.SaveChanges();
@@ -190,6 +190,7 @@ namespace RecordShop.Controllers
 
                 // Set the message to be displayed on the Index page
                 TempData["CRUDMessage"] = $"{productToDelete.RecordName} has been deleted";
+                TempData["CRUDOperation"] = $"CRUD_DELETED"; // USED FOR ADDING CORRESPOSING BG COLOR FOR OPERATION
             }
             else
             {

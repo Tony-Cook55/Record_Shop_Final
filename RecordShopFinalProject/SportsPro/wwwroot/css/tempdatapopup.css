@@ -70,49 +70,91 @@
 
 
 
-.CRUD_Message {
+/* BACKGROUND FOR ADDING OPERATION */
+.CRUD_ADDED_background {
+    background-color: #ff8f73; /* Change to your desired background color for add operation */
+}
+
+/* BACKGROUND FOR EDITIED OPERATION */
+.CRUD_EDITIED_background {
+    background-color: #fcca29; /* Change to your desired background color for edit operation */
+}
+
+/* BACKGROUND FOR DELETED OPERATION */
+.CRUD_DELETED_background {
+    background-color: #ff4646;
+}
+
+
+
+
+
+.CRUD_Message_Container {
     width: auto; /* Adjust to fit content */
     max-width: 320px; /* Limit width on larger screens */
-    padding: 12px;
+
+    padding: 15px;
+
     position: fixed;
-    bottom: 20px; /* Adjust distance from bottom */
+
+    bottom: 50px; /* Adjust distance from bottom */
     right: 20px; /* Adjust distance from right */
+
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: start;
-    border-radius: 8px;
+
+    border-radius: 10px;
     box-shadow: 0px 0px 5px -3px #111;
+
     z-index: 10;
-    background-color: #ff8f73;
+/*    background-color: #ff8f73;*/
 }
 
+
+/* Small ! Icon Before Text */
 .CRUD_icon {
-    width: 50px;
+/*    width: 50px;
     height: 30px;
-    transform: translateY(-2px);
-    margin-right: 8px;
+    transform: translateY(2px);*/
+    margin-right: 10px;
 }
-
     .CRUD_icon path {
-        fill: #fff;
+        fill: #f3f1e0;
     }
 
-.CRUD_title {
+
+
+/* The Actual Message Displayed */
+.CRUD_Message {
     font-weight: 500;
-    font-size: 20px;
-    color: #fff;
+    font-size: 2.5vh;
+
+    color: #f3f1e0;
+/*    text-shadow: 0 1px #555555, 0 2px #555555, 0 3px #555555;*/
 }
 
+
+
+/* Close X Icon */
 .CRUD_close {
-    width: 20px;
-    height: 30px;
+/*    width: 20px;
+    height: 30px;*/
+
     cursor: pointer;
-    margin-left: auto;
+    margin-left: 8px; /* MATCH THIS WITH ICONS */
+    transition: all 0.1s ease-in-out;
+}
+.CRUD_close path {
+    fill: #f3f1e0;
 }
 
-    .CRUD_close path {
-        fill: #fff;
+    .CRUD_close:hover {
+        transform: scale(1.3);
+    }
+    .CRUD_close:hover path{
+        fill: #776163;
     }
 
 
@@ -120,10 +162,6 @@
 
 
 
-/*.crud_added_color{
-    background-color: green;
-}
 
-.crud_edited_color{
-    background-color: blue;
-}*/
+
+
