@@ -95,7 +95,6 @@ namespace RecordShop.Controllers
         [HttpGet]
         public ViewResult GetEditPage(int id)
         {
-            /*ViewBag.CurrentDate = DateTime.Now;*/
 
             ViewBag.Editing = "Editing";
 
@@ -169,7 +168,7 @@ namespace RecordShop.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteProduct(ProductModel products)
         {
-            // Retrieve the name of the product before deleting it to place it in TempData
+            // Retrieve the id of the product before deleting it to place it in TempData
             var productToDelete = Context.Products.FirstOrDefault(p => p.ProductModelId == products.ProductModelId);
 
             // Check if the product exists

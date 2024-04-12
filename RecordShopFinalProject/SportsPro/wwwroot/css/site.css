@@ -78,14 +78,13 @@ body {
 
 /* HEADER AT THE TOP OF EACH PAGE */
 .page_header_text {
-    font-size: 80px; /* Minimum font size */
     font-size: min(15vw, 90px); /* Responsive font size based on viewport width, with a minimum of 24px */
 
 
     line-height: 1.2; /* Set line height */
     text-align: center; /* Center align text */
 
-    margin-top: 50px;
+    margin-top: 80px;
     color: #ff8f73;
     /*    text-shadow: -2px -2px 2px rgba(255, 255, 255, 0.5), 2px 2px 2px #634a4c, -4px -4px 4px rgba(255, 255, 255, 0.3), 4px 4px 4px #634a4c; */
 }
@@ -103,14 +102,13 @@ body {
 /* NO RESULT FOUND */
 .hero_header__no_items_text {
     user-select: none;
-    position: relative;
-    z-index: 1;
+
     font-size: 4rem;
-    margin: 0 0 10px;
+    margin-bottom: 50px;
     line-height: 1;
-    /*    color: #b5c8b2;*/
+
     color: #ff8f73;
-    text-shadow: -4px -4px 0 rgba(255, 255, 255, 0.2), 2px 2px 0 #422800;
+/*    text-shadow: -4px -4px 0 rgba(255, 255, 255, 0.2), 2px 2px 0 #422800;*/
 }
 
 .no_results_img {

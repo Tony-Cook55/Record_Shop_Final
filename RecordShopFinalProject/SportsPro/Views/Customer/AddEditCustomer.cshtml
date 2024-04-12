@@ -1,4 +1,4 @@
-﻿@model EmployeeModel
+﻿@model CustomerModel
 
 @* Real Time Validation *@
 @{
@@ -23,11 +23,11 @@
     @if (ViewBag.Editing != null)
     {
         {
-            ViewBag.Title = $"{ViewBag.Editing} {@Model.FirstName} {@Model.LastName}";
+            ViewBag.Title = $"{ViewBag.Editing} {@Model.CustomerFirstName} {@Model.CustomerLastName}";
         }
 
         <h1 class="add-edit_selected_item_header     editing_item_header_color     text_shadow_pop_top">@ViewBag.Editing</h1>
-        <h1 class="edit_selected_item_name   text_shadow_pop_top">@Model.FirstName @Model.LastName</h1>
+        <h1 class="edit_selected_item_name   text_shadow_pop_top">@Model.CustomerFirstName @Model.CustomerLastName</h1>
     }
     @if (ViewBag.Adding != null)
     {
@@ -44,7 +44,7 @@
 
     @* xxxxxxxx CANCEL BUTTON xxxxxxxx *@
     <div class="fixed_buttons">
-        <a asp-controller="Employee" asp-action="Index" class="">
+        <a asp-controller="Customer" asp-action="Index" class="">
             <div class="">
                 <svg class="icon--menu-toggle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
                 <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
@@ -62,31 +62,94 @@
 
 
 
-    <form asp-action="AddEditEmployee" method="post">
+    <form asp-action="AddEditCustomer" method="post">
         @* All Error Messages *@
         @*     <div asp-validation-summary="All" class="text-danger"></div> *@
 
 
-        @* FIRST NAME *@
+        @* CUSTOMER FIRST NAME *@
         <div class="add-edit_input_div ">
-            <input asp-for="FirstName" class="add-edit_input   form-control" placeholder="First Name" />
-            <label asp-for="FirstName" class="add-edit_input_label">First Name</label>
+            <input asp-for="CustomerFirstName" class="add-edit_input   form-control" placeholder="First Name" />
+            <label asp-for="CustomerFirstName" class="add-edit_input_label">First Name</label>
         </div>
         <div class="add-edit_error_div   ">
-            <span class="add-edit_error_message" asp-validation-for="FirstName"></span> @* Error Message *@
+            <span class="add-edit_error_message" asp-validation-for="CustomerFirstName"></span> @* Error Message *@
         </div>
-        @* FIRST NAME *@
+        @* CUSTOMER FIRST NAME *@
 
 
-        @* LAST NAME *@
+        @* CUSTOMER LAST NAME *@
         <div class="add-edit_input_div">
-            <input asp-for="LastName" class="add-edit_input   form-control" placeholder="Last Name" />
-            <label asp-for="LastName" class="add-edit_input_label">Last Name</label>
+            <input asp-for="CustomerLastName" class="add-edit_input   form-control" placeholder="Last Name" />
+            <label asp-for="CustomerLastName" class="add-edit_input_label">Last Name</label>
         </div>
         <div class="add-edit_error_div">
-            <span class="add-edit_error_message" asp-validation-for="LastName"></span> @* Error Message *@
+            <span class="add-edit_error_message" asp-validation-for="CustomerLastName"></span> @* Error Message *@
         </div>
-        @* LAST NAME *@
+        @* CUSTOMER LAST NAME *@
+
+
+        @* ADDRESS *@
+        <div class="add-edit_input_div">
+            <input asp-for="Address" class="add-edit_input form-control" placeholder="Address" />
+            <label asp-for="Address" class="add-edit_input_label">Address</label>
+        </div>
+        <div class="add-edit_error_div">
+            <span class="add-edit_error_message" asp-validation-for="Address"></span> @* Error Message *@
+        </div>
+        @* ADDRESS *@
+
+
+        @* CITY *@
+        <div class="add-edit_input_div">
+            <input asp-for="City" class="add-edit_input form-control" placeholder="City" />
+            <label asp-for="City" class="add-edit_input_label">City</label>
+        </div>
+        <div class="add-edit_error_div">
+            <span class="add-edit_error_message" asp-validation-for="City"></span> @* Error Message *@
+        </div>
+        @* CITY *@
+
+
+        @* STATE *@
+        <div class="add-edit_input_div">
+            <input asp-for="State" class="add-edit_input form-control" placeholder="State" />
+            <label asp-for="State" class="add-edit_input_label">State</label>
+        </div>
+        <div class="add-edit_error_div">
+            <span class="add-edit_error_message" asp-validation-for="State"></span> @* Error Message *@
+        </div>
+        @* STATE *@
+
+
+        @* POSTAL CODE *@
+        <div class="add-edit_input_div">
+            <input asp-for="PostalCode" class="add-edit_input form-control" placeholder="Postal Code" />
+            <label asp-for="PostalCode" class="add-edit_input_label">Postal Code</label>
+        </div>
+        <div class="add-edit_error_div">
+            <span class="add-edit_error_message" asp-validation-for="PostalCode"></span> @* Error Message *@
+        </div>
+        @* POSTAL CODE *@
+
+
+        @* COUNTRY *@
+        <div class="add-edit_input_div">
+            <select asp-for="CountryModelId" class="add-edit_select_input form-control">
+                <option class="add-edit_selction_option   fw-bold" value="">Select Country</option>
+                @foreach (var country in ViewBag.Countries)
+                {
+                    <option class="add-edit_selction_option" value="@country.CountryModelId">
+                        @country.CountryName
+                    </option>
+                }
+            </select>
+            <label asp-for="CountryModelId" class="add-edit_input_label">Country</label>
+        </div>
+        <div class="add-edit_error_div">
+            <span class="add-edit_error_message" asp-validation-for="CountryModelId"></span> @* Error Message *@
+        </div>
+        @* COUNTRY *@
 
 
         @* EMAIL *@
@@ -102,7 +165,7 @@
 
         @* PHONE NUMBER *@
         <div class="add-edit_input_div">
-            <input asp-for="PhoneNumber" class="add-edit_input   form-control" placeholder="Phone Number"/>
+            <input asp-for="PhoneNumber" class="add-edit_input   form-control" placeholder="Phone Number" />
             <label asp-for="PhoneNumber" class="add-edit_input_label">Phone Number</label>
         </div>
         <div class="add-edit_error_div">
@@ -130,7 +193,7 @@
 
 
 
-        <input type="hidden" asp-for="EmployeeModelId" />
+        <input type="hidden" asp-for="CustomerModelId" />
 
     </form>
 </div>

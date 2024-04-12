@@ -154,7 +154,7 @@ namespace RecordShop.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteEmployee(EmployeeModel employee)
         {
-            // Retrieve the name of the product before deleting it to place it in TempData
+            // Retrieve the id of the employee before deleting it to place it in TempData
             var employeeToDelete = Context.Employees.FirstOrDefault(p => p.EmployeeModelId == employee.EmployeeModelId);
 
             // Check if the employee exists

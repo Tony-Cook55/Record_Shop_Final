@@ -27,17 +27,56 @@ namespace RecordShop.Controllers
 
 
 
+        /*        [Route("customers/")]
+                public IActionResult Index()
+                {
+                    // Sending list of both Customers and Country's
+                    var customer = CustomerRepo.List(new QueryOptions<CustomerModel>());
 
+                    return View(customer);
+                }*/
 
-
-        [Route("customers/")]
-        public IActionResult Index()
+        /* GET PAGE AND ADD SEARCH ABLITITES */
+        [Route("customers")]
+        public async Task<IActionResult> Index(int? pageNumber, string searchString, string InputtedCustomer = "all")
         {
-            // Sending list of both Customers and Country's
-            var customer = CustomerRepo.List(new QueryOptions<CustomerModel>());
+            // Fetching unique Customer names from the database
+            var customerNames = Context.Customers
+                .Select(e => e.CustomerFirstName + " " + e.CustomerLastName)
+                .Distinct()
+                .ToList();
 
-            return View(customer);
+            // Sending the list of Customer names to the view
+            ViewBag.CustomerNames = customerNames;
+
+
+            // Query for fetching products including genre, ordered by artist name and making it Queryable to be able to Search
+            var customers = Context.Customers.OrderBy(o => o.CustomerFirstName).ThenBy(t => t.CustomerLastName).AsQueryable();
+
+
+            // Check if there's a search string provided
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                // If there's a search string, filter customers based on first name or last name containing the search string
+                customers = customers.Where(p => p.CustomerFirstName.Contains(searchString) || p.CustomerLastName.Contains(searchString));
+            }
+            // If there's no search string and InputtedArtist is not "all"
+            else if (!InputtedCustomer.Equals("all"))
+            {
+                // Filter products based on the InputtedArtist
+                customers = customers.Where(e => e.CustomerFirstName + " " + e.CustomerLastName == InputtedCustomer);
+            }
+
+            int pageSize = 6;
+
+            // Return the view with paginated list of products based on the applied filters
+            return View(await PaginatedList<CustomerModel>.CreateAsync(customers, pageNumber ?? 1, pageSize));
         }
+        /* GET PAGE AND ADD SEARCH ABLITITES */
+
+
+
+
 
 
 
@@ -46,14 +85,14 @@ namespace RecordShop.Controllers
 
         // ++++++ ADDING A CUSTOMER ++++++ \\
         [HttpGet]
-        public IActionResult Add()
+        public IActionResult GetAddPage()
         {
-            ViewBag.Action = "Add New Customer";
+            ViewBag.Adding = "Add New Record";
 
             // Puts the Country's for The customer to choose in a list to be able to be edited
             ViewBag.Countries = Context.Countries.OrderBy(c => c.CountryName).ToList();
 
-            return View("EditCustomer", new CustomerModel());
+            return View(viewName: "AddEditCustomer", model: new CustomerModel());
         }
         // ++++++ ADDING A CUSTOMER ++++++ \\
 
@@ -62,17 +101,17 @@ namespace RecordShop.Controllers
 
         // ------ EDITING A CUSTOMER ------ \\
         [HttpGet]
-        public IActionResult EditCustomer(int id)
+        public IActionResult GetEditPage(int id)
         {
 
-            ViewBag.Action = "Edit Customer";
+            ViewBag.Editing = "Editing";
 
             // Puts the Country back in after the load to be added and show Validation Errors
             ViewBag.Countries = Context.Countries.OrderBy(c => c.CountryName).ToList();
 
             //LINQ Query to find the Customer with the given id - PK Search
             var customers = Context.Customers.Find(id);
-            return View(customers); // sends the Customer to the edit page to auto fill the info
+            return View(viewName: "AddEditCustomer", model: customers); // sends the Customer to the edit page to auto fill the info
         }
         // ------ EDITING A CUSTOMER ------ \\
 
@@ -80,30 +119,12 @@ namespace RecordShop.Controllers
 
 
 
-        // xxxxxx DELETE A CUSTOMER xxxxxx \\
-        [HttpGet]
-        public IActionResult DeleteCustomer(int id) // id parameter is sent from the url
-        {
-            ViewBag.Action = "Delete Customer";
-
-            var customers = Context.Customers.Find(id);
-            return View(customers); // sends the Customer to the Delete page to auto fill the info
-        }
-        // xxxxxx DELETE A CUSTOMER xxxxxx \\
 
 
 
-
-
-
-
-
-
-
-
-        // ++++++ ADDING A CUSTOMER ++++++ \\
+        // ++++++ ADD-EDIT A CUSTOMER ++++++ \\
         [HttpPost]
-        public IActionResult EditCustomer(CustomerModel customers)
+        public IActionResult AddEditCustomer(CustomerModel customers)
         {
             if (ModelState.IsValid)
             {
@@ -111,28 +132,36 @@ namespace RecordShop.Controllers
                 if (customers.CustomerModelId == 0)
                 {
                     Context.Customers.Add(customers);
+
+                    // This will be retrieved in The Customer Views Index
+                    TempData["CRUDMessage"] = $"{customers.CustomerFirstName} {customers.CustomerLastName} Has Been Added";
+                    TempData["CRUDOperation"] = $"CRUD_ADDED"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
                 }
                 else
                 {
                     Context.Customers.Update(customers);
+
+                    // This will be retrieved in The Customer Views Index
+                    TempData["CRUDMessage"] = $"{customers.CustomerFirstName} {customers.CustomerLastName} Has Been Edited";
+                    TempData["CRUDOperation"] = $"CRUD_EDITIED"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
                 }
 
                 Context.SaveChanges();
 
-                return RedirectToAction("Index", "Customer");
+                return RedirectToAction(actionName: "Index", controllerName: "Customer");
             }
             else
             {
-                // Show our Validation errors
-                ViewBag.Action = (customers.CustomerModelId == 0) ? "Add" : "Edit";
-
                 // Puts the Countries back in after the load to be added and show Validation Errors
                 ViewBag.Countries = Context.Countries.OrderBy(g => g.CountryName).ToList();
 
-                return View(customers);
+                return View(model: customers);
             }
         }
-        // ++++++ ADDING A CUSTOMER ++++++ \\
+        // ++++++ ADD-EDIT A CUSTOMER ++++++ \\
+
+
+
 
 
 
@@ -140,15 +169,44 @@ namespace RecordShop.Controllers
 
 
         // xxxxxx DELETE A CUSTOMER xxxxxx \\
-        [HttpPost]
-        public IActionResult DeleteCustomer(CustomerModel customers)
+        [HttpGet]
+        public IActionResult GetDeletePage(int id) // id parameter is sent from the url
         {
-            ViewBag.Action = "Delete Customer";
+            var customers = Context.Customers.Find(id);
+            return View(viewName: "DeleteCustomer", model: customers); // sends the Customer to the Delete page to auto fill the info
+        }
 
-            Context.Customers.Remove(customers);
-            Context.SaveChanges();
 
-            return RedirectToAction("Index", "Customer");
+
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteCustomer(CustomerModel customers)
+        {
+            // Retrieve the id of the customer before deleting it to place it in TempData
+            var customerToDelete = Context.Customers.FirstOrDefault(p => p.CustomerModelId == customers.CustomerModelId);
+
+            // Check if the customer exists
+            if (customerToDelete != null)
+            {
+                // Delete the Customer from the database
+                Context.Customers.Remove(customerToDelete);
+                Context.SaveChanges();
+
+                // Set the message to be displayed on the Index page
+                TempData["CRUDMessage"] = $"{customerToDelete.CustomerFirstName} {customerToDelete.CustomerLastName} has been deleted";
+                TempData["CRUDOperation"] = $"CRUD_DELETED"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
+            }
+            else
+            {
+                // If the product doesn't exist, display an error message
+                TempData["CRUDMessage"] = "Customer not found";
+                TempData["CRUDOperation"] = $"CRUD_DELETED"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
+            }
+
+            // A delay to allow the GIF of record breaking to play before redirecting to Index
+            await Task.Delay(2500); // Delay for 1000 == 1 second
+
+            return RedirectToAction(actionName: "Index", controllerName: "Customer");
         }
         // xxxxxx DELETE A CUSTOMER xxxxxx \\
 

@@ -2,7 +2,7 @@
 using RecordShop.Models;
 using RecordShop.Models.DataLayer;
 
-namespace RecordShop.Controllers
+namespace RecordShop.Controllers.Validations
 {
     public class CustomerValidationController : Controller
     {
@@ -22,11 +22,15 @@ namespace RecordShop.Controllers
 
 
 
-        public JsonResult CheckEmailExists(string Email)
+
+        public JsonResult CheckEmailExists(string Email, int CustomerModelId)
         {
-            if (Context.Customers.Any(c => c.Email == Email))
+            var existingCustomer = Context.Customers.FirstOrDefault(c => c.Email == Email);
+
+            // If an existing customer with the same email is found and its ID is different from the one being checked
+            if (existingCustomer != null && existingCustomer.CustomerModelId != CustomerModelId)
             {
-                return Json($"Email is already registered.");
+                return Json($"Email Is Already Registered For Another Customer.");
             }
             else
             {
@@ -34,7 +38,6 @@ namespace RecordShop.Controllers
                 return Json(true);
             }
         }
-
 
 
 

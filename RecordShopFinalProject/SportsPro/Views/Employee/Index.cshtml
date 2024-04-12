@@ -62,14 +62,14 @@
 
             <h1 class="text-center    search_side_menu_title">Search Employees</h1>
 
-            @* SEARCHBAR SEARCHING USING RECORD NAME & ARTISTS NAME *@
+            @* SEARCHBAR SEARCHING USING FIRST AND LAST NAME *@
             <div class="search">
                 <form asp-controller="Employee" asp-action="Index" method="get" class="search-form">
-                    <input type="text" class="search_bar_text_input" placeholder="Search Employee Names" name="searchString">
+                    <input type="text" class="search_bar_text_input" placeholder="Search Employees By Name" name="searchString">
                     <input type="submit" class="search_bar_submit_input" value="Submit">
                 </form>
             </div>
-            @* SEARCHBAR SEARCHING USING RECORD NAME & ARTISTS NAME *@
+            @* SEARCHBAR SEARCHING USING FIRST AND LAST NAME*@
 
 
             @* FILTERING BY EMPLOYEE NAME*@
@@ -107,14 +107,13 @@
 
 
 
-    @* IF THE SEARCH STRING INPUTTED BY USER IS INVALID SHOW NO RECORDS*@
+    @* IF THE SEARCH STRING INPUTTED BY USER IS INVALID SHOW NO RESULTS*@
     @if (Model.Count == 0)
     {
         <section class="hero_section   text-center    scale_in_center_entrance_animation">
             <div class="hero_content   text-center ">
                 <div class="">
-                    @* hero_content_record_stopper_box *@
-                    <h1 class="hero_header__no_items_text">No Employees Found</h1>
+                    <h1 class="hero_header__no_items_text   text_shadow_pop_top">No Results Found</h1>
 
                     <a asp-controller="Employee" asp-action="Index" asp-route-artist="all" class="no_items_image ">
                         <img src="~/images/icons/no_results_sad.png" class="no_results_img" draggable="false">
@@ -155,7 +154,7 @@
                 @foreach (var product in Model)
                 {
                     <div class="card    scale_in_center_entrance_animation">
-                        <div class="card_expand_face card_face_top">
+                        <div class="card_expand_face card_face_top ">
                             <div class="content">
                                 <h1 class="face_header_text">@product.FirstName</h1>
                                 <h1 class="face_header_text">@product.LastName</h1>

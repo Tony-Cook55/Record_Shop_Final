@@ -67,7 +67,7 @@ namespace RecordShop.Models
         [StringLength(50, MinimumLength = 1, ErrorMessage = "Email must have between 1 and 50 characters")]
         // Valid inputs: user@example.com, user.name@example.com, user123@example.com, user.name123@example.co.uk, user+name@example.com, user_name@example.com, user-name@example.com, user123@example.co, user@example.co.uk, user@sub.domain.com
         [RegularExpression(@"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$", ErrorMessage = "Please enter a valid email address")]
-        [Remote(action: "CheckEmailExists", controller: "CustomerValidation")]
+        [Remote(action: "CheckEmailExists", controller: "CustomerValidation", AdditionalFields = nameof(CustomerModelId))]
         public string? Email { get; set; } = string.Empty;
 
 
