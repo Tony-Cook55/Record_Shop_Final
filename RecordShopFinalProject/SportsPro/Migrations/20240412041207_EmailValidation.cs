@@ -6,80 +6,70 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace RecordShop.Migrations
 {
     /// <inheritdoc />
-    public partial class ConfigFiles : Migration
+    public partial class EmailValidation : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DeleteData(
-                table: "Countries",
-                keyColumn: "CountryModelId",
-                keyValue: "NGA");
-
             migrationBuilder.UpdateData(
                 table: "Incidents",
                 keyColumn: "IncidentModelId",
                 keyValue: 1,
                 column: "DateOpened",
-                value: new DateTime(2024, 4, 3, 8, 49, 40, 638, DateTimeKind.Local).AddTicks(7456));
+                value: new DateTime(2024, 4, 11, 23, 12, 6, 751, DateTimeKind.Local).AddTicks(258));
 
             migrationBuilder.UpdateData(
                 table: "Incidents",
                 keyColumn: "IncidentModelId",
                 keyValue: 2,
                 column: "DateOpened",
-                value: new DateTime(2024, 4, 3, 8, 49, 40, 638, DateTimeKind.Local).AddTicks(7502));
+                value: new DateTime(2024, 4, 11, 23, 12, 6, 751, DateTimeKind.Local).AddTicks(315));
 
             migrationBuilder.UpdateData(
                 table: "Incidents",
                 keyColumn: "IncidentModelId",
                 keyValue: 3,
                 column: "DateOpened",
-                value: new DateTime(2024, 4, 3, 8, 49, 40, 638, DateTimeKind.Local).AddTicks(7507));
+                value: new DateTime(2024, 4, 11, 23, 12, 6, 751, DateTimeKind.Local).AddTicks(318));
 
             migrationBuilder.UpdateData(
                 table: "Incidents",
                 keyColumn: "IncidentModelId",
                 keyValue: 4,
                 column: "DateOpened",
-                value: new DateTime(2024, 4, 3, 8, 49, 40, 638, DateTimeKind.Local).AddTicks(7509));
+                value: new DateTime(2024, 4, 11, 23, 12, 6, 751, DateTimeKind.Local).AddTicks(321));
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.InsertData(
-                table: "Countries",
-                columns: new[] { "CountryModelId", "CountryName" },
-                values: new object[] { "NGA", "Nigeria" });
-
             migrationBuilder.UpdateData(
                 table: "Incidents",
                 keyColumn: "IncidentModelId",
                 keyValue: 1,
                 column: "DateOpened",
-                value: new DateTime(2024, 4, 1, 10, 27, 20, 603, DateTimeKind.Local).AddTicks(6417));
+                value: new DateTime(2024, 4, 11, 21, 47, 47, 875, DateTimeKind.Local).AddTicks(5416));
 
             migrationBuilder.UpdateData(
                 table: "Incidents",
                 keyColumn: "IncidentModelId",
                 keyValue: 2,
                 column: "DateOpened",
-                value: new DateTime(2024, 4, 1, 10, 27, 20, 603, DateTimeKind.Local).AddTicks(6475));
+                value: new DateTime(2024, 4, 11, 21, 47, 47, 875, DateTimeKind.Local).AddTicks(5459));
 
             migrationBuilder.UpdateData(
                 table: "Incidents",
                 keyColumn: "IncidentModelId",
                 keyValue: 3,
                 column: "DateOpened",
-                value: new DateTime(2024, 4, 1, 10, 27, 20, 603, DateTimeKind.Local).AddTicks(6479));
+                value: new DateTime(2024, 4, 11, 21, 47, 47, 875, DateTimeKind.Local).AddTicks(5462));
 
             migrationBuilder.UpdateData(
                 table: "Incidents",
                 keyColumn: "IncidentModelId",
                 keyValue: 4,
                 column: "DateOpened",
-                value: new DateTime(2024, 4, 1, 10, 27, 20, 603, DateTimeKind.Local).AddTicks(6483));
+                value: new DateTime(2024, 4, 11, 21, 47, 47, 875, DateTimeKind.Local).AddTicks(5465));
         }
     }
 }

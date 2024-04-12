@@ -1,19 +1,20 @@
-﻿
+﻿@*
+    Products Page
+*@
+
 @model PaginatedList<ProductModel>
 
-
 @{
-    ViewData["Title"] = "Product Manager";
+    ViewData["Title"] = "Products";
 }
 
 <div class="container">
 
     @* mmmmmmmmmmmmmmm TEMP DATA CRUD MESSAGE mmmmmmmmmmmmmmm *@
     @* Checks if there is a string in our Temp Data Message. If So Show the Message If not Nothing. This is so We don't see its padding and color *@
-    @* @if (!string.IsNullOrEmpty(TempData["CRUDMessage"] as string)) *@
     @if (TempData.ContainsKey("CRUDMessage") && TempData["CRUDOperation"] != null)
     {
-
+        /* Checks Controller For CRUDOperation if it equlas the operation name it will set the operationClass to that class with custom BG in css*/
         string operationClass = "";
         if (TempData["CRUDOperation"]?.ToString() == "CRUD_ADDED")
         {
@@ -35,7 +36,7 @@
             </div>
             <div class="CRUD_Message">@(TempData["CRUDMessage"])</div>
             <div class="CRUD_close" onclick="closeCRUDMessage()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 20 20" height="20">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 20 20" height="24">
                     <path fill="#393a37" d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"></path>
                 </svg>
             </div>
@@ -74,7 +75,7 @@
 
             @* FILTERING BY ARTIST NAME*@
             <div class="scrollable_search_buttons   text-center">
-                <a asp-controller="Product" asp-action="Index" asp-route-artist="all"   class="pushable text-center">
+                <a asp-controller="Product" asp-action="Index" asp-route-InputtedArtist="all" class="pushable text-center">
                     <span class="shadow"></span>
                     <span class="edge"></span>
                     <span class="front">
@@ -84,7 +85,7 @@
                 @foreach (var artistName in ViewBag.ArtistNames)
                 {
                     <button class="pushable">
-                        <a asp-controller="Product" asp-action="Index" asp-route-artist="@artistName" class="pushable text-center  m-3">
+                        <a asp-controller="Product" asp-action="Index" asp-route-InputtedArtist="@artistName" class="pushable text-center  m-3">
                                 <span class="shadow"></span>
                                 <span class="edge"></span>
                                 <span class="front">
@@ -95,9 +96,7 @@
                 }
             </div>
             @* FILTERING BY ARTIST NAME*@
-
         </nav>
-
     </header>
     @* SIDE MENU *@
 
@@ -130,7 +129,7 @@
 
             @* PAGE HEADER *@
             <h1 class="page_header_text   text_shadow_pop_top   text-center">
-                Records
+                Products
             </h1>
             @* PAGE HEADER *@
 
@@ -138,7 +137,7 @@
 
             @* ADD BUTTON *@
             <div class="center-container">
-                <a asp-controller="Product" asp-action="Add" class="crud_button   text-center  crud_button_add">
+                <a asp-controller="Product" asp-action="GetAddPage" class="crud_button   text-center  crud_button_add">
                     <div class="crud_button     crud_button_add">
                         <span class="crud_button_text">Add</span>
                         <span class="crud_button_icon">
@@ -150,6 +149,7 @@
             @* ADD BUTTON *@
 
 
+            @* ITEM CARDS *@
             <div class="container  card_expand_container">
                 @foreach (var product in Model)
                 {
@@ -168,13 +168,15 @@
                                 <p>@product.Price?.ToString("C")</p>
 
 
-                                <a class="btn card_expand_link card_edit_button" asp-controller="Product" asp-action="EditProduct" asp-route-id="@product.ProductModelId" asp-route-slug="@product.Slug"><i class="fa-solid fa-pencil"></i></a>
-                                <a class="btn card_expand_link card_delete_button" asp-controller="Product" asp-action="DeleteProduct" asp-route-id="@product.ProductModelId" asp-route-slug="@product.Slug"><i class="fa-solid fa-trash-can"></i></a>
+                                @* GET EDIT ~ DELETE BUTTONS*@
+                                <a class="btn card_expand_link card_edit_button" asp-controller="Product" asp-action="GetEditPage" asp-route-id="@product.ProductModelId" asp-route-slug="@product.Slug"><i class="fa-solid fa-pencil"></i></a>
+                                <a class="btn card_expand_link card_delete_button" asp-controller="Product" asp-action="GetDeletePage" asp-route-id="@product.ProductModelId" asp-route-slug="@product.Slug"><i class="fa-solid fa-trash-can"></i></a>
                             </div>
                         </div>
                     </div>
                 }
             </div>
+            @* ITEM CARDS *@
 
         </div>
 
@@ -183,7 +185,9 @@
 
         @* PAGEINATION *@
         <div class="text-center">
-                <div class="btn" >Page @Model.PageIndex of @Model.TotalPages</div>
+
+            <div class="page_count_total">Page @Model.PageIndex of @Model.TotalPages</div>
+
             <nav class="pagination-outer" aria-label="Page navigation">
                 <ul class="pagination">
                     <li class="page-item">

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace RecordShop.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class Inital : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -31,9 +31,9 @@ namespace RecordShop.Migrations
                 {
                     EmployeeModelId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -64,9 +64,9 @@ namespace RecordShop.Migrations
                     Address = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     City = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     State = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    PostalCode = table.Column<string>(type: "nvarchar(9)", maxLength: 9, nullable: false),
+                    PostalCode = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     CountryModelId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
@@ -87,8 +87,8 @@ namespace RecordShop.Migrations
                     ProductModelId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Code = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    RecordName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    ArtistName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    RecordName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    ArtistName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ReleaseDate = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
                     GenreModelId = table.Column<string>(type: "nvarchar(450)", nullable: false)
@@ -101,6 +101,30 @@ namespace RecordShop.Migrations
                         column: x => x.GenreModelId,
                         principalTable: "Genres",
                         principalColumn: "GenreModelId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CustomerProducts",
+                columns: table => new
+                {
+                    CustomerModelId = table.Column<int>(type: "int", nullable: false),
+                    ProductModelId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CustomerProducts", x => new { x.CustomerModelId, x.ProductModelId });
+                    table.ForeignKey(
+                        name: "FK_CustomerProducts_Customers_CustomerModelId",
+                        column: x => x.CustomerModelId,
+                        principalTable: "Customers",
+                        principalColumn: "CustomerModelId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CustomerProducts_Products_ProductModelId",
+                        column: x => x.ProductModelId,
+                        principalTable: "Products",
+                        principalColumn: "ProductModelId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -155,7 +179,6 @@ namespace RecordShop.Migrations
                     { "IND", "India" },
                     { "JPN", "Japan" },
                     { "MEX", "Mexico" },
-                    { "NGA", "Nigeria" },
                     { "PAK", "Pakistan" },
                     { "RUS", "Russia" },
                     { "USA", "United States" },
@@ -224,15 +247,32 @@ namespace RecordShop.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "CustomerProducts",
+                columns: new[] { "CustomerModelId", "ProductModelId" },
+                values: new object[,]
+                {
+                    { 1, 1 },
+                    { 2, 2 },
+                    { 2, 3 },
+                    { 3, 3 },
+                    { 3, 4 }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Incidents",
                 columns: new[] { "IncidentModelId", "CustomerModelId", "DateClosed", "DateOpened", "Description", "EmployeeModelId", "ProductModelId", "Title" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2024, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 2, 6, 11, 23, 52, 342, DateTimeKind.Local).AddTicks(3786), "Record Came out of the package scratched.", 1, 1, "Scratched The Record" },
-                    { 2, 3, new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 2, 6, 11, 23, 52, 342, DateTimeKind.Local).AddTicks(3842), "Snapped In two", 2, 2, "Record Snapped" },
-                    { 3, 4, null, new DateTime(2024, 2, 6, 11, 23, 52, 342, DateTimeKind.Local).AddTicks(3845), "Picked the wrong size record for my Record Player", 2, 3, "Wrong Size" },
-                    { 4, 6, new DateTime(2024, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 2, 6, 11, 23, 52, 342, DateTimeKind.Local).AddTicks(3847), "Wanted a new artist", 2, 3, "Didn't like the record" }
+                    { 1, 1, new DateTime(2024, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 11, 21, 47, 47, 875, DateTimeKind.Local).AddTicks(5416), "Record Came out of the package scratched.", 1, 1, "Scratched The Record" },
+                    { 2, 3, new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 11, 21, 47, 47, 875, DateTimeKind.Local).AddTicks(5459), "Snapped In two", 2, 2, "Record Snapped" },
+                    { 3, 4, null, new DateTime(2024, 4, 11, 21, 47, 47, 875, DateTimeKind.Local).AddTicks(5462), "Picked the wrong size record for my Record Player", 2, 3, "Wrong Size" },
+                    { 4, 6, new DateTime(2024, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 11, 21, 47, 47, 875, DateTimeKind.Local).AddTicks(5465), "Wanted a new artist", 2, 3, "Didn't like the record" }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CustomerProducts_ProductModelId",
+                table: "CustomerProducts",
+                column: "ProductModelId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Customers_CountryModelId",
@@ -263,6 +303,9 @@ namespace RecordShop.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "CustomerProducts");
+
             migrationBuilder.DropTable(
                 name: "Incidents");
 

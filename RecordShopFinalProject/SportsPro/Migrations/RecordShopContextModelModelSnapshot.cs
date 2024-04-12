@@ -305,18 +305,18 @@ namespace RecordShop.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
@@ -526,7 +526,7 @@ namespace RecordShop.Migrations
                             IncidentModelId = 1,
                             CustomerModelId = 1,
                             DateClosed = new DateTime(2024, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOpened = new DateTime(2024, 4, 3, 8, 49, 40, 638, DateTimeKind.Local).AddTicks(7456),
+                            DateOpened = new DateTime(2024, 4, 11, 23, 12, 6, 751, DateTimeKind.Local).AddTicks(258),
                             Description = "Record Came out of the package scratched.",
                             EmployeeModelId = 1,
                             ProductModelId = 1,
@@ -537,7 +537,7 @@ namespace RecordShop.Migrations
                             IncidentModelId = 2,
                             CustomerModelId = 3,
                             DateClosed = new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOpened = new DateTime(2024, 4, 3, 8, 49, 40, 638, DateTimeKind.Local).AddTicks(7502),
+                            DateOpened = new DateTime(2024, 4, 11, 23, 12, 6, 751, DateTimeKind.Local).AddTicks(315),
                             Description = "Snapped In two",
                             EmployeeModelId = 2,
                             ProductModelId = 2,
@@ -547,7 +547,7 @@ namespace RecordShop.Migrations
                         {
                             IncidentModelId = 3,
                             CustomerModelId = 4,
-                            DateOpened = new DateTime(2024, 4, 3, 8, 49, 40, 638, DateTimeKind.Local).AddTicks(7507),
+                            DateOpened = new DateTime(2024, 4, 11, 23, 12, 6, 751, DateTimeKind.Local).AddTicks(318),
                             Description = "Picked the wrong size record for my Record Player",
                             EmployeeModelId = 2,
                             ProductModelId = 3,
@@ -558,7 +558,7 @@ namespace RecordShop.Migrations
                             IncidentModelId = 4,
                             CustomerModelId = 6,
                             DateClosed = new DateTime(2024, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOpened = new DateTime(2024, 4, 3, 8, 49, 40, 638, DateTimeKind.Local).AddTicks(7509),
+                            DateOpened = new DateTime(2024, 4, 11, 23, 12, 6, 751, DateTimeKind.Local).AddTicks(321),
                             Description = "Wanted a new artist",
                             EmployeeModelId = 2,
                             ProductModelId = 3,

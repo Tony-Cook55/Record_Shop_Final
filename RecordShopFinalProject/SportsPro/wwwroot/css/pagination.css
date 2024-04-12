@@ -1,4 +1,9 @@
 ﻿
+/* The text above the pagination that says  " Page 1 of 1 "*/
+.page_count_total {
+    color: #9d7f57;
+}
+
 
 
 
@@ -75,7 +80,7 @@
 
 @media only screen and (max-width: 500px) {
     .pagination {
-        display: block;
+/*        display: block;*/
         overflow: auto;
     }
 

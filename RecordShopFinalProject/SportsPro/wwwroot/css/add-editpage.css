@@ -1,6 +1,6 @@
 ﻿
 
-/* USED FOR CANCEL BUTTONS */
+/* USED FOR CANCEL BUTTON IN TOP LEFT */
 .fixed_buttons {
     position: fixed;
     top: 1.5rem; /* Assuming 1rem = 16px */
@@ -9,8 +9,6 @@
 
     cursor: pointer;
 }
-
-
 
 
 
@@ -52,6 +50,7 @@
 
 
 
+/* lllllll INPUT LABEL lllllll*/
 /* Div That Each Input is in*/
 .add-edit_input_div {
     margin-top: 90px;
@@ -79,13 +78,14 @@
     -webkit-transform: translateY(4rem);
     transform: translateY(-4rem);
 }
+/* lllllll INPUT LABEL lllllll*/
 
 
 
 
 
 
-
+/* iiiiiiiii INPUT iiiiiiiii*/
 /* Inputs for the edit page */
 .add-edit_input {
     color: #f3f1e0;
@@ -96,7 +96,7 @@
     border: none;
     /*    width: 90%;
     display: block;*/
-    transition: all 0.1s;
+    transition: all 0.2s;
     border: 7px solid #634a4c;
 
     caret-color: #f3f1e0;
@@ -124,7 +124,8 @@
     }
     /* Hovering Over the inputs */
     .add-edit_input:hover {
-        animation: 0.5s ease-in-out 0s 1 normal both running pulse-animation;
+        color: #634a4c;
+        /*animation: 0.5s ease-in-out 0s 1 normal both running pulse-animation;*/
     }
 @keyframes pulse-animation {
     0% {
@@ -145,10 +146,14 @@
 /*.add-edit_input:valid {
     background-color: #00FF7F;
 }*/
+/* iiiiiiiii INPUT iiiiiiiii*/
 
 
 
 
+
+
+/* si si si SELECT INPUT si si si */
     /* SELECT INPUT FOR GENRE's AND OTHERS */
 .add-edit_select_input {
     color: #f3f1e0;
@@ -159,7 +164,7 @@
     border: none;
     /*    width: 90%;
     display: block;*/
-    transition: all 0.1s;
+    transition: all 0.2s;
     border: 7px solid #634a4c;
     caret-color: #f3f1e0;
     text-align: center;
@@ -180,8 +185,9 @@
         /*box-shadow: 0 0 0 0.25rem rgb(25 135 84 / 25%);*/
     }
     .add-edit_select_input:hover {
+        color: #634a4c;
         cursor: pointer;
-        animation: 0.5s ease-in-out 0s 1 normal both running pulse-animation;
+        /*animation: 0.5s ease-in-out 0s 1 normal both running pulse-animation;*/
     }
 
 
@@ -198,6 +204,7 @@
         background-color: #ff8f73 !important;
         font-weight: bold;
     }
+/* si si si SELECT INPUT si si si */
 
 
 

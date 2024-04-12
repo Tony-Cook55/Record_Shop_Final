@@ -27,11 +27,16 @@ namespace RecordShop.Controllers
 
 
 
+
+        /* GET PAGE AND ADD SEARCH ABLITITES */
         [Route("products")]
-        public async Task<IActionResult> Index(int? pageNumber, string searchString, string artist = "all")
+        public async Task<IActionResult> Index(int? pageNumber, string searchString, string InputtedArtist = "all")
         {
             // Fetching unique artist names from the database
-            var artistNames = Context.Products.Select(p => p.ArtistName).Distinct().ToList();
+            var artistNames = Context.Products
+                .Select(s => s.ArtistName)
+                .Distinct()
+                .ToList();
 
             // Sending the list of artist names to the view
             ViewBag.ArtistNames = artistNames;
@@ -47,11 +52,11 @@ namespace RecordShop.Controllers
                 // If there's a search string, filter products based on record name or artist name containing the search string
                 products = products.Where(p => p.RecordName.Contains(searchString) || p.ArtistName.Contains(searchString));
             }
-            // If there's no search string and artist is not "all"
-            else if (!artist.Equals("all"))
+            // If there's no search string and InputtedArtist is not "all"
+            else if (!InputtedArtist.Equals("all"))
             {
-                // Filter products based on the selected artist
-                products = products.Where(p => p.ArtistName == artist);
+                // Filter products based on the InputtedArtist
+                products = products.Where(p => p.ArtistName == InputtedArtist);
             }
 
             int pageSize = 6;
@@ -59,6 +64,7 @@ namespace RecordShop.Controllers
             // Return the view with paginated list of products based on the applied filters
             return View(await PaginatedList<ProductModel>.CreateAsync(products, pageNumber ?? 1, pageSize));
         }
+        /* GET PAGE AND ADD SEARCH ABLITITES */
 
 
 
@@ -71,14 +77,14 @@ namespace RecordShop.Controllers
 
         // ++++++ ADDING A PRODUCT ++++++ \\
         [HttpGet]
-        public ViewResult Add()
+        public ViewResult GetAddPage()
         {
             ViewBag.Adding = "Add New Record";
 
             // Puts the Genres of the Records in a list to be able to be edited
             ViewBag.Genres = Context.Genres.OrderBy(g => g.GenreName).ToList();
 
-            return View("EditProduct", new ProductModel());
+            return View(viewName: "AddEditProduct", model: new ProductModel());
         }
         // ++++++ ADDING A PRODUCT ++++++ \\
 
@@ -87,7 +93,7 @@ namespace RecordShop.Controllers
 
         // ------ EDITING A PRODUCT ------ \\
         [HttpGet]
-        public ViewResult EditProduct(int id)
+        public ViewResult GetEditPage(int id)
         {
             /*ViewBag.CurrentDate = DateTime.Now;*/
 
@@ -98,7 +104,7 @@ namespace RecordShop.Controllers
 
             //LINQ Query to find the Record with the given id - PK Search
             var products = Context.Products.Find(id);
-            return View(products); // sends the movie to the edit page to auto fill the info
+            return View(viewName: "AddEditProduct", model: products); // sends the products to the edit page to auto fill the info
         }
         // ------ EDITING A PRODUCT ------ \\
 
@@ -108,18 +114,9 @@ namespace RecordShop.Controllers
 
 
 
-
-
-
-
-
-
-
-
-
-        // ++++++ ADDING A PRODUCT ++++++ \\
+        // ++++++ ADD-EDIT A PRODUCT ++++++ \\
         [HttpPost]
-        public IActionResult EditProduct(ProductModel products)
+        public IActionResult AddEditProduct(ProductModel products)
         {
             if (ModelState.IsValid)
             {
@@ -130,7 +127,7 @@ namespace RecordShop.Controllers
 
                     // This will be retrieved in The Product Views Index
                     TempData["CRUDMessage"] = $"{products.RecordName} Has Been Added";
-                    TempData["CRUDOperation"] = $"CRUD_ADDED"; // USED FOR ADDING CORRESPOSING BG COLOR FOR OPERATION
+                    TempData["CRUDOperation"] = $"CRUD_ADDED"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
                 }
                 else
                 {
@@ -138,24 +135,21 @@ namespace RecordShop.Controllers
 
                     // This will be retrieved in The Product Views Index
                     TempData["CRUDMessage"] = $"{products.RecordName} Has Been Edited";
-                    TempData["CRUDOperation"] = $"CRUD_EDITIED"; // USED FOR ADDING CORRESPOSING BG COLOR FOR OPERATION
+                    TempData["CRUDOperation"] = $"CRUD_EDITIED"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
 
                 }
                 Context.SaveChanges();
-                return RedirectToAction("Index", "Product");
+                return RedirectToAction(actionName: "Index", controllerName: "Product");
             }
             else
             {
-                // Show our Validation errors
-                ViewBag.Action = (products.ProductModelId == 0) ? "Add" : "Edit";
-
                 // Puts the genres back in after the load to be added and show Validation Errors
                 ViewBag.Genres = Context.Genres.OrderBy(g => g.GenreName).ToList();
 
-                return View(products);
+                return View(model: products);
             }
         }
-        // ++++++ ADDING A PRODUCT ++++++ \\
+        // ++++++ ADD-EDIT A PRODUCT ++++++ \\
 
 
 
@@ -164,20 +158,17 @@ namespace RecordShop.Controllers
 
         // xxxxxx DELETE A PRODUCT xxxxxx \\
         [HttpGet]
-        public ViewResult DeleteProduct(int id) // id parameter is sent from the url
+        public ViewResult GetDeletePage(int id) // id parameter is sent from the url
         {
-            ViewBag.Action = "Delete Record";
-
             var products = Context.Products.Find(id);
-            return View(products); // sends the Product to the Delete page to auto fill the info
+            return View(viewName: "DeleteProduct", model: products); // sends the Product to the Delete page to auto fill the info
         }
+
 
 
         [HttpPost]
         public async Task<IActionResult> DeleteProduct(ProductModel products)
         {
-            ViewBag.Action = "Delete Product";
-
             // Retrieve the name of the product before deleting it to place it in TempData
             var productToDelete = Context.Products.FirstOrDefault(p => p.ProductModelId == products.ProductModelId);
 
@@ -190,18 +181,19 @@ namespace RecordShop.Controllers
 
                 // Set the message to be displayed on the Index page
                 TempData["CRUDMessage"] = $"{productToDelete.RecordName} has been deleted";
-                TempData["CRUDOperation"] = $"CRUD_DELETED"; // USED FOR ADDING CORRESPOSING BG COLOR FOR OPERATION
+                TempData["CRUDOperation"] = $"CRUD_DELETED"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
             }
             else
             {
                 // If the product doesn't exist, display an error message
                 TempData["CRUDMessage"] = "Product not found";
+                TempData["CRUDOperation"] = $"CRUD_DELETED"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
             }
 
             // A delay to allow the GIF of record breaking to play before redirecting to Index
             await Task.Delay(2500); // Delay for 1000 == 1 second
 
-            return RedirectToAction("Index", "Product");
+            return RedirectToAction(actionName: "Index", controllerName: "Product");
         }
         // xxxxxx DELETE A PRODUCT xxxxxx \\
 

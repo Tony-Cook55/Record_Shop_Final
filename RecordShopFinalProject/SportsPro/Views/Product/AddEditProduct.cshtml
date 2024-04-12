@@ -49,7 +49,7 @@
     @* xxxxxxxx CANCEL BUTTON xxxxxxxx *@
     <div class="fixed_buttons">
         <a asp-controller="Product" asp-action="Index" class="">
-            <div class="fixed_buttons">
+            <div class="">
                 <svg class="icon--menu-toggle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
                 <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
                             <!-- Change fill attribute to blue -->
@@ -66,7 +66,7 @@
 
 
 
-    <form asp-action="EditProduct" method="post">
+    <form asp-action="AddEditProduct" method="post">
         @* All Error Messages *@
         @*     <div asp-validation-summary="All" class="text-danger"></div> *@
 
@@ -125,7 +125,7 @@
 
         @* RELEASE YEAR *@
         <div class="add-edit_input_div">
-            <input asp-for="ReleaseDate" class="add-edit_input   form-control" placeholder="Release Year" />
+            <input asp-for="ReleaseDate" class="add-edit_input   form-control" placeholder="Release Year" type="number"/>
             <label asp-for="ReleaseDate" class="add-edit_input_label">Release Year</label>
         </div>
         <div class="add-edit_error_div">
