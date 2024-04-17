@@ -25,7 +25,7 @@ namespace RecordShop.Controllers
 
 
 
-
+        // iiiiiiiiiiii INDEX PAGE iiiiiiiiiiii \\
         // Selecting Customer Page \\
         public IActionResult Index(ProductModel products)
         {
@@ -34,7 +34,7 @@ namespace RecordShop.Controllers
 
             return View(products);
         }
-
+        // iiiiiiiiiiii INDEX PAGE iiiiiiiiiiii \\
 
 
 

@@ -26,45 +26,46 @@ namespace RecordShop.Controllers
 
 
 
+
         // iiiiiiiiiiii INDEX PAGE iiiiiiiiiiii \\
+        /* GET PAGE AND ADD SEARCH ABLITITES */
         [Route("incidents/")]
-        public IActionResult Index(string incidentSelector = "all")
+        public async Task<IActionResult> Index(int? pageNumber, string searchString, string InputtedIncidents = "all")
         {
-            // Sending list of both Incidents The Customers The Products And the Employees
-            var incidents = Context.Incidents.Include(c => c.Customer).Include(p => p.Product).Include(e => e.Employee).OrderBy(t => t.Title).ToList();
+            // Fetching unique Incident Titles from the database
+            var incidentTitles = Context.Incidents
+                .Select(s => s.Title)
+                .Distinct()
+                .ToList();
+
+            // Sending the list of titles to the view
+            ViewBag.IncidentTitles = incidentTitles;
 
 
+            // Query for fetching incidents including Customer, Product, and Employee and making it ordered by Title and making it Queryable to be able to Search
+            var incidents = Context.Incidents.Include(c => c.Customer).Include(p => p.Product).Include(e => e.Employee).OrderBy(m => m.Title).AsQueryable();
 
-            if (incidentSelector.Equals("all")) // incident == all  by default thus the items will show
+
+            // Check if there's a search string provided
+            if (!string.IsNullOrEmpty(searchString))
             {
-                incidents = Context.Incidents.ToList();
+                // If there's a search string, filter incidents based on Title or Product Name containing the search string
+                incidents = incidents.Where(p => p.Title.Contains(searchString) || p.Product.RecordName.Contains(searchString));
             }
-            // If the -1 selector button is pressed all indictments with employee ids of -1 show
-            else if (incidentSelector.Equals("-1"))
+            // If there's no search string and InputtedIncidents is not "all"
+            else if (!InputtedIncidents.Equals("all"))
             {
-                /*TempData["CRUDMessage"] = $"-1";*/
-                incidents = incidents.Where(p => p.EmployeeModelId == -1).ToList();
-            }
-            // If the  selector button is pressed all indictments with employee ids of -1 show
-            else if (incidentSelector.Equals("open"))
-            {
-                /*TempData["CRUDMessage"] = "Open Incidents";*/
-                incidents = incidents.Where(p => p.DateClosed == null).ToList();
+                // Filter incidents based on the InputtedIncidents
+                incidents = incidents.Where(p => p.Title == InputtedIncidents);
             }
 
+            int pageSize = 6;
 
-            // Create an instance of the view model and populate its properties
-            var viewModel = new IncidentListViewModel
-            {
-                IncidentItems = incidents,
-                IncidentDisplayMode = "All" // You can set the default display mode here
-            };
-
-
-            // Pass the view model to the view
-            return View(viewModel);
+            // Return the view with paginated list of products based on the applied filters
+            return View(await PaginatedList<IncidentModel>.CreateAsync(incidents, pageNumber ?? 1, pageSize));
 
         }
+        /* GET PAGE AND ADD SEARCH ABLITITES */
         // iiiiiiiiiiii INDEX PAGE iiiiiiiiiiii \\
 
 
@@ -76,9 +77,9 @@ namespace RecordShop.Controllers
 
         // ++++++ ADDING A INCIDENT ++++++ \\
         [HttpGet]
-        public IActionResult Add()
+        public ViewResult GetAddPage()
         {
-            ViewBag.Action = "Add New Incident";
+            ViewBag.Adding = "Add New Incident";
 
             // Puts the Customers of the Incidents in a list to be able to be edited
             ViewBag.Customers = Context.Customers.OrderBy(c => c.CustomerFirstName).ToList();
@@ -86,17 +87,16 @@ namespace RecordShop.Controllers
             ViewBag.Employees = Context.Employees.OrderBy(f => f.FirstName).ToList();
 
 
-
             // Set DateOpened to the current date only if it's not provided
             var newIncident = new IncidentAddEditViewModel
             {
                 DateOpened = DateTime.Now
             };
-
             // Format the current date and pass it to the view
             ViewBag.CurrentDate = newIncident.DateOpened?.ToString("MM/dd/yyyy h:mm tt");
 
-            return View("EditIncident", new IncidentAddEditViewModel());
+
+            return View(viewName: "AddEditIncident", model: new IncidentModel());
         }
         // ++++++ ADDING A INCIDENT ++++++ \\
 
@@ -105,84 +105,68 @@ namespace RecordShop.Controllers
 
 
 
-        // ++++++ ADDING/EDIT A INCIDENT ++++++ \\
+        // ------ EDITING A INCIDENT ------ \\
         [HttpGet]
-        public IActionResult EditIncident(int id)
+        public ViewResult GetEditPage(int id)
         {
-            ViewBag.Action = "Edit Incident";
 
-            // Puts the Customers of the Incidents in a list to be able to be edited in a selected drop down
+            ViewBag.Editing = "Editing";
+
+            // Puts the Items back in after the load to be added and show Validation Errors
             ViewBag.Customers = Context.Customers.OrderBy(c => c.CustomerFirstName).ToList();
             ViewBag.Products = Context.Products.OrderBy(r => r.RecordName).ToList();
             ViewBag.Employees = Context.Employees.OrderBy(f => f.FirstName).ToList();
 
 
-
-            // Retrieve the incident from the database
-            var existingIncident = Context.Incidents.Find(id);
-
-            // Create an instance of IncidentAddEditViewModel and populate it with data from the existing incident
-            var incidentViewModel = new IncidentAddEditViewModel
-            {
-                IncidentModelId = existingIncident.IncidentModelId,
-                CustomerModelId = existingIncident.CustomerModelId,
-                ProductModelId = existingIncident.ProductModelId,
-                EmployeeModelId = existingIncident.EmployeeModelId,
-                Title = existingIncident.Title,
-                Description = existingIncident.Description,
-                DateOpened = existingIncident.DateOpened,
-                DateClosed = existingIncident.DateClosed,
-                // Set AddOrEdit to "Edit" to indicate that this is an edit operation
-                AddOrEdit = "Edit"
-            };
-
-            // sends the incident view model to the edit page to auto-fill the info
-            return View(incidentViewModel);
+            //LINQ Query to find the Incident with the given id - PK Search
+            var incidents = Context.Incidents.Find(id);
+            return View(viewName: "AddEditIncident", model: incidents); // sends the incidents to the edit page to auto fill the info
         }
+        // ------ EDITING A INCIDENT ------ \\
 
 
 
 
-        [HttpPost]
-        public IActionResult EditIncident(IncidentAddEditViewModel incidents)
+
+
+        // ++++++ ADDING/EDIT A INCIDENT ++++++ \\
+
+        public IActionResult AddEditIncident(IncidentModel incidents)
         {
             if (ModelState.IsValid)
             {
                 // Either add a new Incident or edit a Incident
-                if (incidents.ProductModelId == 0)
+                if (incidents.IncidentModelId == 0)
                 {
                     Context.Incidents.Add(incidents);
 
-                    // This will be retrieved in The incidents Views Index
+                    // This will be retrieved in The Incident Views Index
                     TempData["CRUDMessage"] = $"{incidents.Title} Has Been Added";
+                    TempData["CRUDOperation"] = $"CRUD_ADDED"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
                 }
                 else
                 {
                     Context.Incidents.Update(incidents);
 
-                    // This will be retrieved in The incidents Views Index
-                    TempData["CRUDMessage"] = $"{incidents.Title} Has Been edited";
+                    // This will be retrieved in The Incident Views Index
+                    TempData["CRUDMessage"] = $"{incidents.Title} Has Been Edited";
+                    TempData["CRUDOperation"] = $"CRUD_EDITIED"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
+
                 }
-
                 Context.SaveChanges();
-
-                return RedirectToAction("Index", "Incident");
+                return RedirectToAction(actionName: "Index", controllerName: "Incident");
             }
             else
             {
-                // Show our Validation errors
-                ViewBag.Action = (incidents.IncidentModelId == 0) ? "Add" : "Edit";
-
-                // Puts the Customers back in after the load to be added and show Validation Errors
+                // Puts the Items back in after the load to be added and show Validation Errors
                 ViewBag.Customers = Context.Customers.OrderBy(c => c.CustomerFirstName).ToList();
                 ViewBag.Products = Context.Products.OrderBy(r => r.RecordName).ToList();
                 ViewBag.Employees = Context.Employees.OrderBy(f => f.FirstName).ToList();
 
-
-                return View(incidents);
+                return View(model: incidents);
             }
         }
-        // ++++++ ADDING/EDIT A INCIDENT ++++++ \\
+
 
 
 
@@ -190,43 +174,54 @@ namespace RecordShop.Controllers
 
         // xxxxxx DELETE A INCIDENT xxxxxx \\
         [HttpGet]
-        public IActionResult DeleteIncident(int id) // id parameter is sent from the url
+        public ViewResult GetDeletePage(int id) // id parameter is sent from the url
         {
-            ViewBag.Action = "Delete Incident";
-
             var incidents = Context.Incidents.Find(id);
-            return View(incidents); // sends the Incidents to the Delete page to auto fill the info
+            return View(viewName: "DeleteIncident", model: incidents); // sends the Product to the Delete page to auto fill the info
         }
 
 
+
         [HttpPost]
-        public IActionResult DeleteIncident(IncidentModel incidents)
+        public async Task<IActionResult> DeleteIncident(IncidentModel incidents)
         {
-            ViewBag.Action = "Delete Incident";
-
-
-            // Retrieve the name of the Incident before deleting it to place it in TempData
+            // Retrieve the id of the incident before deleting it to place it in TempData
             var incidentToDelete = Context.Incidents.FirstOrDefault(p => p.IncidentModelId == incidents.IncidentModelId);
 
-            // Check if the product exists
+            // Check if the incident exists
             if (incidentToDelete != null)
             {
-                // Delete the incident from the database
+                // Delete the incidents from the database
                 Context.Incidents.Remove(incidentToDelete);
                 Context.SaveChanges();
 
                 // Set the message to be displayed on the Index page
                 TempData["CRUDMessage"] = $"{incidentToDelete.Title} has been deleted";
+                TempData["CRUDOperation"] = $"CRUD_DELETED"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
             }
             else
             {
-                // If the product doesn't exist, display an error message
+                // If the incident doesn't exist, display an error message
                 TempData["CRUDMessage"] = "Incident not found";
+                TempData["CRUDOperation"] = $"CRUD_DELETED"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
             }
 
-            return RedirectToAction("Index", "Incident");
+            // A delay to allow the GIF of record breaking to play before redirecting to Index
+            await Task.Delay(2500); // Delay for 1000 == 1 second
+
+            return RedirectToAction(actionName: "Index", controllerName: "Incident");
         }
         // xxxxxx DELETE A INCIDENT xxxxxx \\
+
+
+
+
+
+
+
+
+
+
 
 
 

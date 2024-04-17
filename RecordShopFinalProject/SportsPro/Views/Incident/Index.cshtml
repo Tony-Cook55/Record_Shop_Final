@@ -1,32 +1,13 @@
 ﻿@*
     INCIDENTS Page
 *@
-@{
-    ViewData["Title"] = "Incidents";
-}
 
-@* @model List<IncidentModel> *@
-
-@model IncidentListViewModel
-
-
-
-@* Checks if there is a string in our Temp Data Message. If So Show the Message If not Nothing. This is so We don't see its padding and color *@
-@if (!string.IsNullOrEmpty(TempData["CRUDMessage"] as string))
-{
-    <div class="text-center bg-info py-3 mt-3">
-        <h1 class="">@(TempData["CRUDMessage"])</h1>
-    </div>
-}
-
-
-<h1>Incidents</h1>
 
 
 
 
 @* FILTERING BY OPEN/UNASSIGNED INCIDENTS *@
-<div class="col-md-2">
+@* <div class="col-md-2">
     <ul class="list-group text-center">
 
         <li class="list-group-item">
@@ -41,53 +22,217 @@
             <a asp-controller="Incident" asp-action="Index" asp-route-incidentSelector="open" class="nav-link">Open Incidents</a>
         </li>
     </ul>
-</div>
+</div> *@
 @* FILTERING BY OPEN/UNASSIGNED INCIDENTS *@
 
 
 
+@model PaginatedList<IncidentModel>
 
-<table class="table  table-responsive   table-striped  border  border-secondary   ">
+@{
+    ViewData["Title"] = "Incidents";
+}
 
+<div class="container">
 
-    <thead class="">
-        <tr>
-            <th>Title</th>
-            <th>Customer </th>
-            <th>Product</th>
-            <th>Assigned To Employee</th>
-            <th>Date Opened</th>
-
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-
-    @foreach (var incident in Model.IncidentItems)
-    @* @foreach (var incident in Model) *@
+    @* mmmmmmmmmmmmmmm TEMP DATA CRUD MESSAGE mmmmmmmmmmmmmmm *@
+    @* Checks if there is a string in our Temp Data Message. If So Show the Message If not Nothing. This is so We don't see its padding and color *@
+    @if (TempData.ContainsKey("CRUDMessage") && TempData["CRUDOperation"] != null)
     {
+        /* Checks Controller For CRUDOperation if it equlas the operation name it will set the operationClass to that class with custom BG in css*/
+        string operationClass = "";
+        if (TempData["CRUDOperation"]?.ToString() == "CRUD_ADDED")
+        {
+            operationClass = "CRUD_ADDED_background";
+        }
+        else if (TempData["CRUDOperation"]?.ToString() == "CRUD_EDITIED")
+        {
+            operationClass = "CRUD_EDITIED_background";
+        }
+        else if (TempData["CRUDOperation"]?.ToString() == "CRUD_DELETED")
+        {
+            operationClass = "CRUD_DELETED_background";
+        }
 
-        <tr>
-            <td>@incident.Title</td>
-            <td>@incident.Customer.CustomerFirstName   @incident.Customer.CustomerLastName</td>
-            <td>@incident.Product.RecordName</td>
-            <td>@incident.Employee.FirstName @incident.Employee.LastName </td>
-            <td>@incident.DateOpened</td>
 
-            <td>
-                <a asp-controller="Incident" asp-action="EditIncident" asp-route-id="@incident.IncidentModelId" asp-route-slug="@incident.Slug" class="btn btn-outline-primary">Edit</a>
-            </td>
-            <td>
-                <a asp-controller="Incident" asp-action="DeleteIncident" asp-route-id="@incident.IncidentModelId" asp-route-slug="@incident.Slug" class="btn btn-outline-danger">Delete</a>
-            </td>
-        </tr>
+        <div class="CRUD_Message_Container text-center    @operationClass     crud_message_slide_in" id="CRUDMessage">
+            @* THE ID is used for JavaScript call in to make timer and close function work *@
+            <div class="CRUD_icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none"><path fill="#393a37" d="m13 13h-2v-6h2zm0 4h-2v-2h2zm-1-15c-1.3132 0-2.61358.25866-3.82683.7612-1.21326.50255-2.31565 1.23915-3.24424 2.16773-1.87536 1.87537-2.92893 4.41891-2.92893 7.07107 0 2.6522 1.05357 5.1957 2.92893 7.0711.92859.9286 2.03098 1.6651 3.24424 2.1677 1.21325.5025 2.51363.7612 3.82683.7612 2.6522 0 5.1957-1.0536 7.0711-2.9289 1.8753-1.8754 2.9289-4.4189 2.9289-7.0711 0-1.3132-.2587-2.61358-.7612-3.82683-.5026-1.21326-1.2391-2.31565-2.1677-3.24424-.9286-.92858-2.031-1.66518-3.2443-2.16773-1.2132-.50254-2.5136-.7612-3.8268-.7612z"></path></svg>
+            </div>
+            <div class="CRUD_Message">@(TempData["CRUDMessage"])</div>
+            <div class="CRUD_close" onclick="closeCRUDMessage()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 20 20" height="24">
+                    <path fill="#393a37" d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"></path>
+                </svg>
+            </div>
+        </div>
     }
+    @* mmmmmmmmmmmmmmm TEMP DATA CRUD MESSAGE mmmmmmmmmmmmmmm *@
 
 
-</table>
 
 
 
-<div>
-    <a asp-controller="Incident" asp-action="Add" class="btn btn-outline-primary">Add New Incident</a>
+
+    @* SIDE MENU *@
+    <header class="nav_header">
+        <input id="side-menu-toggle" class="side-menu-toggle" type="checkbox" />
+        <label for="side-menu-toggle" class="nav_label_container">
+            <svg class="icon--menu-toggle" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20">
+                <path fill="#ff8f73" d="m17.545 15.467l-3.779-3.779a6.15 6.15 0 0 0 .898-3.21c0-3.417-2.961-6.377-6.378-6.377A6.185 6.185 0 0 0 2.1 8.287c0 3.416 2.961 6.377 6.377 6.377a6.15 6.15 0 0 0 3.115-.844l3.799 3.801a.953.953 0 0 0 1.346 0l.943-.943c.371-.371.236-.84-.135-1.211M4.004 8.287a4.282 4.282 0 0 1 4.282-4.283c2.366 0 4.474 2.107 4.474 4.474a4.284 4.284 0 0 1-4.283 4.283c-2.366-.001-4.473-2.109-4.473-4.474">
+                </path>
+            </svg>
+            @* <div class="text-center  nav_label_names">Search</div> *@
+        </label>
+        <nav class="side-menu     container-fluid">
+
+            <h1 class="text-center    search_side_menu_title">Search Incidents</h1>
+
+            @* SEARCHBAR SEARCHING USING INCIDENT NAME & PRODUCT NAME *@
+            <div class="search">
+                <form asp-controller="Incident" asp-action="Index" method="get" class="search-form">
+                    <input type="text" class="search_bar_text_input" placeholder="Search Incidents or Product Name" name="searchString">
+                    <input type="submit" class="search_bar_submit_input" value="Submit">
+                </form>
+            </div>
+            @* SEARCHBAR SEARCHING USING INCIDENT NAME & PRODUCT NAME *@
+
+
+            @* FILTERING BY INCIDENT TITLE *@
+            <div class="scrollable_search_buttons   text-center">
+                <a asp-controller="Incident" asp-action="Index" asp-route-InputtedIncidents="all" class="pushable text-center">
+                    <span class="shadow"></span>
+                    <span class="edge"></span>
+                    <span class="front">
+                        <span class="">All</span>
+                    </span>
+                </a>
+                @foreach (var incidentTitle in ViewBag.IncidentTitles)
+                {
+                    <button class="pushable">
+                        <a asp-controller="Incident" asp-action="Index" asp-route-InputtedIncidents="@incidentTitle" class="pushable text-center  m-3">
+                            <span class="shadow"></span>
+                            <span class="edge"></span>
+                            <span class="front">
+                                <span>@incidentTitle</span>
+                            </span>
+                        </a>
+                    </button>
+                }
+            </div>
+            @* FILTERING BY INCIDENT TITLE*@
+        </nav>
+    </header>
+    @* SIDE MENU *@
+
+
+
+
+
+
+
+    @* IF THE SEARCH STRING INPUTTED BY USER IS INVALID SHOW NO RECORDS*@
+    @if (Model.Count == 0)
+    {
+        <section class="hero_section   text-center    scale_in_center_entrance_animation">
+            <div class="hero_content   text-center ">
+                <div class="">
+                    <h1 class="hero_header__no_items_text   text_shadow_pop_top">No Results Found</h1>
+
+                    <a asp-controller="Incident" asp-action="Index" asp-route-InputtedIncidents="all" class="no_items_image ">
+                        <img src="~/images/icons/no_results_sad.png" class="no_results_img" draggable="false">
+                    </a>
+                </div>
+            </div>
+        </section>
+    }
+    else
+    {
+        <div class="   text-center   ">
+
+
+            @* PAGE HEADER *@
+            <h1 class="page_header_text   text_shadow_pop_top   text-center">
+                Incidents
+            </h1>
+            @* PAGE HEADER *@
+
+
+
+            @* ADD BUTTON *@
+            <div class="center-container">
+                <a asp-controller="Incident" asp-action="GetAddPage" class="crud_button   text-center  crud_button_add">
+                    <div class="crud_button     crud_button_add">
+                        <span class="crud_button_text">Add</span>
+                        <span class="crud_button_icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg>
+                        </span>
+                    </div>
+                </a>
+            </div>
+            @* ADD BUTTON *@
+
+
+            @* ITEM CARDS *@
+            <div class="container  card_expand_container">
+                @foreach (var incident in Model)
+                {
+                    <div class="card    scale_in_center_entrance_animation">
+                        <div class="card_expand_face card_face_top">
+                            <div class="content">
+                                <h1 class="face_header_text">@incident.Title</h1>
+                                <h4 class="face_text">@incident.Product.RecordName</h4>
+                            </div>
+                        </div>
+                        <div class="card_expand_face card_face_bottom_info">
+                            <div class="content">
+                                <p>@incident.Customer.CustomerFirstName @incident.Customer.CustomerLastName </p>
+                                <p>@incident.Employee.FirstName @incident.Employee.LastName </p>
+                                <p>@incident.DateOpened</p>
+
+
+                                @* GET EDIT ~ DELETE BUTTONS*@
+                                <a class="btn card_expand_link card_edit_button" asp-controller="Incident" asp-action="GetEditPage" asp-route-id="@incident.ProductModelId" asp-route-slug="@incident.Slug"><i class="fa-solid fa-pencil"></i></a>
+                                <a class="btn card_expand_link card_delete_button" asp-controller="Incident" asp-action="GetDeletePage" asp-route-id="@incident.ProductModelId" asp-route-slug="@incident.Slug"><i class="fa-solid fa-trash-can"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            @* ITEM CARDS *@
+
+        </div>
+
+
+
+
+        @* PAGEINATION *@
+        <div class="text-center">
+
+            <div class="page_count_total">Page @Model.PageIndex of @Model.TotalPages</div>
+
+            <nav class="pagination-outer" aria-label="Page navigation">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)" class="page-link  @(Model.HasPreviousPage ? "" : "disabled")">Prev</a>
+                    </li>
+
+                    @* This will make it to where it will show the btns within a 3 range to show  EX: 2  3  4  or   10  11  12 *@
+                    @for (int i = Math.Max(1, Model.PageIndex - 1); i <= Math.Min(Model.TotalPages, Model.PageIndex + 1); i++)
+                    {
+                        <li class="page-item">
+                            <a asp-action="Index" asp-route-pageNumber="@i" class="page-link @(i == Model.PageIndex ? "active" : "")">@i</a>
+                        </li>
+                    }
+
+                    <li class="page-item">
+                        <a asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)" class="page-link  @(Model.HasNextPage ? "" : "disabled")">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        @* PAGEINATION *@
+
+    }
 </div>

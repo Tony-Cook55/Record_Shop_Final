@@ -1,0 +1,203 @@
+﻿
+@model IncidentModel
+
+
+@* Real Time Validation *@
+@{
+    // Specify the layout file to use (if necessary)
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts {
+    <!-- Include jQuery validation libraries -->
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+
+
+
+
+
+<div class="container    text-center">
+
+    @if (ViewBag.Editing != null) {
+        {
+            ViewBag.Title = $"{ViewBag.Editing} {@Model.Title}";
+        }
+
+        <h1 class="add-edit_selected_item_header     editing_item_header_color     text_shadow_pop_top">@ViewBag.Editing</h1>
+        <h1 class="edit_selected_item_name   text_shadow_pop_top">@Model.Title</h1>
+    }
+    @if (ViewBag.Adding != null)
+    {
+        {
+            ViewBag.Title = $"{ViewBag.Adding}";
+        }
+
+        <h1 class="add-edit_selected_item_header      adding_item_header_color     text_shadow_pop_top">@ViewBag.Adding</h1>
+    }
+
+
+
+
+
+    @* xxxxxxxx CANCEL BUTTON xxxxxxxx *@
+    <div class="fixed_buttons">
+        <a asp-controller="Incident" asp-action="Index" class="">
+            <div class="">
+                <svg class="icon--menu-toggle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
+                <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+                            <!-- Change fill attribute to blue -->
+                <path d="M 24.316 44.248 l 16.193 -15.342 c 0.66 -0.625 1.748 -0.157 1.748 0.752 v 7.873 c 0 0.572 0.464 1.036 1.036 1.036 h 22.149 c 0.572 0 1.036 0.464 1.036 1.036 v 10.795 c 0 0.572 -0.464 1.036 -1.036 1.036 H 43.293 c -0.572 0 -1.036 0.464 -1.036 1.036 v 7.873 c 0 0.909 -1.088 1.377 -1.748 0.752 L 24.316 45.752 C 23.885 45.343 23.885 44.657 24.316 44.248 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #ff8f73; fill-rule: nonzero; opacity: 1;" transform="matrix(1 0 0 1 0 0)" stroke-linecap="round" />
+                            <!-- Change fill attribute to color you want -->
+                <path d="M 45 90 c 24.813 0 45 -20.187 45 -45 C 90 20.187 69.813 0 45 0 C 20.187 0 0 20.187 0 45 C 0 69.813 20.187 90 45 90 z M 45 8 c 20.402 0 37 16.598 37 37 c 0 20.402 -16.598 37 -37 37 C 24.598 82 8 65.402 8 45 C 8 24.598 24.598 8 45 8 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #ff8f73; fill-rule: nonzero; opacity: 1;" transform="matrix(1 0 0 1 0 0)" stroke-linecap="round" />
+                        </g>
+                    </svg>
+            </div>
+        </a>
+    </div>
+    @* xxxxxxxx CANCEL BUTTON xxxxxxxx *@
+
+
+
+
+    <form asp-action="AddEditIncident" method="post">
+        @* All Error Messages *@
+        @*     <div asp-validation-summary="All" class="text-danger"></div> *@
+
+
+        @* TITLE *@
+        <div class="add-edit_input_div ">
+            <input asp-for="Title" class="add-edit_input   form-control" placeholder="Title" />
+            <label asp-for="Title" class="add-edit_input_label">Title</label>
+        </div>
+        <div class="add-edit_error_div   ">
+            <span class="add-edit_error_message" asp-validation-for="Title"></span> @* Error Message *@
+        </div>
+        @* TITLE *@
+
+
+        @* DESCRIPTION *@
+        <div class="add-edit_input_div">
+            <input asp-for="Description" class="add-edit_input   form-control" placeholder="Description" />
+            <label asp-for="Description" class="add-edit_input_label">Description</label>
+        </div>
+        <div class="add-edit_error_div">
+            <span class="add-edit_error_message" asp-validation-for="Description"></span> @* Error Message *@
+        </div>
+        @* DESCRIPTION *@
+
+
+        @* CUSTOMER SELECTOR *@
+        <div class="add-edit_input_div">
+            <select asp-for="CustomerModelId" class="add-edit_select_input form-control">
+                <option class="add-edit_selction_option   fw-bold" value="">Select Customer</option>
+                @foreach (var customer in ViewBag.Customers)
+                {
+                    <option class="add-edit_selction_option" value="@customer.CustomerModelId">
+                        @customer.CustomerFirstName @customer.CustomerLastName
+                    </option>
+                }
+            </select>
+            <label asp-for="CustomerModelId" class="add-edit_input_label">Customer</label>
+        </div>
+        <div class="add-edit_error_div">
+            <span class="add-edit_error_message" asp-validation-for="CustomerModelId"></span> @* Error Message *@
+        </div>
+        @* CUSTOMER SELECTOR *@
+
+
+        @* PRODUCT SELECTOR *@
+        <div class="add-edit_input_div">
+            <select asp-for="ProductModelId" class="add-edit_select_input form-control">
+                <option class="add-edit_selction_option   fw-bold" value="">Select Product</option>
+                @foreach (var products in ViewBag.Products)
+                {
+                    <option class="add-edit_selction_option" value="@products.ProductModelId">
+                        @products.RecordName
+                    </option>
+                }
+            </select>
+            <label asp-for="ProductModelId" class="add-edit_input_label">Product</label>
+        </div>
+        <div class="add-edit_error_div">
+            <span class="add-edit_error_message" asp-validation-for="ProductModelId"></span> @* Error Message *@
+        </div>
+        @* PRODUCT SELECTOR *@
+
+
+        @* EMPLOYEE SELECTOR *@
+        <div class="add-edit_input_div">
+            <select asp-for="EmployeeModelId" class="add-edit_select_input form-control">
+                <option class="add-edit_selction_option   fw-bold" value="">Select Employee</option>
+                @foreach (var employee in ViewBag.Employees)
+                {
+                    <option class="add-edit_selction_option" value="@employee.EmployeeModelId">
+                        @employee.FirstName
+                    </option>
+                }
+            </select>
+            <label asp-for="EmployeeModelId" class="add-edit_input_label">Employee</label>
+        </div>
+        <div class="add-edit_error_div">
+            <span class="add-edit_error_message" asp-validation-for="EmployeeModelId"></span> @* Error Message *@
+        </div>
+        @* EMPLOYEE SELECTOR *@
+
+
+        @* DATE OPENED *@
+        <div class="add-edit_input_div">
+            <input asp-for="DateOpened" class="add-edit_input form-control" type="text" placeholder="Date Opened"
+                value="@((Model.DateOpened.HasValue ? Model.DateOpened.Value.ToString("MM/dd/yyyy h:mm tt") : DateTime.Now.ToString("MM/dd/yyyy h:mm tt")))" />
+
+            <label asp-for="DateOpened" class="add-edit_input_label">Date Opened</label>
+        </div>
+        <div class="add-edit_error_div">
+            <span class="add-edit_error_message" asp-validation-for="DateOpened"></span> @* Error Message *@
+        </div>
+        @* DATE OPENED *@
+
+
+        @* PRICE *@
+        <div class="add-edit_input_div">
+            <input asp-for="DateClosed" class="add-edit_input    form-control" type="datetime-local" placeholder="Date Closed"
+                value="@((Model.DateClosed.HasValue ? Model.DateClosed.Value.ToString("yyyy-MM-ddTHH:mm") : string.Empty))" />
+
+            <label asp-for="DateClosed" class="add-edit_input_label">Date Closed</label>
+        </div>
+        <div class="add-edit_error_div">
+            <span class="add-edit_error_message" asp-validation-for="DateClosed"></span> @* Error Message *@
+        </div>
+        @* PRICE *@
+
+
+
+
+        @* SAVE BUTTON *@
+        <div class="">
+            <button type="submit" class="pushable text-center  m-3">
+                <span class="btn    pushable">
+                    <span class="shadow"></span>
+                    <span class="edge"></span>
+                    <span class="front  front_save_button_color">
+                        Save
+                    </span>
+                </span>
+            </button>
+        </div>
+        @* SAVE BUTTON *@
+
+
+
+        <input type="hidden" asp-for="IncidentModelId" />
+
+    </form>
+</div>
+
+
+
+
+
+
+
+

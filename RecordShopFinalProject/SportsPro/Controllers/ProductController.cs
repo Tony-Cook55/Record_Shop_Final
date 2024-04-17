@@ -27,7 +27,7 @@ namespace RecordShop.Controllers
 
 
 
-
+        // iiiiiiiiiiii INDEX PAGE iiiiiiiiiiii \\
         /* GET PAGE AND ADD SEARCH ABLITITES */
         [Route("products")]
         public async Task<IActionResult> Index(int? pageNumber, string searchString, string InputtedArtist = "all")
@@ -65,7 +65,7 @@ namespace RecordShop.Controllers
             return View(await PaginatedList<ProductModel>.CreateAsync(products, pageNumber ?? 1, pageSize));
         }
         /* GET PAGE AND ADD SEARCH ABLITITES */
-
+        // iiiiiiiiiiii INDEX PAGE iiiiiiiiiiii \\
 
 
 

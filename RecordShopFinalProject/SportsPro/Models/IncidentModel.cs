@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.VisualBasic;
 using System.ComponentModel.DataAnnotations;
 
@@ -35,13 +36,14 @@ namespace RecordShop.Models
         [Required(ErrorMessage = "Please Enter The Date Opened")]
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy h:mm tt}", ApplyFormatInEditMode = true)]
-        [CustomDateRange(ErrorMessage = "Date must be between 1/1/2000 and the current date")]
+        /*[CustomDateRange(ErrorMessage = "Date must be between 1/1/2000 and the current date")]*/
+        [Remote(action: "CheckDateRange", controller: "Validation", AdditionalFields = nameof(DateClosed) + "," + nameof(Title))]
         public DateTime? DateOpened { get; set; }
 
 
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy h:mm tt}", ApplyFormatInEditMode = true)]
-        [CustomDateRange(ErrorMessage = "Date must be between 1/1/2000 and the current date")]
+/*        [CustomDateRange(ErrorMessage = "Date must be between 1/1/2000 and the current date")]*/
         public DateTime? DateClosed { get; set; }
 
 
@@ -87,7 +89,7 @@ namespace RecordShop.Models
 
 
     // VALIDATION FOR THE DateOpened and DateClosed
-    public class CustomDateRangeAttribute : ValidationAttribute
+/*    public class CustomDateRangeAttribute : ValidationAttribute
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
@@ -105,7 +107,7 @@ namespace RecordShop.Models
 
             return ValidationResult.Success;
         }
-    }
+    }*/
 
 
 

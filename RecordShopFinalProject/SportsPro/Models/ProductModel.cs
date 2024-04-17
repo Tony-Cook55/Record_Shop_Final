@@ -34,6 +34,7 @@ namespace RecordShop.Models
 
         [Required(ErrorMessage = "Please Enter a The Records Name")]
         [StringLength(50, MinimumLength = 1, ErrorMessage = "Record Names Must Have At Least 1 to 50 Characters")]
+        [Remote(action: "CheckRecordExists", controller: "ProductValidation", AdditionalFields = nameof(ArtistName) + "," + nameof(ProductModelId))]
         public string? RecordName { get; set; } = string.Empty;
 
 

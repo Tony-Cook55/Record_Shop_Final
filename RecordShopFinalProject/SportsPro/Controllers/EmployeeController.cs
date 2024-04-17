@@ -24,7 +24,7 @@ namespace RecordShop.Controllers
 
 
 
-
+        // iiiiiiiiiiii INDEX PAGE iiiiiiiiiiii \\
         /* GET PAGE AND ADD SEARCH ABLITITES */
         [Route("employees")]
         public async Task<IActionResult> Index(int? pageNumber, string searchString, string InputtedEmployee = "all")
@@ -63,7 +63,7 @@ namespace RecordShop.Controllers
             return View(await PaginatedList<EmployeeModel>.CreateAsync(employees, pageNumber ?? 1, pageSize));
         }
         /* GET PAGE AND ADD SEARCH ABLITITES */
-
+        // iiiiiiiiiiii INDEX PAGE iiiiiiiiiiii \\
 
 
 

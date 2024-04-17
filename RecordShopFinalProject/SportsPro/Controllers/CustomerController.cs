@@ -26,16 +26,7 @@ namespace RecordShop.Controllers
 
 
 
-
-        /*        [Route("customers/")]
-                public IActionResult Index()
-                {
-                    // Sending list of both Customers and Country's
-                    var customer = CustomerRepo.List(new QueryOptions<CustomerModel>());
-
-                    return View(customer);
-                }*/
-
+        // iiiiiiiiiiii INDEX PAGE iiiiiiiiiiii \\
         /* GET PAGE AND ADD SEARCH ABLITITES */
         [Route("customers")]
         public async Task<IActionResult> Index(int? pageNumber, string searchString, string InputtedCustomer = "all")
@@ -73,7 +64,7 @@ namespace RecordShop.Controllers
             return View(await PaginatedList<CustomerModel>.CreateAsync(customers, pageNumber ?? 1, pageSize));
         }
         /* GET PAGE AND ADD SEARCH ABLITITES */
-
+        // iiiiiiiiiiii INDEX PAGE iiiiiiiiiiii \\
 
 
 
