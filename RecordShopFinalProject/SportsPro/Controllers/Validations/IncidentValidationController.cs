@@ -2,6 +2,7 @@
 using RecordShop.Models.DataLayer;
 using RecordShop.Models;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace RecordShop.Controllers.Validations
 {
@@ -25,15 +26,16 @@ namespace RecordShop.Controllers.Validations
 
 
 
-        public JsonResult CheckDateRange(DateTime? startDate, DateTime? endDate, string title)
+        public JsonResult CheckDateRange(DateTime? DateOpened, DateTime? DateClosed)
         {
-            if (startDate.HasValue && endDate.HasValue && startDate <= endDate)
+            if ((DateOpened >= new DateTime(2000, 1, 1) && DateOpened <= DateTime.Now) &&
+                (DateClosed >= new DateTime(2000, 1, 1) && DateClosed <= DateTime.Now))
             {
                 return Json(true);
             }
             else
             {
-                return Json($"{title} end date must be after or equal to start date.");
+                return Json($"Date must be between January 1, 2000, and the current date.");
             }
         }
 

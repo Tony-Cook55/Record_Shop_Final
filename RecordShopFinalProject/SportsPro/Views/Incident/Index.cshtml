@@ -3,30 +3,6 @@
 *@
 
 
-
-
-
-@* FILTERING BY OPEN/UNASSIGNED INCIDENTS *@
-@* <div class="col-md-2">
-    <ul class="list-group text-center">
-
-        <li class="list-group-item">
-            <a asp-controller="Incident" asp-action="Index" class="nav-link">All</a>
-        </li>
-
-        <li class="list-group-item">
-            <a asp-controller="Incident" asp-action="Index" asp-route-incidentSelector="-1" class="nav-link">Unassigned Incidents</a>
-        </li>
-
-        <li class="list-group-item">
-            <a asp-controller="Incident" asp-action="Index" asp-route-incidentSelector="open" class="nav-link">Open Incidents</a>
-        </li>
-    </ul>
-</div> *@
-@* FILTERING BY OPEN/UNASSIGNED INCIDENTS *@
-
-
-
 @model PaginatedList<IncidentModel>
 
 @{

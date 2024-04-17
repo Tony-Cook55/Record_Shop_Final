@@ -37,13 +37,13 @@ namespace RecordShop.Models
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy h:mm tt}", ApplyFormatInEditMode = true)]
         /*[CustomDateRange(ErrorMessage = "Date must be between 1/1/2000 and the current date")]*/
-        [Remote(action: "CheckDateRange", controller: "Validation", AdditionalFields = nameof(DateClosed) + "," + nameof(Title))]
+        [Remote(action: "CheckDateRange", controller: "IncidentValidation", AdditionalFields = nameof(DateClosed))]
         public DateTime? DateOpened { get; set; }
 
 
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy h:mm tt}", ApplyFormatInEditMode = true)]
-/*        [CustomDateRange(ErrorMessage = "Date must be between 1/1/2000 and the current date")]*/
+        /*[CustomDateRange(ErrorMessage = "Date must be between 1/1/2000 and the current date")]*/
         public DateTime? DateClosed { get; set; }
 
 

@@ -147,8 +147,11 @@
 
         @* DATE OPENED *@
         <div class="add-edit_input_div">
-            <input asp-for="DateOpened" class="add-edit_input form-control" type="text" placeholder="Date Opened"
-                value="@((Model.DateOpened.HasValue ? Model.DateOpened.Value.ToString("MM/dd/yyyy h:mm tt") : DateTime.Now.ToString("MM/dd/yyyy h:mm tt")))" />
+            @* <input asp-for="DateOpened" class="add-edit_input form-control" type="text" placeholder="Date Opened"
+                value="@((Model.DateOpened.HasValue ? Model.DateOpened.Value.ToString("MM/dd/yyyy h:mm tt") : DateTime.Now.ToString("MM/dd/yyyy h:mm tt")))" /> *@
+            <input id="dateOpenedInput" class="add-edit_input form-control" type="text" placeholder="Date Opened" />
+
+
 
             <label asp-for="DateOpened" class="add-edit_input_label">Date Opened</label>
         </div>
@@ -156,6 +159,19 @@
             <span class="add-edit_error_message" asp-validation-for="DateOpened"></span> @* Error Message *@
         </div>
         @* DATE OPENED *@
+
+                                            <script>
+                                                // Function to update the value of the dateOpenedInput field with the current time
+                                                function updateDateOpenedInput() {
+                                                    var now = new Date();
+                                                    var formattedDate = now.toLocaleString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true });
+                                                    document.getElementById('dateOpenedInput').value = formattedDate;
+                                                }
+
+                                                // Update the input field initially and then every second
+                                                updateDateOpenedInput();
+                                                setInterval(updateDateOpenedInput, 1000); // Update every second
+                                            </script>
 
 
         @* PRICE *@
