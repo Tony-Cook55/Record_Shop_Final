@@ -181,7 +181,6 @@
         outline-color: transparent !important;
         box-shadow: none !important; /* mobiles outline */
 
-
         /*box-shadow: 0 0 0 0.25rem rgb(25 135 84 / 25%);*/
     }
     .add-edit_select_input:hover {
@@ -195,10 +194,10 @@
 
 
 /* OPTIONS IN SELECT */
-    .add-edit_selction_option {
-                color: #634a4c;
-        background-color: #b5c8b2;
-    }
+.add-edit_selction_option {
+    color: #634a4c;
+    background-color: #b5c8b2;
+}
     /* THE ACTIVE SELECTED OPTION */
     .add-edit_selction_option:checked {
         background-color: #ff8f73 !important;
