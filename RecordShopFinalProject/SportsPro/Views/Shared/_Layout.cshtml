@@ -1,4 +1,15 @@
-﻿<!DOCTYPE html>
+﻿
+
+
+@* USED FOR CHECKING IF USER IS LOGGED IN *@
+@using RecordShop.Models.Login
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> signInManager
+@* USED FOR CHECKING IF USER IS LOGGED IN *@
+
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -116,6 +127,48 @@
                         Products
                     </a>
                 </li>
+
+                                    @* User must be logged in to see this *@
+                @if (signInManager.IsSignedIn(User))
+                {
+                    <li class="navbar_li">
+                        <a class="navbar_links @(areaName == "" && controllerName == "Product" && actionName == "Index" ? "active" : "")" asp-controller="Product" asp-action="Index">
+                            ONLY LOGGED IN CAN SEE
+                        </a>
+                    </li>
+
+
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="navbar_li">
+                            <a class="navbar_links @(areaName == "" && controllerName == "Product" && actionName == "Index" ? "active" : "")" asp-controller="Product" asp-action="Index">
+                                ONLY ADMIN CAN SEE
+                            </a>
+                        </li>
+                    }
+
+
+                    <li class="navbar_li">
+                        <form method="post" asp-action="Logout" asp-controller="Account" asp-area="" class="navbar_links">
+                            <input type="submit" value="Log Out" class="btn btn-outline-danger  me-5">
+                            <span class="text-light fw-bold">@User.Identity.Name</span>
+                        </form>
+                    </li>
+                }
+                else
+                {
+                    @* Anonymous User - Register Link and Log In Button *@
+                    <li class="navbar_li">
+                        <a asp-action="Register" asp-controller="Account" asp-asp-area="" class="btn btn-outline-info me-5">Register</a>
+                    </li>
+
+                    <li class="navbar_li">
+                        <a asp-action="Login" asp-controller="Account" asp-area="" class="btn btn-outline-light me-5">Log In</a>
+                    </li>
+                }
+
+
                 <li class="navbar_li">
                     <a class="navbar_links @(areaName == "" && controllerName == "Employee" && actionName == "Index" ? "active" : "")" asp-controller="Employee" asp-action="Index">
                         Employees

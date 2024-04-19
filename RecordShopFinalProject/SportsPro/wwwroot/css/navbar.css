@@ -173,7 +173,7 @@
 
 /* The actual Link Element itself */
 .navbar_links {
-    font-size: calc(1.5vw + 2rem); /* Adjust font size based on viewport width */
+    font-size: calc(1vw + 1rem); /* Adjust font size based on viewport width */
 
     font-family: "Lexend", sans-serif;
 

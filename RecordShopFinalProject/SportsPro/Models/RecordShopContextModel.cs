@@ -1,11 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 // FOR SEED DATA
 using RecordShop.Models.Configuration;
+using RecordShop.Models.Login;
 
 namespace RecordShop.Models
 {
-    public class RecordShopContextModel     : DbContext  // ADD : DbContext to allow certain call ins below to work
+    public class RecordShopContextModel     : IdentityDbContext<User>  // ADD : DbContext to allow certain call ins below to work
     {
 
 
@@ -40,6 +42,14 @@ namespace RecordShop.Models
         // seed seed THIS IS YOUR SEED DATA CALL IN seed seed \\
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+
+            /* USED FOR IDENTITY*/
+            base.OnModelCreating(modelBuilder);
+            /* USED FOR IDENTITY*/
+
+
+
             //Seed Data    /   Fluent API for defining DB Design
 
             // CUSTOMERS \\

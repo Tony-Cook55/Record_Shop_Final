@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RecordShop.Models;
+using RecordShop.Models.Login;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,6 +48,24 @@ builder.Services.AddRouting(options =>
 
 
 
+
+// USED FOR IDENTITY    - Sets the Password Requirements
+builder.Services.AddIdentity<User, IdentityRole>(options =>
+{
+    options.Password.RequiredLength = 6;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = false;
+}
+).AddEntityFrameworkStores<RecordShopContextModel>().AddDefaultTokenProviders();
+// USED FOR IDENTITY
+
+
+
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -66,7 +86,26 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+
+
+
+
+
+// USED FOR IDENTITY
+app.UseAuthentication();
 app.UseAuthorization();
+
+
+// Calls in the ConfigureIdentity To Seed An Admin Role
+var scopeFactory = app.Services.GetRequiredService<IServiceScopeFactory>();
+using (var scope = scopeFactory.CreateScope())
+{
+    await ConfigureIdentity.CreateAdminUserAsync(scope.ServiceProvider);
+}
+// USED FOR IDENTITY
+
+
+
 
 
 //  ccccccc COOKIES/SESSIONS ccccccc  \\
