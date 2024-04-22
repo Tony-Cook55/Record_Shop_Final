@@ -72,19 +72,34 @@
 
 /* BACKGROUND FOR ADDING OPERATION */
 .CRUD_ADDED_background {
-    background-color: #ff8f73; /* Change to your desired background color for add operation */
+    background-color: #ff8f73;
 }
-
 /* BACKGROUND FOR EDITIED OPERATION */
 .CRUD_EDITIED_background {
-    background-color: #fcca29; /* Change to your desired background color for edit operation */
+    background-color: #fcca29;
 }
-
 /* BACKGROUND FOR DELETED OPERATION */
 .CRUD_DELETED_background {
     background-color: #ff4646;
 }
 
+
+
+/* aaaaa ACCOUNT OPERACTIONS aaaaa */
+/* FOR WHEN A USER REGISTERS AN ACCOUNT */
+.REGISTER_USER_background {
+    background-color: #ff8f73;
+}
+
+/* BACKGROUND FOR USER LOGIN */
+.LOGIN_USER_background {
+    background-color: #3fc63f;
+}
+
+.LOGOUT_USER_background {
+    background-color: #3fc63f;
+}
+/* aaaaa ACCOUNT OPERACTIONS aaaaa */
 
 
 
@@ -94,9 +109,7 @@
     max-width: 320px; /* Limit width on larger screens */
 
     padding: 15px;
-
     position: fixed;
-
     bottom: 50px; /* Adjust distance from bottom */
     right: 20px; /* Adjust distance from right */
 
@@ -104,12 +117,10 @@
     flex-direction: row;
     align-items: center;
     justify-content: start;
-
     border-radius: 10px;
     box-shadow: 0px 0px 5px -3px #111;
-
     z-index: 10;
-/*    background-color: #ff8f73;*/
+    /*    background-color: #ff8f73;*/
 }
 
 

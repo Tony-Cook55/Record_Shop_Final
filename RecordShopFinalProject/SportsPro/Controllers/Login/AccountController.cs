@@ -62,6 +62,11 @@ namespace RecordShop.Controllers.Login
                 if (result.Succeeded)
                 {
                     await signInManager.SignInAsync(user, isPersistent: false);
+
+                    // This will be retrieved in The Home Views Index
+                    TempData["ACCOUNTMessage"] = $"Account Successfully Registered. Welcome {model.FirstName}!";
+                    TempData["ACCOUNToperation"] = $"REGISTER_USER"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -106,12 +111,22 @@ namespace RecordShop.Controllers.Login
 
                 if (result.Succeeded)
                 {
+                    // Takes the user back to the Url they were trying to access if they weren't logged in
                     if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
                     {
+
+                        // This will be retrieved in The Home Views Index
+                        TempData["ACCOUNTMessage"] = $"Successfully Logged In. Welcome {model.UserName}!";
+                        TempData["ACCOUNToperation"] = $"LOGIN_USER"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
+
                         return Redirect(model.ReturnUrl);
                     }
                     else
                     {
+                        // This will be retrieved in The Home Views Index
+                        TempData["ACCOUNTMessage"] = $"Successfully Logged In. Welcome {model.UserName}!";
+                        TempData["ACCOUNToperation"] = $"LOGIN_USER"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
+
                         return RedirectToAction("Index", "Home");
                     }
                 }
@@ -133,6 +148,12 @@ namespace RecordShop.Controllers.Login
         [HttpPost]
         public async Task<IActionResult> LogOut()
         {
+
+            // This will be retrieved in The Home Views Index
+            TempData["ACCOUNTMessage"] = $"Successfully Logged Out.";
+            TempData["ACCOUNToperation"] = $"LOGOUT_USER"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
+
+
             await signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }

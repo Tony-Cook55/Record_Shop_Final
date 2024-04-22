@@ -6,11 +6,11 @@ namespace RecordShop.Models.Login
     {
 
         [Required(ErrorMessage = "Please Enter A First Name")]
-        [StringLength(50, ErrorMessage = "First Name Must Be 50 characters or less")]
+        [StringLength(20, MinimumLength = 1, ErrorMessage = "First Name Must Be 20 characters or less")]
         public string FirstName { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Please Enter A Last Name")]
-        [StringLength(50, ErrorMessage = "Last Name Must Be 50 characters or less")]
+        [StringLength(20, MinimumLength = 1, ErrorMessage = "Last Name Must Be 20 characters or less")]
         public string LastName { get; set; } = string.Empty;
 
 
@@ -18,7 +18,7 @@ namespace RecordShop.Models.Login
 
 
         [Required(ErrorMessage = "Please Enter A UserName")]
-        [StringLength(50, ErrorMessage = "Username Must Be 50 characters or less")]
+        [StringLength(25, MinimumLength = 3, ErrorMessage = "Username Must Be 25 characters or less")]
         public string UserName { get; set; } = null!;
 
 

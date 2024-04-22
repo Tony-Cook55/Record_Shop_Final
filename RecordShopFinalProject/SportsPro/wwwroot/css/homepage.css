@@ -22,32 +22,37 @@
 
 
 /* hhhhhhhhhhh HERO SECTION hhhhhhhhhhh */
-.hero_content {
-    max-width: 600px;
-    margin: 0 auto;
-
-/*    padding-top: 10px;
-    padding-bottom: 20px;*/
-}
-
-
-
 
 .hero_section {
     position: relative;
 
     height: 100vh;
-    height: 100vh;
+
+    justify-content: center; /* Center content horizontally */
+
 
     display: flex;
     align-items: center;
     overflow: hidden;
 }
-.hero_section_bg_color {
-    background-color: #b5c8b2;
+
+.hero_content {
+    max-width: 400px;
+    padding: 20px;
+}
+
+    .hero_section_bg_color {
+        background-color: #b5c8b2;
+    }
+
+
+.no_results_img {
+    width: 100%; /* Ensure image scales with its container */
 }
 
 
+
+/* Background Image */
 .hero_background {
     position: absolute;
     top: 0;
@@ -61,11 +66,9 @@
     animation: slide 45s linear infinite; /* Adjust animation duration as needed */
 }
 
-    .hero_background img {
-        flex: 1;
-        width: 100%;
-        height: 100%;
-    }
+
+
+
 
 @keyframes slide {
     0% {

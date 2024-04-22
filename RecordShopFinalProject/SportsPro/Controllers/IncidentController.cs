@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RecordShop.Models;
@@ -7,6 +8,14 @@ using System.Text.Json;
 
 namespace RecordShop.Controllers
 {
+
+    /* Only Allows Roles of Admin To View  The Page */
+    /*[Authorize(Roles = "Admin")]*/
+
+    /* Only Allow Logged In Users To View The Page */
+    [Authorize]
+
+
     public class IncidentController : Controller
     {
 

@@ -93,6 +93,7 @@
 
     <header class="nav_header">
 
+        @* CHECKBOX AND HAMBURGER + CLOSE ICON *@
         <input id="page-nav-toggle" class="main-navigation-toggle" type="checkbox" />
         <label for="page-nav-toggle" class="nav_label_container">
             <svg class="icon--menu-toggle" viewBox="0 0 60 30">
@@ -110,90 +111,115 @@
             </svg>
             @* <div class="text-center   nav_label_names">Menu</div> *@
         </label>
-
+        @* CHECKBOX AND HAMBURGER + CLOSE ICON *@
 
 
 
 
         <nav class="main-navigation   ">
             <ul class="navbar_ul">
-                <li class="navbar_li ">
-                    <a class="navbar_links @(areaName == "" && controllerName == "Home" && actionName == "Index" ? "active" : "")" asp-controller="Home" asp-action="Index">
-                        Home
-                    </a>
-                </li>
-                <li class="navbar_li">
-                    <a class="navbar_links @(areaName == "" && controllerName == "Product" && actionName == "Index" ? "active" : "")" asp-controller="Product" asp-action="Index">
-                        Products
-                    </a>
-                </li>
 
-                                    @* User must be logged in to see this *@
+
+
+                @* xxxxxxx USER NOT LOGGED IN OR REGISTERED xxxxxxx *@
+                @if (!signInManager.IsSignedIn(User))
+                {
+                    <li class="navbar_li ">
+                        <a class="navbar_links @(areaName == "" && controllerName == "Home" && actionName == "Index" ? "active" : "")" asp-controller="Home" asp-action="Index">
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="navbar_li">
+                        <a class="navbar_links @(areaName == "" && controllerName == "Home" && actionName == "About"  ? "active" : "")" asp-controller="About" asp-action="Index">
+                            About
+                        </a>
+                    </li>
+
+
+                    <li class="navbar_li">
+                        <a class="navbar_links @(areaName == "" && controllerName == "Account" && actionName == "Register" ? "active" : "")" asp-controller="Account" asp-action="Register">
+                            Register
+                        </a>
+                    </li>
+                    <li class="navbar_li">
+                        <a class="navbar_links @(areaName == "" && controllerName == "Account" && actionName == "Login" ? "active" : "")" asp-controller="Account" asp-action="Login">
+                            Login
+                        </a>
+                    </li>
+                }
+                @* xxxxxxx USER NOT LOGGED IN OR REGISTERED xxxxxxx *@
+
+
+
+
+
+                @* +++++++ USER IS LOGGED IN OR REGISTERED +++++++ *@
                 @if (signInManager.IsSignedIn(User))
                 {
+                    <li class="navbar_li ">
+                        <a class="navbar_links @(areaName == "" && controllerName == "Home" && actionName == "Index" ? "active" : "")" asp-controller="Home" asp-action="Index">
+                            Home
+                        </a>
+                    </li>
+
+                    @* USER HAS ROLE OF ADMIN *@
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="navbar_li">
+                            <a class="navbar_links @(areaName == "" && controllerName == "Product" && actionName == "Index" ? "active" : "")" asp-controller="Product" asp-action="Index">
+                                Products
+                            </a>
+                        </li>
+                    }
+                    @* USER HAS ROLE OF ADMIN *@
+
                     <li class="navbar_li">
-                        <a class="navbar_links @(areaName == "" && controllerName == "Product" && actionName == "Index" ? "active" : "")" asp-controller="Product" asp-action="Index">
-                            ONLY LOGGED IN CAN SEE
+                        <a class="navbar_links @(areaName == "" && controllerName == "Employee" && actionName == "Index" ? "active" : "")" asp-controller="Employee" asp-action="Index">
+                            Employees
+                        </a>
+                    </li>
+                    <li class="navbar_li">
+                        <a class="navbar_links @(areaName == "" && controllerName == "Customer" && actionName == "Index" ? "active" : "")" asp-controller="Customer" asp-action="Index">
+                            Customers
+                        </a>
+                    </li>
+                    <li class="navbar_li">
+                        <a class="navbar_links @(areaName == "" && controllerName == "Incident" && actionName == "Index" ? "active" : "")" asp-controller="Incident" asp-action="Index">
+                            Incidents
+                        </a>
+                    </li>
+                    <li class="navbar_li">
+                        <a class="navbar_links @(areaName == "" && controllerName == "Registration" && actionName == "Index" ? "active" : "")" asp-controller="Registration" asp-action="Index">
+                            Registrations
+                        </a>
+                    </li>
+                    <li class="navbar_li">
+                        <a class="navbar_links @(areaName == "" && controllerName == "Home" && actionName == "About"  ? "active" : "")" asp-controller="About" asp-action="Index">
+                            About
                         </a>
                     </li>
 
 
 
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <li class="navbar_li">
-                            <a class="navbar_links @(areaName == "" && controllerName == "Product" && actionName == "Index" ? "active" : "")" asp-controller="Product" asp-action="Index">
-                                ONLY ADMIN CAN SEE
-                            </a>
-                        </li>
-                    }
-
-
+                    /* LOG OUT BUTTON */
+                    @* <span class="text-light text-center fw-bold">@User.Identity.Name</span> *@
                     <li class="navbar_li">
                         <form method="post" asp-action="Logout" asp-controller="Account" asp-area="" class="navbar_links">
-                            <input type="submit" value="Log Out" class="btn btn-outline-danger  me-5">
-                            <span class="text-light fw-bold">@User.Identity.Name</span>
+                            <button type="submit" class="pushable text-center  m-3">
+                                <span class="btn    pushable">
+                                    <span class="shadow"></span>
+                                    <span class="edge"></span>
+                                    <span class="front  front_save_button_color">
+                                        Logout
+                                    </span>
+                                </span>
+                            </button>
                         </form>
                     </li>
+                    /* LOG OUT BUTTON */
                 }
-                else
-                {
-                    @* Anonymous User - Register Link and Log In Button *@
-                    <li class="navbar_li">
-                        <a asp-action="Register" asp-controller="Account" asp-asp-area="" class="btn btn-outline-info me-5">Register</a>
-                    </li>
-
-                    <li class="navbar_li">
-                        <a asp-action="Login" asp-controller="Account" asp-area="" class="btn btn-outline-light me-5">Log In</a>
-                    </li>
-                }
-
-
-                <li class="navbar_li">
-                    <a class="navbar_links @(areaName == "" && controllerName == "Employee" && actionName == "Index" ? "active" : "")" asp-controller="Employee" asp-action="Index">
-                        Employees
-                    </a>
-                </li>
-                <li class="navbar_li">
-                    <a class="navbar_links @(areaName == "" && controllerName == "Customer" && actionName == "Index" ? "active" : "")" asp-controller="Customer" asp-action="Index">
-                        Customers
-                    </a>
-                </li>
-                <li class="navbar_li">
-                    <a class="navbar_links @(areaName == "" && controllerName == "Incident" && actionName == "Index" ? "active" : "")" asp-controller="Incident" asp-action="Index">
-                        Incidents
-                    </a>
-                </li>
-                <li class="navbar_li">
-                    <a class="navbar_links @(areaName == "" && controllerName == "Home" && actionName == "About"  ? "active" : "")" asp-controller="About" asp-action="Index">
-                        About
-                    </a>
-                </li>
-                <li class="navbar_li">
-                    <a class="navbar_links @(areaName == "" && controllerName == "Registration" && actionName == "Index" ? "active" : "")" asp-controller="Registration" asp-action="Index">
-                        Registrations
-                    </a>
-                </li>
+                @* +++++++ USER IS LOGGED IN OR REGISTERED +++++++ *@
             </ul>
         </nav>
 
