@@ -173,7 +173,7 @@
 
 /* The actual Link Element itself */
 .navbar_links {
-    font-size: calc(1vw + 2rem); /* Adjust font size based on viewport width */
+    font-size: 2.5rem; /* Adjust font size based on viewport width */
 
     font-family: "Lexend", sans-serif;
 
@@ -193,15 +193,30 @@
     text-decoration: none;
     user-select: none;
     /*padding: 1rem 2rem;*/ /* Assuming 1rem = 16px */
-    padding-bottom: 2rem;
+
+    padding-top: 1vw;
+    padding-bottom: 1vw;
 
 
     /*    transform: translateY(100%);*/
 
     transition: all 0.3s ease-in-out;
 }
+    @media only screen and (max-width: 768px) {
+        .navbar_links {
+            padding-top: 3vw;
+            padding-bottom: 3vw;
+
+            font-size: 2.8rem; /* Adjust font size based on viewport width */
+        }
+            .navbar_links:hover {
+                font-size: 4rem;
+            }
+    }
+
+
     .navbar_links:hover {
-        font-size: calc(1vw + 2.5rem); /* Adjust font size based on viewport width */
+        font-size: 3rem; /* Adjust font size based on viewport width */
         margin-top: 5px;
         margin-bottom: 5px;
         color: #634a4c;
@@ -220,6 +235,16 @@
 
 
 
+/* Gets rid of the buttons attributes to look like my other nav links */
+.log_out_button{
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+}
+
+
+
 
 /*.main-content {
     margin: 6rem auto;
@@ -228,7 +253,6 @@
     transform: translateX(0);
     transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
 }*/
-
 .main-navigation-toggle:checked ~ label .icon--menu-toggle .icon-group {
     transform: translateX(100%);
 }
@@ -297,6 +321,8 @@
     }
 }
 /* nnnnnnnnnnnnnnnnnnnn NAVBAR nnnnnnnnnnnnnnnnnnnn */
+
+
 
 
 

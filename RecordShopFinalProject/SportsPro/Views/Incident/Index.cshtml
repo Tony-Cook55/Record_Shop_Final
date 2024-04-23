@@ -169,8 +169,8 @@
 
 
                                 @* GET EDIT ~ DELETE BUTTONS*@
-                                <a class="btn card_expand_link card_edit_button" asp-controller="Incident" asp-action="GetEditPage" asp-route-id="@incident.ProductModelId" asp-route-slug="@incident.Slug"><i class="fa-solid fa-pencil"></i></a>
-                                <a class="btn card_expand_link card_delete_button" asp-controller="Incident" asp-action="GetDeletePage" asp-route-id="@incident.ProductModelId" asp-route-slug="@incident.Slug"><i class="fa-solid fa-trash-can"></i></a>
+                                <a class="btn card_expand_link card_edit_button" asp-controller="Incident" asp-action="GetEditPage" asp-route-id="@incident.IncidentModelId" asp-route-slug="@incident.Slug"><i class="fa-solid fa-pencil"></i></a>
+                                <a class="btn card_expand_link card_delete_button" asp-controller="Incident" asp-action="GetDeletePage" asp-route-id="@incident.IncidentModelId" asp-route-slug="@incident.Slug"><i class="fa-solid fa-trash-can"></i></a>
                             </div>
                         </div>
                     </div>

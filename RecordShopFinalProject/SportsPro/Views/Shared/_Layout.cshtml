@@ -45,6 +45,7 @@
 
     <!-- MY CSS -->
     <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/css/loginpage.css" rel="stylesheet" />
     <link href="~/css/carditem.css" rel="stylesheet" />
     <link href="~/css/add-editpage.css" rel="stylesheet" />
     <link href="~/css/deletepage.css" rel="stylesheet" />
@@ -92,6 +93,8 @@
 
 
     <header class="nav_header">
+
+
 
         @* CHECKBOX AND HAMBURGER + CLOSE ICON *@
         <input id="page-nav-toggle" class="main-navigation-toggle" type="checkbox" />
@@ -201,12 +204,19 @@
                     </li>
 
 
+                    <li class="navbar_li">
+                        <form method="post" asp-action="Logout" asp-controller="Account" asp-area="" class="navbar_links">
+                            <button type="submit" class="navbar_links   log_out_button">
+                                Logout
+                            </button>
+                        </form>
+                    </li>
 
                     /* LOG OUT BUTTON */
                     @* <span class="text-light text-center fw-bold">@User.Identity.Name</span> *@
-                    <li class="navbar_li">
+@*                     <li class="navbar_li">
                         <form method="post" asp-action="Logout" asp-controller="Account" asp-area="" class="navbar_links">
-                            <button type="submit" class="pushable text-center  m-3">
+                            <button type="submit" class="pushable text-center">
                                 <span class="btn    pushable">
                                     <span class="shadow"></span>
                                     <span class="edge"></span>
@@ -216,7 +226,7 @@
                                 </span>
                             </button>
                         </form>
-                    </li>
+                    </li> *@
                     /* LOG OUT BUTTON */
                 }
                 @* +++++++ USER IS LOGGED IN OR REGISTERED +++++++ *@
@@ -245,75 +255,143 @@
     <div class="footer_container">
         <section class="">
             <div class="row text-center d-flex justify-content-center">
-                <!-- HOME -->
-                <div class="col-md-4">
-                    <h6 class="text-uppercase font-weight-bold">
-                        <a class="footer_navbar_links @(areaName == "" && controllerName == "Home" && actionName == "Index" ? "active" : "")" asp-controller="Home" asp-action="Index">
-                            Home
-                        </a>
-                    </h6>
-                </div>
-                <!-- HOME -->
 
-                <!-- PRODUCTS -->
-                <div class="col-md-4">
-                    <h6 class="text-uppercase font-weight-bold">
-                        <a class="footer_navbar_links @(areaName == "" && controllerName == "Product" && actionName == "Index" ? "active" : "")" asp-controller="Product" asp-action="Index">
-                            Products
-                        </a>
-                    </h6>
-                </div>
-                <!-- PRODUCTS -->
 
-                <!-- EMPLOYEES -->
-                <div class="col-md-4">
-                    <h6 class="text-uppercase font-weight-bold">
-                        <a class="footer_navbar_links @(areaName == "" && controllerName == "Employee" && actionName == "Index" ? "active" : "")" asp-controller="Employee" asp-action="Index">
-                            Employees
-                        </a>
-                    </h6>
-                </div>
-                <!-- EMPLOYEES -->
+                @* xxxxxxx USER NOT LOGGED IN OR REGISTERED xxxxxxx *@
+                @if (!signInManager.IsSignedIn(User))
+                {
+                    <!-- HOME -->
+                    <div class="col-md-3">
+                        <h6 class="text-uppercase font-weight-bold">
+                            <a class="footer_navbar_links @(areaName == "" && controllerName == "Home" && actionName == "Index" ? "active" : "")" asp-controller="Home" asp-action="Index">
+                                Home
+                            </a>
+                        </h6>
+                    </div>
+                    <!-- HOME -->
 
-                <!-- CUSTOMERS -->
-                <div class="col-md-4">
-                    <h6 class="text-uppercase font-weight-bold">
-                        <a class="footer_navbar_links @(areaName == "" && controllerName == "Customer" && actionName == "Index" ? "active" : "")" asp-controller="Customer" asp-action="Index">
-                            Customers
-                        </a>
-                    </h6>
-                </div>
-                <!-- CUSTOMERS -->
+                    <!-- ABOUT -->
+                    <div class="col-md-3">
+                        <h6 class="text-uppercase font-weight-bold">
+                            <a class="footer_navbar_links @(areaName == "" && controllerName == "Home" && actionName == "About"  ? "active" : "")" asp-controller="About" asp-action="Index">
+                                About
+                            </a>
+                        </h6>
+                    </div>
+                    <!-- ABOUT -->
 
-                <!-- INCIDENTS -->
-                <div class="col-md-4">
-                    <h6 class="text-uppercase font-weight-bold">
-                        <a class="footer_navbar_links @(areaName == "" && controllerName == "Incident" && actionName == "Index" ? "active" : "")" asp-controller="Incident" asp-action="Index">
-                            Incidents
-                        </a>
-                    </h6>
-                </div>
-                <!-- INCIDENTS -->
+                    <!-- REGISTER -->
+                    <div class="col-md-3">
+                        <h6 class="text-uppercase font-weight-bold">
+                            <a class="footer_navbar_links @(areaName == "" && controllerName == "Account" && actionName == "Register"  ? "active" : "")" asp-controller="Account" asp-action="Register">
+                                Register
+                            </a>
+                        </h6>
+                    </div>
+                    <!-- REGISTER -->
 
-                <!-- ABOUT -->
-                <div class="col-md-4">
-                    <h6 class="text-uppercase font-weight-bold">
-                        <a class="footer_navbar_links @(areaName == "" && controllerName == "Home" && actionName == "About"  ? "active" : "")" asp-controller="About" asp-action="Index">
-                            About
-                        </a>
-                    </h6>
-                </div>
-                <!-- ABOUT -->
+                    <!-- LOGIN -->
+                    <div class="col-md-3">
+                        <h6 class="text-uppercase font-weight-bold">
+                            <a class="footer_navbar_links @(areaName == "" && controllerName == "Account" && actionName == "Login"  ? "active" : "")" asp-controller="Account" asp-action="Login">
+                                Login
+                            </a>
+                        </h6>
+                    </div>
+                    <!-- LOGIN -->
+                }
+                @* xxxxxxx USER NOT LOGGED IN OR REGISTERED xxxxxxx *@
 
-                <!-- REGISTRATIONS -->
-                <div class="col-md-4">
-                    <h6 class="text-uppercase font-weight-bold">
-                        <a class="footer_navbar_links @(areaName == "" && controllerName == "Registration" && actionName == "Index" ? "active" : "")" asp-controller="Registration" asp-action="Index">
-                            Registrations
-                        </a>
-                    </h6>
-                </div>
-                <!-- REGISTRATIONS -->
+
+
+                @* +++++++ USER IS LOGGED IN OR REGISTERED +++++++ *@
+                @if (signInManager.IsSignedIn(User))
+                {
+                    <!-- HOME -->
+                    <div class="col-md-4">
+                        <h6 class="text-uppercase font-weight-bold">
+                            <a class="footer_navbar_links @(areaName == "" && controllerName == "Home" && actionName == "Index" ? "active" : "")" asp-controller="Home" asp-action="Index">
+                                Home
+                            </a>
+                        </h6>
+                    </div>
+                    <!-- HOME -->
+
+                    <!-- PRODUCTS -->
+                    @* USER HAS ROLE OF ADMIN *@
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <div class="col-md-4">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a class="footer_navbar_links @(areaName == "" && controllerName == "Product" && actionName == "Index" ? "active" : "")" asp-controller="Product" asp-action="Index">
+                                    Products
+                                </a>
+                            </h6>
+                        </div>
+                    }
+                    <!-- PRODUCTS -->
+
+                    <!-- EMPLOYEES -->
+                    <div class="col-md-4">
+                        <h6 class="text-uppercase font-weight-bold">
+                            <a class="footer_navbar_links @(areaName == "" && controllerName == "Employee" && actionName == "Index" ? "active" : "")" asp-controller="Employee" asp-action="Index">
+                                Employees
+                            </a>
+                        </h6>
+                    </div>
+                    <!-- EMPLOYEES -->
+
+                    <!-- CUSTOMERS -->
+                    <div class="col-md-4">
+                        <h6 class="text-uppercase font-weight-bold">
+                            <a class="footer_navbar_links @(areaName == "" && controllerName == "Customer" && actionName == "Index" ? "active" : "")" asp-controller="Customer" asp-action="Index">
+                                Customers
+                            </a>
+                        </h6>
+                    </div>
+                    <!-- CUSTOMERS -->
+
+                    <!-- INCIDENTS -->
+                    <div class="col-md-4">
+                        <h6 class="text-uppercase font-weight-bold">
+                            <a class="footer_navbar_links @(areaName == "" && controllerName == "Incident" && actionName == "Index" ? "active" : "")" asp-controller="Incident" asp-action="Index">
+                                Incidents
+                            </a>
+                        </h6>
+                    </div>
+                    <!-- INCIDENTS -->
+
+                    <!-- REGISTRATIONS -->
+                    <div class="col-md-4">
+                        <h6 class="text-uppercase font-weight-bold">
+                            <a class="footer_navbar_links @(areaName == "" && controllerName == "Registration" && actionName == "Index" ? "active" : "")" asp-controller="Registration" asp-action="Index">
+                                Registrations
+                            </a>
+                        </h6>
+                    </div>
+                    <!-- REGISTRATIONS -->
+
+                    <!-- ABOUT -->
+                    <div class="col-md-4">
+                        <h6 class="text-uppercase font-weight-bold">
+                            <a class="footer_navbar_links @(areaName == "" && controllerName == "Home" && actionName == "About"  ? "active" : "")" asp-controller="About" asp-action="Index">
+                                About
+                            </a>
+                        </h6>
+                    </div>
+                    <!-- ABOUT -->
+
+
+                    <!-- LOGOUT -->
+                    @* <div class="col-md-2">
+                        <form method="post" asp-action="Logout" asp-controller="Account" asp-area="" class="footer_navbar_links">
+                            <button type="submit" class="footer_navbar_links log_out_button">
+                                <h6 class="text-uppercase font-weight-bold">Logout</h6>
+                            </button>
+                        </form>
+                    </div> *@
+                    <!-- LOGOUT -->
+                }
 
             </div>
         </section>

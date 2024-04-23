@@ -38,7 +38,7 @@ namespace RecordShop.Models
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy h:mm tt}", ApplyFormatInEditMode = true)]
         /*[CustomDateRange(ErrorMessage = "Date must be between 1/1/2000 and the current date")]*/
         [Remote(action: "CheckDateRange", controller: "IncidentValidation", AdditionalFields = nameof(DateClosed))]
-        public DateTime? DateOpened { get; set; }
+        public DateTime? DateOpened { get; set; } = DateTime.Now; // Since we are getting the current date we set it to the current date
 
 
         [DataType(DataType.DateTime)]

@@ -24,10 +24,10 @@ namespace RecordShop.Controllers.Validations
 
 
 
-        public JsonResult CheckRecordExists(string recordName, string artistName, int productId)
+        public JsonResult CheckRecordExists(string recordName, string artistName, int productModelId)
         {
             var existingProduct = Context.Products.FirstOrDefault(p =>
-                p.RecordName == recordName && p.ArtistName == artistName && p.ProductModelId != productId);
+                p.RecordName == recordName && p.ArtistName == artistName && p.ProductModelId != productModelId);
 
             if (existingProduct != null)
             {

@@ -24,7 +24,7 @@
     top: -100%; /* Initially hide the menu above the viewport */
     left: 0;
     width: 100%;
-    height: 55vh; /* Adjust height as needed */
+    height: 65vh; /* Adjust height of entire panel as needed */
     background-color: #b5c8b2;
     overflow: hidden; /* Prevents content overflow */
 
@@ -79,6 +79,57 @@
 .side-menu-toggle {
     display: none;
 }
+
+
+
+
+
+
+
+
+
+/* These is the div that holds the buttons to search by artist name */
+.scrollable_search_buttons {
+    box-shadow: inset 0px 0px 10px rgba(0,0,0,0.5);
+    margin-top: 45px;
+    padding: 20px;
+    max-height: 25vh; /* Height of the boxed shadow inside the panal */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+
+    /* This is the scroll bar for the div */
+    .scrollable_search_buttons::-webkit-scrollbar {
+        width: 15px;
+        border: 3px solid #634a4c; /* Add a border to the scrollbar */
+        border-radius: 50px; /* Add border radius */
+
+
+        transition: all 1s ease-in-out;
+    }
+
+    .scrollable_search_buttons::-webkit-scrollbar-track {
+        background: #634a4c;
+    }
+
+    .scrollable_search_buttons::-webkit-scrollbar-thumb {
+        background: #f3f1e0;
+        width: 10px; /* Adjust the width of the scrollbar thumb */
+        border-radius: 50px;
+    }
+
+    /*        .scrollable_search_buttons::-webkit-scrollbar-thumb:hover {
+            background: #00d8ff;
+        }*/
+
+    .scrollable_search_buttons::-webkit-scrollbar-button {
+        display: none;
+    }
+
+
+
+
+
 
 
 

@@ -40,6 +40,11 @@ namespace RecordShop.Controllers
             // This will be Used to Plug Into the Index for Us adding the Employees for the Dropdown
             ViewBag.Customers = Context.Customers.OrderBy(f => f.CustomerFirstName).ToList();
 
+            /*ViewBag.Customers = RegistrationRepo.List(new QueryOptions<CustomerModel>()
+            {
+                OrderBy = c => c.CustomerFirstName
+            });*/
+
             return View(products);
         }
         // iiiiiiiiiiii INDEX PAGE iiiiiiiiiiii \\

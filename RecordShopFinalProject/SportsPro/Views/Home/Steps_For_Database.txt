@@ -8,6 +8,7 @@
     4. Search for the following 2 things
         ~Microsoft.EntityFrameworkCore.SqlServer
         ~Microsoft.EntityFrameworkCore.Tools
+        ~Microsoft.AspNetCore.Identity.EntityFrameworkCore
 
     5. Install Them
 
