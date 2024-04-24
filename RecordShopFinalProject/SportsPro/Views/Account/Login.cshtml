@@ -5,43 +5,139 @@
     ViewBag.Title = "Login";
 }
 
-<section class="hero_section  hero_section_bg_color text-center">
-    <div class="hero_content   text-center ">
-        @* ADD AS MANY AS NEEDED *@
-        @*         <div class="snowflake"><img src="~/images/icons/smile_record.png" class="snowflakeIMG" /></div>
-        <div class="snowflake"><img src="~/images/icons/uwu_record.png" class="snowflakeIMG" /></div>
-        <div class="snowflake"><img src="~/images/icons/smile_record.png" class="snowflakeIMG" /></div>
-        <div class="snowflake"><img src="~/images/icons/uwu_record.png" class="snowflakeIMG" /></div>
-        <div class="snowflake"><img src="~/images/icons/smile_record.png" class="snowflakeIMG" /></div>
-        <div class="snowflake"><img src="~/images/icons/uwu_record.png" class="snowflakeIMG" /></div>
-        <div class="snowflake"><img src="~/images/icons/smile_record.png" class="snowflakeIMG" /></div>
-        <div class="snowflake"><img src="~/images/icons/uwu_record.png" class="snowflakeIMG" /></div>
-        <div class="snowflake"><img src="~/images/icons/smile_record.png" class="snowflakeIMG" /></div> *@
 
 
 
 
 
 
-        <div class="">
-            <div class="hero_header_text">
-                <h1>Login</h1>
+    @* xxxxxxxx CANCEL BUTTON xxxxxxxx *@
+    <div class="fixed_buttons">
+        <a asp-controller="Home" asp-action="Index" class="">
+            <div class="">
+                <svg class="icon--menu-toggle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
+                <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+                                <!-- Change fill attribute to blue -->
+                <path d="M 24.316 44.248 l 16.193 -15.342 c 0.66 -0.625 1.748 -0.157 1.748 0.752 v 7.873 c 0 0.572 0.464 1.036 1.036 1.036 h 22.149 c 0.572 0 1.036 0.464 1.036 1.036 v 10.795 c 0 0.572 -0.464 1.036 -1.036 1.036 H 43.293 c -0.572 0 -1.036 0.464 -1.036 1.036 v 7.873 c 0 0.909 -1.088 1.377 -1.748 0.752 L 24.316 45.752 C 23.885 45.343 23.885 44.657 24.316 44.248 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #ff8f73; fill-rule: nonzero; opacity: 1;" transform="matrix(1 0 0 1 0 0)" stroke-linecap="round" />
+                                <!-- Change fill attribute to color you want -->
+                <path d="M 45 90 c 24.813 0 45 -20.187 45 -45 C 90 20.187 69.813 0 45 0 C 20.187 0 0 20.187 0 45 C 0 69.813 20.187 90 45 90 z M 45 8 c 20.402 0 37 16.598 37 37 c 0 20.402 -16.598 37 -37 37 C 24.598 82 8 65.402 8 45 C 8 24.598 24.598 8 45 8 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #ff8f73; fill-rule: nonzero; opacity: 1;" transform="matrix(1 0 0 1 0 0)" stroke-linecap="round" />
+                            </g>
+                        </svg>
             </div>
-        </div>
-
-
-
+        </a>
     </div>
+    @* xxxxxxxx CANCEL BUTTON xxxxxxxx *@
 
 
 
-</section>
 
 
 
-<h1>Login</h1>
+
+<div class="container  text-center">
 
 
+    <div class="">
+        <form method="post" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl" class="login_form">
+
+            @* PAGE HEADER *@
+            <h1 class="page_header_text   text_shadow_pop_top   text-center">
+                Login
+            </h1>
+            @* PAGE HEADER *@
+
+
+            @* Invalid Username or Password Error *@
+            <div class="add-edit_error_message   login_error_message" asp-validation-summary="ModelOnly"></div>
+            @* Invalid Username or Password Error *@
+
+
+
+            @*    SHOWS ALL ERRORS FOR MODEL
+            <div class="add-edit_error_message login_error_message">
+                @if (ViewData.ModelState.ErrorCount > 0)
+                {
+                    <div class="error">
+                        <p>Please correct the following errors:</p>
+                        @foreach (var key in ViewData.ModelState.Keys)
+                        {
+                            foreach (var error in ViewData.ModelState[key].Errors)
+                            {
+                                <p>@error.ErrorMessage</p>
+                            }
+                        }
+                    </div>
+                }
+            </div>
+            *@
+
+
+            @* USERNAME *@
+            <div class="add-edit_input_div">
+                <input asp-for="UserName" class="add-edit_input   form-control" placeholder="Username" />
+                <label asp-for="UserName" class="add-edit_input_label">Username</label>
+            </div>
+            <div class="add-edit_error_div">
+                <span class="add-edit_error_message" asp-validation-for="UserName"></span> @* Error Message *@
+            </div>
+            @* USERNAME *@
+
+            @* PASSWORD *@
+            <div class="add-edit_input_div">
+                <input asp-for="Password" type="password" class="add-edit_input   form-control" placeholder="Password" />
+                <label asp-for="Password" class="add-edit_input_label">Password</label>
+            </div>
+            <div class="add-edit_error_div">
+                <span class="add-edit_error_message" asp-validation-for="Password"></span> @* Error Message *@
+            </div>
+            @* PASSWORD *@
+
+
+            @* REMEBER ME CHECKBOX *@
+            <div class="remember_me_div">
+                <div class="">
+                    <input id="remember_label_ID" type="checkbox" title="Remember Me" asp-for="RememberMe" class="remember_me_checkbox" />
+                    <label for="remember_label_ID" class="remember_me_label">Remember Me</label>
+                </div>
+            </div>
+            @* REMEBER ME CHECKBOX *@
+
+
+
+            @* LOGIN BUTTON *@
+            <div class="login_button_div">
+                <button type="submit" class="pushable text-center  m-3">
+                    <span class="btn    pushable">
+                        <span class="shadow"></span>
+                        <span class="edge"></span>
+                        <span class="front  front_save_button_color">
+                            Login
+                        </span>
+                    </span>
+                </button>
+            </div>
+            @* LOGIN BUTTON *@
+
+
+            @* ALREADY HAVE AN ACCOUNT *@
+            <div class="register_account_link_div">
+                <a asp-action="Register" class="register_account_link">Register An Account Here Instead</a>
+            </div>
+            @* ALREADY HAVE AN ACCOUNT *@
+
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+@*
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
 <form method="post" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">
@@ -94,4 +190,4 @@
         </div>
     </div>
 
-</form>
+</form> *@

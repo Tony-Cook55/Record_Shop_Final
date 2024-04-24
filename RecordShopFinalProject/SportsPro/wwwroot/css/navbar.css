@@ -236,11 +236,12 @@
 
 
 /* Gets rid of the buttons attributes to look like my other nav links */
-.log_out_button{
+.log_out_button {
     padding: 0;
     margin: 0;
     background: none;
     border: none;
+    color: #634a4c !important;
 }
 
 

@@ -8,6 +8,8 @@
     left: 2rem; /* Adjust left position as needed */
 
     cursor: pointer;
+
+    z-index: 100;
 }
 
 

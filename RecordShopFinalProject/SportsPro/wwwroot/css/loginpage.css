@@ -1,1 +1,127 @@
 ﻿
+
+/* Invalid Username or Password Error Message */
+.add-edit_error_message ul {
+    list-style-type: none;
+    padding: 0;
+
+    margin-top: 70px;
+}
+    .add-edit_error_message li {
+        margin-bottom: 5px;
+    }
+
+
+
+
+
+
+
+/* REMEMBER LABEL AND CHECK BOX */
+
+/* The Label To The Check Box */
+.remember_me_label {
+    padding-top: 40px;
+    cursor: pointer;
+    position: relative;
+    padding-left: 35px;
+    font-size: 1.3rem;
+    color:  #ff8f73;
+    user-select: none;
+    transition: all 0.3s ease-in-out;
+}
+    /* The New Check Box */
+    .remember_me_label:before {
+        content: "";
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+        position: absolute;
+        left: 0;
+        bottom: 0px;
+        background-color: #b5c8b2;
+        box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+        border-radius: 50%;
+
+        transition: all 0.3s ease-in-out;
+    }
+        .remember_me_label:hover:before{
+            transform: scale(1.1);
+            background-color: #ff8f73;
+        }
+        .remember_me_label:hover {
+            transform: scale(1.1);
+            color: #634a4c;
+        }
+
+
+/* Hides the real check box so we can use our new one */
+.remember_me_checkbox {
+    display: none;
+}
+
+    /* When the new check box is clicked and checked */
+    .remember_me_checkbox:checked + .remember_me_label:before {
+        content: "\2714"; /* Creates the unicode for the check mark */
+        /* Puts it in the center of the check box */
+        align-content: center;
+        font-size: 20px;
+        color: #f3f1e0;
+        text-align: center;
+
+        box-shadow: inset 1px 5px 5px 0px rgba(0, 0, 0, .3), 0px 0px 0px 0px rgba(255, 255, 255, .8);
+    }
+/* REMEMBER LABEL AND CHECK BOX */
+
+
+
+
+
+
+
+/* Button User Clicks to Log in   ~ It uses the pushable button css */
+.login_button_div {
+    padding-top: 40px;
+}
+
+
+
+
+
+/* This is the Register Account Here Instead Link To Go To Register Page */
+.register_account_link_div {
+    padding-top: 35px;
+    padding-bottom: 40px;
+}
+
+.register_account_link {
+    font-size: 1.3rem;
+    text-decoration: none;
+    color:  #ff8f73;
+    transition: all 0.3s ease-in-out;
+}
+    .register_account_link:hover, .register_account_link:focus {
+        font-size: 1.4rem; /* Adjust font size based on viewport width */
+
+        text-decoration: none;
+        color: #634a4c;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
