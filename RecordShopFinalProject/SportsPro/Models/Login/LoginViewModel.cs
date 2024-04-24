@@ -6,7 +6,7 @@ namespace RecordShop.Models.Login
     {
 
         [Required(ErrorMessage = "Please Enter A UserName")]
-        [StringLength(50, ErrorMessage = "Username Must Be 50 characters or less")]
+        [StringLength(25, MinimumLength = 1, ErrorMessage = "Username Must Be 25 characters or less")]
         public string UserName { get; set; } = string.Empty;
 
 

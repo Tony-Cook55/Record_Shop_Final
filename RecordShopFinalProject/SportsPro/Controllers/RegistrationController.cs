@@ -40,14 +40,11 @@ namespace RecordShop.Controllers
             // This will be Used to Plug Into the Index for Us adding the Employees for the Dropdown
             ViewBag.Customers = Context.Customers.OrderBy(f => f.CustomerFirstName).ToList();
 
-            /*ViewBag.Customers = RegistrationRepo.List(new QueryOptions<CustomerModel>()
-            {
-                OrderBy = c => c.CustomerFirstName
-            });*/
-
             return View(products);
         }
         // iiiiiiiiiiii INDEX PAGE iiiiiiiiiiii \\
+
+
 
 
 
@@ -60,22 +57,27 @@ namespace RecordShop.Controllers
 
             if (customer == null)
             {
-                TempData["NoRegistrations"] = $"Please Select a Customer";
+                TempData["CRUDMessage"] = $"Please Select a Customer";
+                TempData["CRUDOperation"] = $"CRUD_DELETED"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
+
                 return RedirectToAction("Index"); // Return to the Index view
             }
-            else if (customer.Products.Count == 0 || customerModelId == 0)
+            /*else if (customer.Products.Count == 0 || customerModelId == 0)
             {
-                TempData["NoRegistrations"] = $"{customer.CustomerFirstName} {customer.CustomerLastName} has no Products Registered";
-                return RedirectToAction("Index"); // Return to the Index view
-            }
+                TempData["CRUDMessage"] = $"{customer.CustomerFirstName} {customer.CustomerLastName} has no Products Registered";
+                TempData["CRUDOperation"] = $"CRUD_DELETED"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
+
+                return RedirectToAction(actionName: "Index"); // Return to the Index view
+            }*/
             else
             {
-                return RedirectToAction("RegistrationList", new { customerModelId });
+                // Go To RegistrationList
+                return RedirectToAction(actionName: "RegistrationList", new { customerModelId });
             }
         }
 
 
-
+        [HttpGet]
         public IActionResult RegistrationList(int customerModelId)
         {
             // Gets our customer with passed in Id
@@ -86,7 +88,7 @@ namespace RecordShop.Controllers
 
             ViewBag.AllProducts = Context.Products.ToList();
 
-            return View(customer);
+            return View(model: customer);
         }
         // sssssssssssssss SHOW CUSTOMERS PRODUCTS sssssssssssssss \\
 
@@ -118,6 +120,8 @@ namespace RecordShop.Controllers
             else
             {
                 TempData["CRUDMessage"] = $"Product '{product.RecordName}' Has Been Added To Customer {customer.CustomerFirstName} {customer.CustomerLastName}.";
+                TempData["CRUDOperation"] = $"CRUD_ADDED"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
+
 
                 // Add the product to the customer's products
                 customer.Products.Add(product);
@@ -126,10 +130,44 @@ namespace RecordShop.Controllers
                 Context.SaveChanges();
 
                 // Redirect back to the registration list with updated data
-                return RedirectToAction("RegistrationList", customer); // Return to the Index view
+                return RedirectToAction(actionName: "RegistrationList",  customer); // Return to the Index view
             }
         }
         // +++++++++++++++++ ADD PRODUCT TO CUSTOMER +++++++++++++++++ \\
+
+
+
+
+
+
+
+
+        // ----------------- DELETE PRODUCT ---------------- \\
+        [HttpPost]
+        public IActionResult RemoveProductFromCustomer(int productModelId, int customerModelId)
+        {
+            var customer = Context.Customers
+                .Include(c => c.Products)
+                .FirstOrDefault(c => c.CustomerModelId == customerModelId);
+
+            var productToRemove = customer.Products.FirstOrDefault(p => p.ProductModelId == productModelId);
+
+            if (productToRemove != null)
+            {
+                customer.Products.Remove(productToRemove);
+                Context.SaveChanges();
+                TempData["CRUDMessage"] = $"Product '{productToRemove.RecordName}' has been removed from {customer.CustomerFirstName} {customer.CustomerLastName}.";
+                TempData["CRUDOperation"] = $"CRUD_DELETED";
+            }
+            else
+            {
+                TempData["CRUDMessage"] = "Product not found or already removed.";
+                TempData["CRUDOperation"] = $"CRUD_DELETED";
+            }
+
+            return RedirectToAction(actionName: "RegistrationList", new { customerModelId });
+        }
+        // ----------------- DELETE PRODUCT ---------------- \\
 
 
 

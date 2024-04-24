@@ -43,6 +43,14 @@
 }
 
 
+    *:focus {
+        outline: auto;
+        outline-color: #ff8f73;
+        /*padding: 10px;*/
+        background: none;
+    }
+
+
 html {
     font-family: "Lexend", sans-serif;
     position: relative;

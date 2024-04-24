@@ -80,7 +80,7 @@
 
 
 /* Button User Clicks to Log in   ~ It uses the pushable button css */
-.login_button_div {
+.register-login_button_div {
     padding-top: 40px;
 }
 
@@ -89,18 +89,18 @@
 
 
 /* This is the Register Account Here Instead Link To Go To Register Page */
-.register_account_link_div {
+.register-login_account_link_div {
     padding-top: 35px;
     padding-bottom: 40px;
 }
 
-.register_account_link {
+.register-login_account_link {
     font-size: 1.3rem;
     text-decoration: none;
-    color:  #ff8f73;
+    color: #ff8f73;
     transition: all 0.3s ease-in-out;
 }
-    .register_account_link:hover, .register_account_link:focus {
+    .register-login_account_link:hover, .register-login_account_link:focus {
         font-size: 1.4rem; /* Adjust font size based on viewport width */
 
         text-decoration: none;

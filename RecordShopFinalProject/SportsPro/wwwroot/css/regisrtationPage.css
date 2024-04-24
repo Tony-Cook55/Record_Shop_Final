@@ -1,0 +1,5 @@
+﻿
+/* This is to allow the select on the registrations page to have no radius compared to the add-edit input */
+.registrations_select_radius {
+    border-radius: 0 !important;
+}

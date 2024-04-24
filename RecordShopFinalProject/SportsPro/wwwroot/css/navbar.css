@@ -227,7 +227,6 @@
         color: #ff8f73;
     }
         .navbar_links.active:hover {
-            font-size: calc(1vw + 2.5rem); /* Adjust font size based on viewport width */
             margin-top: 5px;
             margin-bottom: 5px;
             color: #634a4c;

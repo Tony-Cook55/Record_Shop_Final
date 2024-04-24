@@ -6,6 +6,68 @@
 
 
 
+@* mmmmmmmmmmmmmmm TEMP DATA CRUD MESSAGE mmmmmmmmmmmmmmm *@
+@* Checks if there is a string in our Temp Data Message. If So Show the Message If not Nothing. This is so We don't see its padding and color *@
+@if (TempData.ContainsKey("CRUDMessage") && TempData["CRUDOperation"] != null)
+{
+    /* Checks Controller For CRUDOperation if it equlas the operation name it will set the operationClass to that class with custom BG in css*/
+    string operationClass = "";
+    if (TempData["CRUDOperation"]?.ToString() == "CRUD_ADDED")
+    {
+        operationClass = "CRUD_ADDED_background";
+    }
+    else if (TempData["CRUDOperation"]?.ToString() == "CRUD_EDITIED")
+    {
+        operationClass = "CRUD_EDITIED_background";
+    }
+    else if (TempData["CRUDOperation"]?.ToString() == "CRUD_DELETED")
+    {
+        operationClass = "CRUD_DELETED_background";
+    }
+
+
+    <div class="CRUD_Message_Container text-center    @operationClass     crud_message_slide_in" id="CRUDMessage">
+        @* THE ID is used for JavaScript call in to make timer and close function work *@
+        <div class="CRUD_icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none"><path fill="#393a37" d="m13 13h-2v-6h2zm0 4h-2v-2h2zm-1-15c-1.3132 0-2.61358.25866-3.82683.7612-1.21326.50255-2.31565 1.23915-3.24424 2.16773-1.87536 1.87537-2.92893 4.41891-2.92893 7.07107 0 2.6522 1.05357 5.1957 2.92893 7.0711.92859.9286 2.03098 1.6651 3.24424 2.1677 1.21325.5025 2.51363.7612 3.82683.7612 2.6522 0 5.1957-1.0536 7.0711-2.9289 1.8753-1.8754 2.9289-4.4189 2.9289-7.0711 0-1.3132-.2587-2.61358-.7612-3.82683-.5026-1.21326-1.2391-2.31565-2.1677-3.24424-.9286-.92858-2.031-1.66518-3.2443-2.16773-1.2132-.50254-2.5136-.7612-3.8268-.7612z"></path></svg>
+        </div>
+        <div class="CRUD_Message">@(TempData["CRUDMessage"])</div>
+        <div class="CRUD_close" onclick="closeCRUDMessage()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 20 20" height="24">
+                <path fill="#393a37" d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"></path>
+            </svg>
+        </div>
+    </div>
+}
+@* mmmmmmmmmmmmmmm TEMP DATA CRUD MESSAGE mmmmmmmmmmmmmmm *@
+
+
+
+
+
+
+
+
+@* xxxxxxxx CANCEL BUTTON xxxxxxxx *@
+<div class="fixed_buttons">
+    <a asp-controller="Registration" asp-action="Index" class="">
+        <div class="">
+            <svg class="icon--menu-toggle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
+            <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+                            <!-- Change fill attribute to blue -->
+            <path d="M 24.316 44.248 l 16.193 -15.342 c 0.66 -0.625 1.748 -0.157 1.748 0.752 v 7.873 c 0 0.572 0.464 1.036 1.036 1.036 h 22.149 c 0.572 0 1.036 0.464 1.036 1.036 v 10.795 c 0 0.572 -0.464 1.036 -1.036 1.036 H 43.293 c -0.572 0 -1.036 0.464 -1.036 1.036 v 7.873 c 0 0.909 -1.088 1.377 -1.748 0.752 L 24.316 45.752 C 23.885 45.343 23.885 44.657 24.316 44.248 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #ff8f73; fill-rule: nonzero; opacity: 1;" transform="matrix(1 0 0 1 0 0)" stroke-linecap="round" />
+                            <!-- Change fill attribute to color you want -->
+            <path d="M 45 90 c 24.813 0 45 -20.187 45 -45 C 90 20.187 69.813 0 45 0 C 20.187 0 0 20.187 0 45 C 0 69.813 20.187 90 45 90 z M 45 8 c 20.402 0 37 16.598 37 37 c 0 20.402 -16.598 37 -37 37 C 24.598 82 8 65.402 8 45 C 8 24.598 24.598 8 45 8 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #ff8f73; fill-rule: nonzero; opacity: 1;" transform="matrix(1 0 0 1 0 0)" stroke-linecap="round" />
+                        </g>
+                    </svg>
+        </div>
+    </a>
+</div>
+@* xxxxxxxx CANCEL BUTTON xxxxxxxx *@
+
+
+
+
 
 
 
@@ -29,6 +91,13 @@
                         <td>@product.ArtistName</td>
                         <td>@product.ReleaseDate</td>
                         <td>@product.Price</td>
+                        <td>
+                    <form method="post" asp-action="RemoveProductFromCustomer" asp-controller="Registration">
+                                <input type="hidden" name="productModelId" value="@product.ProductModelId" />
+                                <input type="hidden" name="customerModelId" value="@Model.CustomerModelId" />
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
                     </tr>
                 }
             </tbody>
@@ -61,22 +130,10 @@
 
 
 
-@* mmmmmmmmmmmmmmm TEMP DATA CRUD MESSAGE mmmmmmmmmmmmmmm *@
-@if (!string.IsNullOrEmpty(TempData["CRUDMessage"] as string))
-{
-    <div class="error text-center         crud_message_slide_in" id="errorMessage">
-        <div class="error__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none"><path fill="#393a37" d="m13 13h-2v-6h2zm0 4h-2v-2h2zm-1-15c-1.3132 0-2.61358.25866-3.82683.7612-1.21326.50255-2.31565 1.23915-3.24424 2.16773-1.87536 1.87537-2.92893 4.41891-2.92893 7.07107 0 2.6522 1.05357 5.1957 2.92893 7.0711.92859.9286 2.03098 1.6651 3.24424 2.1677 1.21325.5025 2.51363.7612 3.82683.7612 2.6522 0 5.1957-1.0536 7.0711-2.9289 1.8753-1.8754 2.9289-4.4189 2.9289-7.0711 0-1.3132-.2587-2.61358-.7612-3.82683-.5026-1.21326-1.2391-2.31565-2.1677-3.24424-.9286-.92858-2.031-1.66518-3.2443-2.16773-1.2132-.50254-2.5136-.7612-3.8268-.7612z"></path></svg>
-        </div>
-        <div class="error__title">@(TempData["CRUDMessage"])</div>
-        <div class="error__close" onclick="closeErrorMessage()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 20 20" height="20">
-                <path fill="#393a37" d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"></path>
-            </svg>
-        </div>
-    </div>
-}
-@* mmmmmmmmmmmmmmm TEMP DATA CRUD MESSAGE mmmmmmmmmmmmmmm *@
+
+
+
+
 
 
         @if (!string.IsNullOrEmpty(TempData["CustomerAlreadyRegistered"] as string))

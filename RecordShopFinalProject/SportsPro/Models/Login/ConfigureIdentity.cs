@@ -15,7 +15,7 @@ namespace RecordShop.Models.Login
             string password = "Admin1"; // P@ssw0rd
             string roleName = "Admin";
 
-            //If Role doesn't exist, create it
+            //If Role doesn't exist, create it on start up creating an admin role with the above items
             if(await roleManager.FindByNameAsync(roleName) == null)
             {
                 await roleManager.CreateAsync(new IdentityRole(roleName));
