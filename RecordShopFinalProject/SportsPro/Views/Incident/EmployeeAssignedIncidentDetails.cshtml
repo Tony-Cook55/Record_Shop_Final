@@ -6,52 +6,110 @@
 }
 
 
+@* xxxxxxxx CANCEL BUTTON xxxxxxxx *@
+<div class="fixed_buttons">
+    <a asp-controller="Incident" asp-action="EmployeeAssignedPicker" class="">
+        <div class="">
+            <svg class="icon--menu-toggle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
+            <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+                            <!-- Change fill attribute to blue -->
+            <path d="M 24.316 44.248 l 16.193 -15.342 c 0.66 -0.625 1.748 -0.157 1.748 0.752 v 7.873 c 0 0.572 0.464 1.036 1.036 1.036 h 22.149 c 0.572 0 1.036 0.464 1.036 1.036 v 10.795 c 0 0.572 -0.464 1.036 -1.036 1.036 H 43.293 c -0.572 0 -1.036 0.464 -1.036 1.036 v 7.873 c 0 0.909 -1.088 1.377 -1.748 0.752 L 24.316 45.752 C 23.885 45.343 23.885 44.657 24.316 44.248 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #ff8f73; fill-rule: nonzero; opacity: 1;" transform="matrix(1 0 0 1 0 0)" stroke-linecap="round" />
+                            <!-- Change fill attribute to color you want -->
+            <path d="M 45 90 c 24.813 0 45 -20.187 45 -45 C 90 20.187 69.813 0 45 0 C 20.187 0 0 20.187 0 45 C 0 69.813 20.187 90 45 90 z M 45 8 c 20.402 0 37 16.598 37 37 c 0 20.402 -16.598 37 -37 37 C 24.598 82 8 65.402 8 45 C 8 24.598 24.598 8 45 8 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #ff8f73; fill-rule: nonzero; opacity: 1;" transform="matrix(1 0 0 1 0 0)" stroke-linecap="round" />
+            </g>
+            </svg>
+        </div>
+    </a>
+</div>
+@* xxxxxxxx CANCEL BUTTON xxxxxxxx *@
 
 
 
-@if (Model.Count > 0)
+
+
+@* If No Incidents For The Employee *@
+@if (Model.Count == 0)
 {
 
-    <h1>Employee: @ViewBag.EmployeeName</h1>
-    <h1>Assigned/Open Incidents</h1>
-
-    <table class="table table-responsive table-striped border border-secondary">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Customer</th>
-                <th>Product</th>
-                <th>Date Opened</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var incident in Model)
-            {
-                <tr>
-                    <td>@incident.Title</td>
-                    <td>@(incident.Customer?.CustomerFirstName + " " + incident.Customer?.CustomerLastName ?? "No Customer")</td>
-                    <td>@incident.Product?.RecordName</td>
-                    <td>@incident.DateOpened</td>
-                    <td>
-                        <a asp-controller="Incident" asp-action="EditEmployeeIncident" asp-route-id="@incident.IncidentModelId"  class="btn btn-outline-primary">Edit</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <section class="hero_section   text-center    scale_in_center_entrance_animation">
+        <div class="   text-center ">
+            @* 0 RESULTS FOUND *@
+            <h1 class="hero_header__no_items_text  registration_page_header  text_shadow_pop_top">
+                No Results Found For <br /> @ViewBag.EmployeeName
+            </h1>
+            @* 0 RESULTS FOUND *@
 
 
+            @* SWITCH BUTTON *@
+            <div class="center-container">
+                <a asp-action="EmployeeAssignedPicker" asp-controller="Incident" class="crud_button   text-center  crud_button_add">
+                    <div class="crud_button     crud_button_add">
+                        <span class="crud_button_text">Switch</span>
+                        <span class="crud_button_icon">
+                            <?xml version="1.0" ?>
+                            <svg height="14px" version="1.1" viewBox="0 0 18 14" width="18px" xmlns="http://www.w3.org/2000/svg" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <title />
+                                <desc />
+                                <defs />
+                                <g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1">
+                                    <g fill="#f3f1e0" id="Core" transform="translate(-549.000000, -425.000000)">
+                                        <g id="swap-horiz" transform="translate(549.000000, 425.000000)">
+                                            <path d="M4,6 L0,10 L4,14 L4,11 L11,11 L11,9 L4,9 L4,6 L4,6 Z M18,4 L14,0 L14,3 L7,3 L7,5 L14,5 L14,8 L18,4 L18,4 Z" id="Shape" />
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+            </div>
+            @* SWITCH BUTTON *@
+        </div>
+    </section>
 
-    <div class="">
-        <a asp-controller="Incident" asp-action="EmployeeAssignedPicker" class="btn btn-outline-primary mt-2">Switch Employee</a>
-    </div>
+
 }
 else
 {
-    <div class="text-center">
-        <h1 class="text-center mt-5">No incidents assigned to this employee.</h1>
+    <div class="container   text-center ">
 
-        <a asp-controller="Incident" asp-controller="Incident" asp-action="EmployeeAssignedPicker" class="btn btn-outline-primary mt-5">Switch Employee</a>
+
+        @* PAGE HEADER *@
+        <h1 class="page_header_text    registration_page_header    text_shadow_pop_top   text-center">
+            @ViewBag.EmployeeName <br /> Incidents
+        </h1>
+        @* PAGE HEADER *@
+
+
+
+
+        @* ITEM CARDS *@
+        <div class="container  card_expand_container">
+            @foreach (var incident in Model)
+            {
+                <div class="card    scale_in_center_entrance_animation">
+                    <div class="card_expand_face card_face_top">
+                        <div class="content">
+                            <h1 class="face_header_text">@incident.Title</h1>
+                            <h4 class="face_text">@incident.Product.RecordName</h4>
+                        </div>
+                    </div>
+                    <div class="card_expand_face card_face_bottom_info">
+                        <div class="content">
+                            <p>@incident.Customer.CustomerFirstName @incident.Customer.CustomerLastName </p>
+                            <p>@incident.Employee.FirstName @incident.Employee.LastName </p>
+                            <p>@incident.DateOpened</p>
+
+
+                            @* GET EDIT ~ DELETE BUTTONS*@
+                            <a class="btn card_expand_link card_edit_button" asp-controller="Incident" asp-action="GetEditPage" asp-route-id="@incident.IncidentModelId" asp-route-slug="@incident.Slug"><i class="fa-solid fa-pencil"></i></a>
+                            @* <a class="btn card_expand_link card_delete_button" asp-controller="Incident" asp-action="GetDeletePage" asp-route-id="@incident.IncidentModelId" asp-route-slug="@incident.Slug"><i class="fa-solid fa-trash-can"></i></a> *@
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        @* ITEM CARDS *@
+
     </div>
 }

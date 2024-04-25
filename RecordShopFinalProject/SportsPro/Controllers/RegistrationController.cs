@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RecordShop.Models;
 using RecordShop.Models.DataLayer;
+using System.Text.Json;
 
 namespace RecordShop.Controllers
 {
@@ -38,10 +39,22 @@ namespace RecordShop.Controllers
         [HttpGet]
         public IActionResult Index(ProductModel products)
         {
+
+            // ccccccc CALL IN THE COOKIE ccccccc \\
+            // Check if the cookie exists from after its selected below
+            if (Request.Cookies.TryGetValue("currentCustomerId", out string customerModelId))
+            {
+                // Set the current customer ID in the ViewBag
+                ViewBag.CurrentCustomerIdCookie = customerModelId;
+            }
+            // ccccccc CALL IN THE COOKIE ccccccc \\
+
+
+
             // This will be Used to Plug Into the Index for Us adding the Employees for the Dropdown
             ViewBag.Customers = Context.Customers.OrderBy(f => f.CustomerFirstName).ToList();
 
-            return View(products);
+            return View(model: products);
         }
         // iiiiiiiiiiii INDEX PAGE iiiiiiiiiiii \\
 
@@ -53,6 +66,17 @@ namespace RecordShop.Controllers
         [HttpPost]
         public IActionResult CustomerProductSelected(int customerModelId)
         {
+
+            // ccccccc ADD CUSTOMER ID TO COOKIE ccccccc \\
+            // We need to add the SessionsExtensions to allow SetObject to be Called here
+            HttpContext.Session.SetObject("currentCustomerId", customerModelId);
+            // Sets the Time it will Expire and That it can be on several different domains using Lax
+            var cookieOptions = new CookieOptions { Expires = System.DateTime.Now.AddHours(1), SameSite = SameSiteMode.Lax };
+            // Passes the Whole object
+            Response.Cookies.Append("currentCustomerId", JsonSerializer.Serialize(customerModelId), cookieOptions);
+            // ccccccc ADD CUSTOMER ID TO COOKIE ccccccc \\
+
+
             // Gets our customer with passed in Id
             var customer = Context.Customers.Include(c => c.Products.OrderBy(p => p.ArtistName)).FirstOrDefault(c => c.CustomerModelId == customerModelId);
 
@@ -61,7 +85,7 @@ namespace RecordShop.Controllers
                 TempData["CRUDMessage"] = $"Please Select a Customer";
                 TempData["CRUDOperation"] = $"CRUD_DELETED"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
 
-                return RedirectToAction("Index"); // Return to the Index view
+                return RedirectToAction(actionName: "Index"); // Return to the Index view
             }
             else
             {

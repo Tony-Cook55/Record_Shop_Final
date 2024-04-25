@@ -123,7 +123,7 @@
     /*    background-color: #ff8f73;*/
 }
     /* Media query for small devices */
-    @media only screen and (max-width: 1300px) {
+    @media only screen and (max-width: 1000px) {
         .CRUD_Message_Container {
             bottom: 250px; /* Adjust distance from bottom */
             right: 50px; /* Adjust distance from right */

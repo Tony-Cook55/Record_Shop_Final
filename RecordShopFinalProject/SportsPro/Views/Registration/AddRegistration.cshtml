@@ -87,33 +87,6 @@
 
 
 
-@* +++++ ADDING PRODUCT TO THE CUSTOMER +++++ *@
-@* <h1 class="mt-3">Register New Product</h1>
-
-<form asp-action="RegisterToCustomer" asp-controller="Registration" method="post">
-    <div class="form-group">
-        <label for="productModelId">Select Product:</label>
-        <select class="form-control" name="productModelId" id="productModelId">
-            <option value="">Select Product</option>
-            @foreach (var product in ViewBag.AllProducts)
-            {
-                <option value="@product.ProductModelId">@product.RecordName by @product.ArtistName</option>
-            }
-        </select>
-    </div>
-
-    <input type="hidden" name="customerModelId" value="@Model.CustomerModelId" />
-
-
-    <button type="submit" class="btn btn-primary mt-3">Register</button>
-</form> *@
-
-
-
-
-
-
-
 
 
 

@@ -19,14 +19,42 @@
     <div class="add-edit_input_div">
         <form asp-controller="Registration" asp-action="CustomerProductSelected" method="post">
 
-            <select asp-for="Customers" name="customerModelId" class="add-edit_select_input  registrations_select_radius  form-control">
-                <option class="add-edit_selction_option   fw-bold" value="" selected>Select Customer</option>
-                @foreach (var customer in ViewBag.Customers)
+            <select name="customerModelId" class="add-edit_select_input  registrations_select_radius  form-control"> @* asp-for="Customers" *@
+                @* If the Viewbag with the current Id is empty loop through the customers for user to choose from *@
+                @if (string.IsNullOrEmpty(ViewBag.CurrentCustomerIdCookie))
                 {
-                    <option class="add-edit_selction_option" value="@customer.CustomerModelId">
-                        @customer.CustomerFirstName  @customer.CustomerLastName
-                    </option>
+                    @* <option class="add-edit_selction_option   fw-bold" value="" selected>Select Customer</option> *@
+                    @foreach (var customer in ViewBag.Customers)
+                    {
+                        <option class="add-edit_selction_option" value="@customer.CustomerModelId">
+                            @customer.CustomerFirstName  @customer.CustomerLastName
+                        </option>
+                    }
                 }
+                else
+                {
+                    <!-- If there is a current customer ID stored in the ViewBag -->
+                    var currentCustomerId = ViewBag.CurrentCustomerIdCookie.ToString();
+
+                    foreach (var customer in ViewBag.Customers)
+                    {
+                        <!-- Check if the current Customer ID matches the ID of the current Customer being iterated -->
+                        if (customer.CustomerModelId.ToString() == currentCustomerId)
+                        {
+                            <option  selected   class="add-edit_selction_option" value="@customer.CustomerModelId">
+                                @customer.CustomerFirstName  @customer.CustomerLastName
+                            </option>
+                        }
+                        /* This shows all of the other Customer Options */
+                        else
+                        {
+                            <option class="add-edit_selction_option" value="@customer.CustomerModelId">
+                                @customer.CustomerFirstName  @customer.CustomerLastName
+                            </option>
+                        }
+                    }
+                }
+
             </select>
 
 

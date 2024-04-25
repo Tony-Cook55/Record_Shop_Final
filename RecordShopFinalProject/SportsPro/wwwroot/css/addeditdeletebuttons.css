@@ -112,7 +112,7 @@
 }
 
 .crud_button .crud_button_icon {
-    transform: translateX(230px); /* Adjusted for the new width */
+    transform: translateX(227px); /* Adjusted The Icont to the right side of the button */
 
     position: absolute;
     border-left: 1px solid #0000009e;
@@ -141,7 +141,7 @@
 .crud_button:hover .crud_button_icon {
     width: 136px;
     border-left: none;
-    transform: translateX(60px);
+    transform: translateX(65px); /* Changes the postilion of the icon to the center*/
 }
 
 .crud_button:focus {

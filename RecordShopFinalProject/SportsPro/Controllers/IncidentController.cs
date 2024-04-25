@@ -246,7 +246,7 @@ namespace RecordShop.Controllers
         public IActionResult EmployeeAssignedPicker(IncidentModel incident)
         {
             // Passes in the Employees in a Viewbag to be called into the foreach loop select dropdown
-            ViewBag.Employees = Context.Employees.OrderBy(f => f.FirstName).ToList();
+            ViewBag.Employees = Context.Employees.OrderBy(f => f.FirstName).Where(e => e.EmployeeModelId != -1).ToList();
 
 
             // ccccccc CALL IN THE COOKIE ccccccc \\
@@ -259,7 +259,7 @@ namespace RecordShop.Controllers
             // ccccccc CALL IN THE COOKIE ccccccc \\
 
 
-            return View(incident);
+            return View(model: incident);
         }
 
 
@@ -289,12 +289,13 @@ namespace RecordShop.Controllers
                 .ToList();
 
 
-            // Fetch the employees's name
-            var EmployeeName = incidents.FirstOrDefault()?.Employee?.FirstName + " " + incidents.FirstOrDefault()?.Employee?.LastName;
 
-            // Pass employees name to the view
-            ViewBag.EmployeeName = EmployeeName;
 
+            // Pass employee name to the view based on the employeeId passed in
+            ViewBag.EmployeeName = Context.Employees
+                                .Where(e => e.EmployeeModelId == employeeId)
+                                .Select(e => $"{e.FirstName} {e.LastName}")
+                                .FirstOrDefault();
 
             // Pass the list of incidents to the view
             return View(incidents);
