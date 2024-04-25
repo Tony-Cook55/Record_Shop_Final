@@ -21,6 +21,11 @@ footer {
 
 
 
+.footer_navbar_link_div {
+    padding-bottom: 10px;
+}
+
+
 /* The actual Link Element itself */
 .footer_navbar_links {
     font-size: 1rem; /* Adjust font size based on viewport width */

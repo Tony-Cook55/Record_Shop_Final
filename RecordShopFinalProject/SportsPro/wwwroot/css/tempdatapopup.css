@@ -85,7 +85,7 @@
 
 
 
-/* aaaaa ACCOUNT OPERACTIONS aaaaa */
+/* aaaaa ACCOUNT ACTIONS aaaaa */
 /* FOR WHEN A USER REGISTERS AN ACCOUNT */
 .REGISTER_USER_background {
     background-color: #ff8f73;
@@ -99,7 +99,7 @@
 .LOGOUT_USER_background {
     background-color: #3fc63f;
 }
-/* aaaaa ACCOUNT OPERACTIONS aaaaa */
+/* aaaaa ACCOUNT ACTIONS aaaaa */
 
 
 
@@ -122,7 +122,13 @@
     z-index: 10;
     /*    background-color: #ff8f73;*/
 }
-
+    /* Media query for small devices */
+    @media only screen and (max-width: 1300px) {
+        .CRUD_Message_Container {
+            bottom: 250px; /* Adjust distance from bottom */
+            right: 50px; /* Adjust distance from right */
+        }
+    }
 
 /* Small ! Icon Before Text */
 .CRUD_icon {
@@ -145,6 +151,12 @@
     color: #f3f1e0;
 /*    text-shadow: 0 1px #555555, 0 2px #555555, 0 3px #555555;*/
 }
+    /* Media query for small devices */
+    @media only screen and (max-width: 1300px) {
+        .CRUD_Message {
+            font-size: 2vh;
+        }
+    }
 
 
 

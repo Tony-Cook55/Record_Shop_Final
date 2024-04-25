@@ -141,6 +141,16 @@
     }
 
 
+
+.card_add_button {
+    color: #ff8f73;
+}
+
+    .card_add_button:hover {
+        background: #ffaf9b;
+        color: #ffff;
+    }
+
 .card_edit_button {
     color: #fcca29;
 }

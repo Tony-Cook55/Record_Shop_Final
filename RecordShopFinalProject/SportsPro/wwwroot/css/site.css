@@ -41,12 +41,12 @@
 * {
     font-family: "Lexend", sans-serif;
 }
-
-
     *:focus {
-        outline: auto;
-        outline-color: #ff8f73;
+        /*outline: auto;*/
+        /*outline-color: #ff8f73;*/
         /*padding: 10px;*/
+
+        outline: none !important;
         background: none;
     }
 
@@ -96,6 +96,17 @@ body {
     color: #ff8f73;
     /*    text-shadow: -2px -2px 2px rgba(255, 255, 255, 0.5), 2px 2px 2px #634a4c, -4px -4px 4px rgba(255, 255, 255, 0.3), 4px 4px 4px #634a4c; */
 }
+
+
+/* Media query for small devices */
+@media only screen and (max-width: 1000px) {
+    /* This is only the page header on the Registrations Page since the Header is longer with the Customers Name */
+    .registration_page_header {
+        font-size: 8vw;
+    }
+}
+
+
 /* HEADER AT THE TOP OF EACH PAGE */
 
 
