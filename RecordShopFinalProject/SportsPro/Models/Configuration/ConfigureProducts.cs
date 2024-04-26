@@ -455,26 +455,175 @@ namespace RecordShop.Models.Configuration
                 // ANDY WILLIAMS \\
 
 
-                // BARRY GIBB \\
 
+                // BARRY GIBB \\
+                new ProductModel
+                {
+                    ProductModelId = 44,
+                    RecordName = "Guilty",
+                    ArtistName = "Barry Gibb",
+                    Price = 11.00,
+                    ReleaseDate = 1980,
+                    GenreModelId = "ELECTRONIC",
+                    ImageUrl = "/Images/Records/Barry_Gibb/Guilty.jpg"
+                },
                 // BARRY GIBB \\
 
 
                 // BARRY MANILOW \\
-
+                new ProductModel
+                {
+                    ProductModelId = 45,
+                    RecordName = "Barry",
+                    ArtistName = "Barry Manilow",
+                    Price = 15.00,
+                    ReleaseDate = 1980,
+                    GenreModelId = "POP",
+                    ImageUrl = "/Images/Records/Barry_Manilow/barry.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 46,
+                    RecordName = "Barry Manilow I",
+                    ArtistName = "Barry Manilow",
+                    Price = 5.00,
+                    ReleaseDate = 1975,
+                    GenreModelId = "POP",
+                    ImageUrl = "/Images/Records/Barry_Manilow/barry_manilow_one.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 47,
+                    RecordName = "Barry Manilow II",
+                    ArtistName = "Barry Manilow",
+                    Price = 5.00,
+                    ReleaseDate = 1974,
+                    GenreModelId = "ROCK",
+                    ImageUrl = "/Images/Records/Barry_Manilow/barry_manilow_two.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 48,
+                    RecordName = "Even Now",
+                    ArtistName = "Barry Manilow",
+                    Price = 1.00,
+                    ReleaseDate = 1978,
+                    GenreModelId = "ROCK",
+                    ImageUrl = "/Images/Records/Barry_Manilow/even_now.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 49,
+                    RecordName = "Greatest Hits Vol. II",
+                    ArtistName = "Barry Manilow",
+                    Price = 1.00,
+                    ReleaseDate = 1983,
+                    GenreModelId = "POP",
+                    ImageUrl = "/Images/Records/Barry_Manilow/greatest_hits_vol_two.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 50,
+                    RecordName = "If I Should Love Again",
+                    ArtistName = "Barry Manilow",
+                    Price = 1.00,
+                    ReleaseDate = 1981,
+                    GenreModelId = "POP",
+                    ImageUrl = "/Images/Records/Barry_Manilow/if_i_should_love_again.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 51,
+                    RecordName = "Barry Live In Britain",
+                    ArtistName = "Barry Manilow",
+                    Price = 1.00,
+                    ReleaseDate = 1982,
+                    GenreModelId = "POP",
+                    ImageUrl = "/Images/Records/Barry_Manilow/live_in_britain.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 52,
+                    RecordName = "One Voice",
+                    ArtistName = "Barry Manilow",
+                    Price = 1.00,
+                    ReleaseDate = 1979,
+                    GenreModelId = "POP",
+                    ImageUrl = "/Images/Records/Barry_Manilow/one_voice.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 53,
+                    RecordName = "Manilow Magic",
+                    ArtistName = "Barry Manilow",
+                    Price = 1.00,
+                    ReleaseDate = 1979,
+                    GenreModelId = "POP",
+                    ImageUrl = "/Images/Records/Barry_Manilow/the_best_of_barry_manilow.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 54,
+                    RecordName = "This One's For You",
+                    ArtistName = "Barry Manilow",
+                    Price = 1.00,
+                    ReleaseDate = 1976,
+                    GenreModelId = "POP",
+                    ImageUrl = "/Images/Records/Barry_Manilow/this_ones_for_you.jpg"
+                },
                 // BARRY MANILOW \\
 
 
                 // BEE GEES \\
                 new ProductModel
                 {
-                    ProductModelId = ,
+                    ProductModelId = 55,
+                    RecordName = "Best Of Bee Gees",
+                    ArtistName = "Bee Gees",
+                    Price = 5.00,
+                    ReleaseDate = 1969,
+                    GenreModelId = "ROCK",
+                    ImageUrl = "/Images/Records/Bee_Gees/best_of_bee_gees.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 56,
+                    RecordName = "Main Course",
+                    ArtistName = "Bee Gees",
+                    Price = 5.00,
+                    ReleaseDate = 1975,
+                    GenreModelId = "ROCK",
+                    ImageUrl = "/Images/Records/Bee_Gees/main_course.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 57,
                     RecordName = "Mr. Natural",
                     ArtistName = "Bee Gees",
                     Price = 5.00,
                     ReleaseDate = 1974,
                     GenreModelId = "ROCK",
                     ImageUrl = "/Images/Records/Bee_Gees/mr_natural.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 58,
+                    RecordName = "Spirits Having Flown",
+                    ArtistName = "Bee Gees",
+                    Price = 5.00,
+                    ReleaseDate = 1979,
+                    GenreModelId = "DISCO",
+                    ImageUrl = "/Images/Records/Bee_Gees/spirtits_having_flown.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 59,
+                    RecordName = "The Bee Gees First",
+                    ArtistName = "Bee Gees",
+                    Price = 5.00,
+                    ReleaseDate = 1978,
+                    GenreModelId = "ROCK",
+                    ImageUrl = "/Images/Records/Bee_Gees/the_bee_gees_first.jpg"
                 },
                 // BEE GEES \\
 
