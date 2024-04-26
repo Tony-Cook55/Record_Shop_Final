@@ -1,19 +1,14 @@
 ﻿
 
+.product_image {
+    max-width: 60%; /* Ensures the image doesn't exceed the width of its container */
+    max-height: 100%; /* Ensures the image doesn't exceed the height of its container */
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@media screen and (max-width: 765px) {
+    .product_image {
+        max-width: 100%; /* Ensures the image doesn't exceed the width of its container */
+        max-height: 100%; /* Ensures the image doesn't exceed the height of its container */
+    }
+}

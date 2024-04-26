@@ -1,149 +1,336 @@
-﻿@{
-    ViewData["Title"] = "Record Shop";
+﻿@* USED FOR CHECKING IF USER IS LOGGED IN *@
+@using RecordShop.Models.Login
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> signInManager
+@* USED FOR CHECKING IF USER IS LOGGED IN *@
+
+
+
+@{
+    ViewData["Title"] = "Manage Record Shop";
 }
 
 
+<div class=" ">
+
+    <!-- MAIN HERO SECTION -->
+    <section class="hero_section    text-center">
+        <div class="   text-center "> @* hero_content *@
+            @* ADD AS MANY AS NEEDED *@
+    @*      <div class="snowflake"><img src="~/images/icons/smile_record.png" class="snowflakeIMG" /></div>
+            <div class="snowflake"><img src="~/images/icons/uwu_record.png" class="snowflakeIMG" /></div>
+            <div class="snowflake"><img src="~/images/icons/smile_record.png" class="snowflakeIMG" /></div>
+            <div class="snowflake"><img src="~/images/icons/uwu_record.png" class="snowflakeIMG" /></div>
+            <div class="snowflake"><img src="~/images/icons/smile_record.png" class="snowflakeIMG" /></div>
+            <div class="snowflake"><img src="~/images/icons/uwu_record.png" class="snowflakeIMG" /></div>
+            <div class="snowflake"><img src="~/images/icons/smile_record.png" class="snowflakeIMG" /></div>
+            <div class="snowflake"><img src="~/images/icons/uwu_record.png" class="snowflakeIMG" /></div>
+            <div class="snowflake"><img src="~/images/icons/smile_record.png" class="snowflakeIMG" /></div> *@
+
+            @* Background of moving record images *@
+            <div class="hero_background"></div>
 
 
 
-@* mmmmmmmmmmmmmmm TEMP DATA ACCOUNT MESSAGE mmmmmmmmmmmmmmm *@
-@* Checks if there is a string in our Temp Data Message. If So Show the Message If not Nothing. This is so We don't see its padding and color *@
-@if (TempData.ContainsKey("ACCOUNTMessage") && TempData["ACCOUNToperation"] != null)
-{
-    /* Checks Controller For ACCOUNToperation if it equals the operation name it will set the operationClass to that class with custom BG in css*/
-    string operationClass = "";
-    if (TempData["ACCOUNToperation"]?.ToString() == "REGISTER_USER")
+            @* xxxxxxx USER NOT LOGGED IN OR REGISTERED xxxxxxx *@
+            @if (!signInManager.IsSignedIn(User))
+            {
+                <div class="">
+                    @* hero_content_record_stopper_box *@
+                    <h1 class="home_page_header_text   text_shadow_pop_top   text-center">
+                        Manage Record Shop
+                    </h1>
+                </div>
+            }
+            @* xxxxxxx USER NOT LOGGED IN OR REGISTERED xxxxxxx *@
+
+
+            @* +++++++ USER IS LOGGED IN OR REGISTERED +++++++ *@
+            @if (signInManager.IsSignedIn(User))
+            {
+                <div class="">
+                    @* hero_content_record_stopper_box *@
+                    <h1 class="home_page_header_text   text_shadow_pop_top   text-center">
+                        Welcome <br/>  @User.Identity.Name
+                    </h1>
+                </div>
+            }
+            @* +++++++ USER IS LOGGED IN OR REGISTERED +++++++ *@
+
+
+
+        </div>
+    </section>
+    <!-- MAIN HERO SECTION -->
+
+
+
+
+
+
+
+
+
+    @* xxxxxxx USER NOT LOGGED IN OR REGISTERED xxxxxxx *@
+    @if (!signInManager.IsSignedIn(User))
     {
-        operationClass = "REGISTER_USER_background";
+            <!-- ABOUT -->
+            <section class="hero_section  hero_section_bg_color_green  text-center">
+                <div class="   text-center ">
+                    <div class="">
+                        <h1 class="home_page_header_text  text_shadow_pop_top   text-center">
+                            About
+                        </h1>
+
+                        <button class="pushable  mt-5">
+                            <a class="text-black   text-decoration-none" asp-area="" asp-controller="Home" asp-action="About">
+                                <span class="shadow"></span>
+                                <span class="edge"></span>
+                                <span class="front">
+                                    View About Page
+                                </span>
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <!-- ABOUT -->
+
+            <!-- LOGIN -->
+            <section class="hero_section    text-center">
+                <div class="   text-center ">
+                    <div class="">
+                        <h1 class="home_page_header_text  text_shadow_pop_top   text-center">
+                            Login
+                        </h1>
+
+                        <button class="pushable  mt-5">
+                            <a class="text-black   text-decoration-none" asp-area="" asp-controller="Account" asp-action="Login">
+                                <span class="shadow"></span>
+                                <span class="edge"></span>
+                                <span class="front">
+                                    Login
+                                </span>
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <!-- LOGIN -->
+
+            <!-- REGISTER -->
+            <section class="hero_section  hero_section_bg_color_green  text-center">
+                <div class="   text-center ">
+                    <div class="">
+                        <h1 class="home_page_header_text  text_shadow_pop_top   text-center">
+                            Register
+                        </h1>
+
+                        <button class="pushable  mt-5">
+                            <a class="text-black   text-decoration-none" asp-area="" asp-controller="Account" asp-action="Register">
+                                <span class="shadow"></span>
+                                <span class="edge"></span>
+                                <span class="front">
+                                    Register
+                                </span>
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <!-- REGISTER -->
+
     }
-    else if (TempData["ACCOUNToperation"]?.ToString() == "LOGIN_USER")
+    @* xxxxxxx USER NOT LOGGED IN OR REGISTERED xxxxxxx *@
+
+
+
+
+
+
+
+
+
+
+
+    @* +++++++ USER IS LOGGED IN OR REGISTERED +++++++ *@
+    @if (signInManager.IsSignedIn(User))
     {
-        operationClass = "LOGIN_USER_background";
+
+
+        @* USER HAS ROLE OF ADMIN *@
+        @if (User.IsInRole("Admin"))
+        {
+            <!-- PRODUCTS -->
+            <section class="hero_section  hero_section_bg_color_green text-center">
+                <div class="   text-center ">
+                    <div class="">
+                        <h1 class="home_page_header_text   text_shadow_pop_top   text-center">
+                            Products
+                        </h1>
+
+                        <button class="pushable  mt-5">
+                            <a class="text-black   text-decoration-none" asp-area="" asp-controller="Product" asp-action="Index">
+                                <span class="shadow"></span>
+                                <span class="edge"></span>
+                                <span class="front">
+                                    View Products
+                                </span>
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <!-- PRODUCTS -->
+        }
+        @* USER HAS ROLE OF ADMIN *@
+
+
+
+        <!-- EMPLOYEES -->
+        <section class="hero_section   text-center">
+            <div class="   text-center ">
+                <div class="">
+                    <h1 class="home_page_header_text   text_shadow_pop_top   text-center">
+                        Employees
+                    </h1>
+
+                    <button class="pushable  mt-5">
+                        <a class="text-black   text-decoration-none" asp-area="" asp-controller="Employee" asp-action="Index">
+                            <span class="shadow"></span>
+                            <span class="edge"></span>
+                            <span class="front">
+                                View Employees
+                            </span>
+                        </a>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- EMPLOYEES -->
+
+        <!-- CUSTOMERS -->
+        <section class="hero_section  hero_section_bg_color_green  text-center">
+            <div class="   text-center ">
+                <div class="">
+                    <h1 class="home_page_header_text   text_shadow_pop_top   text-center">
+                        Customers
+                    </h1>
+
+                    <button class="pushable  mt-5">
+                        <a class="text-black   text-decoration-none" asp-area="" asp-controller="Customer" asp-action="Index">
+                            <span class="shadow"></span>
+                            <span class="edge"></span>
+                            <span class="front">
+                                View Customers
+                            </span>
+                        </a>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- CUSTOMERS -->
+
+        <!-- INCIDENTS -->
+        <section class="hero_section   text-center">
+            <div class="   text-center ">
+                <div class="">
+                    <h1 class="home_page_header_text   text_shadow_pop_top   text-center">
+                        Incidents
+                    </h1>
+
+                    <button class="pushable  mt-5">
+                        <a class="text-black   text-decoration-none" asp-area="" asp-controller="Incident" asp-action="Index">
+                            <span class="shadow"></span>
+                            <span class="edge"></span>
+                            <span class="front">
+                                View Incidents
+                            </span>
+                        </a>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- INCIDENTS -->
+
+        <!-- REGISTRATIONS -->
+        <section class="hero_section  hero_section_bg_color_green  text-center">
+            <div class="   text-center ">
+                <div class="">
+                    <h1 class="home_page_header_text    text_shadow_pop_top   text-center">
+                        Registrations
+                    </h1>
+
+                    <button class="pushable  mt-5">
+                        <a class="text-black   text-decoration-none" asp-area="" asp-controller="Registration" asp-action="Index">
+                            <span class="shadow"></span>
+                            <span class="edge"></span>
+                            <span class="front">
+                                View Registrations
+                            </span>
+                        </a>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- REGISTRATIONS -->
+
+        <!-- EMPLOYEE INCIDNET -->
+        <section class="hero_section   text-center">
+            <div class="   text-center ">
+                <div class="">
+                    <h1 class="home_page_header_text    text_shadow_pop_top   text-center">
+                        Employee Incidents
+                    </h1>
+
+                    <button class="pushable  mt-5">
+                        <a class="text-black   text-decoration-none" asp-area="" asp-controller="Incident" asp-action="EmployeeAssignedPicker">
+                            <span class="shadow"></span>
+                            <span class="edge"></span>
+                            <span class="front">
+                                View Employee Incidents
+                            </span>
+                        </a>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- EMPLOYEE INCIDNET -->
+
+        <!-- ABOUT -->
+        <section class="hero_section  hero_section_bg_color_green  text-center">
+            <div class="   text-center ">
+                <div class="">
+                    <h1 class="home_page_header_text  text_shadow_pop_top   text-center">
+                        About
+                    </h1>
+
+                    <button class="pushable  mt-5">
+                        <a class="text-black   text-decoration-none" asp-area="" asp-controller="Home" asp-action="About">
+                            <span class="shadow"></span>
+                            <span class="edge"></span>
+                            <span class="front">
+                                View About Page
+                            </span>
+                        </a>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- ABOUT -->
     }
-    else if (TempData["ACCOUNToperation"]?.ToString() == "LOGOUT_USER")
-    {
-        operationClass = "LOGOUT_USER_background";
-    }
-
-
-    <div class="CRUD_Message_Container text-center    @operationClass     crud_message_slide_in" id="CRUDMessage">
-        @* THE ID is used for JavaScript call in to make timer and close function work *@
-        <div class="CRUD_icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none"><path fill="#393a37" d="m13 13h-2v-6h2zm0 4h-2v-2h2zm-1-15c-1.3132 0-2.61358.25866-3.82683.7612-1.21326.50255-2.31565 1.23915-3.24424 2.16773-1.87536 1.87537-2.92893 4.41891-2.92893 7.07107 0 2.6522 1.05357 5.1957 2.92893 7.0711.92859.9286 2.03098 1.6651 3.24424 2.1677 1.21325.5025 2.51363.7612 3.82683.7612 2.6522 0 5.1957-1.0536 7.0711-2.9289 1.8753-1.8754 2.9289-4.4189 2.9289-7.0711 0-1.3132-.2587-2.61358-.7612-3.82683-.5026-1.21326-1.2391-2.31565-2.1677-3.24424-.9286-.92858-2.031-1.66518-3.2443-2.16773-1.2132-.50254-2.5136-.7612-3.8268-.7612z"></path></svg>
-        </div>
-        <div class="CRUD_Message">@(TempData["ACCOUNTMessage"])</div>
-        <div class="CRUD_close" onclick="closeCRUDMessage()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 20 20" height="24">
-                <path fill="#393a37" d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"></path>
-            </svg>
-        </div>
-    </div>
-}
-@* mmmmmmmmmmmmmmm TEMP DATA ACCOUNT MESSAGE mmmmmmmmmmmmmmm *@
+    @* +++++++ USER IS LOGGED IN OR REGISTERED +++++++ *@
 
 
 
 
+    @* <section class="spline_iframe_container">
+        <iframe class="spline_iframe" id="spline_iframe" src='https://my.spline.design/untitled-abed2c8b77c65ae93bda3e04e7000201/' frameborder='0'></iframe>
+    </section> *@
 
-
-
-<section class="hero_section  hero_section_bg_color text-center">
-    <div class="hero_content   text-center ">
-        @* ADD AS MANY AS NEEDED *@
-@*         <div class="snowflake"><img src="~/images/icons/smile_record.png" class="snowflakeIMG" /></div>
-        <div class="snowflake"><img src="~/images/icons/uwu_record.png" class="snowflakeIMG" /></div>
-        <div class="snowflake"><img src="~/images/icons/smile_record.png" class="snowflakeIMG" /></div>
-        <div class="snowflake"><img src="~/images/icons/uwu_record.png" class="snowflakeIMG" /></div>
-        <div class="snowflake"><img src="~/images/icons/smile_record.png" class="snowflakeIMG" /></div>
-        <div class="snowflake"><img src="~/images/icons/uwu_record.png" class="snowflakeIMG" /></div>
-        <div class="snowflake"><img src="~/images/icons/smile_record.png" class="snowflakeIMG" /></div>
-        <div class="snowflake"><img src="~/images/icons/uwu_record.png" class="snowflakeIMG" /></div>
-        <div class="snowflake"><img src="~/images/icons/smile_record.png" class="snowflakeIMG" /></div> *@
-
-
-
-        <div class="hero_background">
-        </div>
-
-
-        <div class="">@* hero_content_record_stopper_box *@
-            <h1 class="hero_header_text">Shop The Vinyls You Love</h1>
-            <p class="hero_sub_text">Find all the records you ever wanted</p>
-
-            <button class="pushable">
-                <span class="shadow"></span>
-                <span class="edge"></span>
-                <span class="front">
-                    Push Me
-                </span>
-            </button>
-        </div>
-    </div>
-</section>
-
-
-
-
-
-
-
-
-<div class="page_container container">
-
-
-
-@* <section class="spline_iframe_container">
-    <iframe class="spline_iframe" id="spline_iframe" src='https://my.spline.design/untitled-abed2c8b77c65ae93bda3e04e7000201/' frameborder='0'></iframe>
-</section> *@
-
-@* <section class="spline_iframe_container">
-    <iframe class="spline_iframe" id="spline_iframe" src='https://my.spline.design/untitled-26793c678f0a8c9e65f3b4784e78f028/' frameborder='0'></iframe>
-</section> *@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="">
-    <h1 class="">Record Shop</h1>
-    <p >Shop any and all Records</p>
-</div>
-
-
-<div class="">
-    <h1 class="admin">Admin</h1>
-    <p class="border p-lg-2 ">
-        <a class="text-black   text-decoration-none" asp-area="" asp-controller="Product" asp-action="Index">Manage Products</a>
-    </p>
-    <p class="border p-lg-2 ">
-        <a class="text-black   text-decoration-none" asp-area="" asp-controller="Employee" asp-action="Index">Manage Employees</a>
-    </p>
-    <p class="border p-lg-2 ">
-        <a class="text-black   text-decoration-none" asp-area="" asp-controller="Customer" asp-action="Index">Manage Customers</a>
-    </p>
-    <p class="border p-lg-2 ">
-        <a class="text-black   text-decoration-none" asp-area="" asp-controller="Incident" asp-action="Index">Manage Incident</a>
-    </p>
-    <p class="border p-lg-2 ">
-        <a class="text-black   text-decoration-none" asp-area="" asp-controller="Registration" asp-action="Index">Manage Registrations</a>
-    </p>
-</div>
-
-
-<div>
-    <h1 class="">Technicians</h1>
-    <a class="text-black   text-decoration-none" asp-area="" asp-controller="Incident" asp-action="EmployeeAssignedPicker">Update Incident</a>
-
-</div>
+    @* <section class="spline_iframe_container">
+        <iframe class="spline_iframe" id="spline_iframe" src='https://my.spline.design/untitled-26793c678f0a8c9e65f3b4784e78f028/' frameborder='0'></iframe>
+    </section> *@
 
 
 </div>

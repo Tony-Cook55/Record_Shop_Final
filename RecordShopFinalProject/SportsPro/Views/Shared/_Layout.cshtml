@@ -47,6 +47,7 @@
     <link href="~/css/site.css" rel="stylesheet" />
     <link href="~/css/loginpage.css" rel="stylesheet" />
     <link href="~/css/carditem.css" rel="stylesheet" />
+    <link href="~/css/about.css" rel="stylesheet" />
     <link href="~/css/add-editpage.css" rel="stylesheet" />
     <link href="~/css/deletepage.css" rel="stylesheet" />
     <link href="~/css/tempdatapopup.css" rel="stylesheet" />
@@ -278,21 +279,44 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
     <div class="whole_site_wrapper">@* class="container-fluid" *@
 
-        @* mmmmmmmmmmmmmmm TEMP DATA CRUD MESSAGE mmmmmmmmmmmmmmm *@
+        @* mmmmmmmmmmmmmmm TEMP DATA CRUD + ACCOUNT MESSAGE mmmmmmmmmmmmmmm *@
 
         <!-- Include the partial view for the temporary data pop-up message  THIS WILL DISPLAY ON EVERY PAGE SINCE ITS RENDERD ON RenderBody-->
         <partial name="~/Views/TempDataPopUp/TempDataPopUpMessage.cshtml" />
         @* @Html.Partial("~/Views/TempDataPopUp/TempDataPopUpMessage.cshtml") *@
 
-        @* mmmmmmmmmmmmmmm TEMP DATA CRUD MESSAGE mmmmmmmmmmmmmmm *@
+        @* mmmmmmmmmmmmmmm TEMP DATA CRUD + ACCOUNT MESSAGE mmmmmmmmmmmmmmm *@
 
 
         <main role="main" class="">
             @RenderBody()
         </main>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

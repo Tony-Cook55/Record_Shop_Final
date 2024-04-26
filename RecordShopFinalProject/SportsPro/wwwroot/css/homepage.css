@@ -20,14 +20,29 @@
 
 
 
-
 /* hhhhhhhhhhh HERO SECTION hhhhhhhhhhh */
 
+
+/* EXACT SAME CSS AS page_header_text JUST NO MARGIN  FOUND IN site.css*/
+.home_page_header_text {
+    font-size: min(15vw, 90px); /* Responsive font size based on viewport width, with a minimum of 24px */
+
+
+    line-height: 1.2; /* Set line height */
+    text-align: center; /* Center align text */
+
+    color: #ff8f73;
+}
+
+
+
 .hero_section {
+    border-bottom: 5px solid #634a4c; /* Same border css as the searchsidemenu css */
+
+
+
     position: relative;
-
     height: 100vh;
-
     justify-content: center; /* Center content horizontally */
 
 
@@ -41,8 +56,11 @@
     padding: 20px;
 }
 
-    .hero_section_bg_color {
-        background-color: #b5c8b2;
+.hero_section_bg_color_green {
+    background-color: #b5c8b2;
+}
+    .hero_section_bg_color_orange {
+        background-color: #ff8f73;
     }
 
 
@@ -54,33 +72,29 @@
 
 /* Background Image */
 .hero_background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200%; /* Set width greater than the viewport width */
+    border-top: 5px solid #634a4c; /* Same border css as the searchsidemenu css */
+
+    width: 100%;
     height: 100%;
-    background-repeat: repeat-x;
-
-    background-image: url('../images/backgrounds/tile_background.png');
-
-    animation: slide 45s linear infinite; /* Adjust animation duration as needed */
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-image: url('../images/backgrounds/tile_background_lil_big.png');
+    background-repeat: repeat;
+    background-position: 0 0;
+    background-size: auto 100%;
+    /*adjust s value for speed*/
+    animation: animatedBackground 800s linear infinite;
 }
-
-
-
-
-
-@keyframes slide {
-    0% {
-        transform: translateX(0%);
+    @keyframes animatedBackground {
+        from {
+            background-position: 0 0;
+        }
+        /*use negative width if you want it to flow right to left else and positive for left to right*/
+        to {
+            background-position: 10000px 0px;
+        }
     }
-    50% {
-        transform: translateX(-50%);
-    }
-    100% {
-        transform: translateX(0%);
-    }
-}
 
 
 
@@ -119,6 +133,12 @@
 
 
 
+
+
+
+
+
+
 /* hhhhhhhhhhh HERO SECTION hhhhhhhhhhh */
 
 
@@ -134,6 +154,22 @@
 
 
 /* sssssssssss SNOW FLAKE ANIMATION sssssssssss*/
+
+
+/*
+    ADD AS MANY AS NEEDED
+    <div class="snowflake"><img src="~/images/icons/smile_record.png" class="snowflakeIMG" /></div>
+        <div class="snowflake"><img src="~/images/icons/uwu_record.png" class="snowflakeIMG" /></div>
+        <div class="snowflake"><img src="~/images/icons/smile_record.png" class="snowflakeIMG" /></div>
+        <div class="snowflake"><img src="~/images/icons/uwu_record.png" class="snowflakeIMG" /></div>
+        <div class="snowflake"><img src="~/images/icons/smile_record.png" class="snowflakeIMG" /></div>
+        <div class="snowflake"><img src="~/images/icons/uwu_record.png" class="snowflakeIMG" /></div>
+        <div class="snowflake"><img src="~/images/icons/smile_record.png" class="snowflakeIMG" /></div>
+        <div class="snowflake"><img src="~/images/icons/uwu_record.png" class="snowflakeIMG" /></div>
+        <div class="snowflake"><img src="~/images/icons/smile_record.png" class="snowflakeIMG" /></div> */
+
+
+
 .snowflakeIMG {
     width: 3vmax;
     opacity: 0.8;

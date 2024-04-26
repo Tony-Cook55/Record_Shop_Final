@@ -1,0 +1,17 @@
+﻿.about_section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px; /* Adjust as needed */
+}
+
+.about_content {
+    flex: 1;
+    margin-right: 20px; /* Adjust as needed */
+}
+
+.about_img {
+    max-width: 100%;
+    height: auto;
+}
