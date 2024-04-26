@@ -38,9 +38,12 @@
     }
 
 
+/* Adds Brown Border To Bottom Only on Home and About nothing else */
+.home-about_page_section .hero_section {
+    border-bottom: 5px solid #634a4c; /* Same border css as the searchsidemenu css */
+}
 
 .hero_section {
-    border-bottom: 5px solid #634a4c; /* Same border css as the searchsidemenu css */
 
 
 

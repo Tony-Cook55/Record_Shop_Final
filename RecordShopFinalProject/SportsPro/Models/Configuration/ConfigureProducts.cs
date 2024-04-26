@@ -574,6 +574,7 @@ namespace RecordShop.Models.Configuration
                 // BARRY MANILOW \\
 
 
+
                 // BEE GEES \\
                 new ProductModel
                 {
@@ -628,113 +629,445 @@ namespace RecordShop.Models.Configuration
                 // BEE GEES \\
 
 
-                // BEST OF ARTIST \\
 
                 // BEST OF ARTIST \\
-
-
-                // BING CROSBY \\
-                // BING CROSBY \\
-
-
-                // BOBBY DARIN \\
-                // BOBBY DARIN \\
-
-
-                // BOZ SCAGGS \\
-
-
-                // DEAN MARTIN \\
                 new ProductModel
                 {
-                    ProductModelId = ,
-                    RecordName = "Gentle on My Mind",
-                    ArtistName = "Dean Martin",
-                    Price = 10.99,
-                    ReleaseDate = 1968,
+                    ProductModelId = 60,
+                    RecordName = "20 Great Stars Perform",
+                    ArtistName = "Best Of Artists",
+                    Price = 1.00,
+                    ReleaseDate = 1970,
                     GenreModelId = "JAZZ",
-                    ImageUrl = "/Images/Records/Dean_Martin/gentle_on_my_mind.jpg"
+                    ImageUrl = "/Images/Records/Best_Of_Artists/great_stars_preform.jpg"
                 },
-                // DEAN MARTIN \\
-
-
-                // DIANA ROSS \\
-
-                // ED AMES \\
-
-                // ENGLEBERT HUMPERDINCK \\
-
-
-                // FRANK SINATRA \\
                 new ProductModel
                 {
-                    ProductModelId = ,
-                    /*Code = "FSJAZZ",*/
-                    RecordName = "Sinatra's Sinatra",
-                    ArtistName = "Frank Sinatra",
-                    Price = 12.99,
-                    ReleaseDate = 1963,
-                    /*ReleaseDate = new DateOnly(1963, 8, 1), // Year, Month, Day*/
-                    GenreModelId = "JAZZ",
-                    ImageUrl = "/Images/Records/Frank_Sinatra/sinatras_sinatra.jpg"
+                    ProductModelId = 61,
+                    RecordName = "The Greatest Hits Of The 50s & 60s",
+                    ArtistName = "Best Of Artists",
+                    Price = 1.00,
+                    ReleaseDate = 1971,
+                    GenreModelId = "ROCK",
+                    ImageUrl = "/Images/Records/Best_Of_Artists/greatest_hits_of_the_fifties_sixties.jpg"
                 },
-                // FRANK SINATRA \\
-
-
-                // HERB ALPERT \\
-
-
-                // INK SPOTS \\
-
-
-                // JACK JONES \\
-
-                // JOHNNY MATHIS \\
-
-                // LOUIS ARMSTRONG \\
-
-                // MATT MONRO \\
-
-                // MICHAEL FRANKS \\
-
-                // MICHAEL JACKSON \\
-
-                // NEIL DIAMOND \\
-
-                // NEIL SEDAKA \\
-
-                // ORLEANS \\
-
-                // PAUL ANKA \\
                 new ProductModel
                 {
-                    ProductModelId = ,
-                    RecordName = "Times of Your Life",
-                    ArtistName = "Paul Anka",
-                    Price = 5.62,
-                    ReleaseDate = 1975,
+                    ProductModelId = 62,
+                    RecordName = "Remember How Great...?",
+                    ArtistName = "Best Of Artists",
+                    Price = 1.00,
+                    ReleaseDate = 1962,
                     GenreModelId = "JAZZ",
-                    ImageUrl = "/Images/Records/Paul_Anka/anka.jpg"
-                }
-                // PAUL ANKA \\
+                    ImageUrl = "/Images/Records/Best_Of_Artists/remeber_how_great.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 63,
+                    RecordName = "Superstars Of The 70's",
+                    ArtistName = "Best Of Artists",
+                    Price = 1.00,
+                    ReleaseDate = 1973,
+                    GenreModelId = "ROCK",
+                    ImageUrl = "/Images/Records/Best_Of_Artists/superstars_of_the_seventies.jpg"
+                },
+            // BEST OF ARTIST \\
 
 
 
-                // PERRY COMO \\
+            // BING CROSBY \\
+            new ProductModel
+            {
+                ProductModelId = 64,
+                RecordName = "Bing Crosby's Greatest Hits",
+                ArtistName = "Bing Crosby",
+                Price = 1.00,
+                ReleaseDate = 1977,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Bing_Crosby/bing_crosbys_greatest_hits.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 65,
+                RecordName = "Merry Christmas",
+                ArtistName = "Bing Crosby",
+                Price = 1.00,
+                ReleaseDate = 1955,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Bing_Crosby/merry_christmas.jpg"
+            },
+            // BING CROSBY \\
 
-                // ROBERTA FLACK \\
 
-                // SAMMY DAVIS JR. \\
 
-                // TEDDY PENDERGRASS \\
+            // BOBBY DARIN \\
+            new ProductModel
+            {
+                ProductModelId = 66,
+                RecordName = "Mack The Knife",
+                ArtistName = "Bobby Darin",
+                Price = 1.00,
+                ReleaseDate = 1959,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Bobby_Darin/mack_the_knife.jpg"
+            },
+            // BOBBY DARIN \\
 
-                // TOM JONES \\
 
-                // VIC DAMONE \\
 
-                // WAYNE NEWTON \\
+            // BOZ SCAGGS \\
+            new ProductModel
+            {
+                ProductModelId = 67,
+                RecordName = "Silk Degrees",
+                ArtistName = "Boz Scaggs",
+                Price = 1.00,
+                ReleaseDate = 1959,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Boz_Scaggs/silk_degrees.jpg"
+            },
+            // BOZ SCAGGS \\
 
-                // YOUNG HOT UNLIMITED \\
+
+
+            // DEAN MARTIN \\
+            new ProductModel
+            {
+                ProductModelId = 68,
+                RecordName = "Dean Martin Hits Again",
+                ArtistName = "Dean Martin",
+                Price = 1.00,
+                ReleaseDate = 1965,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Dean_Martin/dean_martin_hits_again.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 69,
+                RecordName = "Dean Tex Martin Rides Again",
+                ArtistName = "Dean Martin",
+                Price = 1.00,
+                ReleaseDate = 1963,
+                GenreModelId = "COUNTRY",
+                ImageUrl = "/Images/Records/Dean_Martin/dean_martin_tex_rides_again.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 70,
+                RecordName = "Dino: Italian Love Songs",
+                ArtistName = "Dean Martin",
+                Price = 1.00,
+                ReleaseDate = 1962,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Dean_Martin/dino_italian_love_songs.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 71,
+                RecordName = "Dream With Dean",
+                ArtistName = "Dean Martin",
+                Price = 1.00,
+                ReleaseDate = 1964,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Dean_Martin/dream_with_dean.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 72,
+                RecordName = "Gentle On My Mind",
+                ArtistName = "Dean Martin",
+                Price = 1.00,
+                ReleaseDate = 1968,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Dean_Martin/gentle_on_my_mind.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 73,
+                RecordName = "Dean Martin's Greatest Hits! Vol. 1",
+                ArtistName = "Dean Martin",
+                Price = 1.00,
+                ReleaseDate = 1968,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Dean_Martin/greatest_hits_volume_one.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 74,
+                RecordName = "Dean Martin's Greatest Hits! Vol. 2",
+                ArtistName = "Dean Martin",
+                Price = 1.00,
+                ReleaseDate = 1968,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Dean_Martin/greatest_hits_volume_two.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 75,
+                RecordName = "My Woman, My Woman, My Wife",
+                ArtistName = "Dean Martin",
+                Price = 1.00,
+                ReleaseDate = 1970,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Dean_Martin/my_woman_my_wife.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 76,
+                RecordName = "The Dean Martin TV Show",
+                ArtistName = "Dean Martin",
+                Price = 1.00,
+                ReleaseDate = 1966,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Dean_Martin/the_dean_martin_tv_show.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 77,
+                RecordName = "The Door Is Still Open To My Heart",
+                ArtistName = "Dean Martin",
+                Price = 1.00,
+                ReleaseDate = 1964,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Dean_Martin/the_door_is_still_open_to_my_heart.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 78,
+                RecordName = "Welcome To My World",
+                ArtistName = "Dean Martin",
+                Price = 1.00,
+                ReleaseDate = 1967,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Dean_Martin/welcome_to_my_world.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 79,
+                RecordName = "You Can't Love 'Em All",
+                ArtistName = "Dean Martin",
+                Price = 1.00,
+                ReleaseDate = 1967,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Dean_Martin/you_cant_love_em_all.jpg"
+            },
+            // DEAN MARTIN \\
+
+
+
+            // DIANA ROSS \\
+            new ProductModel
+            {
+                ProductModelId = 80,
+                RecordName = "It's Happening!",
+                ArtistName = "Diana Ross",
+                Price = 1.00,
+                ReleaseDate = 1970,
+                GenreModelId = "FUNK",
+                ImageUrl = "/Images/Records/Diana_Ross/its_happening.jpg"
+            },
+            // DIANA ROSS \\
+
+
+
+            // ED AMES \\
+            new ProductModel
+            {
+                ProductModelId = 81,
+                RecordName = "My Cup Runneth Over",
+                ArtistName = "Ed Ames",
+                Price = 1.00,
+                ReleaseDate = 1967,
+                GenreModelId = "FOLK",
+                ImageUrl = "/Images/Records/Ed_Ames/my_cup_runneth_over.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 82,
+                RecordName = "This Is Ed Ames",
+                ArtistName = "Ed Ames",
+                Price = 1.00,
+                ReleaseDate = 1970,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Ed_Ames/this_is_ed_ames.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 83,
+                RecordName = "Opening Night With Ed Ames",
+                ArtistName = "Ed Ames",
+                Price = 1.00,
+                ReleaseDate = 1964,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Ed_Ames/try_to_remember.jpg"
+            },
+            // ED AMES \\
+
+
+
+            // ENGLEBERT HUMPERDINCK \\
+            new ProductModel
+            {
+                ProductModelId = 84,
+                RecordName = "After The Lovin'",
+                ArtistName = "Englebert Humperdinck",
+                Price = 1.00,
+                ReleaseDate = 1976,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Englebert_Humperdinck/after_the_lovin.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 85,
+                RecordName = "Another Time, Another Place",
+                ArtistName = "Englebert Humperdinck",
+                Price = 1.00,
+                ReleaseDate = 1971,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Englebert_Humperdinck/another_time_another_place.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 86,
+                RecordName = "Engelbert",
+                ArtistName = "Englebert Humperdinck",
+                Price = 1.00,
+                ReleaseDate = 1969,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Englebert_Humperdinck/engelbert.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 87,
+                RecordName = "Engelbert Humperdinck",
+                ArtistName = "Englebert Humperdinck",
+                Price = 1.00,
+                ReleaseDate = 1969,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Englebert_Humperdinck/engelbert_humperdinck.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 88,
+                RecordName = "His Greatest Hits",
+                ArtistName = "Englebert Humperdinck",
+                Price = 1.00,
+                ReleaseDate = 1974,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Englebert_Humperdinck/his_greatest_hits.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 89,
+                RecordName = "In Time",
+                ArtistName = "Englebert Humperdinck",
+                Price = 1.00,
+                ReleaseDate = 1972,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Englebert_Humperdinck/in_time.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 90,
+                RecordName = "Release Me",
+                ArtistName = "Englebert Humperdinck",
+                Price = 1.00,
+                ReleaseDate = 1967,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Englebert_Humperdinck/release_me.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 91,
+                RecordName = "Sweetheart",
+                ArtistName = "Englebert Humperdinck",
+                Price = 1.00,
+                ReleaseDate = 1971,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Englebert_Humperdinck/sweetheart.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 92,
+                RecordName = "The Last Waltz",
+                ArtistName = "Englebert Humperdinck",
+                Price = 1.00,
+                ReleaseDate = 1967,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Englebert_Humperdinck/the_last_waltz.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 93,
+                RecordName = "The Very Best Of Engelbert Humperdinck",
+                ArtistName = "Englebert Humperdinck",
+                Price = 1.00,
+                ReleaseDate = 1972,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Englebert_Humperdinck/the_very_best.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 94,
+                RecordName = "We Made It Happen",
+                ArtistName = "Englebert Humperdinck",
+                Price = 1.00,
+                ReleaseDate = 1970,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Englebert_Humperdinck/we_made_it_happen.jpg"
+            },
+            // ENGLEBERT HUMPERDINCK \\
+
+            // FRANK SINATRA \\
+
+            // FRANK SINATRA \\
+
+
+            // HERB ALPERT \\
+
+
+            // INK SPOTS \\
+
+
+            // JACK JONES \\
+
+            // JOHNNY MATHIS \\
+
+            // LOUIS ARMSTRONG \\
+
+            // MATT MONRO \\
+
+            // MICHAEL FRANKS \\
+
+            // MICHAEL JACKSON \\
+
+            // NEIL DIAMOND \\
+
+            // NEIL SEDAKA \\
+
+            // ORLEANS \\
+
+            // PAUL ANKA \\
+
+            // PAUL ANKA \\
+
+
+
+            // PERRY COMO \\
+
+            // ROBERTA FLACK \\
+
+            // SAMMY DAVIS JR. \\
+
+            // TEDDY PENDERGRASS \\
+
+            // TOM JONES \\
+
+            // VIC DAMONE \\
+
+            // WAYNE NEWTON \\
+
+            // YOUNG HOT UNLIMITED \\
 
 
             );
