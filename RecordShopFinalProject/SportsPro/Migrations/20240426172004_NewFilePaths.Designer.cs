@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RecordShop.Models;
 
@@ -11,9 +12,11 @@ using RecordShop.Models;
 namespace RecordShop.Migrations
 {
     [DbContext(typeof(RecordShopContextModel))]
-    partial class RecordShopContextModelModelSnapshot : ModelSnapshot
+    [Migration("20240426172004_NewFilePaths")]
+    partial class NewFilePaths
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -659,7 +662,7 @@ namespace RecordShop.Migrations
                             IncidentModelId = 1,
                             CustomerModelId = 1,
                             DateClosed = new DateTime(2024, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOpened = new DateTime(2024, 4, 26, 12, 54, 48, 358, DateTimeKind.Local).AddTicks(6783),
+                            DateOpened = new DateTime(2024, 4, 26, 12, 20, 4, 188, DateTimeKind.Local).AddTicks(3029),
                             Description = "Record Came out of the package scratched.",
                             EmployeeModelId = 1,
                             ProductModelId = 1,
@@ -670,7 +673,7 @@ namespace RecordShop.Migrations
                             IncidentModelId = 2,
                             CustomerModelId = 3,
                             DateClosed = new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOpened = new DateTime(2024, 4, 26, 12, 54, 48, 358, DateTimeKind.Local).AddTicks(6788),
+                            DateOpened = new DateTime(2024, 4, 26, 12, 20, 4, 188, DateTimeKind.Local).AddTicks(3034),
                             Description = "Snapped In two",
                             EmployeeModelId = 2,
                             ProductModelId = 2,
@@ -680,7 +683,7 @@ namespace RecordShop.Migrations
                         {
                             IncidentModelId = 3,
                             CustomerModelId = 4,
-                            DateOpened = new DateTime(2024, 4, 26, 12, 54, 48, 358, DateTimeKind.Local).AddTicks(6792),
+                            DateOpened = new DateTime(2024, 4, 26, 12, 20, 4, 188, DateTimeKind.Local).AddTicks(3039),
                             Description = "Picked the wrong size record for my Record Player",
                             EmployeeModelId = 2,
                             ProductModelId = 3,
@@ -691,7 +694,7 @@ namespace RecordShop.Migrations
                             IncidentModelId = 4,
                             CustomerModelId = 6,
                             DateClosed = new DateTime(2024, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOpened = new DateTime(2024, 4, 26, 12, 54, 48, 358, DateTimeKind.Local).AddTicks(6796),
+                            DateOpened = new DateTime(2024, 4, 26, 12, 20, 4, 188, DateTimeKind.Local).AddTicks(3043),
                             Description = "Wanted a new artist",
                             EmployeeModelId = 2,
                             ProductModelId = 3,
@@ -785,6 +788,11 @@ namespace RecordShop.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
                     b.Property<string>("GenreModelId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -816,6 +824,7 @@ namespace RecordShop.Migrations
                         {
                             ProductModelId = 1,
                             ArtistName = "Frank Sinatra",
+                            Code = "FSJAZZ",
                             GenreModelId = "JAZZ",
                             ImageUrl = "/Images/Records/Frank_Sinatra/sinatras_sinatra.jpg",
                             Price = 12.99,
@@ -826,6 +835,7 @@ namespace RecordShop.Migrations
                         {
                             ProductModelId = 2,
                             ArtistName = "Dean Martin",
+                            Code = "DMJAZZ",
                             GenreModelId = "JAZZ",
                             ImageUrl = "/Images/Records/Dean_Martin/gentle_on_my_mind.jpg",
                             Price = 10.99,
@@ -836,6 +846,7 @@ namespace RecordShop.Migrations
                         {
                             ProductModelId = 3,
                             ArtistName = "Paul Anka",
+                            Code = "PAJAZZ",
                             GenreModelId = "JAZZ",
                             ImageUrl = "/Images/Records/Paul_Anka/anka.jpg",
                             Price = 5.6200000000000001,
@@ -846,6 +857,7 @@ namespace RecordShop.Migrations
                         {
                             ProductModelId = 4,
                             ArtistName = "Bee Gees",
+                            Code = "BGROCK",
                             GenreModelId = "ROCK",
                             ImageUrl = "/Images/Records/Bee_Gees/mr_natural.jpg",
                             Price = 5.0,

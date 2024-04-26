@@ -87,7 +87,7 @@ namespace RecordShop.Controllers
         [HttpGet]
         public IActionResult GetAddPage()
         {
-            ViewBag.Adding = "Add New Record";
+            ViewBag.Adding = "Add New Customer";
 
             // Puts the Country's for The customer to choose in a list to be able to be edited
             ViewBag.Countries = Context.Countries.OrderBy(c => c.CountryName).ToList();

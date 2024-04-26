@@ -72,13 +72,13 @@
 
 
         @* CODE *@
-        <div class="add-edit_input_div ">
+        @* <div class="add-edit_input_div ">
             <input asp-for="Code" class="add-edit_input   form-control" placeholder="Code" />
             <label asp-for="Code" class="add-edit_input_label">Code</label>
         </div>
         <div class="add-edit_error_div   ">
-            <span class="add-edit_error_message" asp-validation-for="Code"></span> @* Error Message *@
-        </div>
+            <span class="add-edit_error_message" asp-validation-for="Code"></span>
+        </div> *@
         @* CODE *@
 
 
@@ -121,6 +121,9 @@
             <span class="add-edit_error_message" asp-validation-for="GenreModelId"></span> @* Error Message *@
         </div>
         @* GENRE *@
+
+
+        <input  asp-for="ImageUrl" hidden />
 
 
         @* RELEASE YEAR *@

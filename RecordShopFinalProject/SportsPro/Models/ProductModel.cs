@@ -26,9 +26,9 @@ namespace RecordShop.Models
 
 
 
-        [Required(ErrorMessage = "Please Enter a Code")]
+        /*[Required(ErrorMessage = "Please Enter a Code")]
         [StringLength(10, MinimumLength = 3, ErrorMessage = "Code's Must Have At Least 3 to 10 Characters")]
-        public string? Code { get; set; } = string.Empty;
+        public string? Code { get; set; } = string.Empty;*/
 
 
 
@@ -76,6 +76,9 @@ namespace RecordShop.Models
 
 
 
+
+
+        public string? ImageUrl { get; set; }
 
 
 

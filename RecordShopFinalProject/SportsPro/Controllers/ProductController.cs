@@ -130,6 +130,13 @@ namespace RecordShop.Controllers
                 // Either add a new Product or edit a Product
                 if (products.ProductModelId == 0)
                 {
+                    // Set the placeholder image URL if no image URL is provided
+                    if (string.IsNullOrEmpty(products.ImageUrl))
+                    {
+                        products.ImageUrl = "/images/Records/Placeholder/smile_record_placeholder.png";
+                    }
+
+
                     Context.Products.Add(products);
 
                     // This will be retrieved in The Product Views Index

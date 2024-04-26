@@ -1,0 +1,55 @@
+﻿
+
+
+
+First To Login To Site as an Admin use:
+Username: admin
+Password:
+
+
+
+To Add a new Record:
+	1. Go into ConfigureProducts   ~  Models/Configuration/ConfigureProducts.cs
+
+
+	2. Once On ConfigureProducts Simply Add The Info Following the Design Model of the others here
+		new ProductModel
+        {
+            ProductModelId = ID,                                     // Int
+            RecordName = "RECORD NAME",                              // String
+            ArtistName = "ARTIST NAME",                              // String
+            Price = 12.99,                                           // Int
+            ReleaseDate = 1963,                                      // Int
+            GenreModelId = "JAZZ",                                   // String ~ Found In ConfigureGenres
+            ImageUrl = "/Images/Records/ARTIST_NAME/PIC_NAME.jpg"
+        },
+
+
+    3. Then To Save Changes Do:
+        - Click the 10th item above named Tools           ~ File   Edit   View   Git   Project   Build   Debug  Test  Analyze  *TOOLS*  Extensions  Window  Help ~
+        - Hover Over the 10th item  NuGet Package Manager
+        - Click the 2nd item  Package Manager Console
+        - In the console add this:
+                add-migration NameOfMigrationHere    - Then a Migrations File will be made
+
+        - Then in Package Manager Console Add this again:
+                update-database
+
+
+    4. If a Product Has Been Added with the default image of      ~     ImageUrl = "/images/Records/Placeholder/smile_record_placeholder.png"
+       Do This To Change it.
+
+        - Click the 3rd item above named View              ~ File   Edit   *VIEW*   Git   Project   Build   Debug  Test  Analyze  Tools  Extensions  Window  Help ~
+        - Go to the 9th item called SQL Server Object Explorer
+        - Click and open the SQL Server
+        - Click  (localdb)\MSSQLLocalDB
+        - Click  Databases
+        - Click  RecordShopFinal
+        - Click  Tables
+        - Scroll To the end to find  dbo.Products
+        - Right click  dbo.Products
+        - Left Click the 6th item called   View Data
+        - Find The New Record With the placeholder image
+        - Then in last column called  ImageUrl Add the images file path from the wwwroot
+
+

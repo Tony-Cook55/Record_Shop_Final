@@ -1,6 +1,8 @@
 ﻿
 
 .product_image {
+    /*border: 5px solid #f3f1e0;*/
+
     max-width: 60%; /* Ensures the image doesn't exceed the width of its container */
     max-height: 100%; /* Ensures the image doesn't exceed the height of its container */
 }
@@ -11,4 +13,19 @@
         max-width: 100%; /* Ensures the image doesn't exceed the width of its container */
         max-height: 100%; /* Ensures the image doesn't exceed the height of its container */
     }
+}
+
+
+
+
+/* Was to lazy to add this somewhere else so this is used for the @incident.description item on my incident index */
+.incident_description {
+    /*box-shadow: inset 0px 0px 10px rgba(0,0,0,0.5);*/
+    padding: 5px;
+    max-height: 10vh; /* Height of the boxed shadow inside the panal */
+
+    overflow-y: auto; /* Enable vertical scrolling */
+
+    word-wrap: break-word; /* Allow long words to wrap */
+    overflow-wrap: break-word; /* Allow text to break between characters */
 }
