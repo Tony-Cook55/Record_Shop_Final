@@ -114,14 +114,345 @@ namespace RecordShop.Models.Configuration
                     ArtistName = "Andy Gibb",
                     Price = 10.00,
                     ReleaseDate = 1978,
-                    GenreModelId = "TRADITIONALPOP",
+                    GenreModelId = "DISCO",
                     ImageUrl = "/Images/Records/Andy_Gibb/shadow_dancing.jpg"
                 },
                 // ANDY GIBB \\
 
 
-                // ANDY WILLAMS \\
-                // ANDY WILLAMS \\
+
+                // ANDY WILLIAMS \\
+                new ProductModel
+                {
+                    ProductModelId = 11,
+                    RecordName = "Alone Again Naturally",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1972,
+                    GenreModelId = "TRADITIONALPOP",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/alone_again_naturally.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 12,
+                    RecordName = "Andy",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1976,
+                    GenreModelId = "TRADITIONALPOP",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/alone_again_naturally.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 13,
+                    RecordName = "Andy & Company",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1969,
+                    GenreModelId = "JAZZ",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/andy_and_company.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 14,
+                    RecordName = "Andy Williams",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1970,
+                    GenreModelId = "JAZZ",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/andy_williams.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 15,
+                    RecordName = "Andy Williams' Best",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1962,
+                    GenreModelId = "JAZZ",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/andy_williams_best.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 16,
+                    RecordName = "Andy Williams' Greatest Hits",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1970,
+                    GenreModelId = "TRADITIONALPOP",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/andy_williams_greatest_hits.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 17,
+                    RecordName = "Andy Williams' Newest Hits",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1966,
+                    GenreModelId = "TRADITIONALPOP",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/andy_williams_newest_hits.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 18,
+                    RecordName = "Born Free",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1967,
+                    GenreModelId = "JAZZ",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/born_free.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 19,
+                    RecordName = "Call Me Irresponsible",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1964,
+                    GenreModelId = "JAZZ",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/call_me_irresponsible.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 20,
+                    RecordName = "Canadian Sunset",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1965,
+                    GenreModelId = "JAZZ",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/canadian_sunset.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 21,
+                    RecordName = "Danny Boy",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1962,
+                    GenreModelId = "JAZZ",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/dany_boy.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 22,
+                    RecordName = "Days Of Wine And Roses",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1963,
+                    GenreModelId = "TRADITIONALPOP",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/days_of_wine_and_roses.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 23,
+                    RecordName = "Dear Heart",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1965,
+                    GenreModelId = "TRADITIONALPOP",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/dear_heart.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 24,
+                    RecordName = "Get Together With Andy Williams",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1969,
+                    GenreModelId = "JAZZ",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/get_together_with_and-williams.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 25,
+                    RecordName = "Happy Heart",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1969,
+                    GenreModelId = "JAZZ",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/happy_heart.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 26,
+                    RecordName = "Honey",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1968,
+                    GenreModelId = "TRADITIONALPOP",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/honey.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 27,
+                    RecordName = "In The Arms Of Love",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1967,
+                    GenreModelId = "JAZZ",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/in_the_arms_of_love.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 28,
+                    RecordName = "Love, Andy",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1967,
+                    GenreModelId = "JAZZ",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/love_andy.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 29,
+                    RecordName = "Love Story",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1971,
+                    GenreModelId = "JAZZ",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/love_story.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 30,
+                    RecordName = "Merry Christmas",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1965,
+                    GenreModelId = "TRADITIONALPOP",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/merry_christmas.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 31,
+                    RecordName = "Million Seller Songs",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1962,
+                    GenreModelId = "JAZZ",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/million_seller_songs.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 32,
+                    RecordName = "Moon River",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1962,
+                    GenreModelId = "JAZZ",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/moon_river_and_other_great_movie_themes.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 33,
+                    RecordName = "Solitaire",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1973,
+                    GenreModelId = "JAZZ",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/solitaire.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 34,
+                    RecordName = "The Andy Williams Sound Of Music",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1968,
+                    GenreModelId = "TRADITIONALPOP",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/sound_of_music.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 35,
+                    RecordName = "The Andy Williams Show",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1970,
+                    GenreModelId = "ROCK",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/the_andy_williams_show.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 36,
+                    RecordName = "The Village Of St. Bernadette",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1960,
+                    GenreModelId = "JAZZ",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/the_village_of_st_bernadette.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 37,
+                    RecordName = "The Wonderful World Of Andy Williams",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1963,
+                    GenreModelId = "TRADITIONALPOP",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/the_wonderful_world_of_andy_williams.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 38,
+                    RecordName = "The Wonderful World Of Andy Williams",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1964,
+                    GenreModelId = "JAZZ",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/the_wonderful_world_of_andy_williams_family.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 39,
+                    RecordName = "Love Theme From The Godfather",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1972,
+                    GenreModelId = "TRADITIONALPOP",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/theme_from_the_godfather.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 40,
+                    RecordName = "To You Sweetheart, Aloha",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1959,
+                    GenreModelId = "JAZZ",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/to_you_sweetheart_aloha.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 41,
+                    RecordName = "Two Time Winners",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1959,
+                    GenreModelId = "JAZZ",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/two_time_winners.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 42,
+                    RecordName = "Warm And Willing",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1962,
+                    GenreModelId = "JAZZ",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/warm_and_willing.jpg"
+                },
+                new ProductModel
+                {
+                    ProductModelId = 43,
+                    RecordName = "You've Got A Friend",
+                    ArtistName = "Andy Williams",
+                    Price = 1.00,
+                    ReleaseDate = 1971,
+                    GenreModelId = "TRADITIONALPOP",
+                    ImageUrl = "/Images/Records/Andy_Wiliams/youve_got_a_friend.jpg"
+                },
+                // ANDY WILLIAMS \\
 
 
                 // BARRY GIBB \\
@@ -137,7 +468,7 @@ namespace RecordShop.Models.Configuration
                 // BEE GEES \\
                 new ProductModel
                 {
-                    ProductModelId = 10,
+                    ProductModelId = ,
                     RecordName = "Mr. Natural",
                     ArtistName = "Bee Gees",
                     Price = 5.00,
@@ -167,7 +498,7 @@ namespace RecordShop.Models.Configuration
                 // DEAN MARTIN \\
                 new ProductModel
                 {
-                    ProductModelId = 11,
+                    ProductModelId = ,
                     RecordName = "Gentle on My Mind",
                     ArtistName = "Dean Martin",
                     Price = 10.99,
@@ -188,7 +519,7 @@ namespace RecordShop.Models.Configuration
                 // FRANK SINATRA \\
                 new ProductModel
                 {
-                    ProductModelId = 12,
+                    ProductModelId = ,
                     /*Code = "FSJAZZ",*/
                     RecordName = "Sinatra's Sinatra",
                     ArtistName = "Frank Sinatra",
@@ -228,7 +559,7 @@ namespace RecordShop.Models.Configuration
                 // PAUL ANKA \\
                 new ProductModel
                 {
-                    ProductModelId = 13,
+                    ProductModelId = ,
                     RecordName = "Times of Your Life",
                     ArtistName = "Paul Anka",
                     Price = 5.62,
