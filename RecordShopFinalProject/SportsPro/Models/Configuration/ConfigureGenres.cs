@@ -13,6 +13,8 @@ namespace RecordShop.Models.Configuration
                 new GenreModel() { GenreModelId = "DISCO", GenreName = "Disco" },
                 new GenreModel() { GenreModelId = "EASY", GenreName = "Easy Listening" },
                 new GenreModel() { GenreModelId = "ELECTRONIC", GenreName = "Electronic" },
+                new GenreModel() { GenreModelId = "FOLK", GenreName = "Folk" },
+                new GenreModel() { GenreModelId = "FOLKROCK", GenreName = "Folk Rock" },
                 new GenreModel() { GenreModelId = "FUNK", GenreName = "Funk" },
 
                 new GenreModel() { GenreModelId = "HIP", GenreName = "Hip Hop" },
@@ -24,7 +26,8 @@ namespace RecordShop.Models.Configuration
                 new GenreModel() { GenreModelId = "ROCK", GenreName = "Rock" },
                 new GenreModel() { GenreModelId = "SOFTROCK", GenreName = "Soft Rock" },
                 new GenreModel() { GenreModelId = "SOUL", GenreName = "Soul" },
-                new GenreModel() { GenreModelId = "SWING", GenreName = "Swing" }
+                new GenreModel() { GenreModelId = "SWING", GenreName = "Swing" },
+                new GenreModel() { GenreModelId = "TRADITIONALPOP", GenreName = "Traditional Pop" }
             );
         }
     }
