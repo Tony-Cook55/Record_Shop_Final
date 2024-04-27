@@ -55,11 +55,28 @@ namespace RecordShop.Controllers
             var incidents = Context.Incidents.Include(c => c.Customer).Include(p => p.Product).Include(e => e.Employee).OrderBy(m => m.Title).AsQueryable();
 
 
+
+            // Sets Initial Page Size
+            int pageSize = 10;
+
+
+
             // Check if there's a search string provided
             if (!string.IsNullOrEmpty(searchString))
             {
                 // If there's a search string, filter incidents based on Title or Product Name containing the search string
                 incidents = incidents.Where(p => p.Title.Contains(searchString) || p.Product.RecordName.Contains(searchString));
+
+
+                // Sets Large Page Size To Show All Results For Searched Item
+                int LargepageSizeSearch = 100;
+
+                // Count total number of items in the database For New Searched Items
+                int totalItemCountAfterSearch = await incidents.CountAsync();
+                ViewBag.TotalItemCount = totalItemCountAfterSearch;
+
+                // Return the view with all search results and the new Page Size
+                return View(await PaginatedList<IncidentModel>.CreateAsync(incidents, pageNumber ?? 1, LargepageSizeSearch));
             }
             // If there's no search string and InputtedIncidents is not "all"
             else if (!InputtedIncidents.Equals("all"))
@@ -68,12 +85,11 @@ namespace RecordShop.Controllers
                 incidents = incidents.Where(p => p.Title == InputtedIncidents);
             }
 
-            int pageSize = 20;
-
 
             // Count total number of items in the database
             int totalItemCount = await incidents.CountAsync();
             ViewBag.TotalItemCount = totalItemCount;
+
 
             // Return the view with paginated list of products based on the applied filters
             return View(await PaginatedList<IncidentModel>.CreateAsync(incidents, pageNumber ?? 1, pageSize));

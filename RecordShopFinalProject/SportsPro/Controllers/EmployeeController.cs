@@ -52,11 +52,28 @@ namespace RecordShop.Controllers
             var employees = Context.Employees.Where(e => e.FirstName != "No Employee").OrderBy(m => m.FirstName).ThenBy(e => e.LastName).AsQueryable();
 
 
+
+            // Sets Initial Page Size
+            int pageSize = 10;
+
+
+
             // Check if there's a search string provided
             if (!string.IsNullOrEmpty(searchString))
             {
                 // If there's a search string, filter employees based on first name or last name containing the search string
                 employees = employees.Where(e => e.FirstName.Contains(searchString) || e.LastName.Contains(searchString));
+
+
+                // Sets Large Page Size To Show All Results For Searched Item
+                int LargepageSizeSearch = 100;
+
+                // Count total number of items in the database For New Searched Items
+                int totalItemCountAfterSearch = await employees.CountAsync();
+                ViewBag.TotalItemCount = totalItemCountAfterSearch;
+
+                // Return the view with all search results and the new Page Size
+                return View(await PaginatedList<EmployeeModel>.CreateAsync(employees, pageNumber ?? 1, LargepageSizeSearch));
             }
             // If there's no search string and InputtedEmployee is not "all"
             else if (!InputtedEmployee.Equals("all"))
@@ -64,9 +81,6 @@ namespace RecordShop.Controllers
                 // Filter employees based on the selected employee name
                 employees = employees.Where(e => (e.FirstName + " " + e.LastName) == InputtedEmployee);
             }
-
-
-            int pageSize = 20;
 
 
             // Count total number of items in the database

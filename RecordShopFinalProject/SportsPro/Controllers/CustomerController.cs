@@ -54,11 +54,28 @@ namespace RecordShop.Controllers
             var customers = Context.Customers.OrderBy(o => o.CustomerFirstName).ThenBy(t => t.CustomerLastName).AsQueryable();
 
 
+
+            // Sets Initial Page Size
+            int pageSize = 10;
+
+
+
             // Check if there's a search string provided
             if (!string.IsNullOrEmpty(searchString))
             {
                 // If there's a search string, filter customers based on first name or last name containing the search string
                 customers = customers.Where(p => p.CustomerFirstName.Contains(searchString) || p.CustomerLastName.Contains(searchString));
+
+
+                // Sets Large Page Size To Show All Results For Searched Item
+                int LargepageSizeSearch = 100;
+
+                // Count total number of items in the database For New Searched Items
+                int totalItemCountAfterSearch = await customers.CountAsync();
+                ViewBag.TotalItemCount = totalItemCountAfterSearch;
+
+                // Return the view with all search results and the new Page Size
+                return View(await PaginatedList<CustomerModel>.CreateAsync(customers, pageNumber ?? 1, LargepageSizeSearch));
             }
             // If there's no search string and InputtedArtist is not "all"
             else if (!InputtedCustomer.Equals("all"))
@@ -66,8 +83,6 @@ namespace RecordShop.Controllers
                 // Filter products based on the InputtedArtist
                 customers = customers.Where(e => e.CustomerFirstName + " " + e.CustomerLastName == InputtedCustomer);
             }
-
-            int pageSize = 20;
 
 
             // Count total number of items in the database

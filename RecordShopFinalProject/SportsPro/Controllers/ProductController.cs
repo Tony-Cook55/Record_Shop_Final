@@ -54,11 +54,28 @@ namespace RecordShop.Controllers
             var products = Context.Products.Include(p => p.Genre).OrderBy(m => m.ArtistName).AsQueryable();
 
 
+
+            // Sets Initial Page Size
+            int pageSize = 10;
+
+
+
             // Check if there's a search string provided
             if (!string.IsNullOrEmpty(searchString))
             {
                 // If there's a search string, filter products based on record name or artist name containing the search string
                 products = products.Where(p => p.RecordName.Contains(searchString) || p.ArtistName.Contains(searchString));
+
+
+                // Sets Large Page Size To Show All Results For Searched Item
+                int LargepageSizeSearch = 100;
+
+                // Count total number of items in the database For New Searched Items
+                int totalItemCountAfterSearch = await products.CountAsync();
+                ViewBag.TotalItemCount = totalItemCountAfterSearch;
+
+                // Return the view with all search results and the new Page Size
+                return View(await PaginatedList<ProductModel>.CreateAsync(products, pageNumber ?? 1, LargepageSizeSearch));
             }
             // If there's no search string and InputtedArtist is not "all"
             else if (!InputtedArtist.Equals("all"))
@@ -68,12 +85,11 @@ namespace RecordShop.Controllers
             }
 
 
-            int pageSize = 20;
-
 
             // Count total number of items in the database
             int totalItemCount = await products.CountAsync();
             ViewBag.TotalItemCount = totalItemCount;
+
 
 
             // Return the view with paginated list of products based on the applied filters
