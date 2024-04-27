@@ -114,7 +114,6 @@ namespace RecordShop.Controllers
             // Puts the genres in for the product card
             ViewBag.Genres = Context.Genres.OrderBy(g => g.GenreName).ToList();
 
-
             return View(model: customer);
         }
         // sssssssssssssss SHOW CUSTOMERS PRODUCTS sssssssssssssss \\
@@ -134,7 +133,7 @@ namespace RecordShop.Controllers
 
         // +++++++++++++++++ ADD PRODUCT TO CUSTOMER +++++++++++++++++ \\
         [HttpGet]
-        public ViewResult GetAddPage(int customerModelId)
+        public async Task<ViewResult> GetAddPage(int customerModelId)
         {
 
             // Gets our customer with passed in Id
@@ -151,8 +150,17 @@ namespace RecordShop.Controllers
 
             ViewBag.AllProducts = Context.Products.OrderBy(m => m.ArtistName).ToList();
 
+
+            // Count total number of items in the database
+            /*int totalItemCount = await customer.CountAsync();*/
+            int totalItemCount = await Context.Products.CountAsync();
+
+            ViewBag.TotalItemCount = totalItemCount;
+
+
             return View(viewName: "AddRegistration", model: customer);
         }
+
 
 
 

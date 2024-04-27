@@ -19,42 +19,50 @@ namespace RecordShop.Models.Configuration
                 new EmployeeModel
                 {
                     EmployeeModelId = 1,
-                    FirstName = "Alison",
-                    LastName = "Diaz",
-                    Email = "alison@gmail.com",
-                    PhoneNumber = "800-555-0443"
+                    FirstName = "Tony",
+                    LastName = "Cook",
+                    Email = "tcook@gmail.com",
+                    PhoneNumber = "314-124-0443"
                 },
                 new EmployeeModel
                 {
                     EmployeeModelId = 2,
-                    FirstName = "Andrew",
-                    LastName = "Wilson",
-                    Email = "awilson@gmail.com",
-                    PhoneNumber = "800-555-0449"
+                    FirstName = "Trey",
+                    LastName = "Poynter",
+                    Email = "tpoynter@gmail.com",
+                    PhoneNumber = "513-321-0449"
                 },
                 new EmployeeModel
                 {
                     EmployeeModelId = 3,
-                    FirstName = "Gina",
-                    LastName = "Flori",
-                    Email = "gflori@gmail.com",
-                    PhoneNumber = "800-555-0459"
+                    FirstName = "Drew",
+                    LastName = "Jones",
+                    Email = "djones@gmail.com",
+                    PhoneNumber = "161-555-5129"
                 },
                 new EmployeeModel
                 {
                     EmployeeModelId = 4,
-                    FirstName = "Gunter",
-                    LastName = "Wendt",
-                    Email = "gunter@gmail.com",
-                    PhoneNumber = "800-555-0400"
+                    FirstName = "Nathan",
+                    LastName = "Lavin",
+                    Email = "nlavin@gmail.com",
+                    PhoneNumber = "800-451-9348"
                 },
                 new EmployeeModel
                 {
                     EmployeeModelId = 5,
-                    FirstName = "Jason",
-                    LastName = "Lee",
-                    Email = "jason@gmail.com",
-                    PhoneNumber = "800-555-0444"
+                    FirstName = "Steven",
+                    LastName = "Hau",
+                    Email = "shau@gmail.com",
+                    PhoneNumber = "158-597-5869"
+                },
+                new EmployeeModel
+                {
+                    EmployeeModelId = 6,
+                    FirstName = "Tyler",
+                    LastName = "Williams",
+                    Email = "twilliams@gmail.com",
+                    PhoneNumber = "263-613-1829"
                 }
             );
         }

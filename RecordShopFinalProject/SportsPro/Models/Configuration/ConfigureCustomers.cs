@@ -12,8 +12,8 @@ namespace RecordShop.Models.Configuration
                 new CustomerModel
                 {
                     CustomerModelId = 1,
-                    CustomerFirstName = "Kaitlyn",
-                    CustomerLastName = "Anthoni",
+                    CustomerFirstName = "Connor",
+                    CustomerLastName = "Woodard",
                     Address = "30 Borica St",
                     City = "San Francisco",
                     State = "California",
@@ -21,14 +21,14 @@ namespace RecordShop.Models.Configuration
 
                     CountryModelId = "USA",
 
-                    Email = "kanthoni@pge.com",
+                    Email = "cwoodard@pge.com",
                     PhoneNumber = "812-907-0449"
                 },
                 new CustomerModel
                 {
                     CustomerModelId = 2,
-                    CustomerFirstName = "Ania",
-                    CustomerLastName = "Irvin",
+                    CustomerFirstName = "Scott",
+                    CustomerLastName = "Hardy",
                     Address = "7124 44th Avenue SW",
                     City = "Seattle",
                     State = "Washington",
@@ -36,14 +36,14 @@ namespace RecordShop.Models.Configuration
 
                     CountryModelId = "USA",
 
-                    Email = "ani@mma.nidc.com",
+                    Email = "shardy@mma.nidc.com",
                     PhoneNumber = ""
                 },
                 new CustomerModel
                 {
                     CustomerModelId = 3,
-                    CustomerFirstName = "Gonzalo",
-                    CustomerLastName = "Keeton",
+                    CustomerFirstName = "James",
+                    CustomerLastName = "Florez",
                     Address = "27691 Pasatiempo",
                     City = "Mission Viejo",
                     State = "California",

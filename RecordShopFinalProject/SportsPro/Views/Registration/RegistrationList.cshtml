@@ -110,13 +110,19 @@
                 <div class="card    scale_in_center_entrance_animation">
                     <div class="card_expand_face card_face_top">
                         <div class="content">
-                            <h1 class="face_header_text">@product.RecordName</h1>
+                            @* <h1 class="face_header_text">@product.RecordName</h1>
                             <h4 class="face_text">@product.ArtistName</h4>
-                            <h4 class="face_text">@product.ReleaseDate</h4>
+                            <h4 class="face_text">@product.ReleaseDate</h4> *@
+
+                            <img class="product_image" src="@product.ImageUrl" alt="Product Image">
                         </div>
                     </div>
                     <div class="card_expand_face card_face_bottom_info">
                         <div class="content">
+                            <p>@product.RecordName</p>
+                            <p>@product.ArtistName</p>
+                            <p>@product.ReleaseDate</p>
+
                             @* <p>@product.Code</p> *@
                             <p>@product.Genre.GenreName</p>
                             <p>@product.Price?.ToString("C")</p>

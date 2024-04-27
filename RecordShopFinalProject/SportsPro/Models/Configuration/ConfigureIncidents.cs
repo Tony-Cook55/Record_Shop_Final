@@ -22,7 +22,7 @@ namespace RecordShop.Models.Configuration
                     Title = "Scratched The Record",
                     Description = "Record Came out of the package scratched.",
                     DateOpened = DateTime.Now,
-                    DateClosed = new DateTime(2024, 1, 31),  // Year / Month / Day
+                    DateClosed = new DateTime(2024, 4, 30),  // Year / Month / Day
                 },
                 new IncidentModel
                 {
@@ -36,7 +36,7 @@ namespace RecordShop.Models.Configuration
 
 
                     Title = "Record Snapped",
-                    Description = "Snapped In two",
+                    Description = "Snapped In two.",
                     DateOpened = DateTime.Now,
                     DateClosed = new DateTime(2024, 5, 9),  // Year / Month / Day
                 },
@@ -52,7 +52,7 @@ namespace RecordShop.Models.Configuration
 
 
                     Title = "Wrong Size",
-                    Description = "Picked the wrong size record for my Record Player",
+                    Description = "Picked the wrong size record for my Record Player.",
                     DateOpened = DateTime.Now,
                     DateClosed = null, // Optional
                 },
@@ -67,8 +67,8 @@ namespace RecordShop.Models.Configuration
                     EmployeeModelId = 2,
 
 
-                    Title = "Didn't like the record",
-                    Description = "Wanted a new artist",
+                    Title = "Didn't Like The Record",
+                    Description = "Wanted a new artist.",
                     DateOpened = DateTime.Now,
                     DateClosed = new DateTime(2024, 12, 5),  // Year / Month / Day
                 }

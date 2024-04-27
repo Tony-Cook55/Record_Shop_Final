@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RecordShop.Models;
 
@@ -11,9 +12,11 @@ using RecordShop.Models;
 namespace RecordShop.Migrations
 {
     [DbContext(typeof(RecordShopContextModel))]
-    partial class RecordShopContextModelModelSnapshot : ModelSnapshot
+    [Migration("20240427004536_AllRecordsAdded")]
+    partial class AllRecordsAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -299,9 +302,9 @@ namespace RecordShop.Migrations
                             Address = "30 Borica St",
                             City = "San Francisco",
                             CountryModelId = "USA",
-                            CustomerFirstName = "Connor",
-                            CustomerLastName = "Woodard",
-                            Email = "cwoodard@pge.com",
+                            CustomerFirstName = "Kaitlyn",
+                            CustomerLastName = "Anthoni",
+                            Email = "kanthoni@pge.com",
                             PhoneNumber = "812-907-0449",
                             PostalCode = "94127",
                             State = "California"
@@ -312,9 +315,9 @@ namespace RecordShop.Migrations
                             Address = "7124 44th Avenue SW",
                             City = "Seattle",
                             CountryModelId = "USA",
-                            CustomerFirstName = "Scott",
-                            CustomerLastName = "Hardy",
-                            Email = "shardy@mma.nidc.com",
+                            CustomerFirstName = "Ania",
+                            CustomerLastName = "Irvin",
+                            Email = "ani@mma.nidc.com",
                             PhoneNumber = "",
                             PostalCode = "98136",
                             State = "Washington"
@@ -325,8 +328,8 @@ namespace RecordShop.Migrations
                             Address = "27691 Pasatiempo",
                             City = "Mission Viejo",
                             CountryModelId = "USA",
-                            CustomerFirstName = "James",
-                            CustomerLastName = "Florez",
+                            CustomerFirstName = "Gonzalo",
+                            CustomerLastName = "Keeton",
                             Email = "",
                             PhoneNumber = "123-456-7890",
                             PostalCode = "92692",
@@ -471,50 +474,42 @@ namespace RecordShop.Migrations
                         new
                         {
                             EmployeeModelId = 1,
-                            Email = "tcook@gmail.com",
-                            FirstName = "Tony",
-                            LastName = "Cook",
-                            PhoneNumber = "314-124-0443"
+                            Email = "alison@gmail.com",
+                            FirstName = "Alison",
+                            LastName = "Diaz",
+                            PhoneNumber = "800-555-0443"
                         },
                         new
                         {
                             EmployeeModelId = 2,
-                            Email = "tpoynter@gmail.com",
-                            FirstName = "Trey",
-                            LastName = "Poynter",
-                            PhoneNumber = "513-321-0449"
+                            Email = "awilson@gmail.com",
+                            FirstName = "Andrew",
+                            LastName = "Wilson",
+                            PhoneNumber = "800-555-0449"
                         },
                         new
                         {
                             EmployeeModelId = 3,
-                            Email = "djones@gmail.com",
-                            FirstName = "Drew",
-                            LastName = "Jones",
-                            PhoneNumber = "161-555-5129"
+                            Email = "gflori@gmail.com",
+                            FirstName = "Gina",
+                            LastName = "Flori",
+                            PhoneNumber = "800-555-0459"
                         },
                         new
                         {
                             EmployeeModelId = 4,
-                            Email = "nlavin@gmail.com",
-                            FirstName = "Nathan",
-                            LastName = "Lavin",
-                            PhoneNumber = "800-451-9348"
+                            Email = "gunter@gmail.com",
+                            FirstName = "Gunter",
+                            LastName = "Wendt",
+                            PhoneNumber = "800-555-0400"
                         },
                         new
                         {
                             EmployeeModelId = 5,
-                            Email = "shau@gmail.com",
-                            FirstName = "Steven",
-                            LastName = "Hau",
-                            PhoneNumber = "158-597-5869"
-                        },
-                        new
-                        {
-                            EmployeeModelId = 6,
-                            Email = "twilliams@gmail.com",
-                            FirstName = "Tyler",
-                            LastName = "Williams",
-                            PhoneNumber = "263-613-1829"
+                            Email = "jason@gmail.com",
+                            FirstName = "Jason",
+                            LastName = "Lee",
+                            PhoneNumber = "800-555-0444"
                         });
                 });
 
@@ -681,8 +676,8 @@ namespace RecordShop.Migrations
                         {
                             IncidentModelId = 1,
                             CustomerModelId = 1,
-                            DateClosed = new DateTime(2024, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOpened = new DateTime(2024, 4, 26, 20, 35, 19, 118, DateTimeKind.Local).AddTicks(96),
+                            DateClosed = new DateTime(2024, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOpened = new DateTime(2024, 4, 26, 19, 45, 35, 718, DateTimeKind.Local).AddTicks(9136),
                             Description = "Record Came out of the package scratched.",
                             EmployeeModelId = 1,
                             ProductModelId = 1,
@@ -693,8 +688,8 @@ namespace RecordShop.Migrations
                             IncidentModelId = 2,
                             CustomerModelId = 3,
                             DateClosed = new DateTime(2024, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOpened = new DateTime(2024, 4, 26, 20, 35, 19, 118, DateTimeKind.Local).AddTicks(103),
-                            Description = "Snapped In two.",
+                            DateOpened = new DateTime(2024, 4, 26, 19, 45, 35, 718, DateTimeKind.Local).AddTicks(9141),
+                            Description = "Snapped In two",
                             EmployeeModelId = 2,
                             ProductModelId = 2,
                             Title = "Record Snapped"
@@ -703,8 +698,8 @@ namespace RecordShop.Migrations
                         {
                             IncidentModelId = 3,
                             CustomerModelId = 4,
-                            DateOpened = new DateTime(2024, 4, 26, 20, 35, 19, 118, DateTimeKind.Local).AddTicks(107),
-                            Description = "Picked the wrong size record for my Record Player.",
+                            DateOpened = new DateTime(2024, 4, 26, 19, 45, 35, 718, DateTimeKind.Local).AddTicks(9145),
+                            Description = "Picked the wrong size record for my Record Player",
                             EmployeeModelId = 2,
                             ProductModelId = 3,
                             Title = "Wrong Size"
@@ -714,11 +709,11 @@ namespace RecordShop.Migrations
                             IncidentModelId = 4,
                             CustomerModelId = 6,
                             DateClosed = new DateTime(2024, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOpened = new DateTime(2024, 4, 26, 20, 35, 19, 118, DateTimeKind.Local).AddTicks(111),
-                            Description = "Wanted a new artist.",
+                            DateOpened = new DateTime(2024, 4, 26, 19, 45, 35, 718, DateTimeKind.Local).AddTicks(9150),
+                            Description = "Wanted a new artist",
                             EmployeeModelId = 2,
                             ProductModelId = 3,
-                            Title = "Didn't Like The Record"
+                            Title = "Didn't like the record"
                         });
                 });
 
@@ -950,7 +945,7 @@ namespace RecordShop.Migrations
                             ProductModelId = 12,
                             ArtistName = "Andy Williams",
                             GenreModelId = "TRADITIONALPOP",
-                            ImageUrl = "/Images/Records/Andy_Williams/andy.jpg",
+                            ImageUrl = "/Images/Records/Andy_Williams/alone_again_naturally.jpg",
                             Price = 1.0,
                             RecordName = "Andy",
                             ReleaseDate = 1976

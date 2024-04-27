@@ -68,7 +68,12 @@ namespace RecordShop.Controllers
                 incidents = incidents.Where(p => p.Title == InputtedIncidents);
             }
 
-            int pageSize = 6;
+            int pageSize = 20;
+
+
+            // Count total number of items in the database
+            int totalItemCount = await incidents.CountAsync();
+            ViewBag.TotalItemCount = totalItemCount;
 
             // Return the view with paginated list of products based on the applied filters
             return View(await PaginatedList<IncidentModel>.CreateAsync(incidents, pageNumber ?? 1, pageSize));

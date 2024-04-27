@@ -67,7 +67,13 @@ namespace RecordShop.Controllers
                 customers = customers.Where(e => e.CustomerFirstName + " " + e.CustomerLastName == InputtedCustomer);
             }
 
-            int pageSize = 6;
+            int pageSize = 20;
+
+
+            // Count total number of items in the database
+            int totalItemCount = await customers.CountAsync();
+            ViewBag.TotalItemCount = totalItemCount;
+
 
             // Return the view with paginated list of products based on the applied filters
             return View(await PaginatedList<CustomerModel>.CreateAsync(customers, pageNumber ?? 1, pageSize));

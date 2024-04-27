@@ -140,7 +140,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1976,
                     GenreModelId = "TRADITIONALPOP",
-                    ImageUrl = "/Images/Records/Andy_Williams/alone_again_naturally.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/andy.jpg"
                 },
                 new ProductModel
                 {
@@ -1672,43 +1672,136 @@ namespace RecordShop.Models.Configuration
 
 
             // ROBERTA FLACK \\
-
+            new ProductModel
+            {
+                ProductModelId = 153,
+                RecordName = "Feel Like Makin' Love",
+                ArtistName = "Roberta Flack",
+                Price = 1.00,
+                ReleaseDate = 1975,
+                GenreModelId = "FUNK",
+                ImageUrl = "/Images/Records/Roberta_Flack/feel_like_makin_love.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 154,
+                RecordName = "Killing Me Softly",
+                ArtistName = "Roberta Flack",
+                Price = 1.00,
+                ReleaseDate = 1973,
+                GenreModelId = "SOUL",
+                ImageUrl = "/Images/Records/Roberta_Flack/killing_me_softly.jpg"
+            },
             // ROBERTA FLACK \\
 
 
 
             // SAMMY DAVIS JR. \\
-
+            new ProductModel
+            {
+                ProductModelId = 155,
+                RecordName = "The Great Sammy Davis, Jr.",
+                ArtistName = "Sammy Davis Jr.",
+                Price = 1.00,
+                ReleaseDate = 1969,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Sammy_Davis_Jr/the_great_sammy.jpg"
+            },
             // SAMMY DAVIS JR. \\
 
 
 
             // TEDDY PENDERGRASS \\
-
+            new ProductModel
+            {
+                ProductModelId = 156,
+                RecordName = "Life Is A Song Worth Singing",
+                ArtistName = "Teddy Pendergrass",
+                Price = 1.00,
+                ReleaseDate = 1978,
+                GenreModelId = "SOUL",
+                ImageUrl = "/Images/Records/Teddy_Pendergrass/life_is_a_song_worth_singing.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 157,
+                RecordName = "TP",
+                ArtistName = "Teddy Pendergrass",
+                Price = 1.00,
+                ReleaseDate = 1978,
+                GenreModelId = "SOUL",
+                ImageUrl = "/Images/Records/Teddy_Pendergrass/tp.jpg"
+            },
             // TEDDY PENDERGRASS \\
 
 
 
             // TOM JONES \\
-
+            new ProductModel
+            {
+                ProductModelId = 158,
+                RecordName = "Live In Las Vegas",
+                ArtistName = "Tom Jones",
+                Price = 1.00,
+                ReleaseDate = 1969,
+                GenreModelId = "ROCK",
+                ImageUrl = "/Images/Records/Tom_Jones/live_in_vegas.jpg"
+            },
             // TOM JONES \\
 
 
 
             // VIC DAMONE \\
-
+            new ProductModel
+            {
+                ProductModelId = 159,
+                RecordName = "Angela Mia",
+                ArtistName = "Vic Damone",
+                Price = 1.00,
+                ReleaseDate = 1958,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Vic_Damone/angela_mia.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 160,
+                RecordName = "The Liveliest",
+                ArtistName = "Vic Damone",
+                Price = 1.00,
+                ReleaseDate = 1963,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Vic_Damone/the_liveliest.jpg"
+            },
             // VIC DAMONE \\
 
 
 
             // WAYNE NEWTON \\
-
+            new ProductModel
+            {
+                ProductModelId = 161,
+                RecordName = "Sings Hit Songs",
+                ArtistName = "Wayne Newton",
+                Price = 1.00,
+                ReleaseDate = 1964,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Wayne_Newton/wayne_newton_sings_hit_songs.jpg"
+            },
             // WAYNE NEWTON \\
 
 
 
             // YOUNG HOT UNLIMITED \\
-
+            new ProductModel
+            {
+                ProductModelId = 162,
+                RecordName = "Born Again",
+                ArtistName = "Young Hot Unlimited",
+                Price = 1.00,
+                ReleaseDate = 1971,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Young_Hot_Unlimited/born_again.jpg"
+            }
             // YOUNG HOT UNLIMITED \\
 
 

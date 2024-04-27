@@ -65,7 +65,14 @@ namespace RecordShop.Controllers
                 employees = employees.Where(e => (e.FirstName + " " + e.LastName) == InputtedEmployee);
             }
 
-            int pageSize = 6;
+
+            int pageSize = 20;
+
+
+            // Count total number of items in the database
+            int totalItemCount = await employees.CountAsync();
+            ViewBag.TotalItemCount = totalItemCount;
+
 
             // Return the view with paginated list of Employees based on the applied filters
             return View(await PaginatedList<EmployeeModel>.CreateAsync(employees, pageNumber ?? 1, pageSize));
