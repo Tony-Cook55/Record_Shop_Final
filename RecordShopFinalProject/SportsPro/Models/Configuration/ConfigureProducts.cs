@@ -1437,31 +1437,236 @@ namespace RecordShop.Models.Configuration
 
 
             // NEIL DIAMOND \\
-
+            new ProductModel
+            {
+                ProductModelId = 132,
+                RecordName = "Headed For The Future",
+                ArtistName = "Neil Diamond",
+                Price = 1.00,
+                ReleaseDate = 1986,
+                GenreModelId = "ROCK",
+                ImageUrl = "/Images/Records/Neil_Diamond/headed_for_the_future.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 133,
+                RecordName = "September Morn",
+                ArtistName = "Neil Diamond",
+                Price = 1.00,
+                ReleaseDate = 1979,
+                GenreModelId = "ROCK",
+                ImageUrl = "/Images/Records/Neil_Diamond/september_morn.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 134,
+                RecordName = "The Jazz Singer",
+                ArtistName = "Neil Diamond",
+                Price = 1.00,
+                ReleaseDate = 1980,
+                GenreModelId = "ROCK",
+                ImageUrl = "/Images/Records/Neil_Diamond/the_jazz_singer.jpg"
+            },
             // NEIL DIAMOND \\
 
 
 
             // NEIL SEDAKA \\
-
+            new ProductModel
+            {
+                ProductModelId = 135,
+                RecordName = "Sedaka Live In Australia",
+                ArtistName = "Neil Sedaka",
+                Price = 1.00,
+                ReleaseDate = 1976,
+                GenreModelId = "ROCK",
+                ImageUrl = "/Images/Records/Neil_Sedaka/sedaka_live_in_australlia.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 136,
+                RecordName = "Neil Sedaka Sings His Greatest Hits",
+                ArtistName = "Neil Sedaka",
+                Price = 1.00,
+                ReleaseDate = 1975,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Neil_Sedaka/sings_his_greatest_hits.jpg"
+            },
             // NEIL SEDAKA \\
 
 
 
             // ORLEANS \\
-
+            new ProductModel
+            {
+                ProductModelId = 137,
+                RecordName = "Let There Be Music",
+                ArtistName = "Orleans",
+                Price = 1.00,
+                ReleaseDate = 1975,
+                GenreModelId = "ROCK",
+                ImageUrl = "/Images/Records/Orleans/let_there_be_music.jpg"
+            },
             // ORLEANS \\
 
 
 
             // PAUL ANKA \\
-
+            new ProductModel
+            {
+                ProductModelId = 138,
+                RecordName = "Anka",
+                ArtistName = "Paul Anka",
+                Price = 1.00,
+                ReleaseDate = 1974,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Paul_Anka/anka.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 139,
+                RecordName = "Feelings",
+                ArtistName = "Paul Anka",
+                Price = 1.00,
+                ReleaseDate = 1975,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Paul_Anka/feelings.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 140,
+                RecordName = "Paul Anka Sings His Favorites",
+                ArtistName = "Paul Anka",
+                Price = 1.00,
+                ReleaseDate = 1976,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Paul_Anka/paul_anka_sings_his_favorites.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 141,
+                RecordName = "Times Of Your Life",
+                ArtistName = "Paul Anka",
+                Price = 1.00,
+                ReleaseDate = 1975,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Paul_Anka/times_of_your_life.jpg"
+            },
             // PAUL ANKA \\
 
 
 
             // PERRY COMO \\
-
+            new ProductModel
+            {
+                ProductModelId = 142,
+                RecordName = "By Request",
+                ArtistName = "Perry Como",
+                Price = 1.00,
+                ReleaseDate = 1962,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Perry_Como/by_request.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 143,
+                RecordName = "Dream Along With Me",
+                ArtistName = "Perry Como",
+                Price = 1.00,
+                ReleaseDate = 1957,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Perry_Como/deam_along_with_me.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 144,
+                RecordName = "It's Impossible",
+                ArtistName = "Perry Como",
+                Price = 1.00,
+                ReleaseDate = 1970,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Perry_Como/its_impossible.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 145,
+                RecordName = "Perry Como Just For You",
+                ArtistName = "Perry Como",
+                Price = 1.00,
+                ReleaseDate = 1975,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Perry_Como/just_for_you.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 146,
+                RecordName = "Just Out Of Reach",
+                ArtistName = "Perry Como",
+                Price = 1.00,
+                ReleaseDate = 1975,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Perry_Como/just_out_of_reach.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 147,
+                RecordName = "Perry At His Best",
+                ArtistName = "Perry Como",
+                Price = 1.00,
+                ReleaseDate = 1963,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Perry_Como/perry_at_his_best.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 148,
+                RecordName = "The Scene Changes",
+                ArtistName = "Perry Como",
+                Price = 1.00,
+                ReleaseDate = 1965,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Perry_Como/the_scene_changes.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 149,
+                RecordName = "The Sweetest Sounds",
+                ArtistName = "Perry Como",
+                Price = 1.00,
+                ReleaseDate = 1974,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Perry_Como/the_sweetest_sounds.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 150,
+                RecordName = "We Get Letters",
+                ArtistName = "Perry Como",
+                Price = 1.00,
+                ReleaseDate = 1957,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Perry_Como/we_get_letters.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 151,
+                RecordName = "When You Come To The End Of The Day",
+                ArtistName = "Perry Como",
+                Price = 1.00,
+                ReleaseDate = 1958,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Perry_Como/when_you_come_to.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 152,
+                RecordName = "Where You're Concerned",
+                ArtistName = "Perry Como",
+                Price = 1.00,
+                ReleaseDate = 1978,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Perry_Como/where_your_concerned.jpg"
+            },
             // PERRY COMO \\
 
 
