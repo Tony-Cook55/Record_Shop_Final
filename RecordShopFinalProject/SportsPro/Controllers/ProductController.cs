@@ -56,7 +56,7 @@ namespace RecordShop.Controllers
 
 
             // Sets Initial Page Size
-            int pageSize = 10;
+            int pageSize = 20;
 
 
 
@@ -68,7 +68,7 @@ namespace RecordShop.Controllers
 
 
                 // Sets Large Page Size To Show All Results For Searched Item
-                int LargepageSizeSearch = 100;
+                int LargepageSizeSearch = 200;
 
                 // Count total number of items in the database For New Searched Items
                 int totalItemCountAfterSearch = await products.CountAsync();

@@ -56,7 +56,7 @@ namespace RecordShop.Controllers
 
 
             // Sets Initial Page Size
-            int pageSize = 10;
+            int pageSize = 20;
 
 
 
