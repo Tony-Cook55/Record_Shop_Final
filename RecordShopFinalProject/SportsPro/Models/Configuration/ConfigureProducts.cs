@@ -1018,12 +1018,146 @@ namespace RecordShop.Models.Configuration
             },
             // ENGLEBERT HUMPERDINCK \\
 
-            // FRANK SINATRA \\
+
 
             // FRANK SINATRA \\
+            new ProductModel
+            {
+                ProductModelId = 95,
+                RecordName = "A Man And His Music",
+                ArtistName = "Frank Sinatra",
+                Price = 1.00,
+                ReleaseDate = 1965,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Frank_Sinatra/a_man_and_his_music.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 96,
+                RecordName = "It Might As Well Be Swing",
+                ArtistName = "Frank Sinatra",
+                Price = 1.00,
+                ReleaseDate = 1964,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Frank_Sinatra/it_might_as_well_be_swing.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 97,
+                RecordName = "My Way",
+                ArtistName = "Frank Sinatra",
+                Price = 1.00,
+                ReleaseDate = 1969,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Frank_Sinatra/my_way.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 98,
+                RecordName = "She Shot Me Down",
+                ArtistName = "Frank Sinatra",
+                Price = 1.00,
+                ReleaseDate = 1981,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Frank_Sinatra/she_shot_me_down.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 99,
+                RecordName = "Sinatra's Sinatra",
+                ArtistName = "Frank Sinatra",
+                Price = 1.00,
+                ReleaseDate = 1963,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Frank_Sinatra/sinatras_sinatra.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 100,
+                RecordName = "That's Life",
+                ArtistName = "Frank Sinatra",
+                Price = 1.00,
+                ReleaseDate = 1966,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Frank_Sinatra/thats_life.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 101,
+                RecordName = "The Voice",
+                ArtistName = "Frank Sinatra",
+                Price = 1.00,
+                ReleaseDate = 1955,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Frank_Sinatra/the_voice.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 102,
+                RecordName = "Try A Little Tenderness",
+                ArtistName = "Frank Sinatra",
+                Price = 1.00,
+                ReleaseDate = 1967,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Frank_Sinatra/try_a_little_tenderness.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 103,
+                RecordName = "White Christmas",
+                ArtistName = "Frank Sinatra",
+                Price = 1.00,
+                ReleaseDate = 1980,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Frank_Sinatra/whtie_christmas.jpg"
+            },
+            // FRANK SINATRA \\
+
 
 
             // HERB ALPERT \\
+            new ProductModel
+            {
+                ProductModelId = 104,
+                RecordName = "S.R.O.",
+                ArtistName = "Herb Alpert",
+                Price = 1.00,
+                ReleaseDate = 1966,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Herb_Alpert/s_r_o.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 105,
+                RecordName = "Sounds Like...",
+                ArtistName = "Herb Alpert",
+                Price = 1.00,
+                ReleaseDate = 1967,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Herb_Alpert/sounds_like.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 106,
+                RecordName = "What Now My Love",
+                ArtistName = "Herb Alpert",
+                Price = 1.00,
+                ReleaseDate = 1966,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Herb_Alpert/what_now_my_love.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 107,
+                RecordName = "Whipped Cream & Other Delights",
+                ArtistName = "Herb Alpert",
+                Price = 1.00,
+                ReleaseDate = 1965,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Herb_Alpert/whipped_cream.jpg"
+            }
+            // HERB ALPERT \\
+
 
 
             // INK SPOTS \\
