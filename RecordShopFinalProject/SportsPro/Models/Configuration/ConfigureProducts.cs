@@ -130,7 +130,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1972,
                     GenreModelId = "TRADITIONALPOP",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/alone_again_naturally.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/alone_again_naturally.jpg"
                 },
                 new ProductModel
                 {
@@ -140,7 +140,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1976,
                     GenreModelId = "TRADITIONALPOP",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/alone_again_naturally.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/alone_again_naturally.jpg"
                 },
                 new ProductModel
                 {
@@ -150,7 +150,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1969,
                     GenreModelId = "JAZZ",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/andy_and_company.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/andy_and_company.jpg"
                 },
                 new ProductModel
                 {
@@ -160,7 +160,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1970,
                     GenreModelId = "JAZZ",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/andy_williams.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/andy_williams.jpg"
                 },
                 new ProductModel
                 {
@@ -170,7 +170,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1962,
                     GenreModelId = "JAZZ",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/andy_williams_best.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/andy_williams_best.jpg"
                 },
                 new ProductModel
                 {
@@ -180,7 +180,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1970,
                     GenreModelId = "TRADITIONALPOP",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/andy_williams_greatest_hits.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/andy_williams_greatest_hits.jpg"
                 },
                 new ProductModel
                 {
@@ -190,7 +190,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1966,
                     GenreModelId = "TRADITIONALPOP",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/andy_williams_newest_hits.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/andy_williams_newest_hits.jpg"
                 },
                 new ProductModel
                 {
@@ -200,7 +200,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1967,
                     GenreModelId = "JAZZ",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/born_free.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/born_free.jpg"
                 },
                 new ProductModel
                 {
@@ -210,7 +210,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1964,
                     GenreModelId = "JAZZ",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/call_me_irresponsible.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/call_me_irresponsible.jpg"
                 },
                 new ProductModel
                 {
@@ -220,7 +220,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1965,
                     GenreModelId = "JAZZ",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/canadian_sunset.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/canadian_sunset.jpg"
                 },
                 new ProductModel
                 {
@@ -230,7 +230,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1962,
                     GenreModelId = "JAZZ",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/dany_boy.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/dany_boy.jpg"
                 },
                 new ProductModel
                 {
@@ -240,7 +240,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1963,
                     GenreModelId = "TRADITIONALPOP",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/days_of_wine_and_roses.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/days_of_wine_and_roses.jpg"
                 },
                 new ProductModel
                 {
@@ -250,7 +250,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1965,
                     GenreModelId = "TRADITIONALPOP",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/dear_heart.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/dear_heart.jpg"
                 },
                 new ProductModel
                 {
@@ -260,7 +260,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1969,
                     GenreModelId = "JAZZ",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/get_together_with_and-williams.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/get_together_with_and-williams.jpg"
                 },
                 new ProductModel
                 {
@@ -270,7 +270,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1969,
                     GenreModelId = "JAZZ",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/happy_heart.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/happy_heart.jpg"
                 },
                 new ProductModel
                 {
@@ -280,7 +280,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1968,
                     GenreModelId = "TRADITIONALPOP",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/honey.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/honey.jpg"
                 },
                 new ProductModel
                 {
@@ -290,7 +290,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1967,
                     GenreModelId = "JAZZ",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/in_the_arms_of_love.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/in_the_arms_of_love.jpg"
                 },
                 new ProductModel
                 {
@@ -300,7 +300,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1967,
                     GenreModelId = "JAZZ",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/love_andy.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/love_andy.jpg"
                 },
                 new ProductModel
                 {
@@ -310,7 +310,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1971,
                     GenreModelId = "JAZZ",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/love_story.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/love_story.jpg"
                 },
                 new ProductModel
                 {
@@ -320,7 +320,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1965,
                     GenreModelId = "TRADITIONALPOP",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/merry_christmas.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/merry_christmas.jpg"
                 },
                 new ProductModel
                 {
@@ -330,7 +330,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1962,
                     GenreModelId = "JAZZ",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/million_seller_songs.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/million_seller_songs.jpg"
                 },
                 new ProductModel
                 {
@@ -340,7 +340,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1962,
                     GenreModelId = "JAZZ",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/moon_river_and_other_great_movie_themes.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/moon_river_and_other_great_movie_themes.jpg"
                 },
                 new ProductModel
                 {
@@ -350,7 +350,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1973,
                     GenreModelId = "JAZZ",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/solitaire.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/solitaire.jpg"
                 },
                 new ProductModel
                 {
@@ -360,7 +360,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1968,
                     GenreModelId = "TRADITIONALPOP",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/sound_of_music.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/sound_of_music.jpg"
                 },
                 new ProductModel
                 {
@@ -370,7 +370,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1970,
                     GenreModelId = "ROCK",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/the_andy_williams_show.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/the_andy_williams_show.jpg"
                 },
                 new ProductModel
                 {
@@ -380,7 +380,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1960,
                     GenreModelId = "JAZZ",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/the_village_of_st_bernadette.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/the_village_of_st_bernadette.jpg"
                 },
                 new ProductModel
                 {
@@ -390,7 +390,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1963,
                     GenreModelId = "TRADITIONALPOP",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/the_wonderful_world_of_andy_williams.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/the_wonderful_world_of_andy_williams.jpg"
                 },
                 new ProductModel
                 {
@@ -400,7 +400,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1964,
                     GenreModelId = "JAZZ",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/the_wonderful_world_of_andy_williams_family.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/the_wonderful_world_of_andy_williams_family.jpg"
                 },
                 new ProductModel
                 {
@@ -410,7 +410,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1972,
                     GenreModelId = "TRADITIONALPOP",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/theme_from_the_godfather.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/theme_from_the_godfather.jpg"
                 },
                 new ProductModel
                 {
@@ -420,7 +420,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1959,
                     GenreModelId = "JAZZ",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/to_you_sweetheart_aloha.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/to_you_sweetheart_aloha.jpg"
                 },
                 new ProductModel
                 {
@@ -430,7 +430,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1959,
                     GenreModelId = "JAZZ",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/two_time_winners.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/two_time_winners.jpg"
                 },
                 new ProductModel
                 {
@@ -440,7 +440,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1962,
                     GenreModelId = "JAZZ",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/warm_and_willing.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/warm_and_willing.jpg"
                 },
                 new ProductModel
                 {
@@ -450,7 +450,7 @@ namespace RecordShop.Models.Configuration
                     Price = 1.00,
                     ReleaseDate = 1971,
                     GenreModelId = "TRADITIONALPOP",
-                    ImageUrl = "/Images/Records/Andy_Wiliams/youve_got_a_friend.jpg"
+                    ImageUrl = "/Images/Records/Andy_Williams/youve_got_a_friend.jpg"
                 },
                 // ANDY WILLIAMS \\
 
@@ -468,6 +468,7 @@ namespace RecordShop.Models.Configuration
                     ImageUrl = "/Images/Records/Barry_Gibb/Guilty.jpg"
                 },
                 // BARRY GIBB \\
+
 
 
                 // BARRY MANILOW \\
@@ -1155,31 +1156,303 @@ namespace RecordShop.Models.Configuration
                 ReleaseDate = 1965,
                 GenreModelId = "JAZZ",
                 ImageUrl = "/Images/Records/Herb_Alpert/whipped_cream.jpg"
-            }
+            },
             // HERB ALPERT \\
 
 
 
             // INK SPOTS \\
+            new ProductModel
+            {
+                ProductModelId = 108,
+                RecordName = "The Sensational Ink Spots",
+                ArtistName = "The Ink Spots",
+                Price = 1.00,
+                ReleaseDate = 1961,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Ink_Spots/the_sensational_ink_spots.jpg"
+            },
+            // INK SPOTS \\
+
 
 
             // JACK JONES \\
+            new ProductModel
+            {
+                ProductModelId = 109,
+                RecordName = "A Time For Us",
+                ArtistName = "Jack Jones",
+                Price = 1.00,
+                ReleaseDate = 1970,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Jack_Jones/a_time_for_us.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 110,
+                RecordName = "Harbour",
+                ArtistName = "Jack Jones",
+                Price = 1.00,
+                ReleaseDate = 1974,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Jack_Jones/harbour.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 111,
+                RecordName = "Jack Jones' Greatest Hits",
+                ArtistName = "Jack Jones",
+                Price = 1.00,
+                ReleaseDate = 1968,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Jack_Jones/jack_jones_greatest_hits.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 112,
+                RecordName = "Jack Jones' Greatest Hits Volume 2",
+                ArtistName = "Jack Jones",
+                Price = 1.00,
+                ReleaseDate = 1970,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Jack_Jones/jack_jones_greatest_hits_volume_two.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 113,
+                RecordName = "Jack Jones Sings",
+                ArtistName = "Jack Jones",
+                Price = 1.00,
+                ReleaseDate = 1966,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Jack_Jones/jack_jones_sings.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 114,
+                RecordName = "The Impossible Dream",
+                ArtistName = "Jack Jones",
+                Price = 1.00,
+                ReleaseDate = 1966,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Jack_Jones/the_impossible_dream.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 115,
+                RecordName = "What The World Needs Now Is Love!",
+                ArtistName = "Jack Jones",
+                Price = 1.00,
+                ReleaseDate = 1968,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Jack_Jones/what_the_world_needs_now_is_love.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 116,
+                RecordName = "Without Her",
+                ArtistName = "Jack Jones",
+                Price = 1.00,
+                ReleaseDate = 1969,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Jack_Jones/without_her.jpg"
+            },
+            // JACK JONES \\
+
+
 
             // JOHNNY MATHIS \\
+            new ProductModel
+            {
+                ProductModelId = 117,
+                RecordName = "Feelings",
+                ArtistName = "Johnny Mathis",
+                Price = 1.00,
+                ReleaseDate = 1975,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Johnny_Mathis/feelings.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 118,
+                RecordName = "Heavenly",
+                ArtistName = "Johnny Mathis",
+                Price = 1.00,
+                ReleaseDate = 1959,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Johnny_Mathis/heavenly.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 119,
+                RecordName = "Johnny's Greatest Hits",
+                ArtistName = "Johnny Mathis",
+                Price = 1.00,
+                ReleaseDate = 1958,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Johnny_Mathis/johnnys_greatest_hits.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 120,
+                RecordName = "Love Is Blue",
+                ArtistName = "Johnny Mathis",
+                Price = 1.00,
+                ReleaseDate = 1968,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Johnny_Mathis/love_is_blue.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 121,
+                RecordName = "Portrait Of Johnny",
+                ArtistName = "Johnny Mathis",
+                Price = 1.00,
+                ReleaseDate = 1961,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Johnny_Mathis/portrait_of_johhny.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 122,
+                RecordName = "The First Time Ever",
+                ArtistName = "Johnny Mathis",
+                Price = 1.00,
+                ReleaseDate = 1972,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Johnny_Mathis/the_first_time_ever.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 123,
+                RecordName = "The Shadow Of Your Smile",
+                ArtistName = "Johnny Mathis",
+                Price = 1.00,
+                ReleaseDate = 1966,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Johnny_Mathis/the_shadow_of_your_smile.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 124,
+                RecordName = "The Sweetheart Tree",
+                ArtistName = "Johnny Mathis",
+                Price = 1.00,
+                ReleaseDate = 1965,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Johnny_Mathis/the_sweetheart_tree.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 125,
+                RecordName = "The Wonderful World Of Make Believe",
+                ArtistName = "Johnny Mathis",
+                Price = 1.00,
+                ReleaseDate = 1964,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Johnny_Mathis/the_wonderful_world_of_make_believe.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 126,
+                RecordName = "Those Were The Days",
+                ArtistName = "Johnny Mathis",
+                Price = 1.00,
+                ReleaseDate = 1968,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Johnny_Mathis/those_were_the_days.jpg"
+            },
+            new ProductModel
+            {
+                ProductModelId = 127,
+                RecordName = "Up, Up And Away",
+                ArtistName = "Johnny Mathis",
+                Price = 1.00,
+                ReleaseDate = 1967,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Johnny_Mathis/up_up_and_away.jpg"
+            },
+            // JOHNNY MATHIS \\
+
+
 
             // LOUIS ARMSTRONG \\
+            new ProductModel
+            {
+                ProductModelId = 128,
+                RecordName = "Louis Armstrong",
+                ArtistName = "Louis Armstrong",
+                Price = 1.00,
+                ReleaseDate = 1969,
+                GenreModelId = "JAZZ",
+                ImageUrl = "/Images/Records/Louis_Armstrong/louis_armstrong.jpg"
+            },
+            // LOUIS ARMSTRONG \\
+
+
 
             // MATT MONRO \\
+            new ProductModel
+            {
+                ProductModelId = 129,
+                RecordName = "This Is The Life!",
+                ArtistName = "Matt Monro",
+                Price = 1.00,
+                ReleaseDate = 1966,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Matt_Monro/this_is_the_life.jpg"
+            },
+            // MATT MONRO \\
+
+
 
             // MICHAEL FRANKS \\
+            new ProductModel
+            {
+                ProductModelId = 130,
+                RecordName = "The Art Of Tea",
+                ArtistName = "Michael Franks",
+                Price = 1.00,
+                ReleaseDate = 1975,
+                GenreModelId = "TRADITIONALPOP",
+                ImageUrl = "/Images/Records/Michael_Franks/the_art_of_tea.jpg"
+            },
+            // MICHAEL FRANKS \\
+
+
 
             // MICHAEL JACKSON \\
+            new ProductModel
+            {
+                ProductModelId = 131,
+                RecordName = "Thriller",
+                ArtistName = "Michael Jackson",
+                Price = 100.00,
+                ReleaseDate = 1982,
+                GenreModelId = "FUNK",
+                ImageUrl = "/Images/Records/Michael_Jackson/thriller.jpg"
+            },
+            // MICHAEL JACKSON \\
+
+
 
             // NEIL DIAMOND \\
 
+            // NEIL DIAMOND \\
+
+
+
             // NEIL SEDAKA \\
 
+            // NEIL SEDAKA \\
+
+
+
             // ORLEANS \\
+
+            // ORLEANS \\
+
+
 
             // PAUL ANKA \\
 
@@ -1189,19 +1462,50 @@ namespace RecordShop.Models.Configuration
 
             // PERRY COMO \\
 
+            // PERRY COMO \\
+
+
+
             // ROBERTA FLACK \\
+
+            // ROBERTA FLACK \\
+
+
 
             // SAMMY DAVIS JR. \\
 
+            // SAMMY DAVIS JR. \\
+
+
+
             // TEDDY PENDERGRASS \\
+
+            // TEDDY PENDERGRASS \\
+
+
 
             // TOM JONES \\
 
+            // TOM JONES \\
+
+
+
             // VIC DAMONE \\
+
+            // VIC DAMONE \\
+
+
 
             // WAYNE NEWTON \\
 
+            // WAYNE NEWTON \\
+
+
+
             // YOUNG HOT UNLIMITED \\
+
+            // YOUNG HOT UNLIMITED \\
+
 
 
             );
