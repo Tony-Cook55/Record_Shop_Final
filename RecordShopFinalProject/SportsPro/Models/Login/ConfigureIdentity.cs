@@ -11,8 +11,10 @@ namespace RecordShop.Models.Login
 
             var userManager = provider.GetRequiredService<UserManager<User>>();
 
-            string username = "admin";
-            string password = "Admin1"; // P@ssw0rd
+            string firstName = "Tony";
+            string lastName = "Cook";
+            string username = "TonyCook55";
+            string password = "Fuggetaboutit55!"; // P@ssw0rd
             string roleName = "Admin";
 
             //If Role doesn't exist, create it on start up creating an admin role with the above items
@@ -26,6 +28,8 @@ namespace RecordShop.Models.Login
             {
                 User user = new User
                 {
+                    FirstName = firstName,
+                    LastName = lastName,
                     UserName = username,
                 };
 

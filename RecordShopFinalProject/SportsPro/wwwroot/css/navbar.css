@@ -173,7 +173,7 @@
 
 /* The actual Link Element itself */
 .navbar_links {
-    font-size: 2.5rem; /* Adjust font size based on viewport width */
+    font-size: 2.1rem; /* Adjust font size based on viewport width */
 
     font-family: "Lexend", sans-serif;
 
@@ -207,16 +207,16 @@
             padding-top: 3vw;
             padding-bottom: 3vw;
 
-            font-size: 2.8rem; /* Adjust font size based on viewport width */
+            font-size: 2.5rem; /* Adjust font size based on viewport width */
         }
             .navbar_links:hover {
-                font-size: 4rem;
+                font-size: 3rem;
             }
     }
 
 
     .navbar_links:hover {
-        font-size: 3rem; /* Adjust font size based on viewport width */
+        font-size: 2.7rem; /* Adjust font size based on viewport width */
         margin-top: 5px;
         margin-bottom: 5px;
         color: #634a4c;

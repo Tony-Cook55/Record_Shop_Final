@@ -6,13 +6,74 @@
     ViewData["Title"] = "Manage Users";
 }
 
+<div class="container   text-center   ">
 
-<h1 class="mb-2">Manage Users</h1>
+
+    @* PAGE HEADER *@
+    <h1 class="page_header_text   text_shadow_pop_top   text-center">
+        Manage Users
+    </h1>
+
+    <h2 class="total_item_counter   text_shadow_pop_top   text-center">
+        Total Users: @ViewBag.TotalItemCount
+    </h2>
+    @* PAGE HEADER *@
 
 
-<h4 class="mb-2">
-    <a asp-action="GetAddUserPage" asp-controller="User" asp-area="">Add New User</a>
-</h4>
+</div>
+
+
+@* ADD BUTTON *@
+<div class="center-container">
+    <a asp-controller="User" asp-action="GetAddUserPage" class="crud_button   text-center  crud_button_add">
+        <div class="crud_button     crud_button_add">
+            <span class="crud_button_text">Add</span>
+            <span class="crud_button_icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg>
+            </span>
+        </div>
+    </a>
+</div>
+@* ADD BUTTON *@
+
+
+
+
+
+@* ITEM CARDS *@
+<div class="container  card_expand_container  text-center ">
+    @foreach (User user in Model.Users)
+    {
+        <div class="card    scale_in_center_entrance_animation">
+            <div class="card_expand_face card_face_top">
+                <div class="content">
+                <h1 class="face_header_text">@user.FirstName</h1>
+                    <h1 class="face_header_text">@user.LastName</h1>
+                </div>
+            </div>
+            <div class="card_expand_face card_face_bottom_info">
+                <div class="content">
+                    <p>@user.UserName</p>
+                    <p>@user.Email</p>
+
+
+
+                    @* GET EDIT ~ DELETE BUTTONS*@
+                    @* <a class="btn card_expand_link card_edit_button" asp-controller="Product" asp-action="GetEditPage" asp-route-id="@user.U" asp-route-slug="@user.Slug"><i class="fa-solid fa-pencil"></i></a>
+                    
+                    
+                    <a class="btn card_expand_link card_delete_button" asp-controller="Product" asp-action="GetDeletePage" asp-route-id="@user.ProductModelId" asp-route-slug="@user.Slug"><i class="fa-solid fa-trash-can"></i></a>
+ *@                    <form method="post" asp-action="DeleteUser" asp-route-id="@user.Id">
+                        <button type="Submit" class="btn card_expand_link card_delete_button">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@* ITEM CARDS *@
 
 
 <table class="table-bordered table-striped table-sm">

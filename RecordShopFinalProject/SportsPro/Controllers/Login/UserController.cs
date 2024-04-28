@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace RecordShop.Controllers.Login
 {
@@ -42,6 +43,10 @@ namespace RecordShop.Controllers.Login
                 Roles = roleManager.Roles
             };
 
+            // Count the total number of users
+            int TotalUsers = users.Count;
+            ViewBag.TotalItemCount = TotalUsers;
+
 
             return View(model);
         }
@@ -76,7 +81,11 @@ namespace RecordShop.Controllers.Login
                 if (result.Succeeded)
                 {
                     /*await signInManager.SignInAsync(user, isPersistent: false);*/
-                    return RedirectToAction("ManageUsers");
+
+                    TempData["ACCOUNTMessage"] = $"New User Successfully Registered.";
+                    TempData["ACCOUNToperation"] = $"REGISTER_USER"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
+
+                    return RedirectToAction(actionName: "ManageUsers");
                 }
                 else
                 {
@@ -111,9 +120,13 @@ namespace RecordShop.Controllers.Login
                     {
                         errorMessage += error.Description + " | ";
                     }
-                    TempData["message"] = errorMessage;
+                    TempData["CRUDMessage"] = $"{errorMessage}";
+                    TempData["CRUDOperation"] = $"CRUD_DELETED"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
                 }
             }
+
+            TempData["CRUDMessage"] = $"{user.FirstName} Has Been Successfully Deleted";
+            TempData["CRUDOperation"] = $"CRUD_DELETED"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
 
             return RedirectToAction("ManageUsers");
         }
@@ -129,6 +142,9 @@ namespace RecordShop.Controllers.Login
         {
             await roleManager.CreateAsync(new IdentityRole("Admin"));
 
+            TempData["CRUDMessage"] = $"Admin Role Has Been Added";
+            TempData["CRUDOperation"] = $"CRUD_ADDED"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
+
             return RedirectToAction("ManageUsers");
         }
 
@@ -142,12 +158,16 @@ namespace RecordShop.Controllers.Login
 
             if (adminRole == null)
             {
-                TempData["message"] = "Admin role doestn exist, Click Create Admin Role BUtotn To Create It";
+                TempData["CRUDMessage"] = $"Admin Role Doesn't Exist, Click Create Admin Role Button To Create it.";
+                TempData["CRUDOperation"] = $"CRUD_DELETED"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
             }
             else
             {
                 User user = await userManager.FindByIdAsync(id);
                 await userManager.AddToRoleAsync(user, adminRole.Name);
+
+                TempData["CRUDMessage"] = $"{user.FirstName} Has Been Added to {adminRole.Name} Role";
+                TempData["CRUDOperation"] = $"CRUD_ADDED"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
             }
 
             return RedirectToAction("ManageUsers");
@@ -165,6 +185,9 @@ namespace RecordShop.Controllers.Login
 
             await roleManager.DeleteAsync(role);
 
+            TempData["CRUDMessage"] = $"{role} Role Has Been Deleted";
+            TempData["CRUDOperation"] = $"CRUD_DELETED"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
+
             return RedirectToAction("ManageUsers");
         }
 
@@ -177,6 +200,9 @@ namespace RecordShop.Controllers.Login
             User user = await userManager.FindByIdAsync(id);
 
             await userManager.RemoveFromRoleAsync(user, "Admin");
+
+            TempData["CRUDMessage"] = $"{user.FirstName}'s Admin Role Has Been Removed";
+            TempData["CRUDOperation"] = $"CRUD_DELETED"; // USED FOR ADDING CORRESPONDING BG COLOR FOR OPERATION
 
             return RedirectToAction("ManageUsers");
         }

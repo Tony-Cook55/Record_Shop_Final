@@ -153,7 +153,7 @@
 
 
 
-    @* +++++++ USER IS LOGGED IN OR REGISTERED +++++++ *@
+    @* +++++++ USER IS LOGGED IN AND ADMIN +++++++ *@
     @if (signInManager.IsSignedIn(User))
     {
 
@@ -182,144 +182,325 @@
                 </div>
             </section>
             <!-- PRODUCTS -->
+
+            <!-- EMPLOYEES -->
+            <section class="hero_section   text-center">
+                <div class="   text-center ">
+                    <div class="">
+                        <h1 class="home_page_header_text   text_shadow_pop_top   text-center">
+                            Employees
+                        </h1>
+
+                        <button class="pushable  mt-5">
+                            <a class="text-black   text-decoration-none" asp-area="" asp-controller="Employee" asp-action="Index">
+                                <span class="shadow"></span>
+                                <span class="edge"></span>
+                                <span class="front">
+                                    View Employees
+                                </span>
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <!-- EMPLOYEES -->
+
+            <!-- CUSTOMERS -->
+            <section class="hero_section  hero_section_bg_color_green  text-center">
+                <div class="   text-center ">
+                    <div class="">
+                        <h1 class="home_page_header_text   text_shadow_pop_top   text-center">
+                            Customers
+                        </h1>
+
+                        <button class="pushable  mt-5">
+                            <a class="text-black   text-decoration-none" asp-area="" asp-controller="Customer" asp-action="Index">
+                                <span class="shadow"></span>
+                                <span class="edge"></span>
+                                <span class="front">
+                                    View Customers
+                                </span>
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <!-- CUSTOMERS -->
+
+            <!-- INCIDENTS -->
+            <section class="hero_section   text-center">
+                <div class="   text-center ">
+                    <div class="">
+                        <h1 class="home_page_header_text   text_shadow_pop_top   text-center">
+                            Incidents
+                        </h1>
+
+                        <button class="pushable  mt-5">
+                            <a class="text-black   text-decoration-none" asp-area="" asp-controller="Incident" asp-action="Index">
+                                <span class="shadow"></span>
+                                <span class="edge"></span>
+                                <span class="front">
+                                    View Incidents
+                                </span>
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <!-- INCIDENTS -->
+
+            <!-- REGISTRATIONS -->
+            <section class="hero_section  hero_section_bg_color_green  text-center">
+                <div class="   text-center ">
+                    <div class="">
+                        <h1 class="home_page_header_text    text_shadow_pop_top   text-center">
+                            Registrations
+                        </h1>
+
+                        <button class="pushable  mt-5">
+                            <a class="text-black   text-decoration-none" asp-area="" asp-controller="Registration" asp-action="Index">
+                                <span class="shadow"></span>
+                                <span class="edge"></span>
+                                <span class="front">
+                                    View Registrations
+                                </span>
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <!-- REGISTRATIONS -->
+
+            <!-- EMPLOYEE INCIDNET -->
+            <section class="hero_section   text-center">
+                <div class="   text-center ">
+                    <div class="">
+                        <h1 class="home_page_header_text    text_shadow_pop_top   text-center">
+                            Employee Incidents
+                        </h1>
+
+                        <button class="pushable  mt-5">
+                            <a class="text-black   text-decoration-none" asp-area="" asp-controller="Incident" asp-action="EmployeeAssignedPicker">
+                                <span class="shadow"></span>
+                                <span class="edge"></span>
+                                <span class="front">
+                                    View Employee Incidents
+                                </span>
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <!-- EMPLOYEE INCIDNET -->
+
+            <!-- USER MANAGER -->
+            <section class="hero_section  hero_section_bg_color_green  text-center">
+                <div class="   text-center ">
+                    <div class="">
+                        <h1 class="home_page_header_text   text_shadow_pop_top   text-center">
+                            Manage Users
+                        </h1>
+
+                        <button class="pushable  mt-5">
+                            <a class="text-black   text-decoration-none" asp-area="" asp-controller="User" asp-action="ManageUsers">
+                                <span class="shadow"></span>
+                                <span class="edge"></span>
+                                <span class="front">
+                                    View User Manager
+                                </span>
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <!-- USER MANAGER -->
+
+            <!-- ABOUT -->
+            <section class="hero_section    text-center">
+                <div class="   text-center ">
+                    <div class="">
+                        <h1 class="home_page_header_text  text_shadow_pop_top   text-center">
+                            About
+                        </h1>
+
+                        <button class="pushable  mt-5">
+                            <a class="text-black   text-decoration-none" asp-area="" asp-controller="Home" asp-action="About">
+                                <span class="shadow"></span>
+                                <span class="edge"></span>
+                                <span class="front">
+                                    View About Page
+                                </span>
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <!-- ABOUT -->
         }
         @* USER HAS ROLE OF ADMIN *@
 
+    }
+    @* +++++++ USER IS LOGGED IN AND ADMIN +++++++ *@
 
 
-        <!-- EMPLOYEES -->
-        <section class="hero_section   text-center">
-            <div class="   text-center ">
-                <div class="">
-                    <h1 class="home_page_header_text   text_shadow_pop_top   text-center">
-                        Employees
-                    </h1>
 
-                    <button class="pushable  mt-5">
-                        <a class="text-black   text-decoration-none" asp-area="" asp-controller="Employee" asp-action="Index">
-                            <span class="shadow"></span>
-                            <span class="edge"></span>
-                            <span class="front">
-                                View Employees
-                            </span>
-                        </a>
-                    </button>
+
+
+
+
+    @* +++++++ USER IS LOGGED IN OR REGISTERED +++++++ *@
+    @if (signInManager.IsSignedIn(User))
+    {
+        @* USER DOSE NOT HAVE ROLE OF ADMIN *@
+        @if (!User.IsInRole("Admin"))
+        {
+            <!-- EMPLOYEES -->
+            <section class="hero_section hero_section_bg_color_green  text-center">
+                <div class="   text-center ">
+                    <div class="">
+                        <h1 class="home_page_header_text   text_shadow_pop_top   text-center">
+                            Employees
+                        </h1>
+
+                        <button class="pushable  mt-5">
+                            <a class="text-black   text-decoration-none" asp-area="" asp-controller="Employee" asp-action="Index">
+                                <span class="shadow"></span>
+                                <span class="edge"></span>
+                                <span class="front">
+                                    View Employees
+                                </span>
+                            </a>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <!-- EMPLOYEES -->
+            </section>
+            <!-- EMPLOYEES -->
 
-        <!-- CUSTOMERS -->
-        <section class="hero_section  hero_section_bg_color_green  text-center">
-            <div class="   text-center ">
-                <div class="">
-                    <h1 class="home_page_header_text   text_shadow_pop_top   text-center">
-                        Customers
-                    </h1>
+            <!-- CUSTOMERS -->
+            <section class="hero_section    text-center">
+                <div class="   text-center ">
+                    <div class="">
+                        <h1 class="home_page_header_text   text_shadow_pop_top   text-center">
+                            Customers
+                        </h1>
 
-                    <button class="pushable  mt-5">
-                        <a class="text-black   text-decoration-none" asp-area="" asp-controller="Customer" asp-action="Index">
-                            <span class="shadow"></span>
-                            <span class="edge"></span>
-                            <span class="front">
-                                View Customers
-                            </span>
-                        </a>
-                    </button>
+                        <button class="pushable  mt-5">
+                            <a class="text-black   text-decoration-none" asp-area="" asp-controller="Customer" asp-action="Index">
+                                <span class="shadow"></span>
+                                <span class="edge"></span>
+                                <span class="front">
+                                    View Customers
+                                </span>
+                            </a>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <!-- CUSTOMERS -->
+            </section>
+            <!-- CUSTOMERS -->
 
-        <!-- INCIDENTS -->
-        <section class="hero_section   text-center">
-            <div class="   text-center ">
-                <div class="">
-                    <h1 class="home_page_header_text   text_shadow_pop_top   text-center">
-                        Incidents
-                    </h1>
+            <!-- INCIDENTS -->
+            <section class="hero_section  hero_section_bg_color_green text-center">
+                <div class="   text-center ">
+                    <div class="">
+                        <h1 class="home_page_header_text   text_shadow_pop_top   text-center">
+                            Incidents
+                        </h1>
 
-                    <button class="pushable  mt-5">
-                        <a class="text-black   text-decoration-none" asp-area="" asp-controller="Incident" asp-action="Index">
-                            <span class="shadow"></span>
-                            <span class="edge"></span>
-                            <span class="front">
-                                View Incidents
-                            </span>
-                        </a>
-                    </button>
+                        <button class="pushable  mt-5">
+                            <a class="text-black   text-decoration-none" asp-area="" asp-controller="Incident" asp-action="Index">
+                                <span class="shadow"></span>
+                                <span class="edge"></span>
+                                <span class="front">
+                                    View Incidents
+                                </span>
+                            </a>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <!-- INCIDENTS -->
+            </section>
+            <!-- INCIDENTS -->
 
-        <!-- REGISTRATIONS -->
-        <section class="hero_section  hero_section_bg_color_green  text-center">
-            <div class="   text-center ">
-                <div class="">
-                    <h1 class="home_page_header_text    text_shadow_pop_top   text-center">
-                        Registrations
-                    </h1>
+            <!-- REGISTRATIONS -->
+            <section class="hero_section    text-center">
+                <div class="   text-center ">
+                    <div class="">
+                        <h1 class="home_page_header_text    text_shadow_pop_top   text-center">
+                            Registrations
+                        </h1>
 
-                    <button class="pushable  mt-5">
-                        <a class="text-black   text-decoration-none" asp-area="" asp-controller="Registration" asp-action="Index">
-                            <span class="shadow"></span>
-                            <span class="edge"></span>
-                            <span class="front">
-                                View Registrations
-                            </span>
-                        </a>
-                    </button>
+                        <button class="pushable  mt-5">
+                            <a class="text-black   text-decoration-none" asp-area="" asp-controller="Registration" asp-action="Index">
+                                <span class="shadow"></span>
+                                <span class="edge"></span>
+                                <span class="front">
+                                    View Registrations
+                                </span>
+                            </a>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <!-- REGISTRATIONS -->
+            </section>
+            <!-- REGISTRATIONS -->
 
-        <!-- EMPLOYEE INCIDNET -->
-        <section class="hero_section   text-center">
-            <div class="   text-center ">
-                <div class="">
-                    <h1 class="home_page_header_text    text_shadow_pop_top   text-center">
-                        Employee Incidents
-                    </h1>
+            <!-- EMPLOYEE INCIDNET -->
+            <section class="hero_section  hero_section_bg_color_green  text-center">
+                <div class="   text-center ">
+                    <div class="">
+                        <h1 class="home_page_header_text    text_shadow_pop_top   text-center">
+                            Employee Incidents
+                        </h1>
 
-                    <button class="pushable  mt-5">
-                        <a class="text-black   text-decoration-none" asp-area="" asp-controller="Incident" asp-action="EmployeeAssignedPicker">
-                            <span class="shadow"></span>
-                            <span class="edge"></span>
-                            <span class="front">
-                                View Employee Incidents
-                            </span>
-                        </a>
-                    </button>
+                        <button class="pushable  mt-5">
+                            <a class="text-black   text-decoration-none" asp-area="" asp-controller="Incident" asp-action="EmployeeAssignedPicker">
+                                <span class="shadow"></span>
+                                <span class="edge"></span>
+                                <span class="front">
+                                    View Employee Incidents
+                                </span>
+                            </a>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <!-- EMPLOYEE INCIDNET -->
+            </section>
+            <!-- EMPLOYEE INCIDNET -->
 
-        <!-- ABOUT -->
-        <section class="hero_section  hero_section_bg_color_green  text-center">
-            <div class="   text-center ">
-                <div class="">
-                    <h1 class="home_page_header_text  text_shadow_pop_top   text-center">
-                        About
-                    </h1>
+            <!-- ABOUT -->
+            <section class="hero_section    text-center">
+                <div class="   text-center ">
+                    <div class="">
+                        <h1 class="home_page_header_text  text_shadow_pop_top   text-center">
+                            About
+                        </h1>
 
-                    <button class="pushable  mt-5">
-                        <a class="text-black   text-decoration-none" asp-area="" asp-controller="Home" asp-action="About">
-                            <span class="shadow"></span>
-                            <span class="edge"></span>
-                            <span class="front">
-                                View About Page
-                            </span>
-                        </a>
-                    </button>
+                        <button class="pushable  mt-5">
+                            <a class="text-black   text-decoration-none" asp-area="" asp-controller="Home" asp-action="About">
+                                <span class="shadow"></span>
+                                <span class="edge"></span>
+                                <span class="front">
+                                    View About Page
+                                </span>
+                            </a>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <!-- ABOUT -->
+            </section>
+            <!-- ABOUT -->
+        }
+
     }
     @* +++++++ USER IS LOGGED IN OR REGISTERED +++++++ *@
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
