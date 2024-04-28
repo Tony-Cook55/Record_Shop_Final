@@ -53,3 +53,8 @@ To Add a new Record:
         - Then in last column called  ImageUrl Add the images file path from the wwwroot
 
 
+    5. To Re-Publish Site to Azure Do:
+        - Click Build button above         ~ File   Edit   View   Git   Project   *BUILD*   Debug  Test  Analyze  Tools  Extensions  Window  Help ~
+        - Go 9 Down to Publish RecordShop
+        - In top right click purple Publish button
+
