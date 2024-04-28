@@ -26,6 +26,14 @@ namespace RecordShop.Controllers.Login
 
 
 
+        /* IF A USER DOES NOT HAVE THE ROLE OF ADMIN THIS PAGE WILL BE DISPLAYED */
+        public ViewResult AccessDenied()
+        {
+            return View();
+        }
+
+
+
         public async Task<IActionResult> ManageUsers()
         {
             List<User> users = new List<User>();

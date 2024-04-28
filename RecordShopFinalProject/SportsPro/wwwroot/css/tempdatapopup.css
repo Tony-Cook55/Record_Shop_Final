@@ -125,7 +125,7 @@
     /* Media query for small devices */
     @media only screen and (max-width: 1000px) {
         .CRUD_Message_Container {
-            bottom: 150px; /* Adjust distance from bottom */
+            bottom: 100px; /* Adjust distance from bottom */
             right: 50px; /* Adjust distance from right */
         }
     }
