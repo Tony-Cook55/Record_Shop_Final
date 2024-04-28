@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "mssql2": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/TonyCookRecordShop/providers/Microsoft.ServiceLinker/linkers/ConnectionString_9AAFD85F65",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/recordshopfinaldbserver/databases/RecordShopFinal_db",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionString"
+    }
+  }
+}

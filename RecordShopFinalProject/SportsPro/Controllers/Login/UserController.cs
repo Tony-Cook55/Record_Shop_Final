@@ -15,7 +15,7 @@ namespace RecordShop.Controllers.Login
         private UserManager<User> userManager;
         private RoleManager<IdentityRole> roleManager;
 
-        private SignInManager<User> signInManager;
+        /*private SignInManager<User> signInManager;*/
 
 
         public UserController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
@@ -56,7 +56,7 @@ namespace RecordShop.Controllers.Login
 
 
         /* ++++++++++++ ADD USER ++++++++++++ */
-        public async Task<IActionResult> GetAddUserPage()
+        public IActionResult GetAddUserPage()
         {
             return View(viewName: "AddNewUser", model: new RegisterViewModel());
         }

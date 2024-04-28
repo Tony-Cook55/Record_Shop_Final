@@ -141,8 +141,6 @@ namespace RecordShop.Controllers
                 .Include(c => c.Products.OrderBy(p => p.ArtistName))
                 .FirstOrDefault(c => c.CustomerModelId == customerModelId);
 
-            // Sets Initial Page Size
-            int pageSize = 10;
 
             ViewBag.Adding = "Register New Product";
 
