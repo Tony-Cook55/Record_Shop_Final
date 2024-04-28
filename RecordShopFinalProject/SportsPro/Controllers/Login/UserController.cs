@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace RecordShop.Controllers.Login
 {
@@ -36,28 +37,27 @@ namespace RecordShop.Controllers.Login
 
         public async Task<IActionResult> ManageUsers()
         {
-            List<User> users = new List<User>();
+            var users = await userManager.Users.ToListAsync();
 
-            foreach (User user in userManager.Users)
+            foreach (var user in users)
             {
                 user.RoleNames = await userManager.GetRolesAsync(user);
-                users.Add(user);
             }
 
-
-            UserViewModel model = new UserViewModel
+            var model = new UserViewModel
             {
                 Users = users,
-                Roles = roleManager.Roles
+                Roles = await roleManager.Roles.ToListAsync()
             };
 
             // Count the total number of users
             int TotalUsers = users.Count;
             ViewBag.TotalItemCount = TotalUsers;
 
-
             return View(model);
         }
+
+
 
 
 
