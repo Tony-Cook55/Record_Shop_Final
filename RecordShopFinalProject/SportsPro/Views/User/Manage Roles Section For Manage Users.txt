@@ -1,0 +1,91 @@
+﻿
+
+
+-- ADD THIS IN THE:
+    else{
+
+        ~~ add role section here ~~
+
+
+
+
+        @* uuuuuuuuuuuuuuu MANAGE USERS SECTION uuuuuuuuuuuuuuu *@
+
+            USER ACCOUNT STUFF HERE
+
+        @* uuuuuuuuuuuuuuu MANAGE USERS SECTION uuuuuuuuuuuuuuu *@
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+@* rrrrrrrrrrrrrrrr MANAGE ROLES SECTION rrrrrrrrrrrrrrrr *@
+        @* PAGE HEADER *@
+        <h1 class="page_header_text   text_shadow_pop_top   text-center">
+            Manage Roles
+        </h1>
+        @* PAGE HEADER *@
+
+        @if (Model.Roles.Count() == 0)
+        {
+            @* ADD ADMIN ROLE BUTTON *@
+            <div class="center-container">
+                <form method="post" asp-action="CreateAdminRole">
+                    <a class="crud_button   text-center  crud_button_add">
+                        <button type="submit" class="no_basic_button_css">
+                            <div class="crud_button     crud_button_add">
+                                <span class="crud_button_text">Create<br />Role</span>
+                                <span class="crud_button_icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg>
+                                </span>
+                            </div>
+                        </button>
+                    </a>
+                </form>
+            </div>
+            @* ADD ADMIN ROLE BUTTON *@
+        }
+        else
+        {
+            @* ITEM CARDS *@
+            <div class="container  card_expand_container  text-center ">
+                <div class="card    scale_in_center_entrance_animation">
+                    <div class="card_expand_face card_face_top">
+                        <div class="content">
+                            @foreach (var role in Model.Roles)
+                            {
+                                <h1 class="face_header_text">@role.Name</h1>
+                            }
+                        </div>
+                    </div>
+                    <div class="card_expand_face card_face_bottom_info">
+                        <div class="content">
+                            @foreach (var role in Model.Roles)
+                            {
+                                @* <p>@role.Name</p> *@
+
+                                @* REMOVE ADMIN ROLE*@
+                                <form method="post" asp-action="DeleteRole" asp-route-id="@role.Id">
+                                    <button type="Submit" class="btn card_expand_link card_delete_button          mb-5">
+                                        Delete Role <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </form>
+                                @* REMOVE ADMIN ROLE *@
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @* ITEM CARDS *@
+        }
+    }
+    @* rrrrrrrrrrrrrrrr MANAGE ROLES SECTION rrrrrrrrrrrrrrrr *@

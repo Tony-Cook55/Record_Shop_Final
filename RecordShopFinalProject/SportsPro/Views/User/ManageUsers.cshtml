@@ -9,177 +9,140 @@
 <div class="container   text-center   ">
 
 
-    @* PAGE HEADER *@
-    <h1 class="page_header_text   text_shadow_pop_top   text-center">
-        Manage Users
-    </h1>
 
-    <h2 class="total_item_counter   text_shadow_pop_top   text-center">
-        Total Users: @ViewBag.TotalItemCount
-    </h2>
-    @* PAGE HEADER *@
-
-
-</div>
-
-
-@* ADD BUTTON *@
-<div class="center-container">
-    <a asp-controller="User" asp-action="GetAddUserPage" class="crud_button   text-center  crud_button_add">
-        <div class="crud_button     crud_button_add">
-            <span class="crud_button_text">Add</span>
-            <span class="crud_button_icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg>
-            </span>
-        </div>
-    </a>
-</div>
-@* ADD BUTTON *@
-
-
-
-
-
-@* ITEM CARDS *@
-<div class="container  card_expand_container  text-center ">
-    @foreach (User user in Model.Users)
+    @* IF THE TOTAL NUMBER OF USERS == 0 SHOW NO RESULTS*@
+    @if (@ViewBag.TotalItemCount == 0)
     {
-        <div class="card    scale_in_center_entrance_animation">
-            <div class="card_expand_face card_face_top">
-                <div class="content">
-                <h1 class="face_header_text">@user.FirstName</h1>
-                    <h1 class="face_header_text">@user.LastName</h1>
+        <section class="hero_section   text-center    scale_in_center_entrance_animation">
+            <div class="hero_content   text-center ">
+                <div class="">
+                    @* PAGE HEADER *@
+                    <h1 class="hero_header__no_items_text   text_shadow_pop_top">No Users Found</h1>
+
+                    <h2 class="total_item_counter   text_shadow_pop_top   text-center">
+                        Total Users: @ViewBag.TotalItemCount
+                    </h2>
+                    @* PAGE HEADER *@
+
+                    @* ADD BUTTON *@
+                    <div class="center-container">
+                        <a asp-controller="User" asp-action="GetAddUserPage" class="crud_button   text-center  crud_button_add">
+                            <div class="crud_button     crud_button_add">
+                                <span class="crud_button_text">Add</span>
+                                <span class="crud_button_icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                    @* ADD BUTTON *@
                 </div>
             </div>
-            <div class="card_expand_face card_face_bottom_info">
-                <div class="content">
-                    <p>@user.UserName</p>
-                    <p>@user.Email</p>
-
-
-
-                    @* GET EDIT ~ DELETE BUTTONS*@
-                    @* <a class="btn card_expand_link card_edit_button" asp-controller="Product" asp-action="GetEditPage" asp-route-id="@user.U" asp-route-slug="@user.Slug"><i class="fa-solid fa-pencil"></i></a>
-                    
-                    
-                    <a class="btn card_expand_link card_delete_button" asp-controller="Product" asp-action="GetDeletePage" asp-route-id="@user.ProductModelId" asp-route-slug="@user.Slug"><i class="fa-solid fa-trash-can"></i></a>
- *@                    <form method="post" asp-action="DeleteUser" asp-route-id="@user.Id">
-                        <button type="Submit" class="btn card_expand_link card_delete_button">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
+        </section>
     }
-</div>
-@* ITEM CARDS *@
+    else
+    {
+        @* uuuuuuuuuuuuuuu MANAGE USERS SECTION uuuuuuuuuuuuuuu *@
+        @* PAGE HEADER *@
+        <h1 class="page_header_text   text_shadow_pop_top   text-center">
+            Manage Users
+        </h1>
+
+        <h2 class="total_item_counter   text_shadow_pop_top   text-center">
+            Total Users: @ViewBag.TotalItemCount
+        </h2>
+        @* PAGE HEADER *@
 
 
-<table class="table-bordered table-striped table-sm">
-    <thead>
-        <tr>
-            <th>Username</th>
-            <th>Roles</th>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </thead>
+        @* ADD BUTTON *@
+        <div class="center-container">
+            <a asp-controller="User" asp-action="GetAddUserPage" class="crud_button   text-center  crud_button_add">
+                <div class="crud_button     crud_button_add">
+                    <span class="crud_button_text">Add</span>
+                    <span class="crud_button_icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" /></svg>
+                    </span>
+                </div>
+            </a>
+        </div>
+        @* ADD BUTTON *@
 
 
-    <tbody>
 
-        @if (Model.Users.Count() == 0)
-        {
-            <tr>
-                <td colspan="5">
-                    There are no user accounts
-                </td>
-            </tr>
-        }
-        else
-        {
+        @* ITEM CARDS *@
+        <div class="container  card_expand_container  text-center ">
             @foreach (User user in Model.Users)
             {
-                <tr>
-                    <td>
-                        @user.UserName
-                    </td>
-                    <td>
-                        @foreach (string roleName in user.RoleNames)
-                        {
-                            <div>@roleName</div>
-                        }
-                    </td>
+                <div class="card    scale_in_center_entrance_animation">
+                    <div class="card_expand_face card_face_top">
+                        <div class="content">
+                            <h1 class="face_header_text">@user.FirstName</h1>
+                            <h1 class="face_header_text">@user.LastName</h1>
+                        </div>
+                    </div>
+                    <div class="card_expand_face card_face_bottom_info">
+                        <div class="content">
+                            @foreach (string roleName in user.RoleNames)
+                            {
+                                <p>@roleName</p>
+                            }
+                            @if (!user.RoleNames.Any())
+                            {
+                                <p>No Role</p>
+                            }
+
+                            <p>@user.UserName</p>
+                            <p>@user.Email</p>
 
 
-                    <td>
-                        <form method="post" asp-action="DeleteUser" asp-route-id="@user.Id">
-                            <button type="submit" class="btn btn-danger">Delete User</button>
-                        </form>
-                    </td>
 
 
-                    <td>
-                        @if (!user.RoleNames.Contains("Admin"))
-                        {
-                            <form method="post" asp-action="AddToAdmin" asp-route-id="@user.Id">
-                                <button type="submit" class="btn btn-primary">Add To Admin</button>
+                            <div class="row">
+                                @* IF USER HAS ANY ROLES ONLY ALLOW THEM TO DELETE IT *@
+                                @if (user.RoleNames.Any())
+                                {
+                                    @* REMOVE FROM ADMIN *@
+                                    <div class="col">
+                                        <form method="post" asp-action="RemoveFromAdmin" asp-route-id="@user.Id">
+                                            <button type="Submit" class="btn card_expand_link card_edit_button">
+                                                Role <i class="fa-solid fa-minus"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                    @* REMOVE FROM ADMIN *@
+                                }
+                                @* IF USER HAS NO ROLES ONLY ALLOW THEM TO ADD IT *@
+                                @if (!user.RoleNames.Any())
+                                {
+                                    @* ADD TO ADMIN *@
+                                    <div class="col">
+                                        <form method="post" asp-action="AddToAdmin" asp-route-id="@user.Id">
+                                            <button type="Submit" class="btn card_expand_link card_add_button">
+                                                Role <i class="fa-solid fa-plus"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                    @* ADD TO ADMIN *@
+                                }
+                            </div>
+
+
+                            @* DELETE USER *@
+                            <form method="post" asp-action="DeleteUser" asp-route-id="@user.Id">
+                                <button type="Submit" class="btn card_expand_link card_delete_button">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
                             </form>
-                        }
-                    </td>
-
-
-                    <td>
-                        <form method="post" asp-action="RemoveFromAdmin" asp-route-id="@user.Id">
-                            <button type="submit" class="btn btn-secondary">Remove From Admin</button>
-                        </form>
-                    </td>
-                </tr>
+                            @* DELETE USER *@
+                        </div>
+                    </div>
+                </div>
             }
-        }
+        </div>
+        @* ITEM CARDS *@
+        @* uuuuuuuuuuuuuuu MANAGE USERS SECTION uuuuuuuuuuuuuuu *@
 
-    </tbody>
-
-</table>
+    }
 
 
-
-<h1>Manage Roles</h1>
-@if (Model.Roles.Count() == 0)
-{
-    <form method="post" asp-action="CreateAdminRole">
-        <button type="submit" class="btn btn-info  pb-5">
-            Create Admin Role
-        </button>
-    </form>
-}
-else
-{
-    <table class="table-bordered pb-5 table-striped table-sm">
-        <thead>
-            <tr>
-                <th>Role</th>
-                <td></td>
-            </tr>
-        </thead>
-
-        <tbody>
-            @foreach (var role in Model.Roles)
-            {
-                <tr>
-                    <td>@role.Name</td>
-
-                    <td>
-                        <form method="post" asp-action="DeleteRole" asp-route-id="@role.Id">
-                            <button type="submit" class="btn btn-danger">
-                                Delete Role
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+</div>

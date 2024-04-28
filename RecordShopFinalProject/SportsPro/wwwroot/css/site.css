@@ -102,6 +102,12 @@ body {
 }
 
 
+.no_basic_button_css{
+    border:none;
+    background-color: transparent;
+}
+
+
 
 /* Media query for small devices */
 @media only screen and (max-width: 1000px) {
